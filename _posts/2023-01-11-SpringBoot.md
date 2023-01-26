@@ -113,7 +113,7 @@ Spring Boot提供了@Controller和@RestController两种注解来标识此类负�
 
 如果请求的是页面和数据，使用@Controller注解即可。如果只是请求数据，则可以使用@RestController注解。
 
-@Controller通常与Thymeleaf模板弓|擎结合使用。（前后端不分离）
+@Controller通常与Thymeleaf模板引擎结合使用。（前后端不分离）
 
 默认情况下，@RestController注解会将返回的对象数据转换为JSON格式。
 
@@ -128,23 +128,26 @@ Spring Boot提供了@Controller和@RestController两种注解来标识此类负�
 如果添加在方法上，则只对当前方法生效。
 
 @RequestMapping注解包含很多属性参数来定义HTTP的请求映射规则。常用的属性参数如下：
+
+```java
 value：请求URL的路径，支持URL模板、正则表达式
 method：HTTP请求方法。Method匹配也可以使用@GetMapping、@PostMapping等注解代替。
 consumes：请求的媒体类型(Content- Type)，如application/json
 produces：响应的媒体类型
 params，headers：请求的参数及请求头的值
+```
 
 ## 参数传递
 
 @RequestParam：将请求参数绑定到控制器的方法参数上，接收的参数来自HTTP请求体（post）或请求url的QueryString（get），当请求的参数名称与Controller的业务方法参数名称一致时，@RequestParam可以省略，否则需写
 
-```
+```java
 (@RequestParam(value = "user",required = false) String name)
 ```
 
 @PathVaraible：用来处理动态的URL，URL的值可以作为控制器中处理方法的参数。
 
-```
+```java
 {URL的动态部分}
 ```
 
@@ -185,14 +188,14 @@ spring.web.resources.static-locations=classpath:/static/
 
 表单的enctype属性规定在发送到服务器之前应该如何对表单数据进行编码。
 
-当表单的enctype= " application/x-www-form-urlencoded" (默认)时,
+当表单的enctype= "application/x-www-form-urlencoded" (默认)时,
 form表单中的数据格式为: key=value&key=value
 
-当表单的enctype=" multipart/form-data"时，其传输数据形式浏览器会自动封装
+当表单的enctype="multipart/form-data"时，其传输数据形式浏览器会自动封装
 
 Spring Boot工程嵌入的tomcat限制了请求的文件大小，每个文件的配置最大为1Mb，单次请求的文件的总数不能大于10Mb。
 
-要更改这个默认值需要在配置文件(如application.properties) 中加入两个配置
+要更改这个默认值需要在配置文件(application.properties) 中加入两个配置
 
 ```
 spring.servlet.multipart.max-file-size=10MB
@@ -205,8 +208,10 @@ spring.servlet.multipart.max-request-size=10MB
 
 创建package：interceptor（存放拦截器）
 
-拦截器在Web系统中非常常见，对于某些全局统- -的操作， 我们可以把它提取
-到拦截器中实现。总结起来，拦截器大致有以下几种使用场景:
+拦截器在Web系统中很常见，对于某些全局统一的操作， 我们可以把它提取
+到拦截器中实现。总结起来，拦截器大致有以下几种使用场景：
+
+```
 权限检查:如登录检测，进入处理程序检测是否登录，如果没有，则直接返回
 登录页面。
 性能监控:有时系统在某段时间莫名其妙很慢,可以通过拦截器在进入处理程
@@ -214,11 +219,12 @@ spring.servlet.multipart.max-request-size=10MB
 通用行为:读取cookie得到用户信息并将用户对象放入请求，从而方便后续流
 程使用，还有提取Locale、Theme信息等，只要是多个处理程序都需要的，即
 可使用拦截器实现。
+```
 
 ### 拦截器创建
 
 Spring Boot定义了HandlerInterceptor接口来实现自定义拦截器的功能
-HandlerInterceptor接口定义了preHandle、postHandle、afterCompletion三种方法，通过重写这三种方法实现请求前、请求后等操作
+HandlerInterceptor接口定义了preHandle、postHandle、afterCompletion三种方法，通过重写这三种方法实现请求前、请求时、请求后等操作
 
 ![QQ截图20230107172231](F:\笔记\博客\文章图片\QQ截图20230107172231.png)
 
@@ -227,8 +233,11 @@ HandlerInterceptor接口定义了preHandle、postHandle、afterCompletion三种�
 创建package：config（存放配置类）
 
 addPathPatterns方法定义拦截的地址
+
 excludePathPatterns定义排除某些地址不被拦截
+
 添加的一个拦截器没有addPathPattern任何一个ur则默认拦截所有请求
+
 如果没有excludePathPatterns任何一个请求，则默认不放过任何一个请求。
 
 ```java
@@ -247,16 +256,11 @@ public class WebConfig implements WebMvcConfigurer {
 https://restfulapi.cn/
 ```
 
-RESTful是目前流行的互联网软件服务架构设计风格。
-REST (Representational State Transfer,表述性状态转移) -词是由Roy
-Thomas Fielding在2000年的博士论文中提出的，它定义了互联网软件服务的
-架构原则，如果一个架构符合REST原则，则称之为RESTful架构。
-REST并不是一个标准，它更像一-组客户端和服务端交互时的架构理念和设计原
-则，基于这种架构理念和设计原则的Web API更加简洁，更有层次。
+它定义了互联网软件服务的架构原则，如果一个架构符合REST原则，则称之为RESTful架构。REST并不是一个标准，它更像一组客户端和服务端交互时的架构理念和设计原则，基于这种架构理念和设计原则的Web API更加简洁，更有层次。
 
 ### RESTful特点
 
-每一个URI代表一种资源
+每一个URL代表一种资源
 
 客户端使用GET、POST、 PUT、DELETE四种表示操作方式的动词对服务端资源进行操作：GET用于获取资源，POST用于新建资源(也可以用于更新资源)，PUT用于更新资源，DELETE用于删除资源。
 
@@ -268,8 +272,10 @@ REST并不是一个标准，它更像一-组客户端和服务端交互时的架
 
 符合RESTful规范的Web API需要具备如下两个关键特性：
 
+```
 安全性：安全的方法被期望不会产生任何副作用，当我们使用GET操作获取资源时，不会引起资源本身的改变，也不会引起服务器状态的改变。
-幂等性：幂等的方法保证了重复进行一个请求和一-次请求的效果相同(并不是指响应总是相同的，而是指服务器上资源的状态从第一次请求后就不再改变了)，在数学上幂等性是指N次变换和一 次变换相同。
+幂等性：幂等的方法保证了重复进行一个请求和一次请求的效果相同(并不是指响应总是相同的，而是指服务器上资源的状态从第一次请求后就不再改变了)，在数学上幂等性是指N次变换和一 次变换相同。
+```
 
 常见的HTTP方法及其在RESTful风格下的使用：
 
@@ -284,17 +290,21 @@ REST并不是一个标准，它更像一-组客户端和服务端交互时的架
 ### Spring Boot实现RESTful API
 
 Spring Boot提供的spring-boot-starter-web组件完全支持开发RESTful API，提供了与REST操作方式(GET、POST、 PUT、 DELETE) 对应的注解。
+
+```java
 @GetMapping：处理GET请求，获取资源。
 @PostMapping：处理POST请求，新增资源。
 @PutMapping：处理PUT请求，更新资源。
 @DeleteMapping：处理DELETE请求， 删除资源。
 @PatchMapping：处理PATCH请求， 用于部分更新资源。
+```
 
-在RESTful架构中，每个网址代表一种资源， 所以URI中建议不要包含动词，只包含名词即可，而且所用的名词往往与数据库的表格名对应。
+在RESTful架构中，每个网址代表一种资源， 所以URL中建议不要包含动词，只包含名词即可，而且所用的名词往往与数据库的表格名对应。
 
 ## Swagger
 
 Swagger是一个规范和完整的框架，用于生成、描述、调用和可视化RESTful风格的Web服务，是非常流行的API表达工具。
+
 Swagger能够自动生成完善的RESTful API文档，，同时并根据后台代码的修改同步更新，同时提供完整的测试页面来调试API。
 
 ### 添加依赖
