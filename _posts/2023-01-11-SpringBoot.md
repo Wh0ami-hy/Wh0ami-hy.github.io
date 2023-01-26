@@ -92,9 +92,9 @@ spring.devtools.restart.exclude=static/**
 
 ### idea配置
 
-如果使用了Eclipse,那么在修改完代码并保存之后，项目将自动编译并触发重启
+如果使用了Eclipse，那么在修改完代码并保存之后，项目将自动编译并触发重启
 
-如果使用了IntelliJ IDEA,还需要配置项目自动编译。
+如果使用了IntelliJ IDEA，还需要配置项目自动编译。
 打开Settings页面，在左边的菜单栏依次找到
 Build,Execution,Deployment-→Compile,勾选Build project automatically
 
@@ -438,7 +438,7 @@ Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
 			</plugin>
 ```
 
-## 部署
+## 部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -450,25 +450,23 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 application开头的配置文件中
 
-properties配置文件比较老
-
-在写yml和yaml配置文件的时候一定要按照格式进行编写
-
-配置文件的优先级：properties>yml>yaml
-
-
+```
+server.port=8088
+```
 
 ## junit
 
+```
 1.测试的依赖SpringBoot项目在创建的时候会自动加入
-张浩
 2.测试类会自动生成
-张浩
 3.业务类需要手动编写，要注意如果将来可以直接在测试类中使用 必须让这个类被Spring容器监管，只需要在业务类中加入@Service即可
-张浩
 4.在测试类中使用@AutoWared注解不用new的情况下就把业务层的对象创建出来了
-张浩
 5.运行测试类即可
+```
+
+
+
+
 
 
 
