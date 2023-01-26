@@ -1,9 +1,9 @@
 # Site settings
 title: Wh0ami-hy 
-SEOTitle: Wh0ami-hy | My Blog
+SEOTitle: Wh0ami-hy | Blog
 header-img: img/post-bg-desk.jpg
 email: 2993218474@qq.com
-description: "实践是检验真理的唯一标准"
+description: ""
 keyword: "我的博客"
 url: "https://wh0ami-hy.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
@@ -19,19 +19,20 @@ sidebar-avatar: /img/avatar_binggan.jpg      # use absolute URL, seeing it's use
 # SNS settings
 RSS: false
 # weibo_username:     暂无
-zhihu_username:     暂无
-github_username:    暂无
-facebook_username:  暂无
-jianshu_username:   暂无
-#twitter_username:   暂无
+# zhihu_username:     暂无
+github_username:    "https://github.com/Wh0ami-hy"
+# facebook_username:  暂无
+# jianshu_username:   暂无
+# twitter_username:   暂无
 
 
 
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+# 一页放几篇文章
 permalink: pretty
-paginate: 10
+paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
@@ -59,7 +60,7 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: true    #是否开启Gitalk评论
+  enable: false    #是否开启Gitalk评论
   clientID:                             #生成的clientID
   clientSecret:     #生成的clientSecret
   repo: name.github.io    #仓库名称
@@ -68,14 +69,14 @@ gitalk:
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
-# 统计
+# 统计，支持百度统计和Google Analytics
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 
+# ba_track_id:
 # Google Analytics
-ga_track_id:             # Format: UA-xxxxxx-xx
-ga_domain:                # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
+ga_track_id: 'G-K088S4R01Y'            # Format: UA-xxxxxx-xx
+ga_domain: auto               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
 
 
 
@@ -93,19 +94,13 @@ service-worker: true
 
 
 
-# Friends
+# Friends，友情链接
 friends: [
     {
-        title: "WP",
-        href: "https://wangpei.ink"
+        title: "GitHub",
+        href: "https://github.com/"
     },{
-        title: "简书·BY",
-        href: "http://www.jianshu.com/"
-    },{
-        title: "Apple",
-        href: "https://apple.com"
-    },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
+        title: "Stack",
+        href: "https://stackoverflow.com/"
     }
 ]
