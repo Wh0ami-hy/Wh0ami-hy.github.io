@@ -150,6 +150,7 @@ params，headers：请求的参数及请求头的值
 ```java
 @PostMapping("/deleted/{id}")
 public Result deleted(@PathVariable Integer id) {
+}
 ```
 
 @RequestBody：接收的参数是来自requestBody中，即请求体。一般用于处理非Content-Type:application/x-www-form-urlencoded编码格式的数据，比如：application/json、application/xml 等类型的数据
