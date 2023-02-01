@@ -21,11 +21,10 @@ ORM框架的本质是简化编程中操作数据库的编码。
 # MyBatisPlus
 
 MyBatis是一款优秀的数据持久层ORM框架，被广泛地应用于应用系统。
-MyBatis能够非常灵活地实现动态SQL，可以使用XML或注解来配置和映射原
-生信息，能够轻松地将Java的POJO (Plain Ordinary Java Object,普通的
-Java对象)与数据库中的表和字段进行映射关联。
-MyBatis-Plus是一个MyBatis的增强工具，在MyBatis的基础上做了增强，
-简化了开发。
+
+MyBatis能够非常灵活地实现动态SQL，可以使用XML或注解来配置和映射原生信息，能够轻松地将Java的POJO (Plain Ordinary Java Object，普通的Java对象)与数据库中的表和字段进行映射关联。
+
+MyBatis-Plus是一个MyBatis的增强工具，在MyBatis的基础上做了增强，简化了开发。
 
 ## 配置
 
@@ -123,7 +122,7 @@ List<User> getA11();
 https://baomidou.com/pages/
 ```
 
-在mapper中
+在mapper下的接口中
 
 ```java
 @Mapper
@@ -140,15 +139,33 @@ public interface UserMapper extends BaseMapper <User>{ //mybatisPlus会自动根
 
 在controller中
 
-实例化接口，然后调用方法即可
+使用@Autowired 实现自动注入实例化的接口，然后调用方法即可
+
+```java
+@CrossOrigin
+@RestController
+@RequestMapping("/student")
+public class StudentController {
+    @Autowired
+    private StudentMapper studentMapper;
+
+    @GetMapping("/show")
+    public Result show() {
+
+        List<Student> students = studentMapper.show();
+        
+        return Result.ok().data("data",students);
+    }
+}
+```
 
 ## MyBatis 多表查询
 
 MyBatisPlus仅对单表查询做了强化处理，对于多表查询，仍是MyBatis的方法
 
-
-
 ## MyBatisPlus 分页查询
+
+创建package：config（存放配置类）
 
 新建配置类 MyBatisPlusConfig
 

@@ -148,7 +148,8 @@ params，headers：请求的参数及请求头的值
 @PathVaraible：用来处理动态的URL，URL的值可以作为控制器中处理方法的参数。
 
 ```java
-{URL的动态部分}
+@PostMapping("/deleted/{id}")
+public Result deleted(@PathVariable Integer id) {
 ```
 
 @RequestBody：接收的参数是来自requestBody中，即请求体。一般用于处理非Content-Type:application/x-www-form-urlencoded编码格式的数据，比如：application/json、application/xml 等类型的数据
@@ -160,6 +161,10 @@ params，headers：请求的参数及请求头的值
 后端接收前端传的参数过多时，需要用到实体类来接收更方便，需要注意的是：实体类中对象的属性名要和前端的参数名一致，类型也要一致才能正确接收。
 
 实体类中包含：private 属性、set和get方法（在idea中右键generate，选择，setter、getter，可快速生成get和set方法）
+
+## MyBatis
+
+创建package：mapper（存放数据库操作的接口）
 
 ## 跨域请求
 
@@ -369,6 +374,10 @@ spring.mvc.pathmatch.matching-strategy=ant_path_ matcher
 ```
 
 注意：springframework  2.x版本，可以实现与 swagger2 的版本匹配。
+
+## 配置类
+
+创建package：config（存放配置类）
 
 ## JWT跨域认证
 
