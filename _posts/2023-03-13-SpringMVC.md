@@ -135,7 +135,7 @@ pom.xml中添加依赖
 
 控制器负责解析用户的请求并将其转换为一个模型
 
-注意：实现Controller接口的方式实现控制器的缺点是一个控制器中只有一个方法，如果要多个方法则需要定义多个Controller
+注意：以接口的方式实现控制器的缺点是一个控制器中只有一个方法，如果要多个方法则需要定义多个Controller
 
 ```java
 public class HelloController implements Controller {
@@ -383,7 +383,7 @@ public class ResultSpringMVC {
 
 视图解析器就是实现controller中return的值和xml中前缀、后缀的拼接
 
-```JAVA
+```java
 @Controller
 public class ResultSpringMVC2 {
     @RequestMapping("/rsm2/t1")
@@ -499,6 +499,7 @@ public String hello(@RequestParam("username") String name, Model model){
 注意：
 
 ModelMap：继承了LinkedHashMap
+
 Model：精简版
 
 # 乱码问题解决
