@@ -596,7 +596,7 @@ String str = JSON.toJSONString(user);
 
 # SpringMVC拦截器
 
-SpringMVC的处理器拦截器类似于Servlet开发中的过滤器Filter，用于对处理器进行预处理和后处理。开发者可以自己定义一些拦截器来实现特定的功能
+SpringMVC的处理器拦截器只能拦截请求的方法，Servlet中的过滤器Filter可以拦截请求的方法和静态资源，用于对处理器进行预处理和后处理。开发者可以自己定义一些拦截器来实现特定的功能
 
 拦截器是AOP思想的具体应用
 
@@ -947,8 +947,6 @@ public class DownController {
     }
 }
 ```
-
-
 
 
 
