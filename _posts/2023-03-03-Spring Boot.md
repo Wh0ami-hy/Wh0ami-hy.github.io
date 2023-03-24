@@ -7,60 +7,139 @@ tags:
 
 
 
-# 认识springboot
+# 1.什么是 SpringBoot 自动装配
 
-最大特点：自动装配
+SpringBoot的核心：自动装配
 
-SpringApplication类的run方法
+使用Spring时，在开启某些 Spring 特性或者引入第三方依赖的时候，还是需要用 XML 或 Java 进行显式配置
+
+使用Spring Boot，通过 Spring Boot 的全局配置文件 application.properties 或 application.yml 即可对项目进行设置，比如更换端口号，配置 JPA 属性等
+
+SpringBoot 定义了一套接口规范，规定：SpringBoot 在启动时会扫描外部引用 jar 包中的`META-INF/spring.factories`文件，将文件中配置的类型信息加载到 Spring 容器（此处涉及到 JVM 类加载机制与 Spring 的容器知识），并执行类中定义的各种操作。对于外部 jar 来说，只需要按照 SpringBoot 定义的标准，就能将自己的功能装置进 SpringBoot
+
+Spring Boot中要引入第三方依赖，直接引入一个 starter 即可。引入 starter 之后，我们通过少量注解和一些简单的配置就能使用第三方组件提供的功能了
+
+## 1.1.自动装配原理
+
+SpringBoot 的核心注解  @SpringBootApplication
+
+**@SpringBootApplication** 看作是 @Configuration、@EnableAutoConfiguration、@ComponentScan 注解的集合。这三个注解的作用分别是：
+
+- @EnableAutoConfiguration：启用 SpringBoot 的自动配置机制
+- @Configuration：允许在上下文中注册额外的 bean 或导入其他配置类
+- @ComponentScan： 扫描被@Component（@Service，@Controller）注解的 bean，注解默认会扫描启动类所在的包下所有的类 ，也可以自定义不扫描某些 bean
 
 ```java
-@SpringBootApplication // 标注这个类是springboot的应用：启动类下的所有资源被导入
-public class MybatisplusDemoApplication {
-    public static void main(String[] args) {
-        // 启动springboot应用启动
-        SpringApplication.run(MybatisplusDemoApplication.class, args);
+// @SpringBootApplication的部分源码
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(
+    excludeFilters = {@Filter(
+    type = FilterType.CUSTOM,
+    classes = {TypeExcludeFilter.class}
+), @Filter(
+    type = FilterType.CUSTOM,
+    classes = {AutoConfigurationExcludeFilter.class}
+)}
+)
+```
+
+**@EnableAutoConfiguration** 是实现自动装配的重要注解，自动装配核心功能的实现实际是通过 AutoConfigurationImportSelector类，即 @EnableAutoConfiguration 源码中的 @Import({AutoConfigurationImportSelector.class})
+
+```java
+// @EnableAutoConfiguration的部分源码
+@AutoConfigurationPackage	// 作用：将main包下的所有组件注册到容器中
+@Import({AutoConfigurationImportSelector.class})  //加载自动装配类 xxxAutoconfiguration
+```
+
+**AutoConfigurationImportSelector**实现加载自动装配类 `xxxAutoconfiguration`。AutoConfigurationImportSelector类的继承体系如下：可以看出 AutoConfigurationImportSelector 类实现了 ImportSelector接口中的 selectImports方法，该方法主要用于获取所有符合条件的类的全限定类名，这些类需要被加载到 IOC 容器中
+
+```java
+public class AutoConfigurationImportSelector implements DeferredImportSelector, BeanClassLoaderAware, ResourceLoaderAware, BeanFactoryAware, EnvironmentAware, Ordered {
+
+}
+
+public interface DeferredImportSelector extends ImportSelector {
+
+}
+
+public interface ImportSelector {
+    String[] selectImports(AnnotationMetadata var1);
+}
+```
+
+ImportSelector接口中的selectImports方法源码如下：
+
+```java
+public String[] selectImports(AnnotationMetadata annotationMetadata) {
+    if (!this.isEnabled(annotationMetadata)) { // 判断自动装配开关是否打开
+        return NO_IMPORTS;
+    } else {	// 获取所有需要装配的bean
+        AutoConfigurationImportSelector.AutoConfigurationEntry autoConfigurationEntry = this.getAutoConfigurationEntry(annotationMetadata);
+        return StringUtils.toStringArray(autoConfigurationEntry.getConfigurations());
     }
 }
 ```
 
-# 自动装配原理
+**getAutoConfigurationEntry()**方法，AutoConfigurationImportSelector类调用这个方法，主要负责加载自动配置类
 
-SpringBoot启动会加载大量的自动配置类（所有的自动配置类都在 spring.factories）
-
-我们看我们需要的功能有没有在SpringBoot默认写好的自动配置类当中
-
+```java
+// getAutoConfigurationEntry()方法的源码
+protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigurationEntry(AnnotationMetadata annotationMetadata) {
+    if (!this.isEnabled(annotationMetadata)) {	// 1.判断自动装配开关是否打开。默认spring.boot.enableautoconfiguration=true，可在 application.properties 或 application.yml 中设置
+        return EMPTY_ENTRY;
+    } else {
+        // 2.用于获取EnableAutoConfiguration注解中的 exclude 和 excludeName
+        AnnotationAttributes attributes = this.getAttributes(annotationMetadata);
+        List<String> configurations = this.getCandidateConfigurations(annotationMetadata, attributes);
+        // 3.获取需要自动装配的所有配置类，读取META-INF/spring.factories
+        configurations = this.removeDuplicates(configurations);
+        Set<String> exclusions = this.getExclusions(annotationMetadata, attributes);
+        this.checkExcludedClasses(configurations, exclusions);
+        configurations.removeAll(exclusions);
+        // 4.这一步会筛选，所以 spring.factories中这么多配置，不是每次启动都要全部加载。只有 @ConditionalOnXXX 中的所有条件都满足，该类才会生效
+        configurations = this.getConfigurationClassFilter().filter(configurations);
+        this.fireAutoConfigurationImportEvents(configurations, exclusions);
+        return new AutoConfigurationImportSelector.AutoConfigurationEntry(configurations, exclusions);
+    }
+}
 ```
-可以通过debug=true查看，哪些自动配置类生效，哪些没有
-```
 
-我们再看这个自动配置类中到底配置了哪些组件（只要我们要用的组件存在在其中，我们
-就不需要再手动配置了）
+## 1.2.实现一个 Starter
+
+实现自定义线程池
+
+## 1.3.总结
+
+Spring Boot 通过@EnableAutoConfiguration开启自动装配，通过 SpringFactoriesLoader 最终加载META-INF/spring.factories中的自动配置类实现自动装配，自动配置类其实就是通过@Conditional按需加载的配置类，想要其生效必须引入`spring-boot-starter-xxx`包实现起步依赖
 
 给容器中自动配置类添加组件的时候，会从properties类中获取默认属性。我们只需要在配置文件中指定这些属性的值即可
 
 核心：xxxAutoConfiguration（springboot自动装配）--> xxxxProperties封装配置文件中相关属性（可在配置文件中修改默认值）
 
-结论：springboot所有的自动配置都是在启动的时候描并加载，spring.factories所有的自动配置类都在这里，但是不一定生效，因为要判断条件是否成立，只要导入了对应的start，就有对应的启动器了，有了启动器，自动装配就会生效，然后就配置成功
+结论：springboot所有的自动配置都是在启动的时候描并加载，spring.factories所有的自动配置类都在这里，但是不一定生效，因为要判断条件是否成立，只要导入了对应的Starter，就有了启动器，自动装配就会生效，然后就配置成功
 
 
 
 ```mermaid
-graph LR
+graph TD
 A(自动装配原理)-->A.1("@springBootApplication")
 A.1-->A.1.1("@SpringBootConfiguration")
 A.1.1-->A.1.1.1("@Configuration")
 A.1.1.1-->A.1.1.1.1("@Component")
 
-A.1-->A.1.2("@EnableAutoConfiguration: 自动导入包")
+A.1-->A.1.2("@EnableAutoConfiguration:启用SpringBoot的自动配置机制")
 A.1.2-->A.1.2.1("@AutoConfigurationPackage")
-A.1.2.1-->A.1.2.1.1("@Import（AutoConfigurationPackages.Registrar.class）自动注册表")
-A.1.2-->A.1.2.2("@Import（AutoC onfigurationlmportSelector.class）:自动导入包的核心")
-A.1-->A.1.3("@ComponentScan: 扫描当前主启动类同级的包")
-
-
+A.1.2.1-->A.1.2.1.1("AutoConfigurationPackages.Registrar.class自动注册表")
+A.1.2-->A.1.2.2("AutoConfigurationlmportSelector.class自动导入包的核心")
+A.1-->A.1.3("@ComponentScan:扫描当前主启动类同级的包")
+A.1.2.2-->A.1.2.2.1("ImportSelector接口中的selectImports方法")
+A.1.2.2.1-->A.1.2.2.1.1("getAutoConfigurationEntry()方法")
+A.1.2.2.1.1-->A.1.2.2.1.1.1("SpringFactoriesLoader.loadFactoryNames()获取所有自动配置类名")
+A.1.2.2.1.1.1-->A.1.2.2.1.1.1.1("SpringFactoriesLoader.loadSpringFactories(@NullableClassLoader classLoader)从META-INF/spring.factories加载自动配置类")
 ```
 
-# 主启动类的运行
+# 2.主启动类的运行
 
 SpringApplication类主要做了如下内容：
 
@@ -74,11 +153,11 @@ SpringApplication类主要做了如下内容：
 查找并加载所有可用初始化器，设置到 initializers 属性中
 ```
 
-# SpringBoot配置文件
+# 3.SpringBoot配置文件
 
 SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 
-## application.properties
+## 3.1.application.properties
 
 ```
 语法结构：key=value
@@ -86,7 +165,7 @@ SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 server.port=8888
 ```
 
-## application.yml
+## 3.2.application.yml
 
 推荐使用
 
@@ -97,11 +176,11 @@ server:
 	port: 80
 ```
 
-## yaml语法
+## 3.3.yaml语法
 
 支持数组等
 
-## 类与yml配置文件绑定
+## 3.4.类与yml配置文件绑定
 
 在类中用 @ConfigurationProperties(prefix = "类名") 绑定配置文件
 
@@ -128,7 +207,7 @@ person:
 
 加载指定的配置文件：@PropertySource
 
-## 多环境配置及配置文件位置
+## 3.5.多环境配置及配置文件位置
 
 不同位置配置文件的优先级
 
@@ -165,7 +244,7 @@ spring:
 		active: test
 ```
 
-## JSR-303校验
+## 3.6.JSR-303校验
 
 ```java
 @Validated // 开启数据校验
@@ -178,9 +257,9 @@ public class Person{
 }
 ```
 
-# SpringBoot Web开发
+# 4.SpringBoot Web开发
 
-## 静态资源导入
+## 4.1.静态资源导入
 
 分析配置类 WebMvcAutoConfiguration 
 
@@ -201,7 +280,7 @@ spring.mvc.static-path-pattern=/image/**
 
 在 templates 目录下的所有页面，只能通过controller来跳转（需要模板引擎的支持）
 
-## thymeleaf模板引擎
+## 4.2.thymeleaf模板引擎
 
 **使用thymeleaf**
 
@@ -253,7 +332,7 @@ controller层，使用Model向前端传递数据
 th:元素名
 ```
 
-## 扩展SpringMVC（重点）
+## 4.3.扩展SpringMVC（重点）
 
 SpringBoot 提供了自动配置SpringMVC的功能，即 WebMvcAutoConfiguration.java。我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
 
@@ -293,7 +372,7 @@ public class MyViewConfig implements ViewResolver {
 
 **自定义拦截器**
 
-## 国际化
+## 4.4.国际化
 
 创建 src/main/resources/i18n 文件夹
 
@@ -352,11 +431,11 @@ thymeleaf中设置请求
 <a class="btn btn-sm" th:href="@{/index.html(language='en_US')}">English</a>
 ```
 
-# Spring Data
+# 5.Spring Data
 
 对于数据访问层，无论是SQL（关系型数据库）还是NoSQL（非关系型数据库），Spring Boot底层都是采用Spring Data的方式进行统一处理。
 
-## 整合JDBC
+## 5.1.整合JDBC
 
 pom.xml中导入依赖
 
@@ -379,7 +458,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 ```
 
-## 整合Druid数据源
+## 5.2.整合Druid数据源
 
 导入依赖 pom.xml
 
@@ -395,7 +474,7 @@ application.yml中  spring.datasource.type 属性设为 Druid 即可切换数据
 
 使用私有化 filters 属性 开启日志等功能，需要创建config包，在包中创建相应的配置类，在配置类中绑定配置文件
 
-## 整合Mybatis框架（重点）
+## 5.3.整合Mybatis框架（重点）
 
 建立连接，application.yml中
 
@@ -482,7 +561,7 @@ public class UserController {
 }
 ```
 
-# Spring Security（简单）
+# 6.Spring Security（简单）
 
 官网：https://docs.spring.io/spring-security/site/docs/5.3.13.RELEASE/reference/html5/#jc
 
@@ -505,7 +584,7 @@ Spring Security中重要的类：
 </dependency>
 ```
 
-## 认证及授权
+## 6.1.认证及授权
 
 编写 WebSecurityConfig配置类
 
@@ -532,7 +611,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 注销及权限控制
+## 6.2.注销及权限控制
 
 权限控制：即不同身份的人登陆，看到的页面是不一样的
 
@@ -547,7 +626,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 记住我功能的实现
+## 6.3.记住我功能的实现
 
 本质是Cookie的保存
 
@@ -562,7 +641,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-# Shiro（难）
+# 7.Shiro（难）
 
 官网：https://shiro.apache.org/get-started.html
 
@@ -648,7 +727,7 @@ public class UserRealm extends AuthorizingRealm {
 }
 ```
 
-## 登录拦截
+## 7.1.登录拦截
 
 在ShiroConfig配置类中添加Shiro内置过滤器
 
@@ -674,7 +753,7 @@ public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
 }
 ```
 
-## 用户认证
+## 7.2.用户认证
 
 在自定义Realm类中实现用户认证
 
@@ -712,7 +791,7 @@ public class UserController {
 }
 ```
 
-## 请求授权
+## 7.3.请求授权
 
 ```java
 // 创建 ShiroFilterFactoryBean
@@ -737,7 +816,7 @@ public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
 }
 ```
 
-# Swagger
+# 8.Swagger
 
 Swagger能自动生成完善的RESTful API文档，同时根据后台代码的修改同步更新，同时提供完整的测试页面           调试API
 
@@ -801,7 +880,7 @@ http://127.0.0.1:8080/swagger-ui.html
 spring.mvc.pathmatch.matching-strategy=ant_path_ matcher
 ```
 
-## 配置扫描接口及Swagger开关
+## 8.1.配置扫描接口及Swagger开关
 
 实现在开发环境下启用Swagger，生产环境不启用。思路：SpringBoot使用多环境配置文件，之后获取当前所处环境，最后再判断
 
@@ -835,7 +914,7 @@ public class SwaggerConfig {
 }
 ```
 
-## 分组和接口注释
+## 8.2.分组和接口注释
 
 实现分组，return多个Docket实例即可
 
@@ -897,13 +976,13 @@ public class User implements Serializable {
 }
 ```
 
-# 跨域请求
+# 9.跨域请求
 
 在请求方法前添加 @CrossOrigin注解
 
-# 任务（必会）
+# 10.任务（必会）
 
-## 异步任务
+## 10.1.异步任务
 
 在启动类中使用 @EnableAsync 开启异步功能
 
@@ -924,7 +1003,7 @@ public class AsynService {
 }
 ```
 
-## 定时任务
+## 10.2.定时任务
 
 在启动类上开启定时功能 @EnableScheduling
 
@@ -940,7 +1019,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 邮件发送
+## 10.3.邮件发送
 
 导入依赖 pom.xml
 
@@ -983,7 +1062,7 @@ public class MailService {
 
 实现复杂邮件发送 MimeMessage
 
-# 集成Redis
+# 11.集成Redis
 
 导入依赖 pom.xml
 
@@ -995,11 +1074,11 @@ public class MailService {
 </dependency>
 ```
 
-# 分布式
+# 12.分布式
 
 单台主机性能难以满足服务，需要多台主机共同服务
 
-## RPC
+## 12.1.RPC
 
 Remote Procedure Call 远程过程调用
 
@@ -1007,7 +1086,7 @@ RPC两大核心：序列化、通讯
 
 原理：Netty
 
-## Dubbo
+## 12.2.Dubbo
 
 RPC 分布式服务框架
 
@@ -1081,7 +1160,7 @@ dubbo:
     address: zookeeper://localhost:2181
 ```
 
-## ZooKeeper
+## 12.3.ZooKeeper
 
 分布式协调服务，注册中心
 

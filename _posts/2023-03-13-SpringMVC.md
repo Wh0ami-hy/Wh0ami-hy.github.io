@@ -7,36 +7,55 @@ tags:
 
 
 
-# 什么是MVC
+# 1.什么是Spring MVC
 
 MVC是模型（Model）、视图（View）、 控制器（Controller）的简写，是一种软件设计规范
 
-是将业务逻辑、数据、显示分离的方法来组织代码
+将业务逻辑、数据、显示分离开来组织代码
 
 MVC主要作用是降低了视图与业务逻辑间的双向偶合
 
 MVC不是一种设计模式，MVC是一种架构模式。不同的MVC存在差异
 
-# SpringMVC执行原理
+Spring MVC 下一般把后端项目分为 Service 层（处理业务）、Dao 层（数据库操作）、Entity 层（实体类）、Controller 层（控制层，返回数据给前台页面）
 
-Spring的web框架围绕DispatcherServlet设计。DispatcherServlet的作用是将请求分发到不同的处理器。从Spring 2.5开始，使用Java 5或者以上版本的用户可以采用基于注解的controller声明方式
+我们就是用Spring MVC编写一个个Controller处理请求，再将结果转换成json响应给客户端
 
-SpringMVC就是要求我们编写一个个Controller处理请求，将结果转换成json响应给客户端
+# 2.Spring MVC的核心组件
 
-1. DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求
-2. HandlerMapping（处理器映射）由DispatcherServlet自动调用，HandlerMapping根据请求url查找Handler
-3. HandlerExecution表示具体的Handler，其主要作用是根据url查找控制器
-4. HandlerExecution将解析后的信息传递给DispatcherServlet，如解析控制器映射等
-5. HandlerAdapter表示处理器适配器，其按照特定的规则去执行Handler
-6. Handler让具体的Controller执行
-7. Controller将具体的执行信息返回给HandlerAdapter，如ModelAndView
-8. HandlerAdapter将视图逻辑名或模型传递给DispatcherServlet
-9. DispatcherServlet调用视图解析器(ViewResolver)来解析HandlerAdapter传递的逻辑视图名
-10. 视图解析器将解析的逻辑视图名传给DispatcherServlet
-11. DispatcherServlet根据视图解析器解析的视图结果，调用具体的视图
-12. 最终视图呈现给用户
+DispatcherServlet ：**核心的中央处理器**，负责接收请求、分发，并给予客户端响应
 
-# 搭建SpringMVC
+HandlerMapping：**处理器映射器**，根据 uri 去匹配查找能处理的 Handler ，并会将请求涉及到的拦截器和 Handler 一起封装
+
+HandlerAdapter：**处理器适配器**，根据 HandlerMapping找到的 Handler ，适配执行对应的 Handler
+
+Handler（Controller）：**请求处理器**，处理实际请求的处理器，返回视图
+
+ViewResolver：**视图解析器**，根据 Handler 返回的逻辑视图 / 视图，解析并渲染真正的视图，并传递给 DispatcherServlet响应客户端
+
+# 3.Spring MVC工作原理（重点）
+
+Spring的web框架围绕DispatcherServlet设计
+
+**工作原理**
+
+客户端（浏览器）发送请求， DispatcherServlet 拦截请求
+
+DispatcherServlet 根据请求信息调用 HandlerMapping 。HandlerMapping 根据 uri 去匹配查找能处理的 Handler（也就是我们平常说的 Controller 控制器） ，并会将请求涉及到的拦截器和 Handler 一起封装
+
+DispatcherServlet 调用 HandlerAdapter适配执行 Handler
+
+Handler 完成对用户请求的处理后，会返回一个 ModelAndView对象给DispatcherServlet，ModelAndView 就是包含了数据模型以及相应的视图的信息。Model是返回的数据对象，View是个逻辑上的 View
+
+ViewResolver 会根据逻辑 View 查找实际的 View
+
+DispaterServlet 把返回的 Model 传给 View（视图渲染）
+
+把 View 返回给请求者（浏览器）
+
+![springmvc工作原理](F:\笔记\博客\文章图片\springmvc工作原理.png)
+
+# 4.搭建SpringMVC
 
 创建一个maven项目，添加web的支持
 
@@ -190,7 +209,7 @@ ${msg}
 2. 如果jar包存在，显示无法输出，就在IDEA的项目发布中，添加lib依赖
 3. 重启Tomcat 即可解决
 
-# 用注解开发SpringMVC
+# 5.用注解开发SpringMVC
 
 使用springMVC必须配置的三大件：处理器映射器、处理器适配器、视图解析器。其中处理器映射器、处理器适配器可用注解代替
 
@@ -267,6 +286,8 @@ public class HelloController {
 
 @Controller 配合视图解析器InternalResourceViewResolver使用，返回到指定页面
 
+@RequestBody：接收的参数是来自requestBody中，即请求体。一般用于处理非Content-Type:application/x-www-form-urlencoded编码格式的数据，比如：application/json、application/xml 等类型的数据
+
 **创建视图层**
 
 同上
@@ -275,7 +296,7 @@ public class HelloController {
 
 @RequestMapping注解用于映射url到控制器类或一个特定的处理程序方法。可用在类或方法上。用在类上，表示类中的所有响应请求的方法都是以该地址作为父路径
 
-# 使用RESTful风格
+# 6.使用RESTful风格
 
 在Spring MVC中可以使用 @PathVariable注解，让方法参数的值对应绑定到一个URI模板变量上
 
@@ -299,9 +320,9 @@ public class RestFulController {
 1. 可以通过 @RequestMapping(value = "/hello",method = RequestMethod.GET) 中的method实现不同请求方法的响应
 2. 也可以通过 @GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping实现不同请求方法的响应
 
-# 重定向和转发
+# 7.重定向和转发
 
-**ModelAndView方式**
+## 7.1.ModelAndView方式
 
 设置ModelAndView对象，根据view的名称和视图解析器跳到指定的页面
 
@@ -331,7 +352,7 @@ public class ControllerTest implements Controller {
 }
 ```
 
-**ServletAPI方式**
+## 7.2.ServletAPI方式
 
 通过设置ServletAPI，不需要视图解析器
 
@@ -354,9 +375,9 @@ public class ResultGo {
 }
 ```
 
-**SpringMVC方式（重点）**
+## 7.3.SpringMVC方式（重点）
 
-通过SpringMVC来实现转发和重定向，无需视图解析器
+**通过SpringMVC来实现转发和重定向-无视图解析器**
 
 ```java
 @Controller
@@ -394,14 +415,84 @@ public class ResultSpringMVC2 {
     @RequestMapping("/rsm2/t2")
     public String test2(){
         //重定向
-        return "redirect:/index.jsp";
+        return "redirect:index";
     }
 }
 ```
 
-# 数据处理
+## 7.4.重定向与转发的区别
 
-## 处理提交的数据
+转发是在服务器端起作用的，当使用 forward() 方法时，Servlet 容器传递HTTP请求，从当前的 Servlet 或 JSP，此过程仍然在 request 的作用范围内。转发后，浏览器的地址栏内容不变
+
+重定向是在用户的浏览器端工作的，是 Servlet 对浏览器做出响应后，浏览器再次发送一个新的请求。重定向后，浏览器的地址栏内容发生变化
+
+重定向访问服务器两次，转发只访问服务器一次
+
+转发只能转发到自己的web应用内，重定向可以重定义到任意资源路径
+
+转发相当于服务器跳转，相当于方法调用，在执行当前文件的过程中转向执行目标文件，两个文件（当前文件和目标文件）属于同一次请求，前后页共用一个request，可以通过此来传递一些数据或者session信息，request.setAttribute()和 request.getAttribute()。而重定向会产生一个新的request，不能共享request域信息与请求参数
+
+实际应用：用户登录功能
+
+```java
+@Controller
+public class LoginController {
+    // 访问登录页
+    @RequestMapping("/toLogin")
+    public String toLogin(){
+        // 跳转到登录界面
+        return "forward:/login.jsp";
+    }
+    // 处理登录页接收到的参数
+    @RequestMapping(value = "login",method = RequestMethod.POST)
+    public String doLogin(String username,String password){
+        /* 验证参数，验证登录
+            验证成功，则记录session信息，同时重定向到首页
+            验证失败，则执行 return toLogin();
+         */
+        return toLogin();
+    }
+    // 用户退出登录
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public String doLogout(HttpServletRequest request){
+        // 销毁session对象
+        request.getSession().invalidate();
+        // 重定向到登录页面
+        return "redirect:toLogin";
+    }
+}
+```
+
+# 8.统一异常处理
+
+## 8.1.注解方式实现统一异常处理
+
+具体会使用到 @ControllerAdvice + @ExceptionHandler 这两个注解 
+
+```java
+@ControllerAdvice
+@ResponseBody
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(BaseException.class)
+    public ResponseEntity<?> handleAppException(BaseException ex, HttpServletRequest request) {
+      //......
+    }
+
+    @ExceptionHandler(value = ResourceNotFoundException.class)
+    public ResponseEntity<ErrorReponse> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
+      //......
+    }
+}
+```
+
+这种异常处理方式下，会给所有或者指定的 Controller 织入异常处理的逻辑（AOP），当 Controller 中的方法抛出异常的时候，由被@ExceptionHandler 注解修饰的方法进行处理
+
+ExceptionHandlerMethodResolver 中 getMappedMethod 方法决定了异常具体被哪个被 @ExceptionHandler 注解修饰的方法处理异常
+
+# 9.数据处理
+
+## 9.1.处理提交的数据
 
 **提交的域名称和处理方法的参数名一致**
 
@@ -456,7 +547,7 @@ public class TestController {
 }
 ```
 
-## 数据回显到前端
+## 9.2.数据回显到前端
 
 **通过ModelAndView**
 
@@ -502,7 +593,7 @@ ModelMap：继承了LinkedHashMap
 
 Model：精简版
 
-# 乱码问题解决
+# 10.乱码问题解决
 
 在 src/main/webapp/WEB-INF/web.xml中配置
 
@@ -523,7 +614,7 @@ Model：精简版
 
 
 
-# 返回JSON格式数据
+# 11.返回JSON格式数据
 
 JSON是JavaScript对象的字符串表示法，它使用文本表示一个JS对象的信息，本质是一个字符串
 
@@ -533,7 +624,7 @@ JSON格式
 {"键名":"值"}
 ```
 
-## Jackson
+## 11.1.Jackson
 
 导入依赖 pom.xml
 
@@ -574,7 +665,7 @@ String str = mapper.writeValueAsString(...);
 
 尝试封装一个JsonUtils类 专门实现JSON格式的转换
 
-## FastJson
+## 11.2.FastJson
 
 导入依赖 pom.xml
 
@@ -594,7 +685,7 @@ String str = JSON.toJSONString(user);
 
 乱码解决方法同上
 
-# SpringMVC拦截器
+# 12.SpringMVC拦截器
 
 SpringMVC的处理器拦截器只能拦截请求的方法，Servlet中的过滤器Filter可以拦截请求的方法和静态资源，用于对处理器进行预处理和后处理。开发者可以自己定义一些拦截器来实现特定的功能
 
@@ -610,7 +701,7 @@ servlet规范中的一部分，任何java web工程都可以使用
 
 拦截器只会拦截访问的控制器方法，如果访问的是jsp/html/css/image/js是不会进行拦截的，即不会拦截静态资源
 
-## 自定义拦截器
+## 12.1.自定义拦截器
 
 实现 HandlerInterceptor 接口即可
 
@@ -652,7 +743,7 @@ public class HelloInterceptor implements HandlerInterceptor {
 </mvc:interceptors>
 ```
 
-## 拦截器应用-登录验证
+## 12.2.拦截器应用-登录验证
 
 三个页面：
 
@@ -796,9 +887,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 </mvc:interceptors>
 ```
 
-# 文件上传和下载
+# 13.文件上传和下载
 
-## 文件上传
+## 13.1.文件上传
 
 Spring MVC为文件上传提供了直接的支持，这种支持是用 MultipartResolver实现的
 
@@ -882,7 +973,7 @@ public class UploadController {
 }
 ```
 
-## 文件下载
+## 13.2.文件下载
 
 步骤：
 
