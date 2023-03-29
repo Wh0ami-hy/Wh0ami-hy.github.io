@@ -703,11 +703,13 @@ servlet规范中的一部分，任何java web工程都可以使用
 
 ## 12.1.自定义拦截器
 
+![QQ截图20230107172231](F:\笔记\博客\文章图片\QQ截图20230107172231.png)
+
 实现 HandlerInterceptor 接口即可
 
 ```java
 public class HelloInterceptor implements HandlerInterceptor {
-    /* 前置拦截器（第一道拦截）
+    /* 前置拦截器（请求前）
         return true则放行，去执行下一个拦截器
         return false则不放行
     */
@@ -716,12 +718,12 @@ public class HelloInterceptor implements HandlerInterceptor {
         System.out.println("处理前");
         return true;
     }
-	//第二道拦截
+	//第二道拦截（请求时）
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("处理后");
     }
-	//第三道拦截
+	//第三道拦截（请求后）
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         System.out.println("清理");
@@ -729,7 +731,7 @@ public class HelloInterceptor implements HandlerInterceptor {
 }
 ```
 
-配置启动拦截器 src/main/resources/springmvc-servlet.xml
+配置文件，配置启动拦截器 src/main/resources/springmvc-servlet.xml
 
 ```xml
 <!--拦截器配置-->
@@ -742,6 +744,29 @@ public class HelloInterceptor implements HandlerInterceptor {
     </mvc:interceptor>
 </mvc:interceptors>
 ```
+
+配置类，配置启动拦截器
+
+```java
+/*
+addPathPatterns方法定义拦截的地址
+
+excludePathPatterns定义排除某些地址不被拦截
+
+添加的一个拦截器没有addPathPattern任何一个ur则默认拦截所有请求
+
+如果没有excludePathPatterns任何一个请求，则默认不放过任何一个请求
+*/
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addInterceptors (InterceptorRegistry registry) {
+        registry.addInterceptor( new LoginInterceptor()).addPathPatterns ("/user/**");
+    }
+}
+```
+
+
 
 ## 12.2.拦截器应用-登录验证
 
@@ -943,9 +968,13 @@ CommonsMultipartFile 的常用方法：
 2. InputStream getInputStream()：获取文件流
 3. void transferTo(File dest)：将上传文件保存到一个目录文件中
 
-采用file.Transto 来保存上传的文件
+采用file.transferTo 来保存上传的文件
 
-```JAVA
+**MultipartFile 和 CommonsMultipartFile的区别**
+
+MultipartFile 和 CommonsMultipartFile 都是用来接收上传的文件流的MultipartFile是一个接口，CommonsMultipartFile是MultipartFile接口的实现类。使用MultipartFile 作为形参接收上传文件时，直接用即可。CommonsMultipartFile 作为形参接收上传文件时，必需添加@RequestParam注解，否则会报错
+
+```java
 @Controller
 public class UploadController {
     // 文件上传页面
@@ -1036,6 +1065,45 @@ public class DownController {
         input.close();
         return null;
     }
+}
+```
+
+# 14.跨域请求
+
+## 14.1.使用 @CrossOrigin 注解
+
+```java
+@RestController
+public class MyController {
+
+  @CrossOrigin(origins = "http://example.com")
+  @GetMapping("/my-endpoint")
+  public String myEndpoint() {
+    return "Hello, world!";
+  }
+}
+```
+
+在以上示例中，@CrossOrigin 注解将允许来自 `http://example.com`的跨域请求访问 `/my-endpoint` 端点。还可以使用 @CrossOrigin 注解的其他属性来更精细地控制跨域请求的行为
+
+## 14.2.使用配置类
+
+如果需要在整个应用程序中启用跨域请求支持，你可以在 Spring MVC 配置类中使用 WebMvcConfigurer接口的 addCorsMappings方法
+
+```java
+@Configuration
+public class MyConfig implements WebMvcConfigurer {
+
+  @Override
+  public void addCorsMappings(CorsRegistry registry) {
+    registry.addMapping("/**")
+      .allowedOrigins("http://example.com")
+      .allowedMethods("GET", "POST")
+      .allowedHeaders("header1", "header2", "header3")
+      .exposedHeaders("header1", "header2")
+      .allowCredentials(false)
+      .maxAge(3600);
+  }
 }
 ```
 

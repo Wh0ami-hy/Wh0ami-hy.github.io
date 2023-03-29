@@ -976,13 +976,9 @@ public class User implements Serializable {
 }
 ```
 
-# 9.跨域请求
+# 9.任务（必会）
 
-在请求方法前添加 @CrossOrigin注解
-
-# 10.任务（必会）
-
-## 10.1.异步任务
+## 9.1.异步任务
 
 在启动类中使用 @EnableAsync 开启异步功能
 
@@ -1003,7 +999,7 @@ public class AsynService {
 }
 ```
 
-## 10.2.定时任务
+## 9.2.定时任务
 
 在启动类上开启定时功能 @EnableScheduling
 
@@ -1019,7 +1015,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 10.3.邮件发送
+## 9.3.邮件发送
 
 导入依赖 pom.xml
 
@@ -1062,7 +1058,7 @@ public class MailService {
 
 实现复杂邮件发送 MimeMessage
 
-# 11.集成Redis
+# 10.集成Redis
 
 导入依赖 pom.xml
 
@@ -1074,11 +1070,11 @@ public class MailService {
 </dependency>
 ```
 
-# 12.分布式
+# 11.分布式
 
 单台主机性能难以满足服务，需要多台主机共同服务
 
-## 12.1.RPC
+## 11.1.RPC
 
 Remote Procedure Call 远程过程调用
 
@@ -1086,7 +1082,7 @@ RPC两大核心：序列化、通讯
 
 原理：Netty
 
-## 12.2.Dubbo
+## 11.2.Dubbo
 
 RPC 分布式服务框架
 
@@ -1160,7 +1156,7 @@ dubbo:
     address: zookeeper://localhost:2181
 ```
 
-## 12.3.ZooKeeper
+## 11.3.ZooKeeper
 
 分布式协调服务，注册中心
 
@@ -1168,7 +1164,58 @@ dubbo:
 
 进入bin目录，直接双击运行zkServer.cmd，启动zookeeper
 
+# 12.部署spring boot
 
+## 12.1打包jar
+
+打开idea，点击右上角 maven，再点击Lifecycle，再点击package即可打包
+
+## 12.2.可能的报错
+
+解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
+
+```xml
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.7.7</version>
+```
+
+若报错如下
+
+```
+Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
+```
+
+则先禁用 maven 中 的test
+
+再pom.xml中添加如下（引入 maven-resources-plugin）
+
+```xml
+<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
+```
+
+## 12.3.部署到服务器
+
+```
+nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
+```
+
+注：nohup命令：不挂起，即关闭终端，程序继续运行
+
+## 12.4.修改端口
+
+application开头的配置文件中
+
+```
+server.port=8088
+```
+
+## 12.5.banner.txt
+
+创建banner.txt 放在 resources目录下
 
 
 
