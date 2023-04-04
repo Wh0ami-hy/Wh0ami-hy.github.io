@@ -259,11 +259,9 @@ public class Person{
 
 # 4.SpringBoot Web开发
 
-## 4.1.静态资源导入
+## 4.1.导入静态资源
 
-分析配置类 WebMvcAutoConfiguration 
-
-不同位置静态资源的优先级
+分析配置类 WebMvcAutoConfiguration ，得到不同位置静态资源的优先级
 
 ```
 优先级1:resources/resources
@@ -278,9 +276,9 @@ public class Person{
 spring.mvc.static-path-pattern=/image/**
 ```
 
-在 templates 目录下的所有页面，只能通过controller来跳转（需要模板引擎的支持）
+注：在 templates 目录下的所有页面，只能通过controller来跳转（需要模板引擎的支持）
 
-## 4.2.thymeleaf模板引擎
+## 4.2.导入thymeleaf 引擎
 
 **使用thymeleaf**
 
@@ -350,16 +348,17 @@ public class MyMvcConfig implements WebMvcConfigurer {
 }
 ```
 
-注意：@EnableWebMvc  // 实际就是导入了一个类: DelegatingWebMvcConfiguration，该类从容器中获取所有的webmvcconfig，加了这个注解SpringBoot的所有自动配置全部失效
+注意：@EnableWebMvc 实际就是导入了一个类: DelegatingWebMvcConfiguration，该类从容器中获取所有的webmvcconfig，加了这个注解 SpringBoot 的所有自动配置全部失效
 
 **自定义视图解析器**
 
-ViewResolver 实现了视图解析器接口的类，我们可以把它看做视图解析器
+创建自定义的视图解析器类 ViewConfig ，并实现 ViewResolver 接口
 
-创建 MyViewConfig.class，之后在MyMvcConfig中导入即可
+在该类中实现 resolveViewName() 方法，用于根据视图名称解析视图
+
+配置自定义的视图解析器，将其注册到 Spring Boot 应用程序上下文中
 
 ```java
-// 手动接管SpringMVC配置
 @Configuration
 public class MyViewConfig implements ViewResolver {
     // 自定义视图解析器
@@ -518,7 +517,7 @@ public interface UserMapper {
 }
 ```
 
-在 src/main/resources/mybatis/mapper中写xml配置文件，实现SQL操作
+在 src/main/resources/mapper中写xml配置文件，实现SQL操作
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -540,7 +539,7 @@ mybatis:
 	# 别名
   type-aliases-package: com.hy.entity
    # 导入SQL语句配置文件的位置
-  mapper-locations: classpath:mybatis/mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml
 ```
 
 controller层实现数据调用
