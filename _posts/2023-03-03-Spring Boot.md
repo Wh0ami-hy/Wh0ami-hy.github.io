@@ -261,7 +261,7 @@ public class Person{
 
 ## 4.1.导入静态资源
 
-分析配置类 WebMvcAutoConfiguration ，得到不同位置静态资源的优先级
+分析配置类 WebMvcAutoConfiguration ，得到不同位置的静态资源的优先级
 
 ```
 优先级1:resources/resources
@@ -273,16 +273,16 @@ public class Person{
 修改静态资源目录（不建议改）
 
 ```
-spring.mvc.static-path-pattern=/image/**
+spring.mvc.static-path-pattern=
 ```
 
 注：在 templates 目录下的所有页面，只能通过controller来跳转（需要模板引擎的支持）
 
-## 4.2.导入thymeleaf 引擎
+## 4.2.使用Thymeleaf作为视图解析器
 
-**使用thymeleaf**
+**SpringBoot默认不支持 JSP，需要引入第三方模板引擎技术实现页面渲染**
 
-要使用thymeleaf，只需要导入对应的依赖就可以了，之后将html放在 src/main/resources/templates 目录下即可通过controller访问html
+导入依赖，之后将html放在 src/main/resources/templates 目录下，即可通过controller访问html
 
 添加依赖 pom.xml
 
@@ -298,7 +298,48 @@ spring.mvc.static-path-pattern=/image/**
 </dependency>
 ```
 
-controller层，使用Model向前端传递数据
+配置类中设置，把thymeleaf 添加到 Spring Boot 上下文
+
+```java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Bean
+    public ClassLoaderTemplateResolver templateResolver() {
+        ClassLoaderTemplateResolver templateResolver =
+                new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix("/templates/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setCharacterEncoding("UTF-8");
+
+        return templateResolver;
+    }
+
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver());
+        return templateEngine;
+    }
+}
+```
+
+controller层，使用Model 向前端传递数据
+
+```java
+@RequestMapping(value = "/index")
+public String index(Model model){  //这里不仅仅可以是Model，还可以是Map、ModelMap
+    model.addAttribute("name", "yyds");
+    return "index";
+}
+```
+
+在yml配置文件中关闭、开启 springboot 静态文件缓存，默认为true
+
+当为true时，修改静态文件（html、css、js）需要重启服务器才可以有效，当为false时，修改静态文件（html、css、js）只要在浏览器端刷新就可以了
+
+```yml
+spring.thymeleaf.cache = false
+```
 
 **thymeleaf语法**
 
@@ -332,12 +373,14 @@ th:元素名
 
 ## 4.3.扩展SpringMVC（重点）
 
-SpringBoot 提供了自动配置SpringMVC的功能，即 WebMvcAutoConfiguration.java。我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
+SpringBoot 提供了自动配置SpringMVC的功能，即 WebMvcAutoConfiguration.java。但是我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
 
 实现手动配置，编写一个 @Configuration注解类，并且实现 WebMvcConfigurer接口
 
+注意：@EnableWebMvc 实际就是导入了一个类：DelegatingWebMvcConfiguration，该类从容器中获取所有的webmvcconfig，加了这个注解 SpringBoot 的所有自动配置全部失效
+
 ```java
-@Configuration
+@Configuration	// 表明这是一个配置类
 // @EnableWebMvc
 public class MyMvcConfig implements WebMvcConfigurer {
     // 导入自定义的视图解析器
@@ -348,28 +391,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 }
 ```
 
-注意：@EnableWebMvc 实际就是导入了一个类: DelegatingWebMvcConfiguration，该类从容器中获取所有的webmvcconfig，加了这个注解 SpringBoot 的所有自动配置全部失效
-
-**自定义视图解析器**
-
-创建自定义的视图解析器类 ViewConfig ，并实现 ViewResolver 接口
-
-在该类中实现 resolveViewName() 方法，用于根据视图名称解析视图
-
-配置自定义的视图解析器，将其注册到 Spring Boot 应用程序上下文中
-
-```java
-@Configuration
-public class MyViewConfig implements ViewResolver {
-    // 自定义视图解析器
-    @Override
-    public View resolveViewName(String viewName, Locale locale) throws Exception {
-        return null;
-    }
-}
-```
-
-**自定义拦截器**
+如：自定义视图解析器、自定义拦截器
 
 ## 4.4.国际化
 

@@ -9,15 +9,11 @@ tags:
 
 # 1.什么是Spring MVC
 
-MVC是模型（Model）、视图（View）、 控制器（Controller）的简写，是一种软件设计规范
+MVC即模型（Model）、视图（View）、 控制器（Controller），是一种软件设计规范，将业务逻辑、数据、视图分离开的代码组织方式，降低了视图与业务逻辑间的双向偶合
 
-将业务逻辑、数据、显示分离开来组织代码
+Spring MVC 下一般把后端项目分为 Service 层（处理业务）、Dao 层（数据库操作）、Entity 层（实体类）、Controller 层（控制层，返回数据给前台页面），各层间的调用关系又如下：
 
-MVC主要作用是降低了视图与业务逻辑间的双向偶合
-
-MVC不是一种设计模式，MVC是一种架构模式。不同的MVC存在差异
-
-Spring MVC 下一般把后端项目分为 Service 层（处理业务）、Dao 层（数据库操作）、Entity 层（实体类）、Controller 层（控制层，返回数据给前台页面）
+**遵循Controller–Service接口–ServiceImpt实现类–Mapper接口模式**
 
 我们就是用Spring MVC编写一个个Controller处理请求，再将结果转换成json响应给客户端
 
@@ -29,9 +25,9 @@ HandlerMapping：**处理器映射器**，根据 uri 去匹配查找能处理的
 
 HandlerAdapter：**处理器适配器**，根据 HandlerMapping找到的 Handler ，适配执行对应的 Handler
 
-Handler（Controller）：**请求处理器**，处理实际请求的处理器，返回视图
+Handler（Controller）：**请求处理器**，处理实际请求的处理器，返回逻辑视图（即页面名称）
 
-ViewResolver：**视图解析器**，根据 Handler 返回的逻辑视图 / 视图，解析并渲染真正的视图，并传递给 DispatcherServlet响应客户端
+ViewResolver：**视图解析器**，根据 Handler 返回的逻辑视图，解析并渲染出真实的视图（即页面文件），并传递给 DispatcherServlet 响应客户端
 
 # 3.Spring MVC工作原理（重点）
 
@@ -41,13 +37,15 @@ Spring的web框架围绕DispatcherServlet设计
 
 客户端（浏览器）发送请求， DispatcherServlet 拦截请求
 
-DispatcherServlet 根据请求信息调用 HandlerMapping 。HandlerMapping 根据 uri 去匹配查找能处理的 Handler（也就是我们平常说的 Controller 控制器） ，并会将请求涉及到的拦截器和 Handler 一起封装
+DispatcherServlet 根据请求信息调用 HandlerMapping
+
+HandlerMapping 根据 uri 去匹配查找能处理的 Handler（也就是我们平常说的 Controller 控制器） ，并会将请求涉及到的拦截器和 Handler 一起封装
 
 DispatcherServlet 调用 HandlerAdapter适配执行 Handler
 
-Handler 完成对用户请求的处理后，会返回一个 ModelAndView对象给DispatcherServlet，ModelAndView 就是包含了数据模型以及相应的视图的信息。Model是返回的数据对象，View是个逻辑上的 View
+Handler 完成对用户请求的处理后，会返回一个 ModelAndView对象给DispatcherServlet，ModelAndView 包括数据模型和逻辑视图，通俗的讲就是页面中的数据和页面名称
 
-ViewResolver 会根据逻辑 View 查找实际的 View
+ViewResolver 会根据逻辑 View 查找实际的 View（即根据页面名称去查找真实的页面文件）
 
 DispaterServlet 把返回的 Model 传给 View（视图渲染）
 
@@ -127,6 +125,8 @@ pom.xml中添加依赖
 
 编写SpringMVC的配置文件 src/main/resources/springmvc-servlet.xml
 
+**使用springMVC必须配置的三大件：处理器映射器、处理器适配器、视图解析器**
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -150,7 +150,7 @@ pom.xml中添加依赖
 
 **创建Controller**
 
-编写业务Controller ，要么实现Controller接口，要么增加注解。需要返回一个ModelAndView，装数据，封视图
+编写业务Controller ，要么实现Controller接口，要么增加注解。需要返回一个ModelAndView
 
 控制器负责解析用户的请求并将其转换为一个模型
 
@@ -210,8 +210,6 @@ ${msg}
 3. 重启Tomcat 即可解决
 
 # 5.用注解开发SpringMVC
-
-使用springMVC必须配置的三大件：处理器映射器、处理器适配器、视图解析器。其中处理器映射器、处理器适配器可用注解代替
 
 pom.xml 同上
 
@@ -284,7 +282,7 @@ public class HelloController {
 
 @RestController（Spring4+）相当于@Controller + @ResponseBody，返回json或者xml格式数据
 
-@Controller 配合视图解析器InternalResourceViewResolver使用，返回到指定页面
+@Controller 配合视图解析器 InternalResourceViewResolver使用，返回到指定页面
 
 @RequestBody：接收的参数是来自requestBody中，即请求体。一般用于处理非Content-Type:application/x-www-form-urlencoded编码格式的数据，比如：application/json、application/xml 等类型的数据
 
@@ -324,9 +322,9 @@ public class RestFulController {
 
 ## 7.1.ModelAndView方式
 
-设置ModelAndView对象，根据view的名称和视图解析器跳到指定的页面
+设置ModelAndView对象，根据view的名称跳到指定的页面
 
-页面：{视图解析器前缀} + viewName + {视图解析器后缀}
+页面：`视图解析器前缀 + viewName + 视图解析器后缀`
 
 ```xml
 <!--    视图解析器 模板引擎 -->
@@ -402,7 +400,7 @@ public class ResultSpringMVC {
 
 **通过SpringMVC来实现转发和重定向 - 有视图解析器**
 
-视图解析器就是实现controller中return的值和xml中前缀、后缀的拼接
+视图解析器就是实现controller中return的值和视图解析器前缀、后缀的拼接
 
 ```java
 @Controller
@@ -705,25 +703,23 @@ servlet规范中的一部分，任何java web工程都可以使用
 
 ![QQ截图20230107172231](F:\笔记\博客\文章图片\QQ截图20230107172231.png)
 
-实现 HandlerInterceptor 接口即可
+实现 HandlerInterceptor 接口即可，该接口包含三个方法，分别在请求处理的不同阶段调用
 
 ```java
 public class HelloInterceptor implements HandlerInterceptor {
-    /* 前置拦截器（请求前）
-        return true则放行，去执行下一个拦截器
-        return false则不放行
-    */
+
+    // preHandle() 方法在请求处理之前调用，可以用于进行一些预处理操作
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("处理前");
         return true;
     }
-	//第二道拦截（请求时）
+	// postHandle() 方法在请求处理之后调用，在视图渲染之前调用，可以用于修改 ModelAndView 对象
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("处理后");
     }
-	//第三道拦截（请求后）
+	// afterCompletion() 方法在请求处理完成之后调用，可以用于进行一些资源清理操作
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         System.out.println("清理");
@@ -731,7 +727,7 @@ public class HelloInterceptor implements HandlerInterceptor {
 }
 ```
 
-配置文件，配置启动拦截器 src/main/resources/springmvc-servlet.xml
+xml 配置文件，配置启动拦截器 src/main/resources/springmvc-servlet.xml
 
 ```xml
 <!--拦截器配置-->
@@ -745,7 +741,7 @@ public class HelloInterceptor implements HandlerInterceptor {
 </mvc:interceptors>
 ```
 
-配置类，配置启动拦截器
+在Javaconfig 配置类中，配置启动拦截器
 
 ```java
 /*
@@ -765,8 +761,6 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 ```
-
-
 
 ## 12.2.拦截器应用-登录验证
 
@@ -1104,6 +1098,56 @@ public class MyConfig implements WebMvcConfigurer {
       .allowCredentials(false)
       .maxAge(3600);
   }
+}
+```
+
+# 15.视图解析器
+
+## 15.1.Spring MVC提供的视图解析器
+
+InternalResourceViewResolver：用于解析JSP或HTML等资源文件
+
+FreeMarkerViewResolver：用于解析 FreeMarker 模板
+
+TilesViewResolver：用于解析 Tiles 布局
+
+ContentNegotiatingViewResolver：复合视图解析器，可以根据请求的 Accept 头信息来选择对应的视图解析器进行解析
+
+## 15.2.自定义视图解析器
+
+创建自定义的视图解析器类 ViewConfig ，并实现 ViewResolver 接口
+
+在该类中实现 resolveViewName() 方法，用于根据视图名称解析视图
+
+以下示例中，创建了一个名为 ViewConfig 的类，实现了 `ViewResolver` 接口，并重写了其中的 `resolveViewName()` 方法。在该方法中，检查逻辑视图名称是否以`"myview:"`  前缀开头。如果是，则创建一个名为 `MyView` 的自定义视图对象，并设置其 URL 属性为逻辑视图名称去掉前缀之后的部分。否则，返回 `null` 表示无法解析视图名称
+
+```java
+public class ViewConfig implements ViewResolver {
+
+    @Override
+    public View resolveViewName(String viewName, Locale locale) throws Exception {
+        if (viewName.startsWith("myview:")) {
+            String viewPath = viewName.substring("myview:".length());
+            MyView view = new MyView();
+            view.setUrl(viewPath);
+            return view;
+        } else {
+            return null; // 返回 null 表示无法解析视图名称
+        }
+    }
+}
+```
+
+在Javaconfig 配置类中，配置启动自定义视图解析器
+
+```java
+@Configuration
+public class MyWebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.viewResolver(new ViewConfig());
+    }
 }
 ```
 
