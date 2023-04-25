@@ -7,19 +7,19 @@ tags:
 
 
 
-# 1.什么是 SpringBoot 自动装配
+# 1. 什么是 SpringBoot 自动装配
 
 SpringBoot的核心：自动装配
 
 使用Spring时，在开启某些 Spring 特性或者引入第三方依赖的时候，还是需要用 XML 或 Java 进行显式配置
 
-使用Spring Boot，通过 Spring Boot 的全局配置文件 application.properties 或 application.yml 即可对项目进行设置，比如更换端口号，配置 JPA 属性等
+使用Spring Boot，通过 Spring Boot 的全局配置文件 application.properties 或 application.yml 即可对项目进行设置，比如更换端口号，配置 Mybatis 属性等
 
 SpringBoot 定义了一套接口规范，规定：SpringBoot 在启动时会扫描外部引用 jar 包中的`META-INF/spring.factories`文件，将文件中配置的类型信息加载到 Spring 容器（此处涉及到 JVM 类加载机制与 Spring 的容器知识），并执行类中定义的各种操作。对于外部 jar 来说，只需要按照 SpringBoot 定义的标准，就能将自己的功能装置进 SpringBoot
 
 Spring Boot中要引入第三方依赖，直接引入一个 starter 即可。引入 starter 之后，我们通过少量注解和一些简单的配置就能使用第三方组件提供的功能了
 
-## 1.1.自动装配原理
+## 1.1. 自动装配原理
 
 SpringBoot 的核心注解  @SpringBootApplication
 
@@ -105,11 +105,105 @@ protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigur
 }
 ```
 
-## 1.2.实现一个 Starter
+## 1.2. 实现一个 Starter
 
 实现自定义线程池
 
-## 1.3.总结
+要手动实现一个 Spring Boot 启动器（Starter），你需要完成以下步骤：
+
+**创建一个 Maven 项目**
+在你的计算机上创建一个新的 Maven 项目，用于存储你的 Starter
+
+**添加依赖**
+在项目的 pom.xml 文件中添加以下依赖：
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-autoconfigure</artifactId>
+    <version>2.6.3</version>
+</dependency>
+```
+
+这个依赖包含了 Spring Boot 的自动配置模块，它允许你通过 Java 代码来自定义 Spring Boot 的自动配置
+
+**创建自动配置类**
+创建一个自动配置类，用于自定义 Spring Boot 的自动配置。这个类应该包含一个 `@Configuration` 注解和一个 `@ConditionalOnClass` 注解，用于指定自动配置类的条件，例如：
+
+```java
+@Configuration
+@ConditionalOnClass(MyService.class)
+public class MyAutoConfiguration {
+    @Bean
+    @ConditionalOnMissingBean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+```
+
+这个自动配置类会在项目中存在 `MyService` 类时自动生效，它会创建一个名为 `myService` 的 Bean 并将它添加到 Spring 应用程序上下文中
+
+**创建 Starter 类**
+创建一个 Starter 类，用于提供自动配置类和其他必要的依赖。这个类应该包含一个 `@Configuration` 注解和一个 `@EnableConfigurationProperties` 注解，用于启用自动配置和配置属性的支持，例如：
+
+```java
+@Configuration
+@EnableConfigurationProperties(MyProperties.class)
+@AutoConfigureAfter(MyAutoConfiguration.class)
+public class MyStarterAutoConfiguration {
+    @Autowired
+    private MyProperties properties;
+
+    @Bean
+    public MyService myService() {
+        return new MyService(properties.getGreeting());
+    }
+}
+```
+
+这个 Starter 类会自动启用 `MyAutoConfiguration` 自动配置类，并创建一个名为 `myService` 的 Bean，它使用 `MyProperties` 配置类中的属性来初始化 `MyService` 类的实例
+
+**创建配置属性类**
+创建一个配置属性类，用于定义 Starter 的配置属性。这个类应该包含一个 `@ConfigurationProperties` 注解，用于指定配置属性的前缀和默认值，例如：
+
+```java
+@ConfigurationProperties("my.starter")
+public class MyProperties {
+    private String greeting = "Hello";
+
+    public String getGreeting() {
+        return greeting;
+    }
+
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
+    }
+}
+```
+
+这个配置属性类定义了一个名为 `greeting` 的属性，它的默认值是 "Hello"。这个属性可以在 Starter 类中使用，用于初始化 `MyService` 类的实例。
+
+**打包和安装 Starter**
+在项目的根目录中运行以下命令，将 Starter 打包并安装到本地 Maven 仓库中：
+
+```
+mvn clean install
+```
+
+现在你已经手动实现了一个 Spring Boot Starter。要在其他项目中使用它，只需在项目的 pom.xml 文件中添加以下依赖：
+
+```xml
+<dependency>
+    <groupId>com.example</groupId>
+    <artifactId>my-starter</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+这个依赖会自动引入 Starter 类和其他必要的依赖，使你可以在项目中使用 `MyService` 类和其他相关的组件
+
+## 1.3. 总结
 
 Spring Boot 通过@EnableAutoConfiguration开启自动装配，通过 SpringFactoriesLoader 最终加载META-INF/spring.factories中的自动配置类实现自动装配，自动配置类其实就是通过@Conditional按需加载的配置类，想要其生效必须引入`spring-boot-starter-xxx`包实现起步依赖
 
@@ -139,7 +233,7 @@ A.1.2.2.1.1-->A.1.2.2.1.1.1("SpringFactoriesLoader.loadFactoryNames()获取所�
 A.1.2.2.1.1.1-->A.1.2.2.1.1.1.1("SpringFactoriesLoader.loadSpringFactories(@NullableClassLoader classLoader)从META-INF/spring.factories加载自动配置类")
 ```
 
-# 2.主启动类的运行
+# 2. 主启动类的运行
 
 SpringApplication类主要做了如下内容：
 
@@ -153,11 +247,11 @@ SpringApplication类主要做了如下内容：
 查找并加载所有可用初始化器，设置到 initializers 属性中
 ```
 
-# 3.SpringBoot配置文件
+# 3. SpringBoot配置文件
 
 SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 
-## 3.1.application.properties
+## 3.1. application.properties
 
 ```
 语法结构：key=value
@@ -165,7 +259,7 @@ SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 server.port=8888
 ```
 
-## 3.2.application.yml
+## 3.2. application.yml
 
 推荐使用
 
@@ -176,11 +270,11 @@ server:
 	port: 80
 ```
 
-## 3.3.yaml语法
+## 3.3. yaml语法
 
 支持数组等
 
-## 3.4.类与yml配置文件绑定
+## 3.4. 类与yml配置文件绑定
 
 在类中用 @ConfigurationProperties(prefix = "类名") 绑定配置文件
 
@@ -207,7 +301,7 @@ person:
 
 加载指定的配置文件：@PropertySource
 
-## 3.5.多环境配置及配置文件位置
+## 3.5. 多环境配置及配置文件位置
 
 不同位置配置文件的优先级
 
@@ -244,7 +338,7 @@ spring:
 		active: test
 ```
 
-## 3.6.JSR-303校验
+## 3.6. JSR-303校验
 
 ```java
 @Validated // 开启数据校验
@@ -257,9 +351,9 @@ public class Person{
 }
 ```
 
-# 4.SpringBoot Web开发
+# 4. SpringBoot Web开发
 
-## 4.1.导入静态资源
+## 4.1. 导入静态资源
 
 分析配置类 WebMvcAutoConfiguration ，得到不同位置的静态资源的优先级
 
@@ -278,7 +372,7 @@ spring.mvc.static-path-pattern=
 
 注：在 templates 目录下的所有页面，只能通过controller来跳转（需要模板引擎的支持）
 
-## 4.2.使用Thymeleaf作为视图解析器
+## 4.2. 使用Thymeleaf作为视图解析器
 
 **SpringBoot默认不支持 JSP，需要引入第三方模板引擎技术实现页面渲染**
 
@@ -371,7 +465,7 @@ spring.thymeleaf.cache = false
 th:元素名
 ```
 
-## 4.3.扩展SpringMVC（重点）
+## 4.3. 扩展SpringMVC（重点）
 
 SpringBoot 提供了自动配置SpringMVC的功能，即 WebMvcAutoConfiguration.java。但是我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
 
@@ -393,7 +487,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
 如：自定义视图解析器、自定义拦截器
 
-## 4.4.国际化
+## 4.4. 国际化
 
 创建 src/main/resources/i18n 文件夹
 
@@ -452,11 +546,11 @@ thymeleaf中设置请求
 <a class="btn btn-sm" th:href="@{/index.html(language='en_US')}">English</a>
 ```
 
-# 5.Spring Data
+# 5. Spring Data
 
 对于数据访问层，无论是SQL（关系型数据库）还是NoSQL（非关系型数据库），Spring Boot底层都是采用Spring Data的方式进行统一处理。
 
-## 5.1.整合JDBC
+## 5.1. 整合JDBC
 
 pom.xml中导入依赖
 
@@ -479,7 +573,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 ```
 
-## 5.2.整合Druid数据源
+## 5.2. 整合Druid数据源
 
 导入依赖 pom.xml
 
@@ -495,7 +589,7 @@ application.yml中  spring.datasource.type 属性设为 Druid 即可切换数据
 
 使用私有化 filters 属性 开启日志等功能，需要创建config包，在包中创建相应的配置类，在配置类中绑定配置文件
 
-## 5.3.整合Mybatis框架（重点）
+## 5.3. 整合Mybatis框架（重点）
 
 建立连接，application.yml中
 
@@ -582,7 +676,7 @@ public class UserController {
 }
 ```
 
-# 6.Spring Security（简单）
+# 6. Spring Security（简单）
 
 官网：https://docs.spring.io/spring-security/site/docs/5.3.13.RELEASE/reference/html5/#jc
 
@@ -605,7 +699,7 @@ Spring Security中重要的类：
 </dependency>
 ```
 
-## 6.1.认证及授权
+## 6.1. 认证及授权
 
 编写 WebSecurityConfig配置类
 
@@ -632,7 +726,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 6.2.注销及权限控制
+## 6.2. 注销及权限控制
 
 权限控制：即不同身份的人登陆，看到的页面是不一样的
 
@@ -647,7 +741,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 6.3.记住我功能的实现
+## 6.3. 记住我功能的实现
 
 本质是Cookie的保存
 
@@ -662,7 +756,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-# 7.Shiro（难）
+# 7. Shiro（难）
 
 官网：https://shiro.apache.org/get-started.html
 
@@ -748,7 +842,7 @@ public class UserRealm extends AuthorizingRealm {
 }
 ```
 
-## 7.1.登录拦截
+## 7.1. 登录拦截
 
 在ShiroConfig配置类中添加Shiro内置过滤器
 
@@ -774,7 +868,7 @@ public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
 }
 ```
 
-## 7.2.用户认证
+## 7.2. 用户认证
 
 在自定义Realm类中实现用户认证
 
@@ -812,7 +906,7 @@ public class UserController {
 }
 ```
 
-## 7.3.请求授权
+## 7.3. 请求授权
 
 ```java
 // 创建 ShiroFilterFactoryBean
@@ -837,7 +931,7 @@ public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
 }
 ```
 
-# 8.Swagger
+# 8. Swagger
 
 Swagger能自动生成完善的RESTful API文档，同时根据后台代码的修改同步更新，同时提供完整的测试页面           调试API
 
@@ -901,7 +995,7 @@ http://127.0.0.1:8080/swagger-ui.html
 spring.mvc.pathmatch.matching-strategy=ant_path_ matcher
 ```
 
-## 8.1.配置扫描接口及Swagger开关
+## 8.1. 配置扫描接口及Swagger开关
 
 实现在开发环境下启用Swagger，生产环境不启用。思路：SpringBoot使用多环境配置文件，之后获取当前所处环境，最后再判断
 
@@ -935,7 +1029,7 @@ public class SwaggerConfig {
 }
 ```
 
-## 8.2.分组和接口注释
+## 8.2. 分组和接口注释
 
 实现分组，return多个Docket实例即可
 
@@ -997,9 +1091,9 @@ public class User implements Serializable {
 }
 ```
 
-# 9.任务（必会）
+# 9. 任务（必会）
 
-## 9.1.异步任务
+## 9.1. 异步任务
 
 在启动类中使用 @EnableAsync 开启异步功能
 
@@ -1020,7 +1114,7 @@ public class AsynService {
 }
 ```
 
-## 9.2.定时任务
+## 9.2. 定时任务
 
 在启动类上开启定时功能 @EnableScheduling
 
@@ -1036,7 +1130,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 9.3.邮件发送
+## 9.3. 邮件发送
 
 导入依赖 pom.xml
 
@@ -1079,7 +1173,7 @@ public class MailService {
 
 实现复杂邮件发送 MimeMessage
 
-# 10.集成Redis
+# 10. 集成Redis
 
 导入依赖 pom.xml
 
@@ -1091,11 +1185,11 @@ public class MailService {
 </dependency>
 ```
 
-# 11.分布式
+# 11. 分布式
 
 单台主机性能难以满足服务，需要多台主机共同服务
 
-## 11.1.RPC
+## 11.1. RPC
 
 Remote Procedure Call 远程过程调用
 
@@ -1103,7 +1197,7 @@ RPC两大核心：序列化、通讯
 
 原理：Netty
 
-## 11.2.Dubbo
+## 11.2. Dubbo
 
 RPC 分布式服务框架
 
@@ -1177,7 +1271,7 @@ dubbo:
     address: zookeeper://localhost:2181
 ```
 
-## 11.3.ZooKeeper
+## 11.3. ZooKeeper
 
 分布式协调服务，注册中心
 
@@ -1185,13 +1279,13 @@ dubbo:
 
 进入bin目录，直接双击运行zkServer.cmd，启动zookeeper
 
-# 12.部署spring boot
+# 12. 部署spring boot
 
-## 12.1打包jar
+## 12.1. 打包jar
 
 打开idea，点击右上角 maven，再点击Lifecycle，再点击package即可打包
 
-## 12.2.可能的报错
+## 12.2. 可能的报错
 
 解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
 
@@ -1218,7 +1312,7 @@ Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
 			</plugin>
 ```
 
-## 12.3.部署到服务器
+## 12.3. 部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1226,7 +1320,7 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 12.4.修改端口
+## 12.4. 修改端口
 
 application开头的配置文件中
 
@@ -1234,7 +1328,7 @@ application开头的配置文件中
 server.port=8088
 ```
 
-## 12.5.banner.txt
+## 12.5. banner.txt
 
 创建banner.txt 放在 resources目录下
 

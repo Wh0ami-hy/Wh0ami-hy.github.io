@@ -7,7 +7,7 @@ tags:
 
 
 
-# classpath是什么路径
+# 1. classpath是什么路径
 
 classpath指的是类路径，也就是编译之后的target文件夹下的WEB-INF/class文件夹
 
