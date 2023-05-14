@@ -247,11 +247,15 @@ SpringApplication类主要做了如下内容：
 查找并加载所有可用初始化器，设置到 initializers 属性中
 ```
 
-# 3. SpringBoot配置文件
+# 3. 搭建SpringBoot环境
+
+初始化时，默认链接访问失败，就用国内的 https://start.springboot.io/
+
+# 4. SpringBoot配置文件
 
 SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 
-## 3.1. application.properties
+## 4.1. application.properties
 
 ```
 语法结构：key=value
@@ -259,7 +263,7 @@ SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 server.port=8888
 ```
 
-## 3.2. application.yml
+## 4.2. application.yml
 
 推荐使用
 
@@ -270,11 +274,11 @@ server:
 	port: 80
 ```
 
-## 3.3. yaml语法
+## 4.3. yaml语法
 
 支持数组等
 
-## 3.4. 类与yml配置文件绑定
+## 4.4. 类与yml配置文件绑定
 
 在类中用 @ConfigurationProperties(prefix = "类名") 绑定配置文件
 
@@ -301,7 +305,7 @@ person:
 
 加载指定的配置文件：@PropertySource
 
-## 3.5. 多环境配置及配置文件位置
+## 4.5. 多环境配置及配置文件位置
 
 不同位置配置文件的优先级
 
@@ -338,7 +342,7 @@ spring:
 		active: test
 ```
 
-## 3.6. JSR-303校验
+## 4.6. JSR-303校验
 
 ```java
 @Validated // 开启数据校验
@@ -351,9 +355,9 @@ public class Person{
 }
 ```
 
-# 4. SpringBoot Web开发
+# 5. SpringBoot Web开发
 
-## 4.1. 导入静态资源
+## 5.1. 导入静态资源
 
 分析配置类 WebMvcAutoConfiguration ，得到不同位置的静态资源的优先级
 
@@ -372,7 +376,7 @@ spring.mvc.static-path-pattern=
 
 注：在 templates 目录下的所有页面，只能通过controller来跳转（需要模板引擎的支持）
 
-## 4.2. 使用Thymeleaf作为视图解析器
+## 5.2. 使用Thymeleaf作为视图解析器
 
 **SpringBoot默认不支持 JSP，需要引入第三方模板引擎技术实现页面渲染**
 
@@ -465,7 +469,7 @@ spring.thymeleaf.cache = false
 th:元素名
 ```
 
-## 4.3. 扩展SpringMVC（重点）
+## 5.3. 扩展SpringMVC（重点）
 
 SpringBoot 提供了自动配置SpringMVC的功能，即 WebMvcAutoConfiguration.java。但是我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
 
@@ -487,7 +491,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
 如：自定义视图解析器、自定义拦截器
 
-## 4.4. 国际化
+## 5.4. 国际化
 
 创建 src/main/resources/i18n 文件夹
 
@@ -546,11 +550,11 @@ thymeleaf中设置请求
 <a class="btn btn-sm" th:href="@{/index.html(language='en_US')}">English</a>
 ```
 
-# 5. Spring Data
+# 6. Spring Data
 
 对于数据访问层，无论是SQL（关系型数据库）还是NoSQL（非关系型数据库），Spring Boot底层都是采用Spring Data的方式进行统一处理。
 
-## 5.1. 整合JDBC
+## 6.1. 整合JDBC
 
 pom.xml中导入依赖
 
@@ -573,7 +577,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 ```
 
-## 5.2. 整合Druid数据源
+## 6.2. 整合Druid数据源
 
 导入依赖 pom.xml
 
@@ -589,7 +593,7 @@ application.yml中  spring.datasource.type 属性设为 Druid 即可切换数据
 
 使用私有化 filters 属性 开启日志等功能，需要创建config包，在包中创建相应的配置类，在配置类中绑定配置文件
 
-## 5.3. 整合Mybatis框架（重点）
+## 6.3. 整合Mybatis框架（重点）
 
 建立连接，application.yml中
 
@@ -676,7 +680,7 @@ public class UserController {
 }
 ```
 
-# 6. Spring Security（简单）
+# 7. Spring Security（简单）
 
 官网：https://docs.spring.io/spring-security/site/docs/5.3.13.RELEASE/reference/html5/#jc
 
@@ -699,7 +703,7 @@ Spring Security中重要的类：
 </dependency>
 ```
 
-## 6.1. 认证及授权
+## 7.1. 认证及授权
 
 编写 WebSecurityConfig配置类
 
@@ -726,7 +730,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 6.2. 注销及权限控制
+## 7.2. 注销及权限控制
 
 权限控制：即不同身份的人登陆，看到的页面是不一样的
 
@@ -741,7 +745,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 6.3. 记住我功能的实现
+## 7.3. 记住我功能的实现
 
 本质是Cookie的保存
 
@@ -756,7 +760,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-# 7. Shiro（难）
+# 8. Shiro（难）
 
 官网：https://shiro.apache.org/get-started.html
 
@@ -842,7 +846,7 @@ public class UserRealm extends AuthorizingRealm {
 }
 ```
 
-## 7.1. 登录拦截
+## 8.1. 登录拦截
 
 在ShiroConfig配置类中添加Shiro内置过滤器
 
@@ -868,7 +872,7 @@ public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
 }
 ```
 
-## 7.2. 用户认证
+## 8.2. 用户认证
 
 在自定义Realm类中实现用户认证
 
@@ -906,7 +910,7 @@ public class UserController {
 }
 ```
 
-## 7.3. 请求授权
+## 8.3. 请求授权
 
 ```java
 // 创建 ShiroFilterFactoryBean
@@ -931,7 +935,7 @@ public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
 }
 ```
 
-# 8. Swagger
+# 9. Swagger
 
 Swagger能自动生成完善的RESTful API文档，同时根据后台代码的修改同步更新，同时提供完整的测试页面           调试API
 
@@ -995,7 +999,7 @@ http://127.0.0.1:8080/swagger-ui.html
 spring.mvc.pathmatch.matching-strategy=ant_path_ matcher
 ```
 
-## 8.1. 配置扫描接口及Swagger开关
+## 9.1. 配置扫描接口及Swagger开关
 
 实现在开发环境下启用Swagger，生产环境不启用。思路：SpringBoot使用多环境配置文件，之后获取当前所处环境，最后再判断
 
@@ -1029,7 +1033,7 @@ public class SwaggerConfig {
 }
 ```
 
-## 8.2. 分组和接口注释
+## 9.2. 分组和接口注释
 
 实现分组，return多个Docket实例即可
 
@@ -1091,9 +1095,9 @@ public class User implements Serializable {
 }
 ```
 
-# 9. 任务（必会）
+# 10. 任务（必会）
 
-## 9.1. 异步任务
+## 10.1. 异步任务
 
 在启动类中使用 @EnableAsync 开启异步功能
 
@@ -1114,7 +1118,7 @@ public class AsynService {
 }
 ```
 
-## 9.2. 定时任务
+## 10.2. 定时任务
 
 在启动类上开启定时功能 @EnableScheduling
 
@@ -1130,7 +1134,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 9.3. 邮件发送
+## 10.3. 邮件发送
 
 导入依赖 pom.xml
 
@@ -1173,7 +1177,7 @@ public class MailService {
 
 实现复杂邮件发送 MimeMessage
 
-# 10. 集成Redis
+# 11. 集成Redis
 
 导入依赖 pom.xml
 
@@ -1185,11 +1189,11 @@ public class MailService {
 </dependency>
 ```
 
-# 11. 分布式
+# 12. 分布式
 
 单台主机性能难以满足服务，需要多台主机共同服务
 
-## 11.1. RPC
+## 12.1. RPC
 
 Remote Procedure Call 远程过程调用
 
@@ -1197,7 +1201,7 @@ RPC两大核心：序列化、通讯
 
 原理：Netty
 
-## 11.2. Dubbo
+## 12.2. Dubbo
 
 RPC 分布式服务框架
 
@@ -1271,7 +1275,7 @@ dubbo:
     address: zookeeper://localhost:2181
 ```
 
-## 11.3. ZooKeeper
+## 12.3. ZooKeeper
 
 分布式协调服务，注册中心
 
@@ -1279,13 +1283,13 @@ dubbo:
 
 进入bin目录，直接双击运行zkServer.cmd，启动zookeeper
 
-# 12. 部署spring boot
+# 13. 部署spring boot
 
-## 12.1. 打包jar
+## 13.1. 打包jar
 
 打开idea，点击右上角 maven，再点击Lifecycle，再点击package即可打包
 
-## 12.2. 可能的报错
+## 13.2. 可能的报错
 
 解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
 
@@ -1312,7 +1316,7 @@ Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
 			</plugin>
 ```
 
-## 12.3. 部署到服务器
+## 13.3. 部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1320,7 +1324,7 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 12.4. 修改端口
+## 13.4. 修改端口
 
 application开头的配置文件中
 
@@ -1328,7 +1332,7 @@ application开头的配置文件中
 server.port=8088
 ```
 
-## 12.5. banner.txt
+## 13.5. banner.txt
 
 创建banner.txt 放在 resources目录下
 
