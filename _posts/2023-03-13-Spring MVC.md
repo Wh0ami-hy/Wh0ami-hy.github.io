@@ -15,7 +15,7 @@ Spring MVC 下一般把后端项目分为 Service 层（处理业务）、Dao �
 
 **遵循Controller–Service接口–ServiceImpt实现类–Mapper接口模式**
 
-我们就是用Spring MVC编写一个个Controller处理请求，再将结果转换成json响应给客户端
+就是用Spring MVC编写Controller处理请求，再将结果转换成json响应给客户端
 
 # 2. Spring MVC的核心组件
 
@@ -278,7 +278,7 @@ public class HelloController {
 }
 ```
 
-注意：@RestController和@Controller
+**注意：@RestController和@Controller**
 
 @RestController（Spring4+）相当于@Controller + @ResponseBody，返回json或者xml格式数据
 
@@ -315,8 +315,9 @@ public class RestFulController {
 
 响应请求的实现方式
 
-1. 可以通过 @RequestMapping(value = "/hello",method = RequestMethod.GET) 中的method实现不同请求方法的响应
-2. 也可以通过 @GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping实现不同请求方法的响应
+可以通过 @RequestMapping(value = "/hello",method = RequestMethod.GET) 中的method实现不同请求方法的响应
+
+也可以通过 @GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping实现不同请求方法的响应
 
 # 7. 重定向和转发
 
@@ -461,36 +462,9 @@ public class LoginController {
 }
 ```
 
-# 8. 统一异常处理
+# 8. 数据处理
 
-## 8.1. 注解方式实现统一异常处理
-
-具体会使用到 @ControllerAdvice + @ExceptionHandler 这两个注解 
-
-```java
-@ControllerAdvice
-@ResponseBody
-public class GlobalExceptionHandler {
-
-    @ExceptionHandler(BaseException.class)
-    public ResponseEntity<?> handleAppException(BaseException ex, HttpServletRequest request) {
-      //......
-    }
-
-    @ExceptionHandler(value = ResourceNotFoundException.class)
-    public ResponseEntity<ErrorReponse> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
-      //......
-    }
-}
-```
-
-这种异常处理方式下，会给所有或者指定的 Controller 织入异常处理的逻辑（AOP），当 Controller 中的方法抛出异常的时候，由被@ExceptionHandler 注解修饰的方法进行处理
-
-ExceptionHandlerMethodResolver 中 getMappedMethod 方法决定了异常具体被哪个被 @ExceptionHandler 注解修饰的方法处理异常
-
-# 9. 数据处理
-
-## 9.1. 处理提交的数据
+## 8.1. 处理提交的数据
 
 **提交的域名称和处理方法的参数名一致**
 
@@ -545,7 +519,7 @@ public class TestController {
 }
 ```
 
-## 9.2. 数据回显到前端
+## 8.2. 数据回显到前端
 
 **通过ModelAndView**
 
@@ -591,7 +565,7 @@ ModelMap：继承了LinkedHashMap
 
 Model：精简版
 
-# 10. 乱码问题解决
+# 9. 乱码问题解决
 
 在 src/main/webapp/WEB-INF/web.xml中配置
 
@@ -612,9 +586,9 @@ Model：精简版
 
 
 
-# 11. 返回JSON格式数据
+# 10. 返回JSON格式数据
 
-JSON是JavaScript对象的字符串表示法，它使用文本表示一个JS对象的信息，本质是一个字符串
+JSON是JavaScript对象的字符串表示法，它使用文本表示一个JS对象的信息，**本质是一个字符串**
 
 JSON格式
 
@@ -622,7 +596,7 @@ JSON格式
 {"键名":"值"}
 ```
 
-## 11.1. Jackson
+## 10.1. Jackson
 
 导入依赖 pom.xml
 
@@ -663,7 +637,7 @@ String str = mapper.writeValueAsString(...);
 
 尝试封装一个JsonUtils类 专门实现JSON格式的转换
 
-## 11.2. FastJson
+## 10.2. FastJson
 
 导入依赖 pom.xml
 
@@ -683,11 +657,21 @@ String str = JSON.toJSONString(user);
 
 乱码解决方法同上
 
-# 12. SpringMVC拦截器
+## 10.3. Guava（推荐）
 
-SpringMVC的处理器拦截器只能拦截请求的方法，Servlet中的过滤器Filter可以拦截请求的方法和静态资源，用于对处理器进行预处理和后处理。开发者可以自己定义一些拦截器来实现特定的功能
+使用Guava库中一个名为Json的工具类
 
-拦截器是AOP思想的具体应用
+```xml
+<dependency> 
+	<groupId>com.google.guava</groupId> 
+	<artifactId>guava</artifactId> 
+	<version>30.1.1-jre</version> 
+</dependency>
+```
+
+# 11. SpringMVC拦截器
+
+SpringMVC的处理器拦截器只能拦截请求的方法，Servlet中的过滤器Filter可以拦截请求的方法和静态资源，用于对处理器进行预处理和后处理。拦截器是AOP思想的具体应用
 
 **过滤器**
 
@@ -699,7 +683,7 @@ servlet规范中的一部分，任何java web工程都可以使用
 
 拦截器只会拦截访问的控制器方法，如果访问的是jsp/html/css/image/js是不会进行拦截的，即不会拦截静态资源
 
-## 12.1. 自定义拦截器
+## 11.1. 自定义拦截器
 
 ![QQ截图20230107172231](F:\笔记\博客\文章图片\QQ截图20230107172231.png)
 
@@ -762,7 +746,7 @@ public class WebConfig implements WebMvcConfigurer {
 }
 ```
 
-## 12.2. 拦截器应用-登录验证
+## 11.2. 拦截器应用-登录验证
 
 三个页面：
 
@@ -906,9 +890,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 </mvc:interceptors>
 ```
 
-# 13. 文件上传和下载
+# 12. 文件上传和下载
 
-## 13.1. 文件上传
+## 12.1. 文件上传
 
 Spring MVC为文件上传提供了直接的支持，这种支持是用 MultipartResolver实现的
 
@@ -996,7 +980,7 @@ public class UploadController {
 }
 ```
 
-## 13.2. 文件下载
+## 12.2. 文件下载
 
 步骤：
 
@@ -1062,9 +1046,9 @@ public class DownController {
 }
 ```
 
-# 14. 跨域请求
+# 13. 跨域请求
 
-## 14.1. 使用 @CrossOrigin 注解
+## 13.1. 使用 @CrossOrigin 注解
 
 ```java
 @RestController
@@ -1080,7 +1064,7 @@ public class MyController {
 
 在以上示例中，@CrossOrigin 注解将允许来自 `http://example.com`的跨域请求访问 `/my-endpoint` 端点。还可以使用 @CrossOrigin 注解的其他属性来更精细地控制跨域请求的行为
 
-## 14.2. 使用配置类
+## 13.2. 使用配置类
 
 如果需要在整个应用程序中启用跨域请求支持，你可以在 Spring MVC 配置类中使用 WebMvcConfigurer接口的 addCorsMappings方法
 
@@ -1101,9 +1085,9 @@ public class MyConfig implements WebMvcConfigurer {
 }
 ```
 
-# 15. 视图解析器
+# 14. 视图解析器
 
-## 15.1. Spring MVC提供的视图解析器
+## 14.1. Spring MVC提供的视图解析器
 
 InternalResourceViewResolver：用于解析JSP或HTML等资源文件
 
@@ -1113,7 +1097,7 @@ TilesViewResolver：用于解析 Tiles 布局
 
 ContentNegotiatingViewResolver：复合视图解析器，可以根据请求的 Accept 头信息来选择对应的视图解析器进行解析
 
-## 15.2. 自定义视图解析器
+## 14.2. 自定义视图解析器
 
 创建自定义的视图解析器类 ViewConfig ，并实现 ViewResolver 接口
 

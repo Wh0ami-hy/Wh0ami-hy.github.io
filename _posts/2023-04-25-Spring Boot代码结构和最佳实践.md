@@ -34,7 +34,7 @@ public interface UserMapper {
 }
 ```
 
-配置xml
+在xml中写SQL语句
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -60,7 +60,7 @@ controller
 
 控制器应该围绕用例、业务能力来设计
 
-默认情况下，控制器是单例
+**默认情况下，控制器是单例**
 
 ```java
 @RestController
@@ -89,7 +89,7 @@ service接口的内容对应mapper接口的内容。serviceImpl是把mapper和�
 
 如 `AccountService`, `UserService` 这样的服务，比起 `DatabaseService`、`ValidationService` 这样的会更合适一些
 
-可以决定使用Controller和Service之间的一对一映射，那是理想的情况
+理想的情况是Controller和Service之间的一对一映射
 
 定义接口 UserService
 
@@ -219,7 +219,7 @@ POJO、mapper、service、controller
 </dependency>
 ```
 
-高级一点：为开发组中常见的问题，创建自己的自动配置，即手动实现一个 starter
+高级一点：为开发组中常见的问题，创建自己的自动配置，即**手动实现一个 starter**
 
 ## 2.3. 正确设计代码目录结构
 
@@ -250,7 +250,17 @@ POJO、mapper、service、controller
 │   └── resources
 ```
 
-## 2.4. 提供全局异常处理
+## 2.4. 保持@Controller的简洁
+
+了解设计REST API的最佳实践
+
+## 2.5. 围绕业务功能构建@Service
+
+最好围绕业务功能/领域/用例（无论你怎么称呼都行）来构建服务。
+
+可以决定使用Controler和Service之间的一对一映射，那将是理想的情况。但这并不意味着，Service之间不能互相调用！
+
+## 2.6. 提供全局异常处理
 
 Spring Boot提供了两种主要方法：
 
@@ -258,7 +268,7 @@ Spring Boot提供了两种主要方法：
 
 在控制器上添加 @ExceptionHandler 注解，这在某些特定场景下使用可能会很有用
 
-## 2.5. 使用日志框架
+## 2.7. 使用日志框架
 
 应该使用Logger进行日志记录，而不是使用System.out.println()手动执行
 
@@ -268,19 +278,25 @@ Spring Boot提供了两种主要方法：
 Logger logger = LoggerFactory.getLogger(MyClass.class);
 ```
 
-## 2.6. 代码测试
+## 2.8. 代码测试
 
 测试切片，你可以根据需要仅连接部分应用程序
 
-## 2.7. 合理使用Swagger等接口工具
+## 2.9. 合理使用Swagger等接口工具
 
 在大多数情况下，其他应用程序将通过REST API 调用你的应用程序。因此我们需要维护一份API文档。文档应该由代码生成。当然有一些工具可以做到这一点。其中最受欢迎的是Swagger
 
-## 2.8. 使数据库独立于核心业务逻辑之外
+## 2.10. 使数据库独立于核心业务逻辑之外
 
 理想情况下，你不希望服务知道它正在与哪个数据库通信，这需要一些抽象来封装对象的持久性
 
 **一些优秀的持久层框架可以帮助我们做到这些**
+
+## 2.11. 使用Spring Initializr来开始一个新的Spring Boot项目
+
+使用Initializr创建应用程序可确保你获得经过测试和验证的依赖项，这些依赖项适用于Spring自动配置。你甚至可能会发现一些新的集成
+
+
 
 
 参考：

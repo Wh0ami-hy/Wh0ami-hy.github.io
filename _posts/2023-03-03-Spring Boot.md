@@ -274,11 +274,7 @@ server:
 	port: 80
 ```
 
-## 4.3. yaml语法
-
-支持数组等
-
-## 4.4. 类与yml配置文件绑定
+## 4.3. 类与yml配置文件绑定
 
 在类中用 @ConfigurationProperties(prefix = "类名") 绑定配置文件
 
@@ -305,7 +301,7 @@ person:
 
 加载指定的配置文件：@PropertySource
 
-## 4.5. 多环境配置及配置文件位置
+## 4.4. 多环境配置及配置文件位置
 
 不同位置配置文件的优先级
 
@@ -342,22 +338,68 @@ spring:
 		active: test
 ```
 
-## 4.6. JSR-303校验
+# 5. JSR-303校验
+
+用于对Java Bean的属性值进行校验
+
+使用JSR-303规范进行校验需要遵循以下步骤：
+
+- 在Java Bean的属性上添加校验注解
+
+```
+@NotNull：用于检查一个对象是否为null。
+    
+@Min、@Max：用于检查一个数字的最小值和最大值。
+    
+@Size：用于检查一个对象的长度是否在指定范围内。
+
+@Pattern：用于检查一个字符串是否匹配指定的正则表达式。
+    
+@Email：用于检查一个字符串是否是邮件地址格式。
+    
+@AssertTrue、@AssertFalse：用于检查一个布尔值是否为true或false。
+```
+
+例子
 
 ```java
 @Validated // 开启数据校验
-public class Person{
-    @Email() // 校验是否为email格式
-    private String name;
-    private Integer age;
-
-	public Person(){}
+public class User {
+ 
+    @NotNull(message = "用户名不能为空")
+    private String username;
+ 
+    @Size(min = 6, max = 16, message = "密码长度必须在6-16位之间")
+    private String password;
+ 
+    @Email(message = "邮箱格式不正确")
+    private String email;
+ 
+    // getter和setter方法省略
 }
 ```
 
-# 5. SpringBoot Web开发
+- 在Controller方法中添加@Valid注解，表示需要对请求参数进行校验
 
-## 5.1. 导入静态资源
+- 在Controller方法的参数中添加BindingResult或Errors参数，用于接收校验结果
+
+```java
+@PostMapping("/user")
+public String addUser(@Valid User user, BindingResult result) {
+    if (result.hasErrors()) {
+        // 校验失败，返回错误信息
+        return result.getAllErrors().toString();
+    } else {
+        // 校验成功，保存用户信息
+        userService.save(user);
+        return "success";
+    }
+}
+```
+
+# 6. SpringBoot整合视图层
+
+## 6.1. 导入静态资源
 
 分析配置类 WebMvcAutoConfiguration ，得到不同位置的静态资源的优先级
 
@@ -376,7 +418,7 @@ spring.mvc.static-path-pattern=
 
 注：在 templates 目录下的所有页面，只能通过controller来跳转（需要模板引擎的支持）
 
-## 5.2. 使用Thymeleaf作为视图解析器
+## 6.2. 使用Thymeleaf作为视图解析器
 
 **SpringBoot默认不支持 JSP，需要引入第三方模板引擎技术实现页面渲染**
 
@@ -469,7 +511,7 @@ spring.thymeleaf.cache = false
 th:元素名
 ```
 
-## 5.3. 扩展SpringMVC（重点）
+## 6.3. 扩展SpringMVC
 
 SpringBoot 提供了自动配置SpringMVC的功能，即 WebMvcAutoConfiguration.java。但是我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
 
@@ -491,7 +533,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
 如：自定义视图解析器、自定义拦截器
 
-## 5.4. 国际化
+## 6.4. 国际化
 
 创建 src/main/resources/i18n 文件夹
 
@@ -550,13 +592,13 @@ thymeleaf中设置请求
 <a class="btn btn-sm" th:href="@{/index.html(language='en_US')}">English</a>
 ```
 
-# 6. Spring Data
+# 7. Spring Data
 
-对于数据访问层，无论是SQL（关系型数据库）还是NoSQL（非关系型数据库），Spring Boot底层都是采用Spring Data的方式进行统一处理。
+对于数据访问层，无论是SQL（关系型数据库）还是NoSQL（非关系型数据库），Spring Boot底层都是采用Spring Data的方式进行统一处理
 
-## 6.1. 整合JDBC
+**使用Java操作数据库必须先导入对应的数据库驱动**
 
-pom.xml中导入依赖
+在pom.xml中导入依赖
 
 ```xml
 <dependency>
@@ -566,7 +608,7 @@ pom.xml中导入依赖
 </dependency>
 ```
 
-application.yml中
+application.yml中配置数据库信息，与数据库建立连接
 
 ```yml
 spring:
@@ -577,7 +619,16 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 ```
 
-## 6.2. 整合Druid数据源
+## 7.1. 整合JDBC
+
+```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+```
+
+## 7.2. 整合Druid数据源
 
 导入依赖 pom.xml
 
@@ -591,20 +642,7 @@ spring:
 
 application.yml中  spring.datasource.type 属性设为 Druid 即可切换数据源
 
-使用私有化 filters 属性 开启日志等功能，需要创建config包，在包中创建相应的配置类，在配置类中绑定配置文件
-
-## 6.3. 整合Mybatis框架（重点）
-
-建立连接，application.yml中
-
-```yml
-spring:
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-    driver-class-name: com.mysql.jdbc.Driver
-```
+## 7.3. 整合Mybatis框架（重点）
 
 pom.xml导入依赖
 
@@ -616,7 +654,7 @@ pom.xml导入依赖
 </dependency>
 ```
 
-创建标准的实体类，可以引入Lombok，使用注解开发，但前期不建议使用
+注意：创建标准的实体类时，可以引入**Lombok**，使用注解开发，但前期不建议使用
 
 ```java
 @Data
@@ -625,30 +663,6 @@ pom.xml导入依赖
 使用后添加一个构造函数，该构造函数含有所有已声明字段属性参数
 @NoArgsConstructor
 使用后创建一个无参构造函数
-```
-
-在 src/main/java/com/hy/mapper中定义接口
-
-```java
-@Mapper // 表示这是一个mybatis的mapper类 或者 在启动类上添加 @MapperScan("")，推荐使用 @Mapper
-public interface UserMapper {
-    List<User> queryUserList();
-    User queryUserById(int id);
-}
-```
-
-在 src/main/resources/mapper中写xml配置文件，实现SQL操作
-
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.hy.mapper.UserMapper">
-    <!--id表示接口当中定义的方法. resultType,表示数据库查询的结果.-->
-    <select id="queryUserList" resultType="com.hy.entity.User">
-        select first_name,score from user100w;
-    </select>
-</mapper>
 ```
 
 在 application.yml中，整合mybatis
@@ -662,282 +676,28 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
 ```
 
-controller层实现数据调用
+# 8. Spring Security
 
-```java
-@RestController
-public class UserController {
-    @Autowired
-    private UserMapper userMapper;
-    @RequestMapping(value = "/query",method = RequestMethod.GET)
-    public List<User> queryUserList(){
-        List<User> userList = userMapper.queryUserList();
-        for (User user : userList){
-            System.out.println(user);
-        }
-        return userList;
-    }
-}
-```
-
-# 7. Spring Security（简单）
-
-官网：https://docs.spring.io/spring-security/site/docs/5.3.13.RELEASE/reference/html5/#jc
 
 实现对Java应用程序的身份验证和授权（安全思想在规划网站时就要考虑好）
 
-利用AOP思想
-
 Spring Security中重要的类：
 
-1. WebSecurityConfigurerAdapter：自定义Security策略（自己编写配置类要继承该类）
-2. AuthenticationManagerBuilder：自定义认证策略
-3. @EnableWebSecurity：开启WebSecurity模式 （@Enablexxx 开启某个功能）
+- WebSecurityConfigurerAdapter：自定义Security策略（自己编写配置类要继承该类）
+- AuthenticationManagerBuilder：自定义认证策略
+- @EnableWebSecurity：开启WebSecurity模式 （@Enablexxx 开启某个功能）
 
 导入依赖pom.xml
 
 ```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
+<dependency><groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-security</artifactId>
 </dependency>
 ```
 
-## 7.1. 认证及授权
-
-编写 WebSecurityConfig配置类
-
-```java
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    // 授权：访问控制，哪些用户可以访问哪些页面，哪些不可以访问
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/student/**").hasRole("student")
-                .antMatchers("/teacher/**").hasRole("teacher")
-                ;
-       // 登录页设置
-        http.formLogin();
-    }
-    // 认证：可以从内存中认证，可以从数据库中认证
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("hy").password("root").roles("student");
-    }
-}
-```
-
-## 7.2. 注销及权限控制
-
-权限控制：即不同身份的人登陆，看到的页面是不一样的
-
-```java
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // 注销，logoutSuccessUrl 注销成功后跳转的页面
-        http.logout().logoutSuccessUrl("/");
-    }
-}
-```
-
-## 7.3. 记住我功能的实现
-
-本质是Cookie的保存
-
-```java
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // 记住我功能的实现
-        http.rememberMe();
-    }
-}
-```
-
-# 8. Shiro（难）
-
-官网：https://shiro.apache.org/get-started.html
-
-Shiro架构（三大对象）：
-
-1. Subject：当前用户
-2. SecurityManage：管理所有用户
-3. Realm：连接数据
-
-Subject对象的核心方法
-
-```java
-// 获取当前的用户对象
-Subject currentUser = SecurityUtils.getSubject();
-// 获取当前用户对象的session
-Session session = currentUser.getSession();
-// 判断当前用户是否被认证
-currentUser.isAuthenticated()
-// 获取当前用户的认证    
-currentUser.getPrincipal()
-// 判断当前用户拥有的角色
-currentUser.hasRole("RoleName")
-// 获取当前用户的权限
-currentUser.isPermitted("lightsaber:wield")
-// 注销
-currentUser.logout();
-```
-
-导入依赖pom.xml
-
-```xml
-<dependency>
-    <groupId>org.apache.shiro</groupId>
-    <artifactId>shiro-spring-boot-web-starter</artifactId>
-</dependency>
-```
-
-ShiroConfig配置类
-
-```java
-@Configuration
-public class ShiroConfig {
-    // 创建 Realm对象，需要自定义类并继承AuthorizingRealm
-    @Bean
-    public UserRealm userRealm(){
-        return new UserRealm();
-    }
-    // 创建 DefaultWebSecurityManager
-    @Bean
-    public DefaultWebSecurityManager getDefaultWebSecurityManager(){
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        // 关联 Realm
-        securityManager.setRealm(userRealm());
-        return securityManager;
-    }
-    // 创建 ShiroFilterFactoryBean
-    @Bean(name = "shiroFilterFactoryBean") //必须起该别名，否则报错
-    public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
-        ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
-        // 设置安全管理器
-        bean.setSecurityManager(getDefaultWebSecurityManager());
-        return bean;
-    }
-}
-```
-
-自定义Realm类
-
-```java
-public class UserRealm extends AuthorizingRealm {
-    // 授权
-    @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("执行授权");
-        return null;
-    }
-    // 认证
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("执行认证");
-        return null;
-    }
-}
-```
-
-## 8.1. 登录拦截
-
-在ShiroConfig配置类中添加Shiro内置过滤器
-
-```java
-// 创建 ShiroFilterFactoryBean
-@Bean(name = "shiroFilterFactoryBean") //必须起该别名，否则报错
-public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
-    ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
-    // 设置安全管理器
-    bean.setSecurityManager(getDefaultWebSecurityManager());
-    /*
-    	anon：无需认证随意访问
-    	authc：必须认证才能访问
-    	user：必须拥有记住我的功能才能用
-    	perms：拥有对某个资源的权限才能访问
-    	role：拥有某个角色权限才能访问
-    */
-    Map<String,String> filterMap = new LinkedHashMap<String, String>();
-    filterMap.put("/login", "anon");
-    // 添加Shiro内置过滤器
-    bean.setFilterChainDefinitionMap(filterMap);
-    return bean;
-}
-```
-
-## 8.2. 用户认证
-
-在自定义Realm类中实现用户认证
-
-```java
-// 认证
-@Override
-protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-    System.out.println("执行认证");
-    // 应从数据库获取
-    String userName = "root";
-    String password = "root";
-    UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
-    if (!token.getUsername().equals(userName)){
-        // 抛异常
-        return null;
-    }
-    // 密码认证 Shiro自动实现
-    return new SimpleAuthenticationInfo("",password,"");
-}
-```
-
-在controller中封装用户登录信息
-
-```java
-@RestController
-public class UserController {
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String login(@RequestParam("name") String username,@RequestParam("pwd") String password){
-        // 获取当前的用户对象
-        Subject currentUser = SecurityUtils.getSubject();
-        // 封装用户的登录数据
-        UsernamePasswordToken token = new UsernamePasswordToken(username,password);
-        return "login";
-    }
-}
-```
-
-## 8.3. 请求授权
-
-```java
-// 创建 ShiroFilterFactoryBean
-@Bean(name = "shiroFilterFactoryBean") //必须起该别名，否则报错
-public ShiroFilterFactoryBean getShiroFilterFactoryBean(){
-    ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
-    // 设置安全管理器
-    bean.setSecurityManager(getDefaultWebSecurityManager());
-    /*
-    	anon：无需认证随意访问
-    	authc：必须认证才能访问
-    	user：必须拥有记住我的功能才能用
-    	perms：拥有对某个资源的权限才能访问
-    	role：拥有某个角色权限才能访问
-    */
-    Map<String,String> filterMap = new LinkedHashMap<String, String>();
-    // 请求授权
-    filterMap.put("/user", "perms");
-    // 添加Shiro内置过滤器
-    bean.setFilterChainDefinitionMap(filterMap);
-    return bean;
-}
-```
-
 # 9. Swagger
 
-Swagger能自动生成完善的RESTful API文档，同时根据后台代码的修改同步更新，同时提供完整的测试页面           调试API
+Swagger能自动生成完善的RESTful API文档，同时根据后台代码的修改同步更新，同时提供完整的测试页面调试API
 
 官网：https://swagger.io/
 
@@ -1001,7 +761,9 @@ spring.mvc.pathmatch.matching-strategy=ant_path_ matcher
 
 ## 9.1. 配置扫描接口及Swagger开关
 
-实现在开发环境下启用Swagger，生产环境不启用。思路：SpringBoot使用多环境配置文件，之后获取当前所处环境，最后再判断
+实现在开发环境下启用Swagger，生产环境不启用。
+
+思路：SpringBoot使用多环境配置文件，之后获取当前所处环境，最后再判断
 
 ```java
 @Configuration //告诉Spring 容器，这个类是一个配置类
@@ -1095,9 +857,169 @@ public class User implements Serializable {
 }
 ```
 
-# 10. 任务（必会）
+# 10. Spring Boot日志框架
 
-## 10.1. 异步任务
+在 Spring Boot 项目中引入日志框架，一般有两种选择：Log4j2 和 Logback。Spring Boot 默认使用 Logback 作为日志框架
+
+## 10.1. Spring Boot 日志配置
+
+ 在`application.yml` 文件中通过 `spring.logging` 进行配置即可
+
+## 10.2. Logback
+
+在Spring Boot 的web项目中，默认是不需要在pom.xml中单独配置 logback 依赖的
+
+在 application.yml 中配置日志输出的格式和级别，例如：
+
+```yml
+logging:
+  #level 日志等级 指定命名空间的日志输出
+  level:
+    com.fishpro.log: debug
+  #file 指定输出文件的存储路径
+  file: logs/app.log
+  #pattern 指定输出场景的日志输出格式
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+```
+
+如果需要更为详细的自定义 logback 日志，那么我们需要使用 xml 配置文件来配置。在 resource 文件夹下新建文件 `logback-spring.xml` 
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+   <contextName>logback</contextName>
+   <!--输出到控制台-->
+   <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+       <encoder>
+           <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+           <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+           <charset>UTF-8</charset>
+       </encoder>
+   </appender>
+
+   <!--按天生成日志-->
+   <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+       <Prudent>true</Prudent>
+       <!-- 过滤器，只打印ERROR级别的日志 -->
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+           <!--日志文件输出的文件名-->
+           <FileNamePattern>
+               applog/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
+           </FileNamePattern>
+           <!--日志文件保留天数-->
+           <MaxHistory>15</MaxHistory>
+       </rollingPolicy>
+       <layout class="ch.qos.logback.classic.PatternLayout">
+           <Pattern>
+               %d{yyyy-MM-dd HH:mm:ss} -%msg%n
+           </Pattern>
+       </layout>
+   </appender>
+
+   <logger name="com.fishpro.log" additivity="false">
+       <appender-ref ref="console"/>
+       <appender-ref ref="logFile"/>
+   </logger>
+   
+   <!-- 设置Spring&Hibernate日志输出级别 -->
+   <logger name="org.springframework" level="WARN"/>
+   <logger name="org.mybatis" level="WARN"/> 
+   <logger name="com.ibatis" level="DEBUG"/> 
+   <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG"/> 
+   <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/> 
+   <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG"/>
+
+
+      
+   <logger name="java.sql.Connection" level="DEBUG"/>  
+   <logger name="java.sql.Statement" level="DEBUG"/> 
+   <logger name="java.sql.PreparedStatement" level="DEBUG"/> 
+   <logger name="com.ruidou.baoqian.mapper" level="DEBUG"/>
+
+   <!-- 开发环境下的日志配置 -->
+   <root level="error">
+       <appender-ref ref="console"/>
+       <appender-ref ref="logFile"/>
+   </root>
+</configuration>
+```
+
+打印日志
+
+```java
+private final Logger log = LoggerFactory.getLogger(this.getClass());
+log.info("打印日志");
+```
+
+## 10.3. Log4j2
+
+在pom.xml中
+
+```xml
+<dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-log4j2</artifactId> </dependency>
+```
+
+在 `src/main/resources` 目录下创建 `log4j2.xml` 文件，并配置日志输出的格式和级别
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="Console" />
+    </Root>
+  </Loggers>
+</Configuration>
+```
+
+上面的配置将日志输出到控制台，格式为时间戳、线程名、日志级别、日志类名、日志内容。日志级别为 INFO
+
+# 11. Spring Boot全局异常处理
+
+## 11.1. @RestControllerAdvice
+
+**在 Web 项目中通过 `@ControllerAdvice` `@RestControllerAdvice` 实现全局异常处理**  
+`@ControllerAdvice` 和 `@RestControllerAdvice` 的区别 相当于 `Controller` 和 `RestController` 的区别
+
+`@RestControllerAdvice` 注解是 Spring Boot 用于捕获 `@Controller` 和 `@RestController` 层系统抛出的异常（如果已经编写了 `try-catch` 且在 catch 模块中没有使用 throw 抛出异常， 则 `@RestControllerAdvice` 捕获不到异常）。
+
+`@ExceptionHandler` 注解用于指定方法处理的 Exception 的类型
+
+## 11.2. 注解方式实现统一异常处理
+
+具体会使用到 @ControllerAdvice + @ExceptionHandler 这两个注解 
+
+```java
+@ControllerAdvice
+@ResponseBody
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(BaseException.class)
+    public ResponseEntity<?> handleAppException(BaseException ex, HttpServletRequest request) {
+      //......
+    }
+
+    @ExceptionHandler(value = ResourceNotFoundException.class)
+    public ResponseEntity<ErrorReponse> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
+      //......
+    }
+}
+```
+
+这种异常处理方式下，会给所有或者指定的 Controller 织入异常处理的逻辑（AOP），当 Controller 中的方法抛出异常的时候，由被@ExceptionHandler 注解修饰的方法进行处理
+
+ExceptionHandlerMethodResolver 中 getMappedMethod 方法决定了异常具体被哪个被 @ExceptionHandler 注解修饰的方法处理异常
+
+# 12. 任务（必会）
+
+## 12.1. 异步任务
 
 在启动类中使用 @EnableAsync 开启异步功能
 
@@ -1118,7 +1040,7 @@ public class AsynService {
 }
 ```
 
-## 10.2. 定时任务
+## 12.2. 定时任务
 
 在启动类上开启定时功能 @EnableScheduling
 
@@ -1134,7 +1056,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 10.3. 邮件发送
+## 12.3. 邮件发送
 
 导入依赖 pom.xml
 
@@ -1177,7 +1099,7 @@ public class MailService {
 
 实现复杂邮件发送 MimeMessage
 
-# 11. 集成Redis
+# 13. 集成Redis
 
 导入依赖 pom.xml
 
@@ -1189,11 +1111,11 @@ public class MailService {
 </dependency>
 ```
 
-# 12. 分布式
+# 14. 分布式
 
 单台主机性能难以满足服务，需要多台主机共同服务
 
-## 12.1. RPC
+## 14.1. RPC
 
 Remote Procedure Call 远程过程调用
 
@@ -1201,7 +1123,7 @@ RPC两大核心：序列化、通讯
 
 原理：Netty
 
-## 12.2. Dubbo
+## 14.2. Dubbo
 
 RPC 分布式服务框架
 
@@ -1275,7 +1197,7 @@ dubbo:
     address: zookeeper://localhost:2181
 ```
 
-## 12.3. ZooKeeper
+## 14.3. ZooKeeper
 
 分布式协调服务，注册中心
 
@@ -1283,13 +1205,13 @@ dubbo:
 
 进入bin目录，直接双击运行zkServer.cmd，启动zookeeper
 
-# 13. 部署spring boot
+# 15. 部署spring boot
 
-## 13.1. 打包jar
+## 15.1. 打包jar
 
 打开idea，点击右上角 maven，再点击Lifecycle，再点击package即可打包
 
-## 13.2. 可能的报错
+## 15.2. 可能的报错
 
 解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
 
@@ -1316,7 +1238,7 @@ Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
 			</plugin>
 ```
 
-## 13.3. 部署到服务器
+## 15.3. 部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1324,7 +1246,7 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 13.4. 修改端口
+## 15.4. 修改端口
 
 application开头的配置文件中
 
@@ -1332,9 +1254,54 @@ application开头的配置文件中
 server.port=8088
 ```
 
-## 13.5. banner.txt
+## 15.5. 定制banner
 
 创建banner.txt 放在 resources目录下
+
+# 16. SpringBoot常用注解
+
+- @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
+
+- @RestController：这个注解用于标记一个Controller类，表示该类的所有方法都是以RESTful方式提供服务的。
+
+- @RequestMapping：这个注解用于标记一个请求处理方法，指定处理的URL路径和HTTP请求方法。
+
+- @GetMapping、@PostMapping、@PutMapping、@DeleteMapping：这些注解是对@RequestMapping注解的补充，分别表示处理GET、POST、PUT、DELETE请求的方法。
+
+- @PathVariable：这个注解用于将URL路径中的变量映射到方法参数上。
+
+- @RequestParam：这个注解用于将HTTP请求参数映射到方法参数上。
+  
+- @RequestBody：这个注解用于将HTTP请求体中的数据映射到方法参数上。
+
+- @ResponseBody：这个注解用于将方法返回值转换为HTTP响应体。
+
+- @Autowired：这个注解用于自动装配一个Bean，可以用在构造方法、属性、方法上。
+
+- @Component：这个注解用于标记一个组件，表示该组件可以被Spring容器扫描并管理。
+
+- @Configuration：这个注解用于标记一个配置类，表示该类包含了一些配置信息，可以用@Bean注解定义一些Bean。
+
+- @EnableAutoConfiguration：这个注解用于自动配置Spring应用，从classpath下的META-INF/spring.factories中读取自动配置类，根据配置自动装配Bean。
+
+- @Value：这个注解用于注入配置文件中的属性值。
+
+- @ConditionalOnProperty：这个注解用于根据配置文件中的属性值来判断是否需要启用某个配置。
+
+- @Async：这个注解用于标记一个异步方法，表示该方法可以异步执行。
+
+- @Cacheable、@CachePut、@CacheEvict：这些注解用于标记一个方法的返回值需要被缓存、更新缓存和删除缓存。
+
+- @Transactional：这个注解用于标记一个方法需要被事务管理，可以用在方法上或类上。
+
+- @Scheduled：这个注解用于标记一个方法需要定时执行，可以设置执行的时间间隔、固定延迟和固定时间等。
+
+- @EnableScheduling：这个注解用于开启定时任务功能。
+
+- @EnableCaching：这个注解用于开启缓存功能。
+
+- @EnableAsync：这个注解用于开启异步执行功能。
+
 
 
 
