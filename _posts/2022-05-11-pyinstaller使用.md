@@ -49,7 +49,7 @@ pyinstaller --noconfirm --log-level=WARN ^
     myscript.spec
 ```
 
-## 常规选项
+# 1. 常规选项
 
 ```
 -h , --help	show this help message and exit
@@ -75,7 +75,7 @@ pyinstaller --noconfirm --log-level=WARN ^
  	Amount of detail in build-time console messages. LEVEL may be one of TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL (default: INFO).
 ```
 
-## 要生成什么
+# 2. 要生成什么
 
 ```
 -D , --onedir	Create a one-folder bundle containing an executable (default)
@@ -88,7 +88,7 @@ pyinstaller --noconfirm --log-level=WARN ^
  	Name to assign to the bundled app and spec file (default: first script’s basename)
 ```
 
-## 捆绑选项
+# 3. 捆绑选项
 
 引用了哪些外部文件，他们在哪里
 
@@ -117,7 +117,7 @@ pyinstaller --noconfirm --log-level=WARN ^
 --key KEY	The key used to encrypt Python bytecode.
 ```
 
-## 怎么生成
+# 4. 怎么生成
 
 ```
 -d <all,imports,bootloader,noarchive> , --debug <all,imports,bootloader,noarchive>
@@ -137,7 +137,7 @@ noarchive: instead of storing all frozen Python source files as an archive insid
  	Prevent a binary from being compressed when using upx. This is typically used if upx corrupts certain binaries during compression. FILE is the filename of the binary without path. This option can be used multiple times.
 ```
 
-## win和mac的特殊选项
+# 5. win和mac的特殊选项
 
 ```
 -c , --console , --nowindowed
@@ -150,7 +150,7 @@ noarchive: instead of storing all frozen Python source files as an archive insid
  	FILE.ico: apply that icon to a Windows executable. FILE.exe,ID, extract the icon with ID from an exe. FILE.icns: apply the icon to the .app bundle on Mac OS X
 ```
 
-## win的特殊选项
+# 6. win的特殊选项
 
 ```
 --version-file FILE
@@ -169,7 +169,7 @@ noarchive: instead of storing all frozen Python source files as an archive insid
 
 
 
-## 将资源文件一起打包进exe
+# 7. 将资源文件一起打包进exe
 
 基本原理：Pyinstaller 可以将资源文件一起bundle到exe中，当exe在运行时，会生成一个临时文件夹，程序可通过`sys._MEIPASS`访问临时文件夹中的资源
 
