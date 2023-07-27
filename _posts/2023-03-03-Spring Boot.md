@@ -107,14 +107,16 @@ protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigur
 
 ## 1.2. 实现一个 Starter
 
-实现自定义线程池
+如：实现自定义线程池
 
-要手动实现一个 Spring Boot 启动器（Starter），你需要完成以下步骤：
+手动实现一个 Spring Boot 启动器（Starter），需要完成以下步骤：
 
 **创建一个 Maven 项目**
-在你的计算机上创建一个新的 Maven 项目，用于存储你的 Starter
+
+用于存储定制的 Starter
 
 **添加依赖**
+
 在项目的 pom.xml 文件中添加以下依赖：
 
 ```xml
@@ -128,6 +130,7 @@ protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigur
 这个依赖包含了 Spring Boot 的自动配置模块，它允许你通过 Java 代码来自定义 Spring Boot 的自动配置
 
 **创建自动配置类**
+
 创建一个自动配置类，用于自定义 Spring Boot 的自动配置。这个类应该包含一个 `@Configuration` 注解和一个 `@ConditionalOnClass` 注解，用于指定自动配置类的条件，例如：
 
 ```java
@@ -145,6 +148,7 @@ public class MyAutoConfiguration {
 这个自动配置类会在项目中存在 `MyService` 类时自动生效，它会创建一个名为 `myService` 的 Bean 并将它添加到 Spring 应用程序上下文中
 
 **创建 Starter 类**
+
 创建一个 Starter 类，用于提供自动配置类和其他必要的依赖。这个类应该包含一个 `@Configuration` 注解和一个 `@EnableConfigurationProperties` 注解，用于启用自动配置和配置属性的支持，例如：
 
 ```java
@@ -165,6 +169,7 @@ public class MyStarterAutoConfiguration {
 这个 Starter 类会自动启用 `MyAutoConfiguration` 自动配置类，并创建一个名为 `myService` 的 Bean，它使用 `MyProperties` 配置类中的属性来初始化 `MyService` 类的实例
 
 **创建配置属性类**
+
 创建一个配置属性类，用于定义 Starter 的配置属性。这个类应该包含一个 `@ConfigurationProperties` 注解，用于指定配置属性的前缀和默认值，例如：
 
 ```java
@@ -185,6 +190,7 @@ public class MyProperties {
 这个配置属性类定义了一个名为 `greeting` 的属性，它的默认值是 "Hello"。这个属性可以在 Starter 类中使用，用于初始化 `MyService` 类的实例。
 
 **打包和安装 Starter**
+
 在项目的根目录中运行以下命令，将 Starter 打包并安装到本地 Maven 仓库中：
 
 ```
@@ -209,9 +215,9 @@ Spring Boot 通过@EnableAutoConfiguration开启自动装配，通过 SpringFact
 
 给容器中自动配置类添加组件的时候，会从properties类中获取默认属性。我们只需要在配置文件中指定这些属性的值即可
 
-核心：xxxAutoConfiguration（springboot自动装配）--> xxxxProperties封装配置文件中相关属性（可在配置文件中修改默认值）
+核心：xxxAutoConfiguration（SpringBoot自动装配）--> xxxxProperties封装配置文件中相关属性（可在配置文件中修改默认值）
 
-结论：springboot所有的自动配置都是在启动的时候描并加载，spring.factories所有的自动配置类都在这里，但是不一定生效，因为要判断条件是否成立，只要导入了对应的Starter，就有了启动器，自动装配就会生效，然后就配置成功
+结论：SpringBoot所有的自动配置都是在启动的时候描并加载，spring.factories所有的自动配置类都在这里，但是不一定生效，因为要判断条件是否成立，只要导入了对应的Starter，就有了启动器，自动装配就会生效，然后就配置成功
 
 
 
@@ -263,9 +269,8 @@ SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 server.port=8888
 ```
 
-## 4.2. application.yml
+## 4.2. application.yml（推荐）
 
-推荐使用
 
 ```
 语法结构：key:空格value
@@ -276,9 +281,9 @@ server:
 
 ## 4.3. 类与yml配置文件绑定
 
-在类中用 @ConfigurationProperties(prefix = "类名") 绑定配置文件
+在类中用 `@ConfigurationProperties(prefix = "类名")` 绑定配置文件
 
-在配置文件中对类的属性赋值即可
+效果：在配置文件中即可实现对类属性的赋值
 
 ```java
 // java 类
@@ -295,15 +300,15 @@ person:
  age: 3
 ```
 
-如果在某个业务中，只需要获取配置文件中的某个值，可以使用@value
+如果在某个业务中，只需要获取配置文件中的某个值，可以使用`@value`
 
-如果专编写了一个JavaBean来和配置文件进行映射，就直接使用 @configurationProperties
+如果专门编写了一个JavaBean来和配置文件进行映射，就直接使用 `@configurationProperties`
 
-加载指定的配置文件：@PropertySource
+加载指定的配置文件：`@PropertySource`
 
 ## 4.4. 多环境配置及配置文件位置
 
-不同位置配置文件的优先级
+不同位置下配置文件的优先级
 
 ```
 优先级1:项目路径下的config文件夹配置文件
@@ -312,7 +317,7 @@ person:
 优先级4:资源路径下配置文件
 ```
 
-多环境配置，application.yml 、application-dev.yml 开发环境、application-pro.yml 生产环境
+多环境配置：application.yml 、application-dev.yml 开发环境、application-pro.yml 生产环境
 
 在application.yml 中选择激活哪个环境
 
@@ -342,26 +347,28 @@ spring:
 
 用于对Java Bean的属性值进行校验
 
-使用JSR-303规范进行校验需要遵循以下步骤：
+使用JSR-303规范进行校验的步骤：
 
 - 在Java Bean的属性上添加校验注解
 
 ```
-@NotNull：用于检查一个对象是否为null。
-    
-@Min、@Max：用于检查一个数字的最小值和最大值。
-    
-@Size：用于检查一个对象的长度是否在指定范围内。
-
-@Pattern：用于检查一个字符串是否匹配指定的正则表达式。
-    
-@Email：用于检查一个字符串是否是邮件地址格式。
-    
-@AssertTrue、@AssertFalse：用于检查一个布尔值是否为true或false。
+加在类上：
+	@Validated // 开启数据校验
+加在类属性上：
+	@NotNull：用于检查一个对象是否为null。
+	    
+	@Min、@Max：用于检查一个数字的最小值和最大值。
+	    
+	@Size：用于检查一个对象的长度是否在指定范围内。
+	
+	@Pattern：用于检查一个字符串是否匹配指定的正则表达式。
+	    
+	@Email：用于检查一个字符串是否是邮件地址格式。
+	    
+	@AssertTrue、@AssertFalse：用于检查一个布尔值是否为true或false。
 ```
 
-例子
-
+eg：
 ```java
 @Validated // 开启数据校验
 public class User {
@@ -379,9 +386,9 @@ public class User {
 }
 ```
 
-- 在Controller方法中添加@Valid注解，表示需要对请求参数进行校验
+- 在Controller方法中添加`@Valid`注解，表示对请求参数进行校验
 
-- 在Controller方法的参数中添加BindingResult或Errors参数，用于接收校验结果
+- 在Controller方法的参数中添加`BindingResult`或`Errors`参数，用于接收校验结果
 
 ```java
 @PostMapping("/user")
@@ -397,32 +404,38 @@ public String addUser(@Valid User user, BindingResult result) {
 }
 ```
 
-# 6. SpringBoot整合视图层
 
-## 6.1. 导入静态资源
 
-分析配置类 WebMvcAutoConfiguration ，得到不同位置的静态资源的优先级
+# 6. SpringBoot管理静态资源
+
+
+分析配置类 `WebMvcAutoConfiguration` ，得到不同位置的静态资源的优先级
 
 ```
 优先级1:resources/resources
 优先级2:resources/static
 优先级3:resources/public
-访问：localhost:80/
+
+访问：localhost:80/res_name
 ```
 
-修改静态资源目录（不建议改）
+yml 配置文件中修改静态资源目录（不建议改）
 
 ```
-spring.mvc.static-path-pattern=
+spring:
+	mvc:
+		static-path-pattern=
 ```
 
-注：在 templates 目录下的所有页面，只能通过controller来跳转（需要模板引擎的支持）
+注：在 templates 目录下的所有页面，只能通过controller来跳转，且需要模板引擎的支持
 
-## 6.2. 使用Thymeleaf作为视图解析器
+# 7. SpringBoot整合Thymeleaf
+
+使用Thymeleaf作为视图解析器
 
 **SpringBoot默认不支持 JSP，需要引入第三方模板引擎技术实现页面渲染**
 
-导入依赖，之后将html放在 src/main/resources/templates 目录下，即可通过controller访问html
+导入依赖，之后将html放在 `src/main/resources/templates` 目录下，即可通过controller访问html
 
 添加依赖 pom.xml
 
@@ -473,7 +486,7 @@ public String index(Model model){  //这里不仅仅可以是Model，还可以�
 }
 ```
 
-在yml配置文件中关闭、开启 springboot 静态文件缓存，默认为true
+在yml配置文件中关闭 SpringBoot 静态文件缓存，默认为true
 
 当为true时，修改静态文件（html、css、js）需要重启服务器才可以有效，当为false时，修改静态文件（html、css、js）只要在浏览器端刷新就可以了
 
@@ -481,7 +494,7 @@ public String index(Model model){  //这里不仅仅可以是Model，还可以�
 spring.thymeleaf.cache = false
 ```
 
-**thymeleaf语法**
+**补充：thymeleaf语法**
 
 在html文件中添加引用
 
@@ -505,47 +518,63 @@ spring.thymeleaf.cache = false
 </html>
 ```
 
-所有的html元索都可以被thymeleaf替换接管
+所有的html元素都可以被thymeleaf替换接管
 
 ```html
 th:元素名
 ```
 
-## 6.3. 扩展SpringMVC
+# 8. 引入Lombok库
 
-SpringBoot 提供了自动配置SpringMVC的功能，即 WebMvcAutoConfiguration.java。但是我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
+创建标准的实体类时，可以引入Lombok，使用注解开发，新手不建议使用
 
-实现手动配置，编写一个 @Configuration注解类，并且实现 WebMvcConfigurer接口
+在pom.xml中导入依赖
 
-注意：@EnableWebMvc 实际就是导入了一个类：DelegatingWebMvcConfiguration，该类从容器中获取所有的webmvcconfig，加了这个注解 SpringBoot 的所有自动配置全部失效
+```xml
+<dependency>  
+    <groupId>org.projectlombok</groupId>  
+    <artifactId>lombok</artifactId>  
+</dependency>
+```
+
+相关注解
 
 ```java
-@Configuration	// 表明这是一个配置类
-// @EnableWebMvc
-public class MyMvcConfig implements WebMvcConfigurer {
-    // 导入自定义的视图解析器
-    @Bean
-    public ViewResolver myView(){
-        return new MyViewConfig();
-    }
+@Data
+使用这个注解，就不用再去手写Getter,Setter,equals,canEqual,hasCode,toString等方法了，注解后在编译时会自动加进去
+@AllArgsConstructor
+使用后添加一个构造函数，该构造函数含有所有已声明字段属性参数
+@NoArgsConstructor
+使用后创建一个无参构造函数
+```
+
+eg：使用 @Data 注解来自动生成 User 类的 getter、setter、equals、hashCode 和 toString 方法。可以直接通过对象的属性来访问和修改属性值，不需要手动编写 getter 和 setter 方法
+
+```java
+@Data
+public class User {
+    private Long id;
+    private String name;
 }
 ```
 
-如：自定义视图解析器、自定义拦截器
+# 9. 项目国际化
 
-## 6.4. 国际化
+i18n 全称 Internationalization，也就是国际化的意思，因为单词太长，所以中间的 18 个字母被缩写为 18，再加上开头和结尾的字母，就组成了 i18n
 
-创建 src/main/resources/i18n 文件夹
+eg：实现登录界面的国际化
 
-创建 src/main/resources/i18n/login.properties 文件
+`MessageSourceAutoConfiguration` 类提供配置国际化
 
-创建 src/main/resources/i18n/login_zh_CN.properties 文件
+创建 `src/main/resources/i18n` 文件夹
 
-创建 src/main/resources/i18n/login_en_US.properties 文件
+创建 `src/main/resources/i18n/login.properties` 文件
 
-MessageSourceAutoConfiguration 类提供配置国际化
+创建 `src/main/resources/i18n/login_zh_CN.properties` 文件
 
-编写 login.properties
+创建 `src/main/resources/i18n/login_en_US.properties` 文件
+
+编写 `login.properties`
 
 ```properties
 login.btn=登录
@@ -555,13 +584,7 @@ login.tip=请登录
 login.username=用户名
 ```
 
-thymeleaf中引用
-
-```html
-<button class="btn btn-lg btn-primary btn-block" type="submit">[[#{login.btn}]]</button>
-```
-
-LocaleResolver 实现地区解析，使用配置类自己配置，之后在MyMvcConfig中导入即可
+`LocaleResolver` 实现地区解析，使用配置类自己配置，之后在MyMvcConfig中导入即可
 
 ```java
 public class MyLocaleResolver implements LocaleResolver {
@@ -585,22 +608,53 @@ public class MyLocaleResolver implements LocaleResolver {
 }
 ```
 
-thymeleaf中设置请求
 
-```html
-<a class="btn btn-sm" th:href="@{/index.html(language='zh_CN')}">中文</a>
-<a class="btn btn-sm" th:href="@{/index.html(language='en_US')}">English</a>
+# 10. 扩展SpringMVC（重点）
+
+SpringBoot 提供了自动配置SpringMVC的功能，即 `WebMvcAutoConfiguration.java`。但是我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
+
+实现手动配置，编写一个 `@Configuration`注解类，并且实现 `WebMvcConfigurer`接口
+
+注意：`@EnableWebMvc` 实际就是导入了一个类：`DelegatingWebMvcConfiguration`，该类从容器中获取所有的`webmvcconfig`，加上这个注解后 SpringBoot 的所有自动配置将全部失效
+
+```java
+@Configuration	// 表明这是一个配置类
+// @EnableWebMvc
+public class MyMvcConfig implements WebMvcConfigurer {
+    // 导入自定义的视图解析器
+    @Bean
+    public ViewResolver myView(){
+        return new MyViewConfig();
+    }
+}
 ```
 
-# 7. Spring Data
+其他：自定义视图解析器、自定义拦截器...
+
+
+# 11. Spring Data
+
+https://spring.io/projects/spring-data
 
 对于数据访问层，无论是SQL（关系型数据库）还是NoSQL（非关系型数据库），Spring Boot底层都是采用Spring Data的方式进行统一处理
 
 **使用Java操作数据库必须先导入对应的数据库驱动**
 
+**Spring Data JDBC vs Spring Data JPA**
+
+Spring Data JDBC aims at being conceptually easy. In order to achieve this it does NOT offer caching, lazy loading, write behind or many other features of JPA. This makes Spring Data JDBC a simple, limited, opinionated ORM.
+
+Spring Data JDBC （不推荐）
+
+## 11.1. 操作MySQL
+
 在pom.xml中导入依赖
 
 ```xml
+<dependency> 
+	<groupId>org.springframework.boot</groupId> 
+	<artifactId>spring-boot-starter-jdbc</artifactId> 
+</dependency>
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
@@ -608,7 +662,7 @@ thymeleaf中设置请求
 </dependency>
 ```
 
-application.yml中配置数据库信息，与数据库建立连接
+yml 文件中添加以下配置项
 
 ```yml
 spring:
@@ -619,32 +673,214 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 ```
 
-## 7.1. 整合JDBC
+**补充**
 
+`com.mysql.cj.jdbc.Driver`适用于MySQL 8.x  
+
+`com.mysql.jdbc.Driver`适用于MySQL5.x 
+
+## 11.2. 操作MongoDB
+
+在pom.xml中导入依赖
 ```xml
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-jdbc</artifactId>
-    </dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-mongodb</artifactId>
+</dependency>
 ```
 
-## 7.2. 整合Druid数据源
+yml 文件中添加以下配置项
 
-导入依赖 pom.xml
+```yml
+spring:
+	data:  
+	  mongodb:  
+	    host: 192.168.163.5  
+	    username: "root"  
+	    password: "root"  
+	    port: 27017  
+	    authentication-database: test  
+	    database: dormitory  
+	    auto-index-creation: true
+```
+
+## 11.3. 操作Redis
+
+在pom.xml中导入依赖
+
+```xml
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-data-redis</artifactId>  
+</dependency>
+```
+
+yml 文件中添加以下配置项
+
+```yml
+spring: 
+	redis:  
+	  host: 192.168.163.5  
+	  port: 6379  
+	  password: "root"  
+	  database: 4  
+	  pool:  
+	      max-active: 10  
+	      max-wait: -1  
+	      max-idle: 8  
+	      min-idle: 0  
+	      timeout: 5000
+```
+
+## 11.4. 在SpringBoot中使用多个数据源
+
+**方法一：使用 Spring Boot 自带的多数据源配置**
+
+yml 文件中添加以下配置项
+
+```xml
+spring:
+  datasource:
+  # 主数据源
+    primary:
+      url: jdbc:mysql://localhost:3306/test1?useSSL=false&serverTimezone=UTC
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+   ＃二号数据源   
+    secondary:
+      url: jdbc:mysql://localhost:3306/test2?useSSL=false&serverTimezone=UTC
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+```
+
+在代码中通过 `@Qualifier` 注解来指定使用哪个数据源
+
+```java
+@Service
+public class UserService {
+    @Autowired
+    @Qualifier("primaryDataSource")
+    private DataSource primaryDataSource;
+
+    @Autowired
+    @Qualifier("secondaryDataSource")
+    private DataSource secondaryDataSource;
+
+    // ...
+}
+```
+
+**方法二：使用第三方工具**
+
+如 MyBatis-Plus
+
+# 12. SpringBoot整合Druid
+
+Druid是高性能的关系型数据库连接池，它是阿里巴巴的一个开源项目。支持所有JDBC兼容的数据库，包括Oracle、MySQL、Derby、PostgreSQL、SQL Server、H2等。提供了丰富的监控和统计功能，可以帮助开发者更好地管理数据库连接
+
+在pom.xml中导入依赖
 
 ```xml
 <dependency>
-    <groupId>com.alibaba</groupId>
-    <artifactId>druid</artifactId>
+	<groupId>com.alibaba</groupId>  
+	<artifactId>druid-spring-boot-starter</artifactId>
     <version>1.1.5</version>
 </dependency>
 ```
 
-application.yml中  spring.datasource.type 属性设为 Druid 即可切换数据源
+yml 文件中添加以下配置项
 
-## 7.3. 整合Mybatis框架（重点）
+```yml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 指定使用 Druid 数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 配置 Druid 数据源相关属性
+    druid:
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置连接超时时间
+      connectTimeout: 30000
+      # 配置网络超时时间
+      socketTimeout: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        # 设置白名单，不填则允许所有访问
+        allow:
+        url-pattern: /druid/*
+        # 控制台管理用户名和密码
+        login-username: yatoil
+        login-password: xxb-88809
+      filter:
+        stat:
+          enabled: true
+          # 慢SQL记录
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+```
 
-pom.xml导入依赖
+配置 Druid 监控
+
+在 Spring Boot 应用程序中，可以通过配置 `ServletRegistrationBean` 和 `FilterRegistrationBean` 来启用 Druid 监控。在配置类中添加以下代码：
+
+在这个例子中，`druidStatViewServlet` 方法返回一个 `ServletRegistrationBean` 实例，用于注册 `StatViewServlet`，`druidWebStatFilter` 方法返回一个 `FilterRegistrationBean` 实例，用于注册 `WebStatFilter`。
+
+可以通过访问 `http://localhost:8080/druid` 来查看 Druid 监控信息
+
+```java
+@Configuration
+public class DruidConfig {
+    @Bean
+    public ServletRegistrationBean<StatViewServlet> druidStatViewServlet() {
+        ServletRegistrationBean<StatViewServlet> registrationBean = new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
+        registrationBean.addInitParameter("loginUsername", "admin");
+        registrationBean.addInitParameter("loginPassword", "admin");
+        registrationBean.addInitParameter("resetEnable", "true");
+        return registrationBean;
+    }
+
+    @Bean
+    public FilterRegistrationBean<WebStatFilter> druidWebStatFilter() {
+        FilterRegistrationBean<WebStatFilter> registrationBean = new FilterRegistrationBean<>(new WebStatFilter());
+        registrationBean.addUrlPatterns("/*");
+        registrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        return registrationBean;
+    }
+}
+```
+
+# 13. SpringBoot整合Mybatis
+
+在pom.xml中导入依赖
 
 ```xml
 <dependency>
@@ -654,18 +890,7 @@ pom.xml导入依赖
 </dependency>
 ```
 
-注意：创建标准的实体类时，可以引入**Lombok**，使用注解开发，但前期不建议使用
-
-```java
-@Data
-使用这个注解，就不用再去手写Getter,Setter,equals,canEqual,hasCode,toString等方法了，注解后在编译时会自动加进去
-@AllArgsConstructor
-使用后添加一个构造函数，该构造函数含有所有已声明字段属性参数
-@NoArgsConstructor
-使用后创建一个无参构造函数
-```
-
-在 application.yml中，整合mybatis
+yml 文件中添加以下配置项
 
 ```yml
 # 整合mybatis
@@ -676,18 +901,34 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
 ```
 
-# 8. Spring Security
+编写 Mapper 接口和对应的 XML 映射文件
 
+# 14. SpringBoot整合MyBatis-Plus
 
-实现对Java应用程序的身份验证和授权（安全思想在规划网站时就要考虑好）
+在pom.xml中导入依赖
+```xml
+<dependency>
+    <groupId>com.baomidou</groupId>
+    <artifactId>mybatis-plus-boot-starter</artifactId>
+    <version>3.4.3.1</version>
+</dependency>
+```
+yml 文件中添加以下配置项
+
+```yml
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+```
+# 15. SpringBoot整合SpringSecurity
+
 
 Spring Security中重要的类：
 
-- WebSecurityConfigurerAdapter：自定义Security策略（自己编写配置类要继承该类）
-- AuthenticationManagerBuilder：自定义认证策略
-- @EnableWebSecurity：开启WebSecurity模式 （@Enablexxx 开启某个功能）
+- `WebSecurityConfigurerAdapter`：自定义Security策略（自己编写配置类要继承该类）
+- `AuthenticationManagerBuilder`：自定义认证策略
+- `@EnableWebSecurity`：开启WebSecurity模式 （@Enablexxx 开启某个功能）
 
-导入依赖pom.xml
+在pom.xml中导入依赖
 
 ```xml
 <dependency><groupId>org.springframework.boot</groupId>
@@ -695,30 +936,80 @@ Spring Security中重要的类：
 </dependency>
 ```
 
-# 9. Swagger
+yml 文件中添加以下配置项
+
+```yml
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+    # 允许所有用户访问 /hello 路径
+    ignore: /hello
+    # 排除路径  
+	excludes:  
+```
+
+编写安全配置类
+
+# 16. SpringBoot整合Swagger
+
+https://swagger.io/
 
 Swagger能自动生成完善的RESTful API文档，同时根据后台代码的修改同步更新，同时提供完整的测试页面调试API
 
-官网：https://swagger.io/
-
-添加依赖 pom.xml，在项目中引入springfox-swagger2和springfox.swagger-ui依赖
-
-springframework  2.x版本与 swagger2 的版本匹配
+在pom.xml中导入依赖
 
 ```xml
 <dependency>
-<groupId> io.springfox</groupId>
-<artifactId>springfox-swagger2</artifactId>
-<version>2.9.2</version>
+	<groupId> io.springfox</groupId>
+	<artifactId>springfox-swagger2</artifactId>
+	<version>2.9.2</version>
 </dependency>
 <dependency>
-<groupId>io.springfox</groupId>
-<artifactId>springfox-swagger-ui</artifactId>
-<version>2.9.2</version>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger-ui</artifactId>
+	<version>2.9.2</version>
 </dependency>
 ```
 
-添加Swagger配置类
+yml 文件中添加以下配置项
+
+```yml
+swagger:  
+  # 是否开启swagger  
+  enabled: true  
+  # 请求前缀  
+  pathMapping:  
+  # 标题  
+  title: '标题：${yatoil.name}后台管理系统_接口文档'  
+  # 描述  
+  description: '${yatoil.name}后台管理系统管理'  
+  # 版本  
+  version: '版本号: ${yatoil.version}'  
+  # 作者信息  
+  contact:  
+    name: yatoil  
+    email: dyyatongshihua@163.com  
+  groups:  
+    - name: 1.自动建表模块  
+      basePackage: com.yatoil.generator.controller  
+    - name: 2.项目管理模块  
+      basePackage: com.yatoil.system.controller
+```
+
+注：springframework  2.x版本与 swagger2 的版本匹配
+
+Spring Boot 2.6.X后与Swagger有版本冲突问题会报错，需要在application.yml中加入以下配置：
+
+```yml
+spring:  
+  mvc:  
+    pathmatch:  
+      matching-strategy: ant_path_matcher
+```
+
+创建Swagger配置类
 
 ```java
 @Configuration //告诉Spring 容器，这个类是一个配置类
@@ -747,19 +1038,37 @@ public class SwaggerConfig {
 }
 ```
 
-打开自动生成的可视化测试页面
+在控制器类上使用 `@Api` 注解来描述API 的标签名称，以便在 Swagger UI 中显示。在具体的方法上使用 `@ApiOperation` 注解来描述方法的作用，以及使用 `@ApiImplicitParam` 注解来描述方法的参数。这些注解可以让 Swagger 自动生成 API 文档
+
+```java
+@RestController
+@Api(tags = "用户管理")
+@RequestMapping("/users")
+public class UserController {
+    @GetMapping("/{id}")
+    @ApiOperation(value = "根据 ID 获取用户信息")
+    @ApiImplicitParam(name = "id", value = "用户 ID", required = true, dataTypeClass = Long.class)
+    public User getUserById(@PathVariable Long id) {
+        // TODO: 根据 ID 获取用户信息
+    }
+
+    @PostMapping("/")
+    @ApiOperation(value = "创建用户")
+    public User createUser(@RequestBody User user) {
+        // TODO: 创建用户
+    }
+}
+```
+
+打开自动生成的可视化API测试页面
 
 ```
 http://127.0.0.1:8080/swagger-ui.html
 ```
 
-注意：Spring Boot 2.6.X后与Swagger有版本冲突问题会报错，需要在application.yml中加入以下配置：
 
-```
-spring.mvc.pathmatch.matching-strategy=ant_path_ matcher
-```
 
-## 9.1. 配置扫描接口及Swagger开关
+## 16.1. 配置扫描接口及Swagger开关
 
 实现在开发环境下启用Swagger，生产环境不启用。
 
@@ -795,7 +1104,7 @@ public class SwaggerConfig {
 }
 ```
 
-## 9.2. 分组和接口注释
+## 16.2. 分组和接口注释
 
 实现分组，return多个Docket实例即可
 
@@ -857,19 +1166,15 @@ public class User implements Serializable {
 }
 ```
 
-# 10. Spring Boot日志框架
+# 17. SpringBoot整合日志框架
 
 在 Spring Boot 项目中引入日志框架，一般有两种选择：Log4j2 和 Logback。Spring Boot 默认使用 Logback 作为日志框架
 
-## 10.1. Spring Boot 日志配置
-
- 在`application.yml` 文件中通过 `spring.logging` 进行配置即可
-
-## 10.2. Logback
+## 17.1. 整合Logback
 
 在Spring Boot 的web项目中，默认是不需要在pom.xml中单独配置 logback 依赖的
 
-在 application.yml 中配置日志输出的格式和级别，例如：
+在yml配置文件中配置日志输出的格式和级别，例如：
 
 ```yml
 logging:
@@ -884,7 +1189,7 @@ logging:
     file: "%d %-5level [%thread] %logger : %msg%n"
 ```
 
-如果需要更为详细的自定义 logback 日志，那么我们需要使用 xml 配置文件来配置。在 resource 文件夹下新建文件 `logback-spring.xml` 
+如果需要更为详细的自定义 logback 日志，需要使用 xml 配置文件来配置。在 resource 文件夹下新建文件 `logback-spring.xml` 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -930,9 +1235,6 @@ logging:
    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG"/> 
    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/> 
    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG"/>
-
-
-      
    <logger name="java.sql.Connection" level="DEBUG"/>  
    <logger name="java.sql.Statement" level="DEBUG"/> 
    <logger name="java.sql.PreparedStatement" level="DEBUG"/> 
@@ -953,12 +1255,15 @@ private final Logger log = LoggerFactory.getLogger(this.getClass());
 log.info("打印日志");
 ```
 
-## 10.3. Log4j2
+## 17.2. 整合Log4j2
 
-在pom.xml中
+在pom.xml中导入依赖
 
 ```xml
-<dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-log4j2</artifactId> </dependency>
+<dependency> 
+	<groupId>org.springframework.boot</groupId> 
+	<artifactId>spring-boot-starter-log4j2</artifactId> 
+</dependency>
 ```
 
 在 `src/main/resources` 目录下创建 `log4j2.xml` 文件，并配置日志输出的格式和级别
@@ -981,9 +1286,9 @@ log.info("打印日志");
 
 上面的配置将日志输出到控制台，格式为时间戳、线程名、日志级别、日志类名、日志内容。日志级别为 INFO
 
-# 11. Spring Boot全局异常处理
+# 18. Spring Boot全局异常处理
 
-## 11.1. @RestControllerAdvice
+## 18.1. @RestControllerAdvice
 
 **在 Web 项目中通过 `@ControllerAdvice` `@RestControllerAdvice` 实现全局异常处理**  
 `@ControllerAdvice` 和 `@RestControllerAdvice` 的区别 相当于 `Controller` 和 `RestController` 的区别
@@ -992,7 +1297,7 @@ log.info("打印日志");
 
 `@ExceptionHandler` 注解用于指定方法处理的 Exception 的类型
 
-## 11.2. 注解方式实现统一异常处理
+## 18.2. 注解方式实现统一异常处理
 
 具体会使用到 @ControllerAdvice + @ExceptionHandler 这两个注解 
 
@@ -1017,9 +1322,9 @@ public class GlobalExceptionHandler {
 
 ExceptionHandlerMethodResolver 中 getMappedMethod 方法决定了异常具体被哪个被 @ExceptionHandler 注解修饰的方法处理异常
 
-# 12. 任务（必会）
+# 19. 任务（必会）
 
-## 12.1. 异步任务
+## 19.1. 异步任务
 
 在启动类中使用 @EnableAsync 开启异步功能
 
@@ -1040,7 +1345,7 @@ public class AsynService {
 }
 ```
 
-## 12.2. 定时任务
+## 19.2. 定时任务
 
 在启动类上开启定时功能 @EnableScheduling
 
@@ -1056,7 +1361,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 12.3. 邮件发送
+## 19.3. 邮件发送
 
 导入依赖 pom.xml
 
@@ -1099,53 +1404,7 @@ public class MailService {
 
 实现复杂邮件发送 MimeMessage
 
-# 13. 集成Redis
-
-导入依赖 pom.xml
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-redis</artifactId>
-    <version>2.4.0</version>
-</dependency>
-```
-
-# 14. 分布式
-
-单台主机性能难以满足服务，需要多台主机共同服务
-
-## 14.1. RPC
-
-Remote Procedure Call 远程过程调用
-
-RPC两大核心：序列化、通讯
-
-原理：Netty
-
-## 14.2. Dubbo
-
-RPC 分布式服务框架
-
-```mermaid
-graph TB
-zookeeper-->Dubbo-Consumer
-zookeeper-->Dubbo-Provider
-```
-
-**消费端是怎么找到服务端的**
-
-启动一个 Zookeeper 的注册中心，服务提供者会向注册中心中写入自己的地址，供服务消费者获取
-
-**消费端是如何发起请求的**
-
-在 Dubbo 的调用模型中，接口是连接服务消费者和服务提供者的桥梁
-
-服务提供者对指定接口进行实现，服务消费者通过 Dubbo 去订阅这个接口。服务消费者调用接口的过程中 Dubbo 会将请求封装成网络请求，然后发送给服务提供者进行实际的调用。**得益于 Dubbo 的动态代理机制，这一切都像本地调用一样**
-
-
-
-**SpringBoot整合Dubbo**
+# 20. SpringBoot整合Dubbo
 
 运行起 Dubbo 应用的一个大前提是先部署一个注册中心
 
@@ -1197,27 +1456,19 @@ dubbo:
     address: zookeeper://localhost:2181
 ```
 
-## 14.3. ZooKeeper
+# 21. 部署SpringBoot
 
-分布式协调服务，注册中心
-
-下载地址：http://archive.apache.org/dist/zookeeper/
-
-进入bin目录，直接双击运行zkServer.cmd，启动zookeeper
-
-# 15. 部署spring boot
-
-## 15.1. 打包jar
+## 21.1. 打包jar
 
 打开idea，点击右上角 maven，再点击Lifecycle，再点击package即可打包
 
-## 15.2. 可能的报错
+## 21.2. 可能的报错
 
 解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
 
 ```xml
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>2.7.7</version>
+	<artifactId>spring-boot-maven-plugin</artifactId>
+	<version>2.7.7</version>
 ```
 
 若报错如下
@@ -1238,7 +1489,7 @@ Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
 			</plugin>
 ```
 
-## 15.3. 部署到服务器
+## 21.3. 部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1246,19 +1497,20 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 15.4. 修改端口
+## 21.4. 改端口
 
-application开头的配置文件中
+yml 配置文件中
 
 ```
-server.port=8088
+server:
+	port=8088
 ```
 
-## 15.5. 定制banner
+## 21.5. 定制banner
 
 创建banner.txt 放在 resources目录下
 
-# 16. SpringBoot常用注解
+# 22. SpringBoot常用注解
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 
