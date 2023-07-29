@@ -209,7 +209,7 @@ ${msg}
 2. 如果jar包存在，显示无法输出，就在IDEA的项目发布中，添加lib依赖
 3. 重启Tomcat 即可解决
 
-# 5. 用注解开发SpringMVC
+# 5. 用注解开发SpringMVC（重点）
 
 pom.xml 同上
 
@@ -296,7 +296,7 @@ public class HelloController {
 
 # 6. 使用RESTful风格
 
-在Spring MVC中可以使用 @PathVariable注解，让方法参数的值对应绑定到一个URI模板变量上
+在Spring MVC中可以使用 `@PathVariable`注解，让方法参数的值对应绑定到一个URI模板变量上
 
 ```java
 @Controller
@@ -315,9 +315,9 @@ public class RestFulController {
 
 响应请求的实现方式
 
-可以通过 @RequestMapping(value = "/hello",method = RequestMethod.GET) 中的method实现不同请求方法的响应
+可以通过 `@RequestMapping(value = "/hello",method = RequestMethod.GET)` 中的method实现不同请求方法的响应
 
-也可以通过 @GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping实现不同请求方法的响应
+也可以通过 `@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping`实现不同请求方法的响应
 
 # 7. 重定向和转发
 
@@ -466,7 +466,7 @@ public class LoginController {
 
 ## 8.1. 处理提交的数据
 
-**提交的域名称和处理方法的参数名一致**
+**提交的参数名称和后端方法中定义的参数名一致**
 
 请求
 
@@ -474,7 +474,7 @@ public class LoginController {
 提交数据 : http://localhost:8080/hello?name=hy
 ```
 
-直接接收
+后端
 
 ```java
 @RequestMapping("/hello")
@@ -484,7 +484,7 @@ public String hello(String name){
 }
 ```
 
-**提交的域名称和处理方法的参数名不一致**
+**提交的参数名称和后端方法中定义的参数名不一致**
 
 请求
 
@@ -492,7 +492,7 @@ public String hello(String name){
 提交数据 : http://localhost:8080/hello?username=hy
 ```
 
-使用 @RequestParam 处理（建议不管一致不一致都处理一下）
+后端使用 `@RequestParam` 处理（建议不管一致不一致都处理一下）
 
 ```java
 @RequestMapping("/hello")
@@ -504,14 +504,13 @@ public String hello(@RequestParam("username") String name){
 
 **提交的是一个对象**
 
-接收前端用户传递的参数，判断参数的名字，假设该名字直接在方法参数中，则可以直接接收
-
-假设传递的是一个对象User，则匹配User对象中的字段名。如果字段名一致则可以接收，否则接收不到，结果为null
+假设前端传递的是一个对象User，则匹配User对象中的字段名。如果字段名一致则可以接收。如果字段名不一致则接收不到，结果为null
 
 ```java
 @Controller
 public class TestController {
     @RequestMapping(value = "/test",method = RequestMethod.GET)
+    // 接收User对象
     public String test1(User user){
         //转发
         return "/WEB-INF/jsp/test.jsp";
@@ -559,11 +558,7 @@ public String hello(@RequestParam("username") String name, Model model){
 }
 ```
 
-注意：
-
-ModelMap：继承了LinkedHashMap
-
-Model：精简版
+注：ModelMap继承了LinkedHashMap。Model是精简版
 
 # 9. 乱码问题解决
 
@@ -586,7 +581,7 @@ Model：精简版
 
 
 
-# 10. 返回JSON格式数据
+# 10. 返回JSON格式数据（重点）
 
 JSON是JavaScript对象的字符串表示法，它使用文本表示一个JS对象的信息，**本质是一个字符串**
 

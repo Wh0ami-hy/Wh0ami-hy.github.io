@@ -257,6 +257,23 @@ SpringApplication类主要做了如下内容：
 
 初始化时，默认链接访问失败，就用国内的 https://start.springboot.io/
 
+在 Spring Initializr 中创建一个新项目时，各个参数的含义
+
+```xml
+// 公司域名
+<groupId>com.yatoil</groupId>  
+//项目名称
+<artifactId>dorm</artifactId>  
+```
+
+## 3.1. SpringBoot 单模块项目构建（常规）
+
+
+
+## 3.2. SpringBoot 多模块项目构建（父/子模块）
+
+
+
 # 4. SpringBoot配置文件
 
 SpringBoot使用一个全局的配置文件，配置文件名称是固定的
@@ -1406,7 +1423,7 @@ public class MailService {
 
 # 20. SpringBoot整合Dubbo
 
-运行起 Dubbo 应用的一个大前提是先部署一个注册中心
+运行起 Dubbo 应用的一个大前提是先部署一个注册中心，如 ZooKeeper
 
 两个项目Dubbo-provider、Dubbo-consumer
 
@@ -1456,13 +1473,178 @@ dubbo:
     address: zookeeper://localhost:2181
 ```
 
-# 21. 部署SpringBoot
+# 21. SpringBoot项目部署
 
-## 21.1. 打包jar
+## 21.1. SpringBoot项目打包
 
-打开idea，点击右上角 maven，再点击Lifecycle，再点击package即可打包
+对于使用 Maven 打包产生的项目产物，在不同的情况下会有不同需求，如：
 
-## 21.2. 可能的报错
+1. 将所有代码相关文件打包为 jar 包，使用命令直接执行文件即可启动服务
+2.  文件和依赖分开，分为 jar 包和 /lib 下的依赖包信息，避免 jar 过大传输速度太慢
+3.  配置文件剥离，可以动态修改配置，分为 jar、/lib、.proerties 三个文件
+
+### 21.1.1. 默认完整打包版
+
+项目完整Jar包，包括相关依赖信息，可以直接执行
+
+SpringBoot 项目使用 Maven 打包后的 Jar 包产物命名方式是由项目的 pom.xml 文件定义的，其中的项目 id 和版本信息共同组成打包文件名称 `${artifactId}-${version}.jar`
+
+要自定义生成的文件名，可以在 pom.xml 的 build 标签中使用 finalName 标签自定义生成 jar 包名称
+
+### 21.1.2. 依赖文件外置版
+
+若项目的依赖 jar 包比较多但是改动较少，在打包项目时就需要将三方依赖和当前项目分离开来，代码改变时只需要重新打包项目内容即可
+
+SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven 的 `maven-jar-plugin` 插件和 `maven-dependency-plugin` 插件完成。
+
+`maven-jar-plugin` 插件用来配置当前项目 jar 包的配置，如三方依赖引用的路径信息、启动类等。
+
+`maven-dependency-plugin` 插件则用来配置将项目的三方依赖放置在指定目录下，并配合 `maven-jar-plugin` 完成项目启动时的依赖
+
+在 pom.xml 中添加以下配置
+
+```xml
+<build>
+    <plugins>
+	    <!-- 将自己的项目代码打包成jar文件 -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+<!-- 指定包含的依赖文件位置 -->                        <classpathPrefix>lib/</classpathPrefix>
+<!--指定启动类-->                        <mainClass>com.domoment.leaves.LeavesApplication</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+        <!-- 将依赖的jar文件全部放到lib目录下，会创建 lib 目录，将第三方依赖赋值到 lib 目录下 -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>copy-dependencies</id>
+                    <phase>prepare-package</phase>
+                    <goals>
+                        <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        <overWriteReleases>false</overWriteReleases>
+                        <overWriteSnapshots>false</overWriteSnapshots>
+                        <overWriteIfNewer>true</overWriteIfNewer>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
+### 21.1.3. 配置文件外置版
+
+若只是需要改动配置文件，而不需要修改源代码，配置文件放在 jar 文件外，会更方便。
+
+此时可以在打包时将配置文件等内容移出产物 jar 包，并采用资源配置将配置文件复制到产物指定路径下。
+
+在 pom.xml 中添加以下配置
+
+```xml
+<build>
+    <resources>
+        <!-- 把配置文件放到根目录和 jar 在一起 -->
+        <resource>
+            <!-- 具体的脚本放置位置可以改，不一定是当前目录 . 代表当前目录-->
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>*.yml</include>
+                <include>*.properties</include>
+            </includes>
+            <targetPath>${project.build.directory}</targetPath>
+        </resource>
+    </resources>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>repackage</id>
+                    <configuration>
+                        <classifier>exec</classifier>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.1.0</version>
+        </plugin>
+        <!-- 用于生成jar包的plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <!--将配置文件排除掉，不打包到jar文件内-->
+                <excludes>
+                    <exclude>*.properties</exclude>
+                    <exclude>**/*.properties</exclude>
+                    <exclude>*.yml</exclude>
+                    <exclude>*.conf</exclude>
+                </excludes>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+`<resources>` 标签配置指定资源操作
+ 
+`spring-boot-maven-plugin` 配置打包同时输出 demo.jar 单文件和 demo-exec.jar 整合依赖的文件，可以选择使用
+  
+`maven-jar-plugin` 插件中可以设置打包时 jar 包中排除指定的配置文件类型
+
+## 21.2. SpringBoot项目部署到服务器
+
+```
+nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
+```
+
+注：nohup命令：不挂起，即关闭终端，程序继续运行
+
+## 21.3. SpringBoot项目部署配置项
+
+在yml 配置文件中
+
+```
+# 开发环境配置  
+server:  
+  # 服务器的HTTP端口，默认为8080  
+  port: 8001  
+  servlet:  
+    # 应用的访问路径  
+    context-path: /  
+  tomcat:  
+    # tomcat的URI编码  
+    uri-encoding: UTF-8  
+    # 连接数满后的排队数，默认为100  
+    accept-count: 1000  
+    threads:  
+      # tomcat最大线程数，默认为200  
+      max: 800  
+      # Tomcat启动初始化的线程数，默认值10  
+      min-spare: 100
+```
+
+## 21.4. SpringBoot项目定制banner
+
+创建banner.txt 放在 resources目录下
+
+# 22. 报错情况
 
 解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
 
@@ -1489,28 +1671,7 @@ Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
 			</plugin>
 ```
 
-## 21.3. 部署到服务器
-
-```
-nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
-```
-
-注：nohup命令：不挂起，即关闭终端，程序继续运行
-
-## 21.4. 改端口
-
-yml 配置文件中
-
-```
-server:
-	port=8088
-```
-
-## 21.5. 定制banner
-
-创建banner.txt 放在 resources目录下
-
-# 22. SpringBoot常用注解
+# 23. SpringBoot常用注解
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 
