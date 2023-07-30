@@ -632,7 +632,7 @@ String str = mapper.writeValueAsString(...);
 
 尝试封装一个JsonUtils类 专门实现JSON格式的转换
 
-## 10.2. FastJson
+## 10.2. FastJson（不推荐）
 
 导入依赖 pom.xml
 
@@ -652,15 +652,13 @@ String str = JSON.toJSONString(user);
 
 乱码解决方法同上
 
-## 10.3. Guava（推荐）
-
-使用Guava库中一个名为Json的工具类
+## 10.3. Gson
 
 ```xml
-<dependency> 
-	<groupId>com.google.guava</groupId> 
-	<artifactId>guava</artifactId> 
-	<version>30.1.1-jre</version> 
+<dependency>
+	<groupId>com.google.code.gson</groupId>
+	<artifactId>gson</artifactId>
+	<version>2.8.8</version> <!-- 替换为最新版本 -->
 </dependency>
 ```
 
