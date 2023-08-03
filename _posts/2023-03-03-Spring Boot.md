@@ -263,16 +263,48 @@ SpringApplication类主要做了如下内容：
 // 公司域名
 <groupId>com.yatoil</groupId>  
 //项目名称
-<artifactId>dorm</artifactId>  
+<artifactId>yt-dorm</artifactId>  
 ```
 
 ## 3.1. SpringBoot 单模块项目构建（常规）
 
-
+直接使用Spring Initializr按步骤走即可 
 
 ## 3.2. SpringBoot 多模块项目构建（父/子模块）
 
+创建项目结构：使用Spring Initializr 创建一个父目录，只留下`pom.xml`文件，之后在父目录下创建子模块`new module`
 
+```
+demo-projectName（父）
+	--> demo-moduleName1（子）
+	--> demo-moduleName2（子）
+	--> ...
+pom.xml（父级）
+```
+
+各级项目建立关联：在父目录下的`pom.xml`中配置
+
+```xml
+<!-- 对于聚合模块来说，其打包方式必须为pom，否则无法构建 -->
+<packaging>pom</packaging>
+<!-- 指明聚合的模块 -->  
+<modules> 
+	<module>demo-moduleName1</module> 
+	<module>demo-moduleName2</module> 
+</modules>
+```
+
+子级继承父级的项目依赖：在子级项目的`pom.xml`中配置
+
+```xml
+<!-- 指定当前项目的父项目，用于自动继承父项目的依赖项、插件、资源等配置信息 -->
+<parent>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-parent</artifactId>  
+    <version>2.7.14</version>  
+    <relativePath/>
+</parent>
+```
 
 # 4. SpringBoot配置文件
 
