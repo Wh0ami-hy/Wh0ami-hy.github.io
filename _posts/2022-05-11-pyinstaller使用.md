@@ -5,7 +5,6 @@ tags:
     - python
 ---
 
-[官方链接](http://python.digitser.net/pyinstaller/3.6/zh-CN/usage.html)
 
 **安装pyinstaller 库** 
 
@@ -16,7 +15,7 @@ pip install pyinstaller
 **打包命令**
 
 ```
-pyinstaller options… ~/myproject/source/myscript.py
+pyinstaller options ~/myproject/source/myscript.py
 ```
 
 **缩短命令**
@@ -35,7 +34,7 @@ pyinstaller --noconfirm --log-level=WARN \
     myscript.spec
 ```
 
-Or in Windows, use the little-known BAT file line continuation:
+in Windows
 
 ```
 pyinstaller --noconfirm --log-level=WARN ^
@@ -166,8 +165,6 @@ noarchive: instead of storing all frozen Python source files as an archive insid
 
 --uac-uiaccess	Using this option allows an elevated application to work with Remote Desktop.
 ```
-
-
 
 # 7. 将资源文件一起打包进exe
 

@@ -1,13 +1,13 @@
 ---
-layout: post   	
-catalog: true 	
+layout: post
+catalog: true
 tags:
-    - Linux
+  - Ubuntu
 ---
 
 
 
-## 安装python
+# 1. 安装python
 
 * 运行以下指令安装python3.8
 
@@ -32,7 +32,7 @@ $ python3 --version
 
 
 
-## 安装pip
+# 2. 安装pip
 
 默认情况下，`pip` 未安装在 Ubuntu 上
 
@@ -47,7 +47,7 @@ sudo apt install python3-pip
 
 
 
-## 切换python版本
+# 3. 切换python版本
 
 查看Ubuntu 所有 python 版本
 
@@ -67,11 +67,11 @@ echo alias python=python3.8 >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## 卸载python
+# 4. 卸载python
 
 Ubuntu原装python版本切不可卸载，因为系统中有依赖于原装python的地方
 
-## 其他报错
+# 5. 其他报错
 
 **1**
 

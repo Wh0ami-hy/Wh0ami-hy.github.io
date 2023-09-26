@@ -310,6 +310,21 @@ pom.xml（父级）
 
 SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 
+不同名称的配置文件的优先级
+
+```
+bootstrap.properties > bootstrap.yml > application.properties > 
+application.yml
+```
+
+不同位置下配置文件的优先级
+
+```
+优先级1:项目路径下的config文件夹配置文件
+优先级2:项目路径下配置文件
+优先级3:资源路径下的config文件夹配置文件
+优先级4:资源路径下配置文件
+```
 ## 4.1. application.properties
 
 ```
@@ -327,8 +342,7 @@ server.port=8888
 server:
 	port: 80
 ```
-
-## 4.3. 类与yml配置文件绑定
+## 4.3. 类对配置文件的映射
 
 在类中用 `@ConfigurationProperties(prefix = "类名")` 绑定配置文件
 
@@ -355,44 +369,20 @@ person:
 
 加载指定的配置文件：`@PropertySource`
 
-## 4.4. 多环境配置及配置文件位置
-
-不同位置下配置文件的优先级
-
-```
-优先级1:项目路径下的config文件夹配置文件
-优先级2:项目路径下配置文件
-优先级3:资源路径下的config文件夹配置文件
-优先级4:资源路径下配置文件
-```
+## 4.4. 多种环境的配置
 
 多环境配置：application.yml 、application-dev.yml 开发环境、application-pro.yml 生产环境
 
 在application.yml 中选择激活哪个环境
 
 ```yml
-使用 --- 分割不同环境配置
-如
 server: 
 	port: 8081
 spring:
 	profiles :
-		active: dev  # active表示激活环境
----
-server: 
-	port: 8082
-spring:
-	profiles :
-		active: pro
----
-server: 
-	port: 8083
-spring:
-	profiles :
-		active: test
+		active: dev  # dev表示激活开发环境  pro表示激活生产环境
 ```
-
-# 5. JSR-303校验
+# 5. 参数校验
 
 用于对Java Bean的属性值进行校验
 
@@ -452,8 +442,6 @@ public String addUser(@Valid User user, BindingResult result) {
     }
 }
 ```
-
-
 
 # 6. SpringBoot管理静态资源
 
@@ -656,7 +644,6 @@ public class MyLocaleResolver implements LocaleResolver {
     }
 }
 ```
-
 
 # 10. 扩展SpringMVC（重点）
 
@@ -1337,18 +1324,14 @@ log.info("打印日志");
 
 # 18. Spring Boot全局异常处理
 
-## 18.1. @RestControllerAdvice
+## 18.1. 基本使用
 
-**在 Web 项目中通过 `@ControllerAdvice` `@RestControllerAdvice` 实现全局异常处理**  
-`@ControllerAdvice` 和 `@RestControllerAdvice` 的区别 相当于 `Controller` 和 `RestController` 的区别
+首先，我们需要新建一个类，在这个类上加上`@ControllerAdvice`或`@RestControllerAdvice`注解，这个类就配置成全局处理类了。（这个根据你的Controller层用的是`@Controller`还是`@RestController`来决定）
 
-`@RestControllerAdvice` 注解是 Spring Boot 用于捕获 `@Controller` 和 `@RestController` 层系统抛出的异常（如果已经编写了 `try-catch` 且在 catch 模块中没有使用 throw 抛出异常， 则 `@RestControllerAdvice` 捕获不到异常）。
+然后在类中新建方法，在方法上加上`@ExceptionHandler`注解并指定你想处理的异常类型，接着在方法内编写对该异常的操作逻辑，就完成了对该异常的全局处理
 
-`@ExceptionHandler` 注解用于指定方法处理的 Exception 的类型
+该注解用于捕获在Spring Boot的Controller 层抛出的异常（如果已经编写了 `try-catch` 且在 catch 模块中没有使用 throw 抛出异常， 则 `@RestControllerAdvice` 捕获不到异常）。
 
-## 18.2. 注解方式实现统一异常处理
-
-具体会使用到 @ControllerAdvice + @ExceptionHandler 这两个注解 
 
 ```java
 @ControllerAdvice
@@ -1370,12 +1353,54 @@ public class GlobalExceptionHandler {
 这种异常处理方式下，会给所有或者指定的 Controller 织入异常处理的逻辑（AOP），当 Controller 中的方法抛出异常的时候，由被@ExceptionHandler 注解修饰的方法进行处理
 
 ExceptionHandlerMethodResolver 中 getMappedMethod 方法决定了异常具体被哪个被 @ExceptionHandler 注解修饰的方法处理异常
+## 18.2. 自定义异常
+
+- 项目开发中经常是很多人负责不同的模块，使用自定义异常可以统一对外异常展示的方式。
+- 自定义异常语义更加清晰明了，一看就知道是项目中手动抛出的异常
+
+先写一个自定义异常
+
+```java
+import lombok.Getter;  
+  
+@Getter //只要getter方法，无需setter  
+public class APIException extends RuntimeException {  
+    private int code;  
+    private String msg;  
+  
+    public APIException() {  
+        this(1001, "接口错误");  
+    }  
+  
+    public APIException(String msg) {  
+        this(1001, msg);  
+    }  
+  
+    public APIException(int code, String msg) {  
+        super(msg);  
+        this.code = code;  
+        this.msg = msg;  
+    }  
+}
+```
+
+然后在刚才的全局异常类中加入如下
+
+```java
+//自定义的全局异常  
+  @ExceptionHandler(APIException.class)  
+  public String APIExceptionHandler(APIException e) {  
+      return e.getMsg();  
+  }
+```
+
+当然还可以添加对Exception的处理，这样无论发生什么异常我们都能屏蔽掉然后响应数据给前端，不过建议最后项目上线时这样做，能够屏蔽掉错误信息暴露给前端，在开发中为了方便调试还是不要这样做
 
 # 19. 任务（必会）
 
 ## 19.1. 异步任务
 
-在启动类中使用 @EnableAsync 开启异步功能
+在启动类上使用 @EnableAsync 开启异步功能
 
 用@Async修饰方法，在执行时SpringBoot自动为其分配一个子线程实现异步执行
 
@@ -1396,9 +1421,11 @@ public class AsynService {
 
 ## 19.2. 定时任务
 
-在启动类上开启定时功能 @EnableScheduling
+在启动类上使用@EnableScheduling（spring提供） 开启定时功能 
 
-用@Scheduled修饰方法，需要使用cron语法
+用@Scheduled（spring提供）修饰方法，@Scheduled注解提供有多个属性，精细化配置定时任务执行规则，常用的属性有cron（cron表达式，设置定时任务触发的时间）、zone（指定cron表达式将被解析的时区。默认情况下，该属性是空字符串即使用服务器的本地时区）
+
+注：中国地区服务器的时区通常默认为Asia/Shanghai
 
 ```java
 @Service
@@ -1410,7 +1437,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 19.3. 邮件发送
+## 19.3. 邮件任务
 
 导入依赖 pom.xml
 
@@ -1432,9 +1459,13 @@ spring:
     password: 密钥
     # 开启加密验证
     properties.mail.smtl.ssl.enable: true
+    #邮件服务超时时间配置
+	properties.mail.smtp.connectiontime: 5000
+	properties.mail.smtp.timeout: 3000
+	properties.mail.smtp.writetimeout: 5000
 ```
 
-实现简单邮件发送 SimpleMailMessage
+实现纯文本邮件发送 SimpleMailMessage
 
 ```java
 @Service
@@ -1451,9 +1482,94 @@ public class MailService {
 }
 ```
 
-实现复杂邮件发送 MimeMessage
+实现带附件和图片邮件发送 MimeMessage
 
-# 20. SpringBoot整合Dubbo
+。。。
+
+# 20. SpringBoot整合Quartz
+
+## 20.1. 什么是 Quartz？
+
+任务调度框架。官网：http://www.quartz-scheduler.org/documentation/
+
+某些场景，单靠 Spring 提供的 `@Schedule` 实现不了
+
+比如我们需要对定时任务进行增删改查，`@Schedule` 就实现不了，你不可能每次新增一个定时任务都去手动改代码来添加吧。而 Quartz 就能够实现对任务的增删改查。
+
+三个重要概念：`任务Job`、`触发器Trigger`、`调度器Scheduler`
+## 20.2. Quartz 的特性
+
+Quartz 适用于各种类型的应用程序。无论是简单的定时任务还是复杂的分布式调度，Quartz都是一个强大而可靠的选择 
+
+**任务的调度（Job Scheduling）**
+
+当一个**触发器**（Trigger）触发时，任务（Job） 就会被调度执行，触发器就是用来定义何时触发的。可以指定任务的执行时间，以及执行频率（例如，每天一次、每小时一次等）。
+
+任务只需在调度器中添加一次，就可以有多个触发器进行注册
+
+**任务的执行（Job Execution）**
+
+实现了 Job 接口的 Java 类就是 Job，习惯称为**任务类**（Job class）。
+
+当 Trigger 触发时，Scheduler 就会通知 0 个或多个实现了 JobListener 和 TriggerListener 接口的 Java 对象。当然，这些 Java 对象在 Job 执行后也会被通知到。
+
+当 Job 执行完毕时，会返回一个码`JobCompletionCode`，这个 JobCompletionCode 能够表示 Job 执行成功还是失败，我们就能通过这个 Code 来判断后续该做什么操作，比如重新执行这个 Job。
+
+**任务的持久化（Job Persistence）**
+
+Quartz允许您将作业和触发器存储在数据库中，以便在应用程序重新启动后仍然保持调度状态。这样可以确保作业不会丢失，并且可以轻松地管理和监控调度任务。
+
+Quartz 的设计包括了一个 JobStore 接口，该接口可以为存储 Job 提供各种机制。
+
+通过 JDBCJobStore，可以将 Job 和 Trigger 持久化到关系型数据库中。
+
+通过 RAMJobStore，可以将 Job 和 Trigger 存储到内存中（优点就是无须数据库，缺点就是这不是持久化的）。
+
+**事务**
+
+Quartz 可以通过使用 JobStoreCMT（JDBCJobStore的一个子类）参与 JTA 事务。
+
+Quartz 可以围绕任务的执行来管理 JTA（Java Transaction API） 事务（开始并且提交它们），以便任务执行的工作自动发生在 JTA 事务中。
+
+**错误恢复**
+
+Quartz具有错误恢复机制，以确保在作业执行期间发生故障时能够进行恢复。您可以配置Quartz以重新执行失败的作业，并指定最大重试次数。
+
+**集群和分布式**
+
+故障转移、负载均衡
+
+Quartz 的内置集群功能依赖于 JDBCJobStore 实现的数据库持久性。
+
+Quartz 的 Terracotta 扩展提供了集群功能，而无需备份数据库。
+
+**监听器和插件**
+
+应用程序可以通过实现一个或多个监听器接口来捕获调度事件以监听或控制 Job / Trigger 的行为。
+
+插件机制，我们可向 Quartz 添加功能，例如保存 Job 执行的历史记录，或从文件加载 Job 和 Trigger 的定义。
+
+## 20.3. 使用Quartz
+
+引入依赖
+```
+<dependency>
+    <groupId>org.quartz-scheduler</groupId>
+    <artifactId>quartz</artifactId>
+    <version>2.3.2</version>
+</dependency>
+```
+Quartz API 的关键接口如下：
+
+- `Scheduler` ：最主要的 API，可以使我们与调度器进行交互，简单说就是让调度器做事。
+- `Job` ：一个 Job 组件，你自定义的一个要执行的任务类就可以实现这个接口，实现这个接口的类的对象就可以被调度器进行调度执行。
+- `JobDetail` ： `Job` 的详情，或者说是定义了一个 Job。
+- `JobBuilder` ： 用来构建 `JobDetail` 实例的，然后这些实例又定义了 Job 实例。
+- `Trigger` ： 触发器，定义 `Job` 的执行计划的组件。
+- `TriggerBuilder` ： 用来构建 `Trigger` 实例。
+
+
+# 21. SpringBoot整合Dubbo
 
 运行起 Dubbo 应用的一个大前提是先部署一个注册中心，如 ZooKeeper
 
@@ -1505,9 +1621,9 @@ dubbo:
     address: zookeeper://localhost:2181
 ```
 
-# 21. SpringBoot项目部署
+# 22. SpringBoot项目部署
 
-## 21.1. SpringBoot项目打包
+## 22.1. SpringBoot项目打包
 
 对于使用 Maven 打包产生的项目产物，在不同的情况下会有不同需求，如：
 
@@ -1515,7 +1631,7 @@ dubbo:
 2.  文件和依赖分开，分为 jar 包和 /lib 下的依赖包信息，避免 jar 过大传输速度太慢
 3.  配置文件剥离，可以动态修改配置，分为 jar、/lib、.proerties 三个文件
 
-### 21.1.1. 默认完整打包版
+### 22.1.1. 默认完整打包版
 
 项目完整Jar包，包括相关依赖信息，可以直接执行
 
@@ -1523,7 +1639,7 @@ SpringBoot 项目使用 Maven 打包后的 Jar 包产物命名方式是由项目
 
 要自定义生成的文件名，可以在 pom.xml 的 build 标签中使用 finalName 标签自定义生成 jar 包名称
 
-### 21.1.2. 依赖文件外置版
+### 22.1.2. 依赖文件外置版
 
 若项目的依赖 jar 包比较多但是改动较少，在打包项目时就需要将三方依赖和当前项目分离开来，代码改变时只需要重新打包项目内容即可
 
@@ -1576,7 +1692,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 </build>
 ```
 
-### 21.1.3. 配置文件外置版
+### 22.1.3. 配置文件外置版
 
 若只是需要改动配置文件，而不需要修改源代码，配置文件放在 jar 文件外，会更方便。
 
@@ -1635,12 +1751,12 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 ```
 
 `<resources>` 标签配置指定资源操作
- 
+
 `spring-boot-maven-plugin` 配置打包同时输出 demo.jar 单文件和 demo-exec.jar 整合依赖的文件，可以选择使用
-  
+
 `maven-jar-plugin` 插件中可以设置打包时 jar 包中排除指定的配置文件类型
 
-## 21.2. SpringBoot项目部署到服务器
+## 22.2. SpringBoot项目部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1648,7 +1764,7 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 21.3. SpringBoot项目部署配置项
+## 22.3. SpringBoot项目部署配置项
 
 在yml 配置文件中
 
@@ -1672,11 +1788,11 @@ server:
       min-spare: 100
 ```
 
-## 21.4. SpringBoot项目定制banner
+## 22.4. SpringBoot项目定制banner
 
 创建banner.txt 放在 resources目录下
 
-# 22. 报错情况
+# 23. 报错情况
 
 解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
 
@@ -1703,7 +1819,7 @@ Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
 			</plugin>
 ```
 
-# 23. SpringBoot常用注解
+# 24. SpringBoot常用注解
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 

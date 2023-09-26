@@ -1,0 +1,183 @@
+{
+  "main": {
+    "id": "e7a6aa8f2c7cc2e4",
+    "type": "split",
+    "children": [
+      {
+        "id": "b2745622bfbd9a9c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "62cd00d5e5a27069",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "abbe692ff05f1f9b",
+    "type": "split",
+    "children": [
+      {
+        "id": "c74134565e7ae1d2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8a61d045dd2811a4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5dc805522351137a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7b698929ad816d25",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 291.5,
+    "collapsed": true
+  },
+  "right": {
+    "id": "c0b9302c6a0994b5",
+    "type": "split",
+    "children": [
+      {
+        "id": "50c15ba0a6f303ac",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7ac313ba1fae9be1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8463b7d63af48dd1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ec7c55eddd443b54",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "6b5fb6e996608e8d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "f9eac1afbdf4652b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "62cd00d5e5a27069",
+  "lastOpenFiles": [
+    "2023-09-24-Linux基本命令.md",
+    "2023-09-12-生产故障排查思路.md",
+    "2023-04-03-从0实现一个网站.md",
+    "2023-09-22-Linux入门.md",
+    "2023-09-24-Linux入门-基本命令.md",
+    "2023-09-24-Linux入门-",
+    "新建文本文档.txt",
+    "2023-09-21-Oracle配置.md",
+    "2023-09-21-计算机网络.md",
+    "2023-09-19-Linux磁盘和分区.md",
+    "2023-09-15-SpringCloud.md",
+    "2023-09-14-消息推送.md",
+    "2023-09-13-MySQL设计规约.md",
+    "2023-09-12-SpringBoot后端接口规范.md",
+    "2023-09-07-Redis配置.md",
+    "2023-09-07-Git操作.md",
+    "2023-04-30-网站架构发展史.md",
+    "2023-05-24-Java实用工具库.md",
+    "2023-04-13-Spring Security.md",
+    "2023-03-13-Spring MVC.md",
+    "2023-01-11-Vue2.md",
+    "2023-01-07-Maven.md",
+    "2023-01-04-引用和地址的区别.md",
+    "2023-01-04-论堆&栈.md",
+    "2023-01-02-MySQL配置.md",
+    "2022-09-12-C.md",
+    "2022-08-17-Web认证机制的发展.md",
+    "2022-08-03-软件开发规范.md"
+  ]
+}
