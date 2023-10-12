@@ -135,9 +135,9 @@ service，用于执行业务逻辑，如计算、验证、授权等
 
 一般由两部分组成 **一个Java接口和一个实现类**
 
-service接口的内容对应mapper接口的内容。serviceImpl是把mapper和业务进行整合的文件
+serviceImpl是实现具体业务逻辑的，通常是把mapper和业务进行整合
 
-最好围绕业务功能、领域、用例（无论你怎么称呼都行）来构建服务，合理的使用单一职责原则
+最好围绕业务功能、领域、用例来构建服务，合理的使用单一职责原则
 
 如 `AccountService`, `UserService` 这样的服务，比起 `DatabaseService`、`ValidationService` 这样的会更合适一些
 
@@ -235,7 +235,7 @@ mapper层的接口在对应的xml配置文件中进行配置、实现以及关�
 
 ## 1.11. 编写顺序
 
-POJO、mapper、service、controller
+通常先建好数据库表，然后定义好model，之后再实现其他部分
 
 # 2. Spring Boot的最佳实践
 

@@ -2,7 +2,7 @@
 layout: post   	
 catalog: true 	
 tags:
-    - 随笔
+    - 提问的智慧
 ---
 
 
