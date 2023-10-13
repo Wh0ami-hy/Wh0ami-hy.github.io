@@ -1,7 +1,7 @@
 # Site settings
 title: Wh0ami-hy 
 SEOTitle: Wh0ami-hy | Blog
-header-img: https://wh0ami-hy.github.io/img/home-bg.jpg
+header-img: /img/home-bg.jpg
 email: 2993218474@qq.com
 description: ""
 keyword: "我的博客"
