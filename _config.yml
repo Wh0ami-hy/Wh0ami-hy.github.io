@@ -1,7 +1,7 @@
 # Site settings
 title: Wh0ami-hy 
 SEOTitle: Wh0ami-hy | Blog
-header-img: https://api.isoyu.com/bing_images.php
+header-img: "https://api.isoyu.com/bing_images.php"
 email: 2993218474@qq.com
 description: ""
 keyword: "我的博客"
@@ -12,7 +12,7 @@ github_repo: "https://github.com/wh0ami-hy/wh0ami-hy.github.io.git" # you code r
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: ""
-sidebar-avatar: https://api.isoyu.com/bing_images.php      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: "https://api.isoyu.com/bing_images.php"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
