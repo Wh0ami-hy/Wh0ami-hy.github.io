@@ -4,33 +4,42 @@
     "type": "split",
     "children": [
       {
-        "id": "bedad4c0a082ea00",
+        "id": "b5871ad9c48acb9f",
         "type": "tabs",
+        "dimension": 61.63265306122449,
         "children": [
           {
-            "id": "6e207a428bc8a622",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-10-12-JWT详解.md"
-              }
-            }
-          },
-          {
-            "id": "1db720cd0e1ffaf1",
+            "id": "fce6b8508be2f5e4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-10-12-JWT详解.md",
+                "file": "2023-10-13-JJWT详解.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "1046916d06193280"
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "ef23a4fc755e972d",
+        "type": "tabs",
+        "dimension": 38.36734693877551,
+        "children": [
+          {
+            "id": "aa85582bd702d867",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-10-13-JJWT详解.md"
+              }
+            },
+            "group": "1046916d06193280"
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -76,8 +85,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -98,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-10-12-JWT详解.md",
+                "file": "2023-10-13-JJWT详解.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-10-12-JWT详解.md",
+                "file": "2023-10-13-JJWT详解.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-10-12-JWT详解.md"
+                "file": "2023-10-13-JJWT详解.md"
               }
             }
           },
@@ -169,8 +177,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "5dc805522351137a",
+  "active": "fce6b8508be2f5e4",
   "lastOpenFiles": [
+    "2023-10-13-笔记模板.md",
+    "新建文本文档.txt",
+    "2023-10-13-JJWT详解.md",
+    "2023-10-13-JJWT.md",
+    "2023-10-12-JWT详解.md",
     "2022-08-17-Web认证机制的发展.md",
     "2023-10-11-GitPage博客搭建.md",
     "2023-10-12-Linux文本处理之正则表达式和Vim.md",
@@ -180,7 +193,6 @@
     "2023-10-12-Linux网络基础.md",
     "2023-10-12-Linux网络管理与配置.md",
     "Linux网络管理与配置.md",
-    "新建文本文档.txt",
     "LinuxTCP-IP协议.md",
     "LinuxTCPIP协议.md",
     "Linux网络基础",
@@ -195,10 +207,6 @@
     "2023-04-03-从0实现一个网站.md",
     "2023-09-24-Linux入门-基本命令.md",
     "2023-09-24-Linux入门-",
-    "2023-09-19-Linux磁盘和分区.md",
-    "2023-09-15-SpringCloud.md",
-    "2023-09-14-消息推送.md",
-    "2023-09-13-MySQL设计规约.md",
-    "2023-09-12-SpringBoot后端接口规范.md"
+    "2023-09-19-Linux磁盘和分区.md"
   ]
 }
