@@ -4,42 +4,33 @@
     "type": "split",
     "children": [
       {
-        "id": "b5871ad9c48acb9f",
+        "id": "8e9dbebdb64907b5",
         "type": "tabs",
-        "dimension": 61.63265306122449,
         "children": [
           {
-            "id": "fce6b8508be2f5e4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-10-13-JJWT详解.md",
-                "mode": "source",
-                "source": false
-              }
-            },
-            "group": "1046916d06193280"
-          }
-        ]
-      },
-      {
-        "id": "ef23a4fc755e972d",
-        "type": "tabs",
-        "dimension": 38.36734693877551,
-        "children": [
-          {
-            "id": "aa85582bd702d867",
+            "id": "3c8c13579a88fa33",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-10-13-JJWT详解.md"
+                "file": "2023-09-12-SpringBoot后端接口规范.md"
               }
-            },
-            "group": "1046916d06193280"
+            }
+          },
+          {
+            "id": "a9bd2b3842c5b8c8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-09-12-SpringBoot后端接口规范.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -106,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-10-13-JJWT详解.md",
+                "file": "2023-09-12-SpringBoot后端接口规范.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-10-13-JJWT详解.md",
+                "file": "2023-09-12-SpringBoot后端接口规范.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-10-13-JJWT详解.md"
+                "file": "2023-09-12-SpringBoot后端接口规范.md"
               }
             }
           },
@@ -177,11 +168,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "fce6b8508be2f5e4",
+  "active": "a9bd2b3842c5b8c8",
   "lastOpenFiles": [
+    "2023-10-14-SpringValidation校验参数.md",
+    "2023-09-12-SpringBoot后端接口规范.md",
+    "2023-10-13-JJWT详解.md",
     "2023-10-13-笔记模板.md",
     "新建文本文档.txt",
-    "2023-10-13-JJWT详解.md",
     "2023-10-13-JJWT.md",
     "2023-10-12-JWT详解.md",
     "2022-08-17-Web认证机制的发展.md",
@@ -205,8 +198,6 @@
     "2023-09-21-Oracle配置.md",
     "2023-09-12-生产故障排查思路.md",
     "2023-04-03-从0实现一个网站.md",
-    "2023-09-24-Linux入门-基本命令.md",
-    "2023-09-24-Linux入门-",
-    "2023-09-19-Linux磁盘和分区.md"
+    "2023-09-24-Linux入门-"
   ]
 }
