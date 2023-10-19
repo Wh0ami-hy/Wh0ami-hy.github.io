@@ -7,11 +7,18 @@ tags:
 
 
 
-# 1. Spring Security
+# 1. 简介
 
-官网：https://docs.spring.io/spring-security/site/docs/5.3.13.RELEASE/reference/html5/#jc
+在Spring Boot项目中使用Spring Security
 
-实现对Java应用程序的身份验证和授权（安全思想在规划网站时就要考虑好）
+[官网手册](https://docs.spring.io/spring-security/reference/5.7/servlet/getting-started.html)
+
+
+FilterChainProxy
+
+`FilterChainProxy` can be used to determine which `SecurityFilterChain` should be used.
+
+
 
 利用AOP思想
 
@@ -21,8 +28,9 @@ Spring Security中重要的类：
 2. AuthenticationManagerBuilder：自定义认证策略
 3. @EnableWebSecurity：开启WebSecurity模式 （@Enablexxx 开启某个功能）
 
-导入依赖pom.xml
+# 2. 导入依赖
 
+在`pom.xml`中导入
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -30,7 +38,7 @@ Spring Security中重要的类：
 </dependency>
 ```
 
-## 1.1. 认证及授权
+## 2.1. 认证及授权
 
 编写 WebSecurityConfig配置类
 
@@ -57,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 1.2. 注销及权限控制
+## 2.2. 注销及权限控制
 
 权限控制：即不同身份的人登陆，看到的页面是不一样的
 
@@ -72,7 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 1.3. 记住我功能的实现
+## 2.3. 记住我功能的实现
 
 本质是Cookie的保存
 
@@ -87,7 +95,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 1.4. Spring Security 常用的属性
+## 2.4. Spring Security 常用的属性
 
 下面列出了一些常用的属性：
 
@@ -110,3 +118,84 @@ Spring Security最大的用处在于为Web应用提供了全面的安全性保�
 2. 授权：Spring Security可以帮助开发者实现细粒度的授权控制，可以基于用户、角色、权限等多个维度进行授权控制，从而实现不同用户对应用程序资源的不同访问权限。
 3. 防止攻击：Spring Security提供了多种安全措施，如防止跨站点请求伪造（CSRF）、防止会话固定攻击（Session Fixation）等，可以保护Web应用免受各种攻击。
 4. 与Spring框架的整合：Spring Security与Spring框架天然集成，可以轻松地与Spring框架中的其他组件协同工作，如Spring MVC、Spring Boot等，从而实现全面的Web应用安全性保障
+
+
+
+# 3. 身份验证（Authentication）
+
+Spring Security 提供了多种身份验证机制，包括基于表单、基于HTTP基本认证、基于LDAP等
+
+## 3.1. authenticate with a username/password
+
+### 3.1.1. Reading Username/Password
+
+**基于表单的身份认证**
+
+验证form表单提供的数据
+
+**基于http的身份认证（不推荐）**
+
+通过在 HTTP 请求头中包含用户名和密码的 Base64 编码来进行身份验证。用户在每个请求中都需要提供凭据，以便进行身份验证
+
+**基于Digest的身份验证（不推荐）**
+
+### 3.1.2. Password Storage
+
+**内存存储**
+
+**关系型数据库存储**
+
+**自定义存储**
+
+
+## 3.2. Session Management
+## 3.3. remember a user past session expiration
+
+## 3.4. Handling Logouts
+
+## 3.5. Authentication Events
+# 4. 授权（Authorization）
+
+Spring Security 提供了强大的授权机制，可以基于角色、权限或自定义逻辑来控制用户对资源的访问权限。您可以在配置文件或注解中定义授权规则，以限制用户对特定功能或页面的访问。
+
+# 5. 安全配置（Security Configuration）
+
+通过 Spring Security 的配置，您可以定义安全规则，如哪些URL路径需要保护、对于不同的用户角色如何进行授权、是否启用跨站请求伪造（CSRF）保护等。您可以使用 Java 配置或 XML 配置来定义这些规则。
+
+## 5.1. Java Configuration
+
+### 5.1.1. 创建类文件
+
+创建一个Spring Security Java Configuration 类文件
+```java
+@EnableWebSecurity
+public class WebSecurityConfig {
+
+	@Bean
+	public UserDetailsService userDetailsService() {
+		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+		manager.createUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("USER").build());
+		return manager;
+	}
+}
+
+```
+AbstractSecurityWebApplicationInitializer 
+
+```java
+public class SecurityWebApplicationInitializer
+	extends AbstractSecurityWebApplicationInitializer {
+
+}
+```
+
+### 5.1.2. HttpSecurity
+
+
+# 6. 认证和授权的集成
+
+Spring Security 可以与其他常见的身份验证和授权机制进行集成，如LDAP、OAuth、OpenID Connect等。这使得在现代应用程序中实现单点登录（SSO）和第三方身份验证变得更加容易。
+
+# 7. 安全事件和日志记录
+
+Spring Security 提供了安全事件的记录和处理机制，您可以根据需要记录和处理登录成功、登录失败、访问受限等事件。这有助于监控应用程序的安全性和及时发现潜在的安全问题。
