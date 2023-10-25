@@ -204,7 +204,7 @@ public ResultInfo update(@Validated({Update.class}) UserVO userVO) {
 ```
 
 注：`@validated`和Validator 内置的参数校验注解 默认都属于`Default.class`分组
-## 8.2. 6.递归校验
+## 8.2. 递归校验
 
 如果 UserVO 类中增加一个 OrderVO 类的属性，而 OrderVO 中的属性也需要校验，就用到递归校验了，只要在相应属性上增加`@Valid`注解即可实现（对于集合同样适用）
 ```java

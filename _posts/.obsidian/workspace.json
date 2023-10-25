@@ -4,21 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "a49e49cc1a674923",
+        "id": "b0579fcaedd4fe27",
         "type": "tabs",
+        "dimension": 55.61224489795919,
         "children": [
           {
-            "id": "eef8e8ce8d77995c",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-04-13-Spring Security.md"
-              }
-            }
-          },
-          {
-            "id": "386f9037413d0396",
+            "id": "f087c702c64c2509",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -29,8 +20,24 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "495cfb1173dd95dc",
+        "type": "tabs",
+        "dimension": 44.38775510204081,
+        "children": [
+          {
+            "id": "8ce3f0fd481da91b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-04-13-Spring Security.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -168,17 +175,18 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "386f9037413d0396",
+  "active": "f087c702c64c2509",
   "lastOpenFiles": [
+    "2023-10-14-SpringValidation校验参数.md",
+    "2023-04-13-Spring Security.md",
+    "2023-09-15-SpringCloud.md",
     "2023-10-19-拦截器和过滤器.md",
     "新建文本文档.txt",
     "2023-03-12-Spring.md",
-    "2023-04-13-Spring Security.md",
     "2023-10-13-JJWT详解.md",
     "2023-10-12-JWT详解.md",
     "2023-10-16-PostgreSQL配置.md",
     "2023-09-12-SpringBoot后端接口规范.md",
-    "2023-10-14-SpringValidation校验参数.md",
     "2023-10-13-笔记模板.md",
     "2023-10-13-JJWT.md",
     "2022-08-17-Web认证机制的发展.md",
@@ -197,7 +205,6 @@
     "2023-09-24-Linux基本命令.md",
     "未命名.md",
     "2023-09-30-HTTP协议.md",
-    "2023-09-21-计算机网络.md",
     "2023-09-24-Linux入门-"
   ]
 }
