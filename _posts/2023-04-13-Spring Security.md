@@ -11,6 +11,10 @@ tags:
 
 [官网手册](https://docs.spring.io/spring-security/reference/5.7/servlet/getting-started.html)
 
+主要介绍前后端分离的spring boot项目中spring security的使用
+
+**导入依赖**
+
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>    
@@ -22,6 +26,21 @@ tags:
 
 - 用户名： user
 - 密码：项目启动后，打印在控制台中
+
+**修改默认的用户名密码**
+
+方法一：配置文件
+
+```xml
+spring:  
+  security:  
+    user:  
+      name: admin  
+      password: admin123
+```
+
+方法二：配置类，也就是后面的内存认证和数据库认证
+
 # 2. Spring Security 配置
 
 可以使用 Java 配置或 XML 配置
@@ -55,7 +74,10 @@ public class OldSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-新版本中，如果以后想要配置过滤器链，可以通过自定义`SecurityFilterChain` Bean来实现。如果以后想要配置WebSecurity，可以通过`WebSecurityCustomizer` Bean来实现。
+
+新版本中，如果想要配置过滤器链，可以通过自定义`SecurityFilterChain` Bean来实现。如果想要配置WebSecurity，可以通过`WebSecurityCustomizer` Bean来实现
+
+在 Spring Security 中，认证与授权的相关校验都是在一系列的过滤器链中完成的
 
 
 **Spring Security中重要的类**
@@ -63,6 +85,7 @@ public class OldSecurityConfig extends WebSecurityConfigurerAdapter {
 - WebSecurityConfigurerAdapter：自定义Security策略（自己编写配置类要继承该类）
 - AuthenticationManagerBuilder：自定义认证策略
 - @EnableWebSecurity：开启WebSecurity模式 （@Enablexxx 开启某个功能）
+
 # 3. 身份认证（Authentication）
 
 Spring Security 提供了多种身份验证机制，包括基于表单、基于HTTP基本认证、基于LDAP等
@@ -78,6 +101,24 @@ UserDetailsService 的实现类必须重写 loadUserByUsername 方法，该方�
 
 InMemoryUserDetailsManager 是 UserDetailsService 接口的一个实现类，它将登录页传来的用户名密码和内存中用户名密码做匹配认证
 
+```java
+@Configuration  
+@EnableWebSecurity  
+public class SecurityConfig {
+	@Bean  
+	public UserDetailsService memoryUser(){  
+	    // 内存认证  
+	    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();  
+	    // 创建用户  
+	    UserDetails user = User.withUsername("admin").password(passwordEncoder().encode("admin123")).roles("admin").build();  
+	    // 将用户加载到内存中  
+	    manager.createUser(user);  
+	    return manager;  
+	}
+}
+```
+
+
 ### 3.1.2. 数据库认证
 
 Spring Security 默认从内存加载用户，需要实现从数据库加载并校验用户。
@@ -88,10 +129,29 @@ Spring Security 默认从内存加载用户，需要实现从数据库加载并�
 - 根据用户名校验用户并查询用户相关权限信息（授权）
 - 将数据封装成 **UserDetails**（创建类并实现该接口） 并返回
 
-### 3.1.3. 密码解析器（PasswordEncoder）
+### 3.1.3. 密码解析器
 
-Spring Security要求容器中必须有 PasswordEncoder 实例，之前使用的NoOpPasswordEncoder 是 PasswordEncoder 的实现类，意思是不解析密码，使用明文密码。Spring Security官方推荐的密码解析器是 BCryptPasswordEncoder。在开发中，我们将 BCryptPasswordEncoder 的实例放入Spring容器即可，并 且在用户注册完成后，将密码加密再保存到数据库
-### 3.1.4. 自定义登录页面
+Spring Security要求容器中必须有 PasswordEncoder 实例，之前使用的NoOpPasswordEncoder 是 PasswordEncoder 的实现类，意思是不解析密码，使用明文密码。Spring Security官方推荐的是 BCryptPasswordEncoder。在开发中，我们将 BCryptPasswordEncoder 的实例放入Spring容器即可，并且在用户注册完成后，将密码加密再保存到数据库
+
+```java
+@Configuration  
+@EnableWebSecurity  
+public class SecurityConfig {
+    @Bean  
+    public PasswordEncoder passwordEncoder(){  
+        return new BCryptPasswordEncoder();  
+    }
+}
+```
+
+注意：同一密码每次加密后生成的密文互不相同，因此需使用 matches() 方法来进行比较
+
+```java
+BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+String password = passwordEncoder.encode("123456");
+boolean matches = passwordEncoder.matches("123456", password);
+```
+### 3.1.4. 自定义登录
 
 Spring Security 默认提供了登录页面，但在实际项目中是使用自己的登录页面。Spring Security也支持用户自定义登录页面
 
@@ -127,6 +187,12 @@ Spring Security 为了防止CSRF攻击，默认开启了CSRF防护，这限制�
 ## 3.2. 认证后的处理
 
 认证后，如果除了跳转页面还需要执行一些自定义代码时， 如：统计访问量，推送消息等操作时，可以自定义处理器
+
+在前后端分离这样的开发架构下，前后端的交互都是通过 JSON 来进行，无论登录成功还是失败，都不会有什么服务端跳转或者客户端跳转之类。
+
+登录成功了，服务端就返回一段登录成功的提示 JSON 给前端，前端收到之后，该跳转该展示，由前端自己决定，就和后端没有关系了。
+
+登录失败了，服务端就返回一段登录失败的提示 JSON 给前端，前端收到之后，该跳转该展示，由前端自己决定，也和后端没有关系了。
 ### 3.2.1. 认证成功后的处理方式
 
 
@@ -171,6 +237,7 @@ public class UserController {
 - 清除认证状态
 - 销毁HttpSession对象 
 - 跳转到登录页面
+
 ## 3.6. 退出成功处理器
 
 
