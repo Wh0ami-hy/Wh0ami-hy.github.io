@@ -4,40 +4,33 @@
     "type": "split",
     "children": [
       {
-        "id": "b0579fcaedd4fe27",
+        "id": "5599a05856b60d6f",
         "type": "tabs",
-        "dimension": 68.86993603411514,
         "children": [
           {
-            "id": "f087c702c64c2509",
+            "id": "d903f03cc1b1e226",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-09-21-计算机网络.md"
+              }
+            }
+          },
+          {
+            "id": "a589e89bfaa82a37",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-04-13-Spring Security.md",
+                "file": "2023-09-21-计算机网络.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
-      },
-      {
-        "id": "495cfb1173dd95dc",
-        "type": "tabs",
-        "dimension": 31.13006396588486,
-        "children": [
-          {
-            "id": "8ce3f0fd481da91b",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-04-13-Spring Security.md"
-              }
-            }
-          }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -87,8 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.5,
-    "collapsed": true
+    "width": 291.5
   },
   "right": {
     "id": "c0b9302c6a0994b5",
@@ -104,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-04-13-Spring Security.md",
+                "file": "2023-09-21-计算机网络.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-04-13-Spring Security.md",
+                "file": "2023-09-21-计算机网络.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-04-13-Spring Security.md"
+                "file": "2023-09-21-计算机网络.md"
               }
             }
           },
@@ -175,10 +167,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f087c702c64c2509",
+  "active": "a589e89bfaa82a37",
   "lastOpenFiles": [
-    "2023-10-13-JJWT详解.md",
+    "2023-10-12-Linux网络基础.md",
+    "2023-10-12-Linux网络管理与配置.md",
+    "2023-09-07-日志框架.md",
+    "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-04-13-Spring Security.md",
+    "2023-03-26-MySQL原理.md",
+    "2023-10-13-JJWT详解.md",
     "2023-10-14-SpringValidation校验参数.md",
     "2023-09-15-SpringCloud.md",
     "2023-10-19-拦截器和过滤器.md",
@@ -195,16 +192,11 @@
     "2023-10-05-Linux用户和组管理.md",
     "Linux网络基础.md",
     "2023-10-12-LinuxTCP-IP协议.md",
-    "2023-10-12-Linux网络基础.md",
-    "2023-10-12-Linux网络管理与配置.md",
     "Linux网络管理与配置.md",
     "LinuxTCP-IP协议.md",
     "LinuxTCPIP协议.md",
     "Linux网络基础",
     "2023-09-26-Linux文件管理命令.md",
-    "2023-09-24-Linux基本命令.md",
-    "未命名.md",
-    "2023-09-30-HTTP协议.md",
     "2023-09-24-Linux入门-"
   ]
 }

@@ -183,20 +183,19 @@ entity是数据库实体对象定义，定义各个属性以及各个属性的ge
 
 `DO（Data Object）`：与数据库表结构一一对应，通过DAO层向上传输数据源对象
 
-`DTO（Data Transfer Object）`：数据传输对象，Service或Manager向外传输的对象。与view的用法相同，不过是叫法不同
+`DTO（Data Transfer Object）`：数据传输对象，Service层向外传输的对象
 
 `BO（Business Object）`：业务对象。由Service层输出的封装业务逻辑的对象
 
-`AO（Application Object）`：应用对象。在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高。
+`AO（Application Object）`：应用对象。在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高
 
-`VO（View Object）`：显示层对象，通常是Web向模板渲染引擎层传输的对象。
+`VO（View Object）`：显示层对象，通常是Web向模板渲染引擎层传输的对象
 
-`Query`：数据查询对象，各层接收上层的查询请求。注意超过2个参数的查询封装，禁止使用Map类来传输。
+`Query`：数据查询对象，各层接收上层的查询请求。注意超过2个参数的查询封装，禁止使用Map类来传输
 
-出于简单起见，只要保证业务逻辑层`Service`和数据库`DAO`层的操作对象严格划分出来，确保互相不渗透，不混用，问题应该就不大。
+出于简单起见，只要保证业务逻辑层`Service`和数据库`DAO`层的操作对象严格划分出来，确保互相不渗透，不混用，问题应该就不大
 
-比如我在上面举例的项目代码结构中，`Service`层处理的对象都定义在了`dto`包里，而`DAO`层处理的对象都放在了`entity`包里了。
-
+比如上面举例的项目代码结构中，`Service`层处理的对象都定义在了`dto`包里，而`DAO`层处理的对象都放在了`entity`包里了
 
 
 比如user表中有name、id、age，出于安全原因，我们需要把用户的密码定义在另一表中，即user_passwd表，但进行相关操作时，我们往往需要将两个表关联使用，每次定义都很麻烦。因此可以在model层中定义user_model类，将user表中的信息与user_passwd表中的信息整合成一张综合表，这样在进行操作时只需调用综合表，就可以完成对两个表的关联操作
