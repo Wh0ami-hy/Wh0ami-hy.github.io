@@ -6,31 +6,38 @@
       {
         "id": "5599a05856b60d6f",
         "type": "tabs",
+        "dimension": 63.864628820960704,
         "children": [
-          {
-            "id": "d903f03cc1b1e226",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-09-21-计算机网络.md"
-              }
-            }
-          },
           {
             "id": "a589e89bfaa82a37",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-09-21-计算机网络.md",
+                "file": "2023-10-12-Linux网络管理与配置.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "e8dd3ea3bc740c79",
+        "type": "tabs",
+        "dimension": 36.135371179039296,
+        "children": [
+          {
+            "id": "7f583145c4c84a2e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-10-12-Linux网络管理与配置.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -80,7 +87,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.5
+    "width": 291.5,
+    "collapsed": true
   },
   "right": {
     "id": "c0b9302c6a0994b5",
@@ -96,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-09-21-计算机网络.md",
+                "file": "2023-10-12-Linux网络管理与配置.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-09-21-计算机网络.md",
+                "file": "2023-10-12-Linux网络管理与配置.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-21-计算机网络.md"
+                "file": "2023-10-12-Linux网络管理与配置.md"
               }
             }
           },
@@ -169,8 +177,23 @@
   },
   "active": "a589e89bfaa82a37",
   "lastOpenFiles": [
-    "2023-10-12-Linux网络基础.md",
+    "2023-10-12-Linux文本处理之正则表达式和Vim.md",
+    "2023-10-12-LinuxTCP-IP协议.md",
     "2023-10-12-Linux网络管理与配置.md",
+    "2023-10-12-Linux网络基础.md",
+    "2023-10-02-软件设计规范.md",
+    "2023-10-05-Linux用户和组管理.md",
+    "2023-09-30-计算机组成原理.md",
+    "2023-09-30-操作系统.md",
+    "2023-09-26-Linux文件管理命令.md",
+    "2023-09-24-Linux基本命令.md",
+    "2023-09-22-Linux入门.md",
+    "2022-05-23-python_socket.md",
+    "2022-04-25-python多线程&多进程.md",
+    "2021-09-30-安全资讯.md",
+    "2021-07-01-python_正则.md",
+    "2021-06-26-JDBC.md",
+    "2023-09-21-计算机网络.md",
     "2023-09-07-日志框架.md",
     "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-04-13-Spring Security.md",
@@ -181,22 +204,7 @@
     "2023-10-19-拦截器和过滤器.md",
     "新建文本文档.txt",
     "2023-03-12-Spring.md",
-    "2023-10-12-JWT详解.md",
-    "2023-10-16-PostgreSQL配置.md",
-    "2023-09-12-SpringBoot后端接口规范.md",
-    "2023-10-13-笔记模板.md",
-    "2023-10-13-JJWT.md",
-    "2022-08-17-Web认证机制的发展.md",
-    "2023-10-11-GitPage博客搭建.md",
-    "2023-10-12-Linux文本处理之正则表达式和Vim.md",
-    "2023-10-05-Linux用户和组管理.md",
-    "Linux网络基础.md",
-    "2023-10-12-LinuxTCP-IP协议.md",
-    "Linux网络管理与配置.md",
-    "LinuxTCP-IP协议.md",
-    "LinuxTCPIP协议.md",
     "Linux网络基础",
-    "2023-09-26-Linux文件管理命令.md",
     "2023-09-24-Linux入门-"
   ]
 }
