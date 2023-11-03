@@ -66,7 +66,6 @@ import tkinter as tk
 windows.attributes('-alpha', 0.5)        # 0.5表示[0,1]范围的透明度
 ```
 
-
 # 2. 常用窗口部件
 
 ## 2.1. Label标签
@@ -931,16 +930,13 @@ button.place(x=50,y=10)
 root.mainloop()
 ```
 
-# 3. 技巧总结
+# 3. 实践总结
 
-### 3.1.1. 获取窗口部件的值
+## 3.1. 获取窗口部件的值
 
 使用`StringVar()`对象来完成，把窗口部件的`textvariable`属性设置为`StringVar()`，再通过`StringVar()`的`get()`和`set()`函数可以读取和输出相应内容
 
 # 4. 界面美化
 
-## 4.1. 相关库
-
-* Sun-Valley-ttk-theme
-* ttkbootstrap库
+* ttkbootstrap库（推荐）
 

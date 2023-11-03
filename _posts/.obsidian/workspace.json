@@ -4,17 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "5599a05856b60d6f",
+        "id": "e8dd3ea3bc740c79",
         "type": "tabs",
-        "dimension": 63.864628820960704,
         "children": [
           {
-            "id": "a589e89bfaa82a37",
+            "id": "20c5712984abfc91",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-10-12-Linux网络管理与配置.md",
+                "file": "2023-03-13-Spring MVC.md",
                 "mode": "source",
                 "source": false
               }
@@ -23,17 +22,16 @@
         ]
       },
       {
-        "id": "e8dd3ea3bc740c79",
+        "id": "c3b6dc9bcc5f465a",
         "type": "tabs",
-        "dimension": 36.135371179039296,
         "children": [
           {
-            "id": "7f583145c4c84a2e",
+            "id": "fcce3e17eb2ecbee",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-10-12-Linux网络管理与配置.md"
+                "file": "2023-03-13-Spring MVC.md"
               }
             }
           }
@@ -104,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-10-12-Linux网络管理与配置.md",
+                "file": "2023-03-13-Spring MVC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-10-12-Linux网络管理与配置.md",
+                "file": "2023-03-13-Spring MVC.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-10-12-Linux网络管理与配置.md"
+                "file": "2023-03-13-Spring MVC.md"
               }
             }
           },
@@ -175,11 +173,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a589e89bfaa82a37",
+  "active": "20c5712984abfc91",
   "lastOpenFiles": [
+    "2023-10-19-拦截器和过滤器.md",
+    "2022-06-11-python_tkinter.md",
+    "2023-10-12-Linux网络管理与配置.md",
     "2023-10-12-Linux文本处理之正则表达式和Vim.md",
     "2023-10-12-LinuxTCP-IP协议.md",
-    "2023-10-12-Linux网络管理与配置.md",
     "2023-10-12-Linux网络基础.md",
     "2023-10-02-软件设计规范.md",
     "2023-10-05-Linux用户和组管理.md",
@@ -201,9 +201,7 @@
     "2023-10-13-JJWT详解.md",
     "2023-10-14-SpringValidation校验参数.md",
     "2023-09-15-SpringCloud.md",
-    "2023-10-19-拦截器和过滤器.md",
     "新建文本文档.txt",
-    "2023-03-12-Spring.md",
     "Linux网络基础",
     "2023-09-24-Linux入门-"
   ]

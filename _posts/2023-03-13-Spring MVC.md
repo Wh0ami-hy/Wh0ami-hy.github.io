@@ -284,7 +284,7 @@ public class HelloController {
 
 @Controller 配合视图解析器 InternalResourceViewResolver使用，返回到指定页面
 
-@RequestBody：接收的参数是来自requestBody中，即请求体。一般用于处理非Content-Type:application/x-www-form-urlencoded编码格式的数据，比如：application/json、application/xml 等类型的数据
+@RequestBody：接收的参数是来自requestBody（请求体）中。一般用于处理非Content-Type:application/x-www-form-urlencoded编码格式的数据，比如：application/json、application/xml 等类型的数据
 
 **创建视图层**
 
@@ -579,13 +579,9 @@ public String hello(@RequestParam("username") String name, Model model){
 </filter-mapping>
 ```
 
-
-
 # 10. 返回JSON格式数据（重点）
 
 JSON是JavaScript对象的字符串表示法，它使用文本表示一个JS对象的信息，**本质是一个字符串**
-
-JSON格式
 
 ```json
 {"键名":"值"}
@@ -664,19 +660,18 @@ String str = JSON.toJSONString(user);
 
 # 11. SpringMVC拦截器
 
-SpringMVC的处理器拦截器只能拦截请求的方法，Servlet中的过滤器Filter可以拦截请求的方法和静态资源，用于对处理器进行预处理和后处理。拦截器是AOP思想的具体应用
+拦截器是SpringMVC框架的，只有使用了SpringMVC框架的工程才能使用，拦截器是AOP思想的具体应用
 
-**过滤器**
+拦截器只会拦截访问的控制器方法，不会拦截静态资源，如果访问的是jsp/html/css/image/js 是不会进行拦截的
 
-servlet规范中的一部分，任何java web工程都可以使用
+## 11.1. 拦截器的执行顺序
 
-**拦截器**
+- 请求到达 DispatcherServlet
+- DispatcherServlet 发送至 Interceptor ，执行 preHandle
+- 请求达到 Controller
+- 请求结束后，postHandle 执行
 
-拦截器是SpringMVC框架自己的，只有使用了SpringMVC框架的工程才能使用
-
-拦截器只会拦截访问的控制器方法，如果访问的是jsp/html/css/image/js是不会进行拦截的，即不会拦截静态资源
-
-## 11.1. 自定义拦截器
+## 11.2. 自定义拦截器
 
 ![QQ截图20230107172231](F:\笔记\博客\文章图片\QQ截图20230107172231.png)
 
@@ -696,7 +691,7 @@ public class HelloInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("处理后");
     }
-	// afterCompletion() 方法在请求处理完成之后调用，可以用于进行一些资源清理操作
+	// afterCompletion() 方法在请求处理完成之后调用，可以用于进行一些资源清理操作，也可以用来统计请求耗时
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         System.out.println("清理");
@@ -704,7 +699,7 @@ public class HelloInterceptor implements HandlerInterceptor {
 }
 ```
 
-xml 配置文件，配置启动拦截器 src/main/resources/springmvc-servlet.xml
+在xml 配置文件，配置启动拦截器 src/main/resources/springmvc-servlet.xml
 
 ```xml
 <!--拦截器配置-->
@@ -739,7 +734,7 @@ public class WebConfig implements WebMvcConfigurer {
 }
 ```
 
-## 11.2. 拦截器应用-登录验证
+## 11.3. 拦截器应用-登录验证
 
 三个页面：
 
