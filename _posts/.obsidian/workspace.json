@@ -4,34 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "e8dd3ea3bc740c79",
+        "id": "0c988cf1ed9c2c46",
         "type": "tabs",
         "children": [
           {
-            "id": "20c5712984abfc91",
+            "id": "86e782ceede924ff",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-02-12-Java中级.md",
+                "file": "2023-04-25-Spring Boot项目最佳实践.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "c3b6dc9bcc5f465a",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "fcce3e17eb2ecbee",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-02-12-Java中级.md"
               }
             }
           }
@@ -85,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.5,
-    "collapsed": true
+    "width": 291.5
   },
   "right": {
     "id": "c0b9302c6a0994b5",
@@ -102,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-02-12-Java中级.md",
+                "file": "2023-04-25-Spring Boot项目最佳实践.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-02-12-Java中级.md",
+                "file": "2023-04-25-Spring Boot项目最佳实践.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-02-12-Java中级.md"
+                "file": "2023-04-25-Spring Boot项目最佳实践.md"
               }
             }
           },
@@ -173,8 +156,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "20c5712984abfc91",
+  "active": "86e782ceede924ff",
   "lastOpenFiles": [
+    "2023-02-12-Java中级.md",
+    "2023-04-25-Spring Boot项目最佳实践.md",
+    "2023-03-03-Spring Boot.md",
     "2023-05-24-Java实用工具库.md",
     "2023-01-11-Vue2.md",
     "2023-02-03-Vue2开发总结.md",
@@ -198,9 +184,6 @@
     "2021-07-01-python_正则.md",
     "2021-06-26-JDBC.md",
     "2023-09-21-计算机网络.md",
-    "2023-09-07-日志框架.md",
-    "2023-04-25-Spring Boot项目最佳实践.md",
-    "2023-04-13-Spring Security.md",
     "新建文本文档.txt",
     "Linux网络基础",
     "2023-09-24-Linux入门-"

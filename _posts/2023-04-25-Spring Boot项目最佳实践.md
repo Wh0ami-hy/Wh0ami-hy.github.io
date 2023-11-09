@@ -195,10 +195,7 @@ entity是数据库实体对象定义，定义各个属性以及各个属性的ge
 
 出于简单起见，只要保证业务逻辑层`Service`和数据库`DAO`层的操作对象严格划分出来，确保互相不渗透，不混用，问题应该就不大
 
-比如上面举例的项目代码结构中，`Service`层处理的对象都定义在了`dto`包里，而`DAO`层处理的对象都放在了`entity`包里了
-
-
-比如user表中有name、id、age，出于安全原因，我们需要把用户的密码定义在另一表中，即user_passwd表，但进行相关操作时，我们往往需要将两个表关联使用，每次定义都很麻烦。因此可以在model层中定义user_model类，将user表中的信息与user_passwd表中的信息整合成一张综合表，这样在进行操作时只需调用综合表，就可以完成对两个表的关联操作
+比如上面举例的项目代码结构中，`Service`层处理的对象都定义在了`dto`包里，而`DAO`层处理的对象都放在了`entity`包里了。一般只需要定义DO 和 VO 就够用了
 
 
 ## 1.10. 各层间调用关系
@@ -272,7 +269,7 @@ mapper层的接口在对应的xml配置文件中进行配置、实现以及关�
 </dependency>
 ```
 
-可为开发组中常见的问题，创建自己的自动配置，即**手动实现一个 starter**
+可为开发中常见的问题，创建自己的自动配置，即**手动实现一个 starter**
 
 ## 2.3. 正确设计代码目录结构
 
@@ -309,13 +306,13 @@ mapper层的接口在对应的xml配置文件中进行配置、实现以及关�
 
 ## 2.5. 围绕业务功能构建Service
 
-`Service`层做实际业务逻辑，可以按照功能模块（功能/领域/用例怎么称呼都行）做好定义和区分，相互可以调用
+`Service`层做实际业务逻辑，完整的业务逻辑包含验证、缓存等
 
 功能模块`Service`之间引用时，建议不要渗透到`DAO`层（或者`mapper`层），基于`Service`层进行调用和复用比较合理
 
 业务逻辑层`Service`和数据库`DAO`层的操作对象不要混用。`Controller`层的数据对象不要直接渗透到`DAO`层（或者`mapper`层）；同理数据表实体对象`Entity`也不要直接传到`Controller`层进行输出或展示。
 
-## 2.6. 提供全局异常处理
+## 2.6. 使用全局异常处理
 
 Spring Boot提供了两种主要方法：
 
@@ -323,9 +320,9 @@ Spring Boot提供了两种主要方法：
 
 在控制器上添加 `@ExceptionHandler` 注解，这在某些特定场景下使用可能会很有用
 
-## 2.7. 使用日志框架
+## 2.7. 使用 slf4j 日志
 
-应该使用Logger进行日志记录，而不是使用`System.out.println()`手动执行
+应该使用日志框架进行日志记录，而不是使用`System.out.println()`手动执行。建议将 Slf4j 与 Spring Boot 中默认的日志框架 logback 一起使用。可以使用 Lombok @Slf4j 注释非常轻松地创建日志记录器
 
 在Spring Boot中完成，几乎没有配置。只需获取该类的记录器实例：
 
@@ -350,3 +347,35 @@ Logger logger = LoggerFactory.getLogger(MyClass.class);
 ## 2.11. 使用Spring Initializr来开始一个新的Spring Boot项目
 
 使用Initializr创建应用程序可确保你获得经过测试和验证的依赖项，这些依赖项适用于Spring自动配置。
+
+## 2.12. 使用 Lombok
+
+Lombok 是一个 Java 库，可用于减少代码并允许我们使用其注释编写干净的代码
+
+## 2.13. 避免空指针异常
+
+- 为了避免 NullPointerException，我们可以使用 java.util 包中的 Optional。
+- 我们还可以使用空安全库。例如：Apache Commons StringUtils
+- 对已知对象调用 equals() 和 equalsIgnoreCase() 方法。
+- 使用 valueOf() 而不是 toString()
+- 使用基于 IDE 的 @NotNull 和 @Nullable 注释
+
+## 2.14. 使用集合框架的最佳实践
+
+- 对我们的数据集使用适当的集合。
+    
+- 将 forEach 与 Java 8 功能结合使用，并避免使用旧版 for 循环。
+    
+- 使用接口类型而不是实现。
+    
+- 使用 isEmpty() 而不是 size() 以获得更好的可读性。
+    
+- 不返回空值，可以返回空集合。
+    
+- 如果我们使用对象作为要存储在基于哈希的集合中的数据，则应重写 equals() 和 hashCode() 方法。请查看这篇文章“HashMap 内部是如何工作的”。
+
+## 2.15. 使用分页
+
+使用物理分页
+
+## 2.16. 使用自定义响应对象
