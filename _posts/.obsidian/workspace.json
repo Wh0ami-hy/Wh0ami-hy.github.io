@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "0c988cf1ed9c2c46",
+        "id": "f04f9191bddd6649",
         "type": "tabs",
         "children": [
           {
-            "id": "86e782ceede924ff",
+            "id": "145a1746108ae6c1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-04-25-Spring Boot项目最佳实践.md",
+                "file": "2021-06-26-JDBC.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-04-25-Spring Boot项目最佳实践.md",
+                "file": "2021-06-26-JDBC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-04-25-Spring Boot项目最佳实践.md",
+                "file": "2021-06-26-JDBC.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-04-25-Spring Boot项目最佳实践.md"
+                "file": "2021-06-26-JDBC.md"
               }
             }
           },
@@ -156,34 +156,34 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "86e782ceede924ff",
+  "active": "145a1746108ae6c1",
   "lastOpenFiles": [
-    "2023-02-12-Java中级.md",
-    "2023-04-25-Spring Boot项目最佳实践.md",
-    "2023-03-03-Spring Boot.md",
-    "2023-05-24-Java实用工具库.md",
+    "2021-07-01-python_正则.md",
+    "2021-07-05-Java网络编程.md",
+    "2021-06-26-JDBC.md",
+    "2021-12-26-Windows下安装双系统.md",
+    "2022-04-25-python多线程&多进程.md",
+    "2022-05-11-pyinstaller使用.md",
+    "2022-05-18-python虚拟环境.md",
+    "2022-05-23-python_socket.md",
+    "2022-06-11-python_tkinter.md",
+    "2022-06-30-MyBatis.md",
+    "2022-06-30-ORM&DAO.md",
+    "2022-08-03-软件设计规范.md",
+    "2023-01-04-引用和地址的区别.md",
+    "2023-10-02-软件设计规范.md",
+    "2022-08-17-Web认证机制的发展.md",
+    "2023-01-02-MySQL配置.md",
+    "2023-01-04-论堆&栈.md",
+    "2023-01-07-Maven.md",
     "2023-01-11-Vue2.md",
     "2023-02-03-Vue2开发总结.md",
-    "2023-03-13-Spring MVC.md",
-    "2023-10-19-拦截器和过滤器.md",
-    "2022-06-11-python_tkinter.md",
-    "2023-10-12-Linux网络管理与配置.md",
-    "2023-10-12-Linux文本处理之正则表达式和Vim.md",
-    "2023-10-12-LinuxTCP-IP协议.md",
-    "2023-10-12-Linux网络基础.md",
-    "2023-10-02-软件设计规范.md",
-    "2023-10-05-Linux用户和组管理.md",
-    "2023-09-30-计算机组成原理.md",
-    "2023-09-30-操作系统.md",
-    "2023-09-26-Linux文件管理命令.md",
-    "2023-09-24-Linux基本命令.md",
-    "2023-09-22-Linux入门.md",
-    "2022-05-23-python_socket.md",
-    "2022-04-25-python多线程&多进程.md",
-    "2021-09-30-安全资讯.md",
-    "2021-07-01-python_正则.md",
-    "2021-06-26-JDBC.md",
-    "2023-09-21-计算机网络.md",
+    "2023-01-26-python基础.md",
+    "2023-02-09-阿里Java开发手册.md",
+    "2023-03-27-Redis.md",
+    "2023-03-27-Redis应用.md",
+    "2023-04-02-Java内存管理.md",
+    "2023-04-13-Spring Security.md",
     "新建文本文档.txt",
     "Linux网络基础",
     "2023-09-24-Linux入门-"
