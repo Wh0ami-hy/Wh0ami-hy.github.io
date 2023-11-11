@@ -587,7 +587,7 @@ JSON是JavaScript对象的字符串表示法，它使用文本表示一个JS对�
 {"键名":"值"}
 ```
 
-## 10.1. Jackson
+**Jackson（推荐）**
 
 导入依赖 pom.xml
 
@@ -627,36 +627,6 @@ String str = mapper.writeValueAsString(...);
 ```
 
 尝试封装一个JsonUtils类 专门实现JSON格式的转换
-
-## 10.2. FastJson（不推荐）
-
-导入依赖 pom.xml
-
-```xml
-<dependency>
-    <groupId>com.alibaba</groupId>
-    <artifactId>fastjson</artifactId>
-    <version>1.2.62</version>
-</dependency>
-```
-
-转为 json格式
-
-```java
-String str = JSON.toJSONString(user);
-```
-
-乱码解决方法同上
-
-## 10.3. Gson
-
-```xml
-<dependency>
-	<groupId>com.google.code.gson</groupId>
-	<artifactId>gson</artifactId>
-	<version>2.8.8</version> <!-- 替换为最新版本 -->
-</dependency>
-```
 
 # 11. SpringMVC拦截器
 
