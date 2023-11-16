@@ -6,6 +6,7 @@
       {
         "id": "f04f9191bddd6649",
         "type": "tabs",
+        "dimension": 69.97319034852548,
         "children": [
           {
             "id": "145a1746108ae6c1",
@@ -13,11 +14,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2021-06-26-JDBC.md",
+                "file": "2023-02-03-Vue2开发总结.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "cfaa8b2327243237"
+          }
+        ]
+      },
+      {
+        "id": "3fc6aa6a19f7c0f3",
+        "type": "tabs",
+        "dimension": 30.026809651474526,
+        "children": [
+          {
+            "id": "a1d3e9197527a017",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-02-03-Vue2开发总结.md"
+              }
+            },
+            "group": "cfaa8b2327243237"
           }
         ]
       }
@@ -69,7 +89,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.5
+    "width": 291.5,
+    "collapsed": true
   },
   "right": {
     "id": "c0b9302c6a0994b5",
@@ -85,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2021-06-26-JDBC.md",
+                "file": "2023-02-03-Vue2开发总结.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2021-06-26-JDBC.md",
+                "file": "2023-02-03-Vue2开发总结.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2021-06-26-JDBC.md"
+                "file": "2023-02-03-Vue2开发总结.md"
               }
             }
           },
@@ -156,11 +177,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "145a1746108ae6c1",
+  "active": "a1d3e9197527a017",
   "lastOpenFiles": [
+    "2021-06-26-JDBC.md",
     "2021-07-01-python_正则.md",
     "2021-07-05-Java网络编程.md",
-    "2021-06-26-JDBC.md",
     "2021-12-26-Windows下安装双系统.md",
     "2022-04-25-python多线程&多进程.md",
     "2022-05-11-pyinstaller使用.md",
