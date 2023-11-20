@@ -626,7 +626,7 @@ String str = mapper.writeValueAsString(...);
 </mvc:annotation-driven>
 ```
 
-尝试封装一个JsonUtils类 专门实现JSON格式的转换
+可以封装一个JsonUtils类专门实现JSON格式的转换
 
 # 11. SpringMVC拦截器
 
@@ -1004,7 +1004,7 @@ public class DownController {
 }
 ```
 
-# 13. 跨域请求
+# 13. 跨域请求（重点）
 
 ## 13.1. 使用 @CrossOrigin 注解
 

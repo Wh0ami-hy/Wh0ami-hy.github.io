@@ -384,65 +384,7 @@ spring:
 ```
 # 5. 参数校验
 
-用于对Java Bean的属性值进行校验
-
-使用JSR-303规范进行校验的步骤：
-
-- 在Java Bean的属性上添加校验注解
-
-```
-加在类上：
-	@Validated // 开启数据校验
-加在类属性上：
-	@NotNull：用于检查一个对象是否为null。
-	    
-	@Min、@Max：用于检查一个数字的最小值和最大值。
-	    
-	@Size：用于检查一个对象的长度是否在指定范围内。
-	
-	@Pattern：用于检查一个字符串是否匹配指定的正则表达式。
-	    
-	@Email：用于检查一个字符串是否是邮件地址格式。
-	    
-	@AssertTrue、@AssertFalse：用于检查一个布尔值是否为true或false。
-```
-
-eg：
-```java
-@Validated // 开启数据校验
-public class User {
- 
-    @NotNull(message = "用户名不能为空")
-    private String username;
- 
-    @Size(min = 6, max = 16, message = "密码长度必须在6-16位之间")
-    private String password;
- 
-    @Email(message = "邮箱格式不正确")
-    private String email;
- 
-    // getter和setter方法省略
-}
-```
-
-- 在Controller方法中添加`@Valid`注解，表示对请求参数进行校验
-
-- 在Controller方法的参数中添加`BindingResult`或`Errors`参数，用于接收校验结果
-
-```java
-@PostMapping("/user")
-public String addUser(@Valid User user, BindingResult result) {
-    if (result.hasErrors()) {
-        // 校验失败，返回错误信息
-        return result.getAllErrors().toString();
-    } else {
-        // 校验成功，保存用户信息
-        userService.save(user);
-        return "success";
-    }
-}
-```
-
+通常使用自带的Validation校验参数
 # 6. SpringBoot管理静态资源
 
 
@@ -563,7 +505,7 @@ th:元素名
 
 # 8. 引入Lombok库
 
-创建标准的实体类时，可以引入Lombok，使用注解开发，新手不建议使用
+创建标准的实体类时，可以引入Lombok，使用注解开发
 
 在pom.xml中导入依赖
 
@@ -955,376 +897,9 @@ yml 文件中添加以下配置项
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
 ```
-# 15. SpringBoot整合SpringSecurity
+# 15. Spring Boot全局异常处理
 
-
-Spring Security中重要的类：
-
-- `WebSecurityConfigurerAdapter`：自定义Security策略（自己编写配置类要继承该类）
-- `AuthenticationManagerBuilder`：自定义认证策略
-- `@EnableWebSecurity`：开启WebSecurity模式 （@Enablexxx 开启某个功能）
-
-在pom.xml中导入依赖
-
-```xml
-<dependency><groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
-```
-
-yml 文件中添加以下配置项
-
-```yml
-spring:
-  security:
-    user:
-      name: admin
-      password: admin
-    # 允许所有用户访问 /hello 路径
-    ignore: /hello
-    # 排除路径  
-	excludes:  
-```
-
-编写安全配置类
-
-# 16. SpringBoot整合Swagger
-
-https://swagger.io/
-
-Swagger能自动生成完善的RESTful API文档，同时根据后台代码的修改同步更新，同时提供完整的测试页面调试API
-
-在pom.xml中导入依赖
-
-```xml
-<dependency>
-	<groupId> io.springfox</groupId>
-	<artifactId>springfox-swagger2</artifactId>
-	<version>2.9.2</version>
-</dependency>
-<dependency>
-	<groupId>io.springfox</groupId>
-	<artifactId>springfox-swagger-ui</artifactId>
-	<version>2.9.2</version>
-</dependency>
-```
-
-yml 文件中添加以下配置项
-
-```yml
-swagger:  
-  # 是否开启swagger  
-  enabled: true  
-  # 请求前缀  
-  pathMapping:  
-  # 标题  
-  title: '标题：${yatoil.name}后台管理系统_接口文档'  
-  # 描述  
-  description: '${yatoil.name}后台管理系统管理'  
-  # 版本  
-  version: '版本号: ${yatoil.version}'  
-  # 作者信息  
-  contact:  
-    name: yatoil  
-    email: dyyatongshihua@163.com  
-  groups:  
-    - name: 1.自动建表模块  
-      basePackage: com.yatoil.generator.controller  
-    - name: 2.项目管理模块  
-      basePackage: com.yatoil.system.controller
-```
-
-注：springframework  2.x版本与 swagger2 的版本匹配
-
-Spring Boot 2.6.X后与Swagger有版本冲突问题会报错，需要在application.yml中加入以下配置：
-
-```yml
-spring:  
-  mvc:  
-    pathmatch:  
-      matching-strategy: ant_path_matcher
-```
-
-创建Swagger配置类
-
-```java
-@Configuration //告诉Spring 容器，这个类是一个配置类
-@EnableSwagger2 //启用Swagger2 功能
-public class SwaggerConfig {
-    @Bean
-    public Docket docket() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                //apiInfo()是自定义方法
-                .apiInfo(apiInfo())
-            	// 是否使用Swagger
-            	.enable(true)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com"))
-                // 过滤什么路径
-                .paths(PathSelectors.any())
-                .build();
-    }
-    // API 文档页面显示信息
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("演示项目API") //标题
-                .description("学习Swagger2的演示项目") //描述
-                .build();
-    }
-}
-```
-
-在控制器类上使用 `@Api` 注解来描述API 的标签名称，以便在 Swagger UI 中显示。在具体的方法上使用 `@ApiOperation` 注解来描述方法的作用，以及使用 `@ApiImplicitParam` 注解来描述方法的参数。这些注解可以让 Swagger 自动生成 API 文档
-
-```java
-@RestController
-@Api(tags = "用户管理")
-@RequestMapping("/users")
-public class UserController {
-    @GetMapping("/{id}")
-    @ApiOperation(value = "根据 ID 获取用户信息")
-    @ApiImplicitParam(name = "id", value = "用户 ID", required = true, dataTypeClass = Long.class)
-    public User getUserById(@PathVariable Long id) {
-        // TODO: 根据 ID 获取用户信息
-    }
-
-    @PostMapping("/")
-    @ApiOperation(value = "创建用户")
-    public User createUser(@RequestBody User user) {
-        // TODO: 创建用户
-    }
-}
-```
-
-打开自动生成的可视化API测试页面
-
-```
-http://127.0.0.1:8080/swagger-ui.html
-```
-
-
-
-## 16.1. 配置扫描接口及Swagger开关
-
-实现在开发环境下启用Swagger，生产环境不启用。
-
-思路：SpringBoot使用多环境配置文件，之后获取当前所处环境，最后再判断
-
-```java
-@Configuration //告诉Spring 容器，这个类是一个配置类
-@EnableSwagger2 //启用Swagger2 功能
-public class SwaggerConfig {
-    @Bean
-    public Docket docket(Environment environment) {
-        // 设置要使用Swagger的环境
-        Profiles profile = Profiles.of("dev");
-        // 判断当前所处环境是否等于设定环境
-        boolean flag = environment.acceptsProfiles(profile);
-
-        return new Docket(DocumentationType.SWAGGER_2)
-                // flag标识
-                .enable(flag)
-                .select()
-                /* RequestHandlerSelectors 配置要扫描接口的方式
-                        basePackage 指定要扫描的包
-                        any 扫描全部
-                        none 不扫描
-                        withClassAnnotation 扫描类上的注解，参数是一个注解的反射对象
-                        withMethodAnnotation 扫描方法上的注解
-                */
-                .apis(RequestHandlerSelectors.basePackage("com"))
-                // 过滤什么路径
-                .paths(PathSelectors.any())
-                .build();
-    }
-}
-```
-
-## 16.2. 分组和接口注释
-
-实现分组，return多个Docket实例即可
-
-```java
-@Configuration //告诉Spring 容器，这个类是一个配置类
-@EnableSwagger2 //启用Swagger2 功能
-public class SwaggerConfig {
-    // 实现分组 
-    @Bean
-    public Docket docket1(){
-        return new Docket(DocumentationType.SWAGGER_2).groupName("分组1")
-              .apiInfo(apiInfo())
-              .select()
-              .apis(RequestHandlerSelectors.basePackage("com.hy.controller"))
-              .paths(PathSelectors.any())
-              .build();
-    }
-    @Bean
-    public Docket docket2(){
-        return new Docket(DocumentationType.SWAGGER_2).groupName("分组2")
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.hy.controller"))
-                .build();
-    }
-    @Bean
-    public Docket docket(Environment environment) {
-        return new Docket(DocumentationType.SWAGGER_2).groupName("默认分组")
-                .enable(flag)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com"))
-                .paths(PathSelectors.any())
-                .build();
-    }
-}
-```
-
-只要API接口中的返回值里存在实体类，该实体类就会被扫描到lswagger中
-
-```java
-@RestController
-public class HelloSwagger {
-    @RequestMapping(value = "/swagger",method = RequestMethod.GET)
-    public User swagger(){
-        return new User();
-    }
-}
-```
-
-实现注释，以 @Api开头的注释，给复杂接口注释帮助理解
-
-```java
-@ApiModel("实体类")
-public class User implements Serializable {
-    @ApiModelProperty("用户名")
-    private String name;
-    @ApiModelProperty("密码")
-    private String password;
-}
-```
-
-# 17. SpringBoot整合日志框架
-
-在 Spring Boot 项目中引入日志框架，一般有两种选择：Log4j2 和 Logback。Spring Boot 默认使用 Logback 作为日志框架
-
-## 17.1. 整合Logback
-
-在Spring Boot 的web项目中，默认是不需要在pom.xml中单独配置 logback 依赖的
-
-在yml配置文件中配置日志输出的格式和级别，例如：
-
-```yml
-logging:
-  #level 日志等级 指定命名空间的日志输出
-  level:
-    com.fishpro.log: debug
-  #file 指定输出文件的存储路径
-  file: logs/app.log
-  #pattern 指定输出场景的日志输出格式
-  pattern:
-    console: "%d %-5level %logger : %msg%n"
-    file: "%d %-5level [%thread] %logger : %msg%n"
-```
-
-如果需要更为详细的自定义 logback 日志，需要使用 xml 配置文件来配置。在 resource 文件夹下新建文件 `logback-spring.xml` 
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="60 seconds" debug="false">
-   <contextName>logback</contextName>
-   <!--输出到控制台-->
-   <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-       <encoder>
-           <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-           <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
-           <charset>UTF-8</charset>
-       </encoder>
-   </appender>
-
-   <!--按天生成日志-->
-   <appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-       <Prudent>true</Prudent>
-       <!-- 过滤器，只打印ERROR级别的日志 -->
-       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-           <!--日志文件输出的文件名-->
-           <FileNamePattern>
-               applog/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
-           </FileNamePattern>
-           <!--日志文件保留天数-->
-           <MaxHistory>15</MaxHistory>
-       </rollingPolicy>
-       <layout class="ch.qos.logback.classic.PatternLayout">
-           <Pattern>
-               %d{yyyy-MM-dd HH:mm:ss} -%msg%n
-           </Pattern>
-       </layout>
-   </appender>
-
-   <logger name="com.fishpro.log" additivity="false">
-       <appender-ref ref="console"/>
-       <appender-ref ref="logFile"/>
-   </logger>
-   
-   <!-- 设置Spring&Hibernate日志输出级别 -->
-   <logger name="org.springframework" level="WARN"/>
-   <logger name="org.mybatis" level="WARN"/> 
-   <logger name="com.ibatis" level="DEBUG"/> 
-   <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG"/> 
-   <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/> 
-   <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG"/>
-   <logger name="java.sql.Connection" level="DEBUG"/>  
-   <logger name="java.sql.Statement" level="DEBUG"/> 
-   <logger name="java.sql.PreparedStatement" level="DEBUG"/> 
-   <logger name="com.ruidou.baoqian.mapper" level="DEBUG"/>
-
-   <!-- 开发环境下的日志配置 -->
-   <root level="error">
-       <appender-ref ref="console"/>
-       <appender-ref ref="logFile"/>
-   </root>
-</configuration>
-```
-
-打印日志
-
-```java
-private final Logger log = LoggerFactory.getLogger(this.getClass());
-log.info("打印日志");
-```
-
-## 17.2. 整合Log4j2
-
-在pom.xml中导入依赖
-
-```xml
-<dependency> 
-	<groupId>org.springframework.boot</groupId> 
-	<artifactId>spring-boot-starter-log4j2</artifactId> 
-</dependency>
-```
-
-在 `src/main/resources` 目录下创建 `log4j2.xml` 文件，并配置日志输出的格式和级别
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<Configuration>
-  <Appenders>
-    <Console name="Console" target="SYSTEM_OUT">
-      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-    </Console>
-  </Appenders>
-  <Loggers>
-    <Root level="info">
-      <AppenderRef ref="Console" />
-    </Root>
-  </Loggers>
-</Configuration>
-```
-
-上面的配置将日志输出到控制台，格式为时间戳、线程名、日志级别、日志类名、日志内容。日志级别为 INFO
-
-# 18. Spring Boot全局异常处理
-
-## 18.1. 基本使用
+## 15.1. 基本使用
 
 首先，我们需要新建一个类，在这个类上加上`@ControllerAdvice`或`@RestControllerAdvice`注解，这个类就配置成全局处理类了。（这个根据你的Controller层用的是`@Controller`还是`@RestController`来决定）
 
@@ -1353,7 +928,7 @@ public class GlobalExceptionHandler {
 这种异常处理方式下，会给所有或者指定的 Controller 织入异常处理的逻辑（AOP），当 Controller 中的方法抛出异常的时候，由被@ExceptionHandler 注解修饰的方法进行处理
 
 ExceptionHandlerMethodResolver 中 getMappedMethod 方法决定了异常具体被哪个被 @ExceptionHandler 注解修饰的方法处理异常
-## 18.2. 自定义异常
+## 15.2. 自定义异常
 
 - 项目开发中经常是很多人负责不同的模块，使用自定义异常可以统一对外异常展示的方式。
 - 自定义异常语义更加清晰明了，一看就知道是项目中手动抛出的异常
@@ -1396,13 +971,13 @@ public class APIException extends RuntimeException {
 
 当然还可以添加对Exception的处理，这样无论发生什么异常我们都能屏蔽掉然后响应数据给前端，不过建议最后项目上线时这样做，能够屏蔽掉错误信息暴露给前端，在开发中为了方便调试还是不要这样做
 
-# 19. 任务（必会）
+# 16. 任务（必会）
 
-## 19.1. 异步任务
+## 16.1. 异步任务
 
-在启动类上使用 @EnableAsync 开启异步功能
+在启动类上使用 `@EnableAsync` 开启异步功能
 
-用@Async修饰方法，在执行时SpringBoot自动为其分配一个子线程实现异步执行
+用`@Async`修饰方法，在执行时SpringBoot自动为其分配一个子线程实现异步执行
 
 ```java
 @Service
@@ -1419,11 +994,11 @@ public class AsynService {
 }
 ```
 
-## 19.2. 定时任务
+## 16.2. 定时任务
 
-在启动类上使用@EnableScheduling（spring提供） 开启定时功能 
+在启动类上使用`@EnableScheduling`（spring提供） 开启定时功能 
 
-用@Scheduled（spring提供）修饰方法，@Scheduled注解提供有多个属性，精细化配置定时任务执行规则，常用的属性有cron（cron表达式，设置定时任务触发的时间）、zone（指定cron表达式将被解析的时区。默认情况下，该属性是空字符串即使用服务器的本地时区）
+用`@Scheduled`（spring提供）修饰方法，`@Scheduled`注解提供有多个属性，精细化配置定时任务执行规则，常用的属性有cron（cron表达式，设置定时任务触发的时间）、zone（指定cron表达式将被解析的时区。默认情况下，该属性是空字符串即使用服务器的本地时区）
 
 注：中国地区服务器的时区通常默认为Asia/Shanghai
 
@@ -1437,7 +1012,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 19.3. 邮件任务
+## 16.3. 邮件任务
 
 导入依赖 pom.xml
 
@@ -1486,9 +1061,9 @@ public class MailService {
 
 。。。
 
-# 20. SpringBoot整合Quartz
+# 17. SpringBoot整合Quartz
 
-## 20.1. 什么是 Quartz？
+## 17.1. 什么是 Quartz
 
 任务调度框架。官网：http://www.quartz-scheduler.org/documentation/
 
@@ -1497,7 +1072,7 @@ public class MailService {
 比如我们需要对定时任务进行增删改查，`@Schedule` 就实现不了，你不可能每次新增一个定时任务都去手动改代码来添加吧。而 Quartz 就能够实现对任务的增删改查。
 
 三个重要概念：`任务Job`、`触发器Trigger`、`调度器Scheduler`
-## 20.2. Quartz 的特性
+## 17.2. Quartz 的特性
 
 Quartz 适用于各种类型的应用程序。无论是简单的定时任务还是复杂的分布式调度，Quartz都是一个强大而可靠的选择 
 
@@ -1549,7 +1124,7 @@ Quartz 的 Terracotta 扩展提供了集群功能，而无需备份数据库。
 
 插件机制，我们可向 Quartz 添加功能，例如保存 Job 执行的历史记录，或从文件加载 Job 和 Trigger 的定义。
 
-## 20.3. 使用Quartz
+## 17.3. 使用Quartz
 
 引入依赖
 ```
@@ -1569,61 +1144,9 @@ Quartz API 的关键接口如下：
 - `TriggerBuilder` ： 用来构建 `Trigger` 实例。
 
 
-# 21. SpringBoot整合Dubbo
+# 18. SpringBoot项目部署
 
-运行起 Dubbo 应用的一个大前提是先部署一个注册中心，如 ZooKeeper
-
-两个项目Dubbo-provider、Dubbo-consumer
-
-两个项目添加依赖 pom.xml，导入Dubbo和ZooKeeper
-
-```xml
-<!-- 导入dubbo -->
-<dependency>
-    <groupId>org.apache.dubbo</groupId>
-    <artifactId>dubbo-spring-boot-starter</artifactId>
-    <version>2.7.8</version>
-</dependency>
-<!--导入zookeeper客户端-->
-<dependency>
-    <groupId>com.github.sgroschupf</groupId>
-    <artifactId>zkclient</artifactId>
-    <version>0.1</version>
-</dependency>
-```
-
-Dubbo-provider中 配置application.yml
-
-```yml
-dubbo:
-  application:
-    # 应用服务名
-    name: provider-server
-  # 注册中心地址
-  registry:
-    address: zookeeper://localhost:2181
-  scan:
-  # 哪些服务要被注册
-    base-packages: com.hy.service
-```
-
-Dubbo-consumer中 配置application.yml
-
-```yml
-# 消费者从哪里获取服务（需要暴露自己的名字）
-server:
-  port: 8002
-dubbo:
-  application:
-    name: consumer-server
-  # 注册中心的地址
-  registry:
-    address: zookeeper://localhost:2181
-```
-
-# 22. SpringBoot项目部署
-
-## 22.1. SpringBoot项目打包
+## 18.1. SpringBoot项目打包
 
 对于使用 Maven 打包产生的项目产物，在不同的情况下会有不同需求，如：
 
@@ -1631,7 +1154,7 @@ dubbo:
 2.  文件和依赖分开，分为 jar 包和 /lib 下的依赖包信息，避免 jar 过大传输速度太慢
 3.  配置文件剥离，可以动态修改配置，分为 jar、/lib、.proerties 三个文件
 
-### 22.1.1. 默认完整打包版
+### 18.1.1. 默认完整打包版
 
 项目完整Jar包，包括相关依赖信息，可以直接执行
 
@@ -1639,7 +1162,7 @@ SpringBoot 项目使用 Maven 打包后的 Jar 包产物命名方式是由项目
 
 要自定义生成的文件名，可以在 pom.xml 的 build 标签中使用 finalName 标签自定义生成 jar 包名称
 
-### 22.1.2. 依赖文件外置版
+### 18.1.2. 依赖文件外置版
 
 若项目的依赖 jar 包比较多但是改动较少，在打包项目时就需要将三方依赖和当前项目分离开来，代码改变时只需要重新打包项目内容即可
 
@@ -1692,7 +1215,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 </build>
 ```
 
-### 22.1.3. 配置文件外置版
+### 18.1.3. 配置文件外置版
 
 若只是需要改动配置文件，而不需要修改源代码，配置文件放在 jar 文件外，会更方便。
 
@@ -1756,7 +1279,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 
 `maven-jar-plugin` 插件中可以设置打包时 jar 包中排除指定的配置文件类型
 
-## 22.2. SpringBoot项目部署到服务器
+## 18.2. SpringBoot项目部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1764,7 +1287,7 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 22.3. SpringBoot项目部署配置项
+## 18.3. SpringBoot项目部署配置项
 
 在yml 配置文件中
 
@@ -1788,11 +1311,11 @@ server:
       min-spare: 100
 ```
 
-## 22.4. SpringBoot项目定制banner
+## 18.4. SpringBoot项目定制banner
 
 创建banner.txt 放在 resources目录下
 
-# 23. 报错情况
+# 19. 报错情况
 
 解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
 
@@ -1819,7 +1342,7 @@ Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
 			</plugin>
 ```
 
-# 24. SpringBoot常用注解
+# 20. SpringBoot常用注解（重点）
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 

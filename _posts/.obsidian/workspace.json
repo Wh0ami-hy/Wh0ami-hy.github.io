@@ -1,47 +1,41 @@
 {
   "main": {
-    "id": "e7a6aa8f2c7cc2e4",
+    "id": "d89a461e93ee2281",
     "type": "split",
     "children": [
       {
-        "id": "b19450c1de761dc1",
+        "id": "a28a4cf93378535d",
         "type": "tabs",
-        "dimension": 69.97319034852548,
         "children": [
           {
-            "id": "bd75dd1914edfb3f",
+            "id": "55e3966f2b000c49",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
-                "file": "2022-08-03-软件设计规范.md",
-=======
-                "file": "2023-02-03-Vue2开发总结.md",
->>>>>>> 6f0a278dcb0c50e8ddd41823d2d421055e4eb728
+                "file": "2023-11-15-vue-admin-项目基础.md",
                 "mode": "source",
                 "source": false
               }
             },
-            "group": "cfaa8b2327243237"
+            "group": "170d69e4a0cdddb9"
           }
         ]
       },
       {
-        "id": "3fc6aa6a19f7c0f3",
+        "id": "ca1ed71b41e03b0a",
         "type": "tabs",
-        "dimension": 30.026809651474526,
         "children": [
           {
-            "id": "a1d3e9197527a017",
+            "id": "be2bbe421c4223ee",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-02-03-Vue2开发总结.md"
+                "file": "2023-11-15-vue-admin-项目基础.md"
               }
             },
-            "group": "cfaa8b2327243237"
+            "group": "170d69e4a0cdddb9"
           }
         ]
       }
@@ -49,15 +43,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "abbe692ff05f1f9b",
+    "id": "bf27d189aa2c4dfc",
     "type": "split",
     "children": [
       {
-        "id": "c74134565e7ae1d2",
+        "id": "14f5c649a55fe08a",
         "type": "tabs",
         "children": [
           {
-            "id": "8a61d045dd2811a4",
+            "id": "841b62229be6c46a",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -67,7 +61,7 @@
             }
           },
           {
-            "id": "5dc805522351137a",
+            "id": "c8bf05ff06fade0d",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -82,7 +76,7 @@
             }
           },
           {
-            "id": "7b698929ad816d25",
+            "id": "3718809a95b084d0",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -93,28 +87,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.5,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "c0b9302c6a0994b5",
+    "id": "b7733728dcefcf92",
     "type": "split",
     "children": [
       {
-        "id": "50c15ba0a6f303ac",
+        "id": "b2f1738cf0b474b2",
         "type": "tabs",
         "children": [
           {
-            "id": "7ac313ba1fae9be1",
+            "id": "e73d9187a1418925",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< HEAD
-                "file": "2022-08-03-软件设计规范.md",
-=======
-                "file": "2023-02-03-Vue2开发总结.md",
->>>>>>> 6f0a278dcb0c50e8ddd41823d2d421055e4eb728
+                "file": "2023-11-15-vue-admin-项目基础.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,23 +115,19 @@
             }
           },
           {
-            "id": "8463b7d63af48dd1",
+            "id": "d40bc0c8cac92e5e",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-<<<<<<< HEAD
-                "file": "2022-08-03-软件设计规范.md",
-=======
-                "file": "2023-02-03-Vue2开发总结.md",
->>>>>>> 6f0a278dcb0c50e8ddd41823d2d421055e4eb728
+                "file": "2023-11-15-vue-admin-项目基础.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "ec7c55eddd443b54",
+            "id": "d72a8b7b819a88c5",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -153,26 +138,22 @@
             }
           },
           {
-            "id": "6b5fb6e996608e8d",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-<<<<<<< HEAD
-                "file": "2022-08-03-软件设计规范.md"
-=======
-                "file": "2023-02-03-Vue2开发总结.md"
->>>>>>> 6f0a278dcb0c50e8ddd41823d2d421055e4eb728
-              }
-            }
-          },
-          {
-            "id": "f9eac1afbdf4652b",
+            "id": "8777c5ab2e85ba76",
             "type": "leaf",
             "state": {
               "type": "all-properties",
               "state": {
                 "sortOrder": "frequency"
+              }
+            }
+          },
+          {
+            "id": "1f4ec95831ead6e0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-11-15-vue-admin-项目基础.md"
               }
             }
           }
@@ -193,41 +174,26 @@
       "command-palette:打开命令面板": false
     }
   },
-<<<<<<< HEAD
-  "active": "bd75dd1914edfb3f",
+  "active": "55e3966f2b000c49",
   "lastOpenFiles": [
-    "2023-05-24-Java实用工具库.md",
-    "2023-02-12-Java初级.md",
-    "2023-03-13-Spring MVC.md",
-=======
-  "active": "a1d3e9197527a017",
-  "lastOpenFiles": [
->>>>>>> 6f0a278dcb0c50e8ddd41823d2d421055e4eb728
-    "2021-06-26-JDBC.md",
-    "2021-07-01-python_正则.md",
-    "2021-07-05-Java网络编程.md",
-    "2021-12-26-Windows下安装双系统.md",
-    "2022-04-25-python多线程&多进程.md",
-    "2022-05-11-pyinstaller使用.md",
-    "2022-05-18-python虚拟环境.md",
-    "2022-05-23-python_socket.md",
-    "2022-06-11-python_tkinter.md",
-    "2022-06-30-MyBatis.md",
-    "2022-06-30-ORM&DAO.md",
-    "2022-08-03-软件设计规范.md",
-    "2023-01-04-引用和地址的区别.md",
-    "2023-10-02-软件设计规范.md",
-    "2022-08-17-Web认证机制的发展.md",
-    "2023-01-02-MySQL配置.md",
-    "2023-01-04-论堆&栈.md",
-    "2023-01-07-Maven.md",
-    "2023-01-11-Vue2.md",
-    "2023-02-03-Vue2开发总结.md",
-    "2023-01-26-python基础.md",
-    "2023-02-09-阿里Java开发手册.md",
-    "2023-03-27-Redis.md",
+    "2023-11-15-vue-admin-登录权限.md",
+    "2023-11-15-vue-admin-项目基础.md",
+    "2023-11-18-Knife4j接口文档.md",
+    "2023-03-03-Spring Boot.md",
+    "2023-09-15-SpringCloud.md",
+    "2023-09-30-操作系统.md",
+    "2023-10-05-Linux用户和组管理.md",
+    "2023-10-14-Spring之Validation校验参数.md",
+    "2023-10-16-PostgreSQL配置.md",
+    "2023-10-19-拦截器和过滤器.md",
+    "2023-11-11-基于Vue的门户网站和后台管理系统.md",
+    "2023.09-17-C++.md",
+    "2023-03-11-Spring核心.md",
+    "2023-09-07-SpringBoot日志框架.md",
     "新建文本文档.txt",
-    "Linux网络基础",
-    "2023-09-24-Linux入门-"
+    "2023-04-13-Spring Security.md",
+    "2023-03-13-Spring MVC.md",
+    "2023-09-12-SpringBoot后端接口规范.md",
+    "2023-04-25-Spring Boot项目最佳实践.md"
   ]
 }
