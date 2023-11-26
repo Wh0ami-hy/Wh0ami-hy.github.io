@@ -4,38 +4,36 @@
     "type": "split",
     "children": [
       {
-        "id": "a28a4cf93378535d",
+        "id": "43ca95ba0f7c8567",
         "type": "tabs",
         "children": [
           {
-            "id": "55e3966f2b000c49",
+            "id": "29c3011669b43f12",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-11-15-vue-admin-项目基础.md",
+                "file": "2023-11-15-vue-admin-登录权限.md",
                 "mode": "source",
                 "source": false
               }
-            },
-            "group": "170d69e4a0cdddb9"
+            }
           }
         ]
       },
       {
-        "id": "ca1ed71b41e03b0a",
+        "id": "0bef9a5d80537855",
         "type": "tabs",
         "children": [
           {
-            "id": "be2bbe421c4223ee",
+            "id": "f845fd515fdfcc84",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-15-vue-admin-项目基础.md"
+                "file": "2023-11-15-vue-admin-登录权限.md"
               }
-            },
-            "group": "170d69e4a0cdddb9"
+            }
           }
         ]
       }
@@ -87,7 +85,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "b7733728dcefcf92",
@@ -103,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-11-15-vue-admin-项目基础.md",
+                "file": "2023-11-15-vue-admin-登录权限.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-11-15-vue-admin-项目基础.md",
+                "file": "2023-11-15-vue-admin-登录权限.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -153,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-15-vue-admin-项目基础.md"
+                "file": "2023-11-15-vue-admin-登录权限.md"
               }
             }
           }
@@ -174,11 +173,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "55e3966f2b000c49",
+  "active": "29c3011669b43f12",
   "lastOpenFiles": [
-    "2023-11-15-vue-admin-登录权限.md",
     "2023-11-15-vue-admin-项目基础.md",
+    "2023-01-11-Vue2.md",
+    "2023-11-15-vue-admin-登录权限.md",
     "2023-11-18-Knife4j接口文档.md",
+    "2023-02-03-Vue2开发总结.md",
+    "2023-01-12-IDEA使用.md",
     "2023-03-03-Spring Boot.md",
     "2023-09-15-SpringCloud.md",
     "2023-09-30-操作系统.md",
