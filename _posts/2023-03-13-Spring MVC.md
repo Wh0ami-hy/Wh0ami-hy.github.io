@@ -560,26 +560,7 @@ public String hello(@RequestParam("username") String name, Model model){
 
 注：ModelMap继承了LinkedHashMap。Model是精简版
 
-# 9. 乱码问题解决
-
-在 src/main/webapp/WEB-INF/web.xml中配置
-
-```xml
-<filter>
-    <filter-name>encoding</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-        <param-name>encoding</param-name>
-        <param-value>utf-8</param-value>
-    </init-param>
-</filter>
-<filter-mapping>
-    <filter-name>encoding</filter-name>
-    <url-pattern>/*</url-pattern>
-</filter-mapping>
-```
-
-# 10. 返回JSON格式数据（重点）
+# 9. 返回JSON格式数据（重点）
 
 JSON是JavaScript对象的字符串表示法，它使用文本表示一个JS对象的信息，**本质是一个字符串**
 
@@ -628,20 +609,32 @@ String str = mapper.writeValueAsString(...);
 
 可以封装一个JsonUtils类专门实现JSON格式的转换
 
+# 10. 乱码问题解决
+
+在 src/main/webapp/WEB-INF/web.xml中配置
+
+```xml
+<filter>
+    <filter-name>encoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+    </init-param>
+</filter>
+<filter-mapping>
+    <filter-name>encoding</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+```
+
 # 11. SpringMVC拦截器
 
 拦截器是SpringMVC框架的，只有使用了SpringMVC框架的工程才能使用，拦截器是AOP思想的具体应用
 
 拦截器只会拦截访问的控制器方法，不会拦截静态资源，如果访问的是jsp/html/css/image/js 是不会进行拦截的
 
-## 11.1. 拦截器的执行顺序
-
-- 请求到达 DispatcherServlet
-- DispatcherServlet 发送至 Interceptor ，执行 preHandle
-- 请求达到 Controller
-- 请求结束后，postHandle 执行
-
-## 11.2. 自定义拦截器
+## 11.1. 自定义拦截器
 
 ![QQ截图20230107172231](F:\笔记\博客\文章图片\QQ截图20230107172231.png)
 
@@ -703,6 +696,13 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 ```
+
+## 11.2. 拦截器的执行顺序
+
+- 请求到达 DispatcherServlet
+- DispatcherServlet 发送至 Interceptor ，执行 preHandle
+- 请求达到 Controller
+- 请求结束后，postHandle 执行
 
 ## 11.3. 拦截器应用-登录验证
 

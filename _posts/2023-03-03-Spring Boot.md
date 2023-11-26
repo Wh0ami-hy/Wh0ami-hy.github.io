@@ -537,67 +537,21 @@ public class User {
 }
 ```
 
-# 9. 项目国际化
+# 9. 国际化
 
-i18n 全称 Internationalization，也就是国际化的意思，因为单词太长，所以中间的 18 个字母被缩写为 18，再加上开头和结尾的字母，就组成了 i18n
+i18n 全称 Internationalization，也就是国际化的意思，因为单词太长，所以中间的 18 个字母被缩写为 18，再加上开头和结尾的字母，就组成了 i18n。
 
-eg：实现登录界面的国际化
+通常要实现的效果是，前端有个按钮可以切换语言，对于前后端分离的项目建议把国际化做在前端。
 
-`MessageSourceAutoConfiguration` 类提供配置国际化
+# 10. 扩展SpringMVC
 
-创建 `src/main/resources/i18n` 文件夹
-
-创建 `src/main/resources/i18n/login.properties` 文件
-
-创建 `src/main/resources/i18n/login_zh_CN.properties` 文件
-
-创建 `src/main/resources/i18n/login_en_US.properties` 文件
-
-编写 `login.properties`
-
-```properties
-login.btn=登录
-login.password=密码
-login.remember=记住我
-login.tip=请登录
-login.username=用户名
-```
-
-`LocaleResolver` 实现地区解析，使用配置类自己配置，之后在MyMvcConfig中导入即可
-
-```java
-public class MyLocaleResolver implements LocaleResolver {
-    // 解析请求
-    @Override
-    public Locale resolveLocale(HttpServletRequest request){
-        String language = request.getParameter("language");
-        // 默认地区
-        Locale locale = Locale.getDefault();
-        // 如果请求携带了地区化的参数
-        if(language!= null){
-            locale = new Locale(language);
-        }
-        return locale;
-    }
-
-    @Override
-    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
-
-    }
-}
-```
-
-# 10. 扩展SpringMVC（重点）
-
-SpringBoot 提供了自动配置SpringMVC的功能，即 `WebMvcAutoConfiguration.java`。但是我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置
+SpringBoot 提供了自动配置SpringMVC的功能，即 `WebMvcAutoConfiguration.java`。我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置。一般在前后端不分离的项目中会用到。
 
 实现手动配置，编写一个 `@Configuration`注解类，并且实现 `WebMvcConfigurer`接口
 
-注意：`@EnableWebMvc` 实际就是导入了一个类：`DelegatingWebMvcConfiguration`，该类从容器中获取所有的`webmvcconfig`，加上这个注解后 SpringBoot 的所有自动配置将全部失效
 
 ```java
 @Configuration	// 表明这是一个配置类
-// @EnableWebMvc
 public class MyMvcConfig implements WebMvcConfigurer {
     // 导入自定义的视图解析器
     @Bean
@@ -606,9 +560,6 @@ public class MyMvcConfig implements WebMvcConfigurer {
     }
 }
 ```
-
-其他：自定义视图解析器、自定义拦截器...
-
 
 # 11. Spring Data
 
@@ -1315,7 +1266,7 @@ server:
 
 创建banner.txt 放在 resources目录下
 
-# 19. 报错情况
+# 19. 常见报错
 
 解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
 
