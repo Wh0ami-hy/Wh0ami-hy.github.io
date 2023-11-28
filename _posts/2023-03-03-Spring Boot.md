@@ -382,128 +382,12 @@ spring:
 	profiles :
 		active: dev  # dev表示激活开发环境  pro表示激活生产环境
 ```
+
 # 5. 参数校验
 
 通常使用自带的Validation校验参数
-# 6. SpringBoot管理静态资源
 
-
-分析配置类 `WebMvcAutoConfiguration` ，得到不同位置的静态资源的优先级
-
-```
-优先级1:resources/resources
-优先级2:resources/static
-优先级3:resources/public
-
-访问：localhost:80/res_name
-```
-
-yml 配置文件中修改静态资源目录（不建议改）
-
-```
-spring:
-	mvc:
-		static-path-pattern=
-```
-
-注：在 templates 目录下的所有页面，只能通过controller来跳转，且需要模板引擎的支持
-
-# 7. SpringBoot整合Thymeleaf
-
-使用Thymeleaf作为视图解析器
-
-**SpringBoot默认不支持 JSP，需要引入第三方模板引擎技术实现页面渲染**
-
-导入依赖，之后将html放在 `src/main/resources/templates` 目录下，即可通过controller访问html
-
-添加依赖 pom.xml
-
-```xml
-<!--Thymeleaf-->
-<dependency>
-    <groupId>org.thymeleaf</groupId>
-    <artifactId>thymeleaf-spring5</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.thymeleaf.extras</groupId>
-    <artifactId>thymeleaf-extras-java8time</artifactId>
-</dependency>
-```
-
-配置类中设置，把thymeleaf 添加到 Spring Boot 上下文
-
-```java
-@Configuration
-public class WebConfig implements WebMvcConfigurer {
-    @Bean
-    public ClassLoaderTemplateResolver templateResolver() {
-        ClassLoaderTemplateResolver templateResolver =
-                new ClassLoaderTemplateResolver();
-        templateResolver.setPrefix("/templates/");
-        templateResolver.setSuffix(".html");
-        templateResolver.setCharacterEncoding("UTF-8");
-
-        return templateResolver;
-    }
-
-    @Bean
-    public SpringTemplateEngine templateEngine() {
-        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setTemplateResolver(templateResolver());
-        return templateEngine;
-    }
-}
-```
-
-controller层，使用Model 向前端传递数据
-
-```java
-@RequestMapping(value = "/index")
-public String index(Model model){  //这里不仅仅可以是Model，还可以是Map、ModelMap
-    model.addAttribute("name", "yyds");
-    return "index";
-}
-```
-
-在yml配置文件中关闭 SpringBoot 静态文件缓存，默认为true
-
-当为true时，修改静态文件（html、css、js）需要重启服务器才可以有效，当为false时，修改静态文件（html、css、js）只要在浏览器端刷新就可以了
-
-```yml
-spring.thymeleaf.cache = false
-```
-
-**补充：thymeleaf语法**
-
-在html文件中添加引用
-
-```html
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-```
-
-基础模板
-
-```html
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Title</title>
-</head>
-<body>
-<!--所有的html元素都可以被thymeleaf 替换接管: th:元素名-->
-<div th:text="${msg}"></div>
-</body>
-</html>
-```
-
-所有的html元素都可以被thymeleaf替换接管
-
-```html
-th:元素名
-```
-
-# 8. 引入Lombok库
+# 6. 引入Lombok库
 
 创建标准的实体类时，可以引入Lombok，使用注解开发
 
@@ -537,31 +421,13 @@ public class User {
 }
 ```
 
-# 9. 国际化
+# 7. 国际化
 
 i18n 全称 Internationalization，也就是国际化的意思，因为单词太长，所以中间的 18 个字母被缩写为 18，再加上开头和结尾的字母，就组成了 i18n。
 
 通常要实现的效果是，前端有个按钮可以切换语言，对于前后端分离的项目建议把国际化做在前端。
 
-# 10. 扩展SpringMVC
-
-SpringBoot 提供了自动配置SpringMVC的功能，即 `WebMvcAutoConfiguration.java`。我们可以使用 JavaConfig，即用配置类手动接管这些配置并且扩展这些配置。一般在前后端不分离的项目中会用到。
-
-实现手动配置，编写一个 `@Configuration`注解类，并且实现 `WebMvcConfigurer`接口
-
-
-```java
-@Configuration	// 表明这是一个配置类
-public class MyMvcConfig implements WebMvcConfigurer {
-    // 导入自定义的视图解析器
-    @Bean
-    public ViewResolver myView(){
-        return new MyViewConfig();
-    }
-}
-```
-
-# 11. Spring Data
+# 8. Spring Data
 
 https://spring.io/projects/spring-data
 
@@ -575,7 +441,7 @@ Spring Data JDBC aims at being conceptually easy. In order to achieve this it do
 
 Spring Data JDBC （不推荐）
 
-## 11.1. 操作MySQL
+## 8.1. 操作MySQL
 
 在pom.xml中导入依赖
 
@@ -608,7 +474,7 @@ spring:
 
 `com.mysql.jdbc.Driver`适用于MySQL5.x 
 
-## 11.2. 操作MongoDB
+## 8.2. 操作MongoDB
 
 在pom.xml中导入依赖
 ```xml
@@ -633,7 +499,7 @@ spring:
 	    auto-index-creation: true
 ```
 
-## 11.3. 操作Redis
+## 8.3. 操作Redis
 
 在pom.xml中导入依赖
 
@@ -661,7 +527,7 @@ spring:
 	      timeout: 5000
 ```
 
-## 11.4. 在SpringBoot中使用多个数据源
+## 8.4. 在SpringBoot中使用多个数据源
 
 **方法一：使用 Spring Boot 自带的多数据源配置**
 
@@ -705,7 +571,7 @@ public class UserService {
 
 如 MyBatis-Plus
 
-# 12. SpringBoot整合Druid
+# 9. SpringBoot整合Druid
 
 Druid是高性能的关系型数据库连接池，它是阿里巴巴的一个开源项目。支持所有JDBC兼容的数据库，包括Oracle、MySQL、Derby、PostgreSQL、SQL Server、H2等。提供了丰富的监控和统计功能，可以帮助开发者更好地管理数据库连接
 
@@ -807,7 +673,7 @@ public class DruidConfig {
 }
 ```
 
-# 13. SpringBoot整合Mybatis
+# 10. SpringBoot整合Mybatis
 
 在pom.xml中导入依赖
 
@@ -832,7 +698,7 @@ mybatis:
 
 编写 Mapper 接口和对应的 XML 映射文件
 
-# 14. SpringBoot整合MyBatis-Plus
+# 11. SpringBoot整合MyBatis-Plus
 
 在pom.xml中导入依赖
 ```xml
@@ -848,15 +714,44 @@ yml 文件中添加以下配置项
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
 ```
-# 15. Spring Boot全局异常处理
 
-## 15.1. 基本使用
+# 12. Spring Boot全局异常处理
 
-首先，我们需要新建一个类，在这个类上加上`@ControllerAdvice`或`@RestControllerAdvice`注解，这个类就配置成全局处理类了。（这个根据你的Controller层用的是`@Controller`还是`@RestController`来决定）
+通常情况下我们用`try.....catch....`对异常进行捕捉处理，但是在实际项目中对业务模块进行异常捕捉，会造成代码重复和繁杂， 我们希望代码中只有业务相关的操作，所有的异常我们单独设立一个类来处理它
+
+我们在可能发生异常的方法里`throw`抛给控制器。然后由全局异常处理器对异常进行统一处理
+
+```java
+@Controller
+public class SysIndexController 
+{
+    /**
+     * 首页方法
+     */
+    @GetMapping("/index")
+    public String index(ModelMap mmap)
+    {
+        /**
+         * 模拟用户未登录，抛出业务逻辑异常
+         */
+        SysUser user = ShiroUtils.getSysUser();
+        if (StringUtils.isNull(user))
+		{
+            throw new LoginException("用户未登录，无法访问请求。");
+        }
+		mmap.put("user", user);
+        return "index";
+    }
+}
+```
+
+## 12.1. 配置全局异常处理类
+
+首先，我们需要新建一个类，在这个类上加上`@ControllerAdvice`或`@RestControllerAdvice`注解，这个类就配置成全局处理类了。（这个根据Controller层用的是`@Controller`还是`@RestController`来决定）
 
 然后在类中新建方法，在方法上加上`@ExceptionHandler`注解并指定你想处理的异常类型，接着在方法内编写对该异常的操作逻辑，就完成了对该异常的全局处理
 
-该注解用于捕获在Spring Boot的Controller 层抛出的异常（如果已经编写了 `try-catch` 且在 catch 模块中没有使用 throw 抛出异常， 则 `@RestControllerAdvice` 捕获不到异常）。
+`@ExceptionHandler`注解用于捕获在Spring Boot的Controller 层抛出的异常（如果已经编写了 `try-catch` 且在 catch 模块中没有使用 throw 抛出异常， 则 `@RestControllerAdvice` 捕获不到异常）。
 
 
 ```java
@@ -876,15 +771,16 @@ public class GlobalExceptionHandler {
 }
 ```
 
-这种异常处理方式下，会给所有或者指定的 Controller 织入异常处理的逻辑（AOP），当 Controller 中的方法抛出异常的时候，由被@ExceptionHandler 注解修饰的方法进行处理
+这种异常处理方式下，会给所有或者指定的 Controller 织入异常处理的逻辑（AOP），当 Controller 中的方法抛出异常的时候，由被`@ExceptionHandler` 注解修饰的方法进行处理
 
-ExceptionHandlerMethodResolver 中 getMappedMethod 方法决定了异常具体被哪个被 @ExceptionHandler 注解修饰的方法处理异常
-## 15.2. 自定义异常
+`ExceptionHandlerMethodResolver` 中 `getMappedMethod` 方法决定了异常具体被哪个被 `@ExceptionHandler` 注解修饰的方法处理异常
+
+## 12.2. 自定义异常
 
 - 项目开发中经常是很多人负责不同的模块，使用自定义异常可以统一对外异常展示的方式。
 - 自定义异常语义更加清晰明了，一看就知道是项目中手动抛出的异常
 
-先写一个自定义异常
+先写一个自定义异常类，需要继承`RuntimeException`类
 
 ```java
 import lombok.Getter;  
@@ -910,7 +806,7 @@ public class APIException extends RuntimeException {
 }
 ```
 
-然后在刚才的全局异常类中加入如下
+然后在全局异常处理类中加入
 
 ```java
 //自定义的全局异常  
@@ -920,11 +816,19 @@ public class APIException extends RuntimeException {
   }
 ```
 
-当然还可以添加对Exception的处理，这样无论发生什么异常我们都能屏蔽掉然后响应数据给前端，不过建议最后项目上线时这样做，能够屏蔽掉错误信息暴露给前端，在开发中为了方便调试还是不要这样做
+当然还可以添加对`Exception`的处理，这样无论发生什么异常我们都能屏蔽掉然后响应数据给前端，不过建议最后项目上线时这样做，能够屏蔽掉错误信息暴露给前端，在开发中为了方便调试还是不要这样做
 
-# 16. 任务（必会）
+**无法捕获异常？**
 
-## 16.1. 异步任务
+可以从以下几个方面着手检查
+
+- 异常是否已被处理，即抛出异常后被catch
+- 打印了日志或抛出了其它异常 
+- 异常是否非Controller抛出，即在拦截器或过滤器中出现的异常
+
+# 13. 任务（必会）
+
+## 13.1. 异步任务
 
 在启动类上使用 `@EnableAsync` 开启异步功能
 
@@ -945,7 +849,7 @@ public class AsynService {
 }
 ```
 
-## 16.2. 定时任务
+## 13.2. 定时任务
 
 在启动类上使用`@EnableScheduling`（spring提供） 开启定时功能 
 
@@ -963,7 +867,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 16.3. 邮件任务
+## 13.3. 邮件任务
 
 导入依赖 pom.xml
 
@@ -1012,9 +916,9 @@ public class MailService {
 
 。。。
 
-# 17. SpringBoot整合Quartz
+# 14. SpringBoot整合Quartz
 
-## 17.1. 什么是 Quartz
+## 14.1. 什么是 Quartz
 
 任务调度框架。官网：http://www.quartz-scheduler.org/documentation/
 
@@ -1023,7 +927,7 @@ public class MailService {
 比如我们需要对定时任务进行增删改查，`@Schedule` 就实现不了，你不可能每次新增一个定时任务都去手动改代码来添加吧。而 Quartz 就能够实现对任务的增删改查。
 
 三个重要概念：`任务Job`、`触发器Trigger`、`调度器Scheduler`
-## 17.2. Quartz 的特性
+## 14.2. Quartz 的特性
 
 Quartz 适用于各种类型的应用程序。无论是简单的定时任务还是复杂的分布式调度，Quartz都是一个强大而可靠的选择 
 
@@ -1075,10 +979,10 @@ Quartz 的 Terracotta 扩展提供了集群功能，而无需备份数据库。
 
 插件机制，我们可向 Quartz 添加功能，例如保存 Job 执行的历史记录，或从文件加载 Job 和 Trigger 的定义。
 
-## 17.3. 使用Quartz
+## 14.3. 使用Quartz
 
 引入依赖
-```
+```xml
 <dependency>
     <groupId>org.quartz-scheduler</groupId>
     <artifactId>quartz</artifactId>
@@ -1095,9 +999,9 @@ Quartz API 的关键接口如下：
 - `TriggerBuilder` ： 用来构建 `Trigger` 实例。
 
 
-# 18. SpringBoot项目部署
+# 15. SpringBoot项目部署
 
-## 18.1. SpringBoot项目打包
+## 15.1. SpringBoot项目打包
 
 对于使用 Maven 打包产生的项目产物，在不同的情况下会有不同需求，如：
 
@@ -1105,7 +1009,7 @@ Quartz API 的关键接口如下：
 2.  文件和依赖分开，分为 jar 包和 /lib 下的依赖包信息，避免 jar 过大传输速度太慢
 3.  配置文件剥离，可以动态修改配置，分为 jar、/lib、.proerties 三个文件
 
-### 18.1.1. 默认完整打包版
+### 15.1.1. 默认完整打包版
 
 项目完整Jar包，包括相关依赖信息，可以直接执行
 
@@ -1113,7 +1017,7 @@ SpringBoot 项目使用 Maven 打包后的 Jar 包产物命名方式是由项目
 
 要自定义生成的文件名，可以在 pom.xml 的 build 标签中使用 finalName 标签自定义生成 jar 包名称
 
-### 18.1.2. 依赖文件外置版
+### 15.1.2. 依赖文件外置版
 
 若项目的依赖 jar 包比较多但是改动较少，在打包项目时就需要将三方依赖和当前项目分离开来，代码改变时只需要重新打包项目内容即可
 
@@ -1166,7 +1070,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 </build>
 ```
 
-### 18.1.3. 配置文件外置版
+### 15.1.3. 配置文件外置版
 
 若只是需要改动配置文件，而不需要修改源代码，配置文件放在 jar 文件外，会更方便。
 
@@ -1230,7 +1134,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 
 `maven-jar-plugin` 插件中可以设置打包时 jar 包中排除指定的配置文件类型
 
-## 18.2. SpringBoot项目部署到服务器
+## 15.2. SpringBoot项目部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1238,7 +1142,7 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 18.3. SpringBoot项目部署配置项
+## 15.3. SpringBoot项目部署配置项
 
 在yml 配置文件中
 
@@ -1262,38 +1166,11 @@ server:
       min-spare: 100
 ```
 
-## 18.4. SpringBoot项目定制banner
+## 15.4. SpringBoot项目定制banner
 
 创建banner.txt 放在 resources目录下
 
-# 19. 常见报错
-
-解决spring-boot-maven-plugin爆红，添加version，版本要与spring-boot-starter-parent的version一致
-
-```xml
-	<artifactId>spring-boot-maven-plugin</artifactId>
-	<version>2.7.7</version>
-```
-
-若报错如下
-
-```
-Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0
-```
-
-则先禁用 maven 中 的test
-
-再pom.xml中添加如下（引入 maven-resources-plugin）
-
-```xml
-<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.1.0</version>
-			</plugin>
-```
-
-# 20. SpringBoot常用注解（重点）
+# 16. SpringBoot常用注解（重点）
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 
