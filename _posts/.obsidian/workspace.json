@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-03-13-Spring MVC.md",
+                "file": "2023-11-29-DOS批处理脚本.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 295.5,
     "collapsed": true
   },
   "right": {
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-03-13-Spring MVC.md",
+                "file": "2023-11-29-DOS批处理脚本.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-03-13-Spring MVC.md",
+                "file": "2023-11-29-DOS批处理脚本.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-03-13-Spring MVC.md"
+                "file": "2023-11-29-DOS批处理脚本.md"
               }
             }
           }
@@ -149,19 +149,21 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
   "active": "73b3a18db098d44f",
   "lastOpenFiles": [
+    "2023-11-29-Windows定制.md",
+    "2023-11-29-DOS批处理脚本.md",
+    "2023-03-13-Spring MVC.md",
     "2023-03-03-Spring Boot.md",
     "2023-03-12-Spring.md",
-    "2023-03-13-Spring MVC.md",
     "2023-03-13-RESTful-API实践.md",
     "2023-03-26-MySQL原理.md",
     "2023-03-27-Redis应用.md",
@@ -183,8 +185,6 @@
     "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-11-28-Spring+Thymeleaf.md",
     "2023-11-28-.md",
-    "新建文本文档.txt",
-    "2023-11-27-消息队列.md",
-    "2023-11-27-Nginx配置.md"
+    "新建文本文档.txt"
   ]
 }
