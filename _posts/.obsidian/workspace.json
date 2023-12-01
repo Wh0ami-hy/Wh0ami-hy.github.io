@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "de763b6bf4f86979",
+        "id": "1905325da6144c60",
         "type": "tabs",
         "children": [
           {
-            "id": "73b3a18db098d44f",
+            "id": "17c05a9748198f50",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-11-29-DOS批处理脚本.md",
+                "file": "2023-11-29-Windows定制.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 295.5,
-    "collapsed": true
+    "width": 295.5
   },
   "right": {
     "id": "a088a0a4ba18ffbc",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-11-29-DOS批处理脚本.md",
+                "file": "2023-11-29-Windows定制.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-11-29-DOS批处理脚本.md",
+                "file": "2023-11-29-Windows定制.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-29-DOS批处理脚本.md"
+                "file": "2023-11-29-Windows定制.md"
               }
             }
           }
@@ -157,10 +156,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "73b3a18db098d44f",
+  "active": "17c05a9748198f50",
   "lastOpenFiles": [
-    "2023-11-29-Windows定制.md",
+    "2023-01-02-MySQL配置.md",
     "2023-11-29-DOS批处理脚本.md",
+    "2023-11-29-Windows定制.md",
     "2023-03-13-Spring MVC.md",
     "2023-03-03-Spring Boot.md",
     "2023-03-12-Spring.md",
@@ -184,7 +184,6 @@
     "2023-03-11-Spring核心.md",
     "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-11-28-Spring+Thymeleaf.md",
-    "2023-11-28-.md",
     "新建文本文档.txt"
   ]
 }
