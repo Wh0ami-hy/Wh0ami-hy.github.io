@@ -150,7 +150,7 @@ pom.xml中添加依赖
 
 **创建Controller**
 
-编写业务Controller ，要么实现Controller接口，要么增加注解。需要返回一个ModelAndView
+编写业务Controller ，要么实现Controller接口，要么使用`@Controller`注解。需要返回一个ModelAndView
 
 控制器负责解析用户的请求并将其转换为一个模型
 
@@ -197,8 +197,6 @@ ${msg}
 
 **配置Tomcat运行**
 
-启动tomcat
-
 若遇到 IDEA控制台乱码问题，则打开tomcat下的 conf/logging.properties 修改 java.util.logging.ConsoleHandler.encoding = GBK
 
 除此以外，其他地方的所有编码都设为UTF-8
@@ -209,7 +207,7 @@ ${msg}
 2. 如果jar包存在，显示无法输出，就在IDEA的项目发布中，添加lib依赖
 3. 重启Tomcat 即可解决
 
-# 5. 用注解开发SpringMVC（重点）
+# 5. SpringMVC中使用注解
 
 pom.xml 同上
 
@@ -278,13 +276,7 @@ public class HelloController {
 }
 ```
 
-**注意：@RestController和@Controller**
-
-@RestController（Spring4+）相当于@Controller + @ResponseBody，返回json或者xml格式数据
-
 @Controller 配合视图解析器 InternalResourceViewResolver使用，返回到指定页面
-
-@RequestBody：接收的参数是来自requestBody（请求体）中。一般用于处理非Content-Type:application/x-www-form-urlencoded编码格式的数据，比如：application/json、application/xml 等类型的数据
 
 **创建视图层**
 
@@ -294,144 +286,76 @@ public class HelloController {
 
 @RequestMapping注解用于映射url到控制器类或一个特定的处理程序方法。可用在类或方法上。用在类上，表示类中的所有响应请求的方法都是以该地址作为父路径
 
-# 6. 使用RESTful风格
+# 6. SpringMVC的转发和重定向
 
-在Spring MVC中可以使用 `@PathVariable`注解，让方法参数的值对应绑定到一个URI模板变量上
+**转发**
+
+- 请求转发是服务器内部的跳转
+- 地址栏比发生变化
+- 只有一个请求响应
+
+转发通常用于以下情况：
+
+- 当某个请求需要经过多个处理组件或模块处理时，服务器可以将请求转发给下一个组件，直到处理完成。
+- 当服务器需要对请求进行预处理或过滤时，可以将请求转发给专门的过滤器或拦截器进行处理。
+
+**重定向**
+
+- 请求重定向是浏览器自动发起对跳转目标的请求
+- 地址栏会发生变化
+- 两次请求响应
+
+重定向通常用于以下情况：
+
+- 当某个页面已经被移除或更改URL，服务器可以返回重定向响应，让客户端自动请求新的URL。
+- 当网站需要将用户请求导向到不同的服务器或不同的部分时，可以使用重定向。
+
+## 6.1. 转发
+
+在Spring MVC中，转发是指将请求传递给另一个处理器或视图进行处理，然后将处理结果返回给客户端，使用`forward:`前缀来指定转发的目标地址
+
+**有视图解析器**
 
 ```java
-@Controller
-public class RestFulController {
-    //映射访问路径
-    @RequestMapping("/commit/{p1}/{p2}")
-    public String index(@PathVariable int p1, @PathVariable int p2, Model model){
-        int result = p1+p2;
-        //Spring MVC会自动实例化一个Model对象用于向视图中传值
-        model.addAttribute("msg", "结果："+result);
-        //返回视图位置
-        return "test";
-    }
+@RequestMapping("/forward")
+public String forwardExample() {
+    return "forward:/target"; // 转发到"/target"处理器或视图
 }
 ```
 
-响应请求的实现方式
-
-可以通过 `@RequestMapping(value = "/hello",method = RequestMethod.GET)` 中的method实现不同请求方法的响应
-
-也可以通过 `@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping`实现不同请求方法的响应
-
-# 7. 重定向和转发
-
-## 7.1. ModelAndView方式
-
-设置ModelAndView对象，根据view的名称跳到指定的页面
-
-页面：`视图解析器前缀 + viewName + 视图解析器后缀`
-
-```xml
-<!--    视图解析器 模板引擎 -->
-<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
-    <!--        前缀    -->
-    <property name="prefix" value="/WEB-INF/"/>
-    <!--        后缀-->
-    <property name="suffix" value=".jsp"/>
-</bean>
-```
-
-对应的controller类
+**无视图解析器**
 
 ```java
-public class ControllerTest implements Controller {
-    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
-        //返回一个模型视图对象
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("msg","ControllerTest");
-        mv.setViewName("test");
-        return mv;
-    }
+@RequestMapping("/forward")
+public String forwardExample() {
+    return "forward:/target.jsp"; // 转发到"/target"处理器或视图
+}
+```
+## 6.2. 重定向
+
+在Spring MVC中，重定向是指服务器返回一个特定的响应，告诉客户端将请求发送到另一个URL，使用`redirect:`前缀来指定重定向的目标地址
+
+**有视图解析器**
+
+```java
+@RequestMapping("/redirect")
+public String redirectExample() {
+    return "redirect:/target"; // 重定向到"/target" URL
 }
 ```
 
-## 7.2. ServletAPI方式
-
-通过设置ServletAPI，不需要视图解析器
-
-通过HttpServletResponse进行输出、实现重定向、实现转发
+**无视图解析器**
 
 ```java
-@Controller
-public class ResultGo {
-    @RequestMapping("/result/t2")
-    public void test2(HttpServletRequest req, HttpServletResponse rsp) throws IOException {
-        // 重定向
-        rsp.sendRedirect("/index.jsp");
-    }
-    @RequestMapping("/result/t3")
-    public void test3(HttpServletRequest req, HttpServletResponse rsp) throws Exception {
-        //转发
-        req.setAttribute("msg","/result/t3");
-        req.getRequestDispatcher("/WEB-INF/jsp/test.jsp").forward(req,rsp);
-    }
+@RequestMapping("/redirect")
+public String redirectExample() {
+    return "redirect:/target.jsp"; // 重定向到"/target" URL
 }
 ```
 
-## 7.3. SpringMVC方式（重点）
+**视图解析器就是实现controller中return的值和视图解析器前缀、后缀的拼接**
 
-**通过SpringMVC来实现转发和重定向-无视图解析器**
-
-```java
-@Controller
-public class ResultSpringMVC {
-    @RequestMapping("/rsm/t1")
-    public String test1(){
-        //转发
-        return "/index.jsp";
-    }
-    @RequestMapping("/rsm/t2")
-    public String test2(){
-        //转发二
-        return "forward:/index.jsp";
-    }
-    @RequestMapping("/rsm/t3")
-    public String test3(){
-        //重定向
-        return "redirect:/index.jsp";
-    }
-}
-```
-
-**通过SpringMVC来实现转发和重定向 - 有视图解析器**
-
-视图解析器就是实现controller中return的值和视图解析器前缀、后缀的拼接
-
-```java
-@Controller
-public class ResultSpringMVC2 {
-    @RequestMapping("/rsm2/t1")
-    public String test1(){
-        //转发
-        return "test";
-    }
-    @RequestMapping("/rsm2/t2")
-    public String test2(){
-        //重定向
-        return "redirect:index";
-    }
-}
-```
-
-## 7.4. 重定向与转发的区别
-
-转发是在服务器端起作用的，当使用 forward() 方法时，Servlet 容器传递HTTP请求，从当前的 Servlet 或 JSP，此过程仍然在 request 的作用范围内。转发后，浏览器的地址栏内容不变
-
-重定向是在用户的浏览器端工作的，是 Servlet 对浏览器做出响应后，浏览器再次发送一个新的请求。重定向后，浏览器的地址栏内容发生变化
-
-重定向访问服务器两次，转发只访问服务器一次
-
-转发只能转发到自己的web应用内，重定向可以重定义到任意资源路径
-
-转发相当于服务器跳转，相当于方法调用，在执行当前文件的过程中转向执行目标文件，两个文件（当前文件和目标文件）属于同一次请求，前后页共用一个request，可以通过此来传递一些数据或者session信息，request.setAttribute()和 request.getAttribute()。而重定向会产生一个新的request，不能共享request域信息与请求参数
-
-实际应用：用户登录功能
+以用户登录功能为例：首先请求登录页面，提交用户名和密码的表单，验证通过后，转发到指定页面，验证失败后，重定向到指定页面
 
 ```java
 @Controller
@@ -462,9 +386,9 @@ public class LoginController {
 }
 ```
 
-# 8. 数据处理
+# 7. 数据处理（重点）
 
-## 8.1. 处理提交的数据
+## 7.1. 接收的数据
 
 **提交的参数名称和后端方法中定义的参数名一致**
 
@@ -518,21 +442,42 @@ public class TestController {
 }
 ```
 
-## 8.2. 数据回显到前端
+**提交的参数是URL模板变量的形式**
 
-**通过ModelAndView**
+`@PathVariable`注解，让Controller方法参数的值对应绑定到URL模板变量上
 
 ```java
-public class ControllerTest1 implements Controller {
-    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
-        //返回一个模型视图对象
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("msg","ControllerTest1");
-        mv.setViewName("test");
-        return mv;
+@Controller
+public class RestFulController {
+    //映射访问路径
+    @RequestMapping("/commit/{p1}/{p2}")
+    public String index(@PathVariable int p1, @PathVariable int p2, Model model){
+        int result = p1+p2;
+        //Spring MVC会自动实例化一个Model对象用于向视图中传值
+        model.addAttribute("msg", "结果："+result);
+        //返回视图位置
+        return "test";
     }
 }
 ```
+
+**提交的参数是Json格式的**
+
+在控制器的请求方法参数上添加`@RequestBody`注解，该注解将请求的JSON数据转换为对应的Java对象。
+
+```java
+@RestController
+public class MyController {
+    @PostMapping("/data")
+    public void processData(@RequestBody MyData data) {
+        // 处理接收到的JSON数据
+        System.out.println(data);
+    }
+}
+```
+
+
+## 7.2. 返回的数据
 
 **通过ModelMap**
 
@@ -541,26 +486,22 @@ public class ControllerTest1 implements Controller {
 public String hello(@RequestParam("username") String name, ModelMap model){
     //封装要显示到视图中的数据
     model.addAttribute("name",name);
-    System.out.println(name);
     return "hello";
 }
 ```
 
-**通过Model**
+**通过Model（推荐）**
 
 ```java
 @RequestMapping("/hello")
 public String hello(@RequestParam("username") String name, Model model){
     //封装要显示到视图中的数据
     model.addAttribute("msg",name);
-    System.out.println(name);
     return "hello";
 }
 ```
 
-注：ModelMap继承了LinkedHashMap。Model是精简版
-
-# 9. 返回JSON格式数据（重点）
+**直接返回JSON格式数据，而不是向视图中封装数据**
 
 JSON是JavaScript对象的字符串表示法，它使用文本表示一个JS对象的信息，**本质是一个字符串**
 
@@ -609,7 +550,7 @@ String str = mapper.writeValueAsString(...);
 
 可以封装一个JsonUtils类专门实现JSON格式的转换
 
-# 10. 乱码问题解决
+# 8. 乱码问题解决
 
 在 src/main/webapp/WEB-INF/web.xml中配置
 
@@ -628,13 +569,13 @@ String str = mapper.writeValueAsString(...);
 </filter-mapping>
 ```
 
-# 11. SpringMVC拦截器
+# 9. SpringMVC拦截器
 
 拦截器是SpringMVC框架的，只有使用了SpringMVC框架的工程才能使用，拦截器是AOP思想的具体应用
 
 拦截器只会拦截访问的控制器方法，不会拦截静态资源，如果访问的是jsp/html/css/image/js 是不会进行拦截的
 
-## 11.1. 自定义拦截器
+## 9.1. 自定义拦截器
 
 ![QQ截图20230107172231](F:\笔记\博客\文章图片\QQ截图20230107172231.png)
 
@@ -697,14 +638,14 @@ public class WebConfig implements WebMvcConfigurer {
 }
 ```
 
-## 11.2. 拦截器的执行顺序
+## 9.2. 拦截器的执行顺序
 
 - 请求到达 DispatcherServlet
 - DispatcherServlet 发送至 Interceptor ，执行 preHandle
 - 请求达到 Controller
 - 请求结束后，postHandle 执行
 
-## 11.3. 拦截器应用-登录验证
+## 9.3. 拦截器应用-登录验证
 
 三个页面：
 
@@ -848,9 +789,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 </mvc:interceptors>
 ```
 
-# 12. 文件上传和下载
+# 10. 文件上传和下载
 
-## 12.1. 文件上传
+## 10.1. 文件上传
 
 Spring MVC为文件上传提供了直接的支持，这种支持是用 MultipartResolver实现的
 
@@ -938,7 +879,7 @@ public class UploadController {
 }
 ```
 
-## 12.2. 文件下载
+## 10.2. 文件下载
 
 步骤：
 
@@ -1004,9 +945,9 @@ public class DownController {
 }
 ```
 
-# 13. 跨域请求（重点）
+# 11. 跨域请求（重点）
 
-## 13.1. 使用 @CrossOrigin 注解
+## 11.1. 使用 @CrossOrigin 注解
 
 ```java
 @RestController
@@ -1022,7 +963,7 @@ public class MyController {
 
 在以上示例中，@CrossOrigin 注解将允许来自 `http://example.com`的跨域请求访问 `/my-endpoint` 端点。还可以使用 @CrossOrigin 注解的其他属性来更精细地控制跨域请求的行为
 
-## 13.2. 使用配置类
+## 11.2. 使用配置类
 
 如果需要在整个应用程序中启用跨域请求支持，你可以在 Spring MVC 配置类中使用 WebMvcConfigurer接口的 addCorsMappings方法
 
@@ -1043,9 +984,9 @@ public class MyConfig implements WebMvcConfigurer {
 }
 ```
 
-# 14. 视图解析器
+# 12. 视图解析器
 
-## 14.1. Spring MVC提供的视图解析器
+## 12.1. Spring MVC提供的视图解析器
 
 InternalResourceViewResolver：用于解析JSP或HTML等资源文件
 
@@ -1055,7 +996,7 @@ TilesViewResolver：用于解析 Tiles 布局
 
 ContentNegotiatingViewResolver：复合视图解析器，可以根据请求的 Accept 头信息来选择对应的视图解析器进行解析
 
-## 14.2. 自定义视图解析器
+## 12.2. 自定义视图解析器
 
 创建自定义的视图解析器类 ViewConfig ，并实现 ViewResolver 接口
 

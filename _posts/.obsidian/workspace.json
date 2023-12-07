@@ -4,40 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "70d4a7280ac58ca5",
+        "id": "cde6056038380222",
         "type": "tabs",
-        "dimension": 68.23056300268097,
         "children": [
           {
-            "id": "c64c8896ac3dab43",
+            "id": "1e66a1da86f6588f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-12-05-http协议.md",
+                "file": "2022-06-30-MyBatis.md",
                 "mode": "source",
                 "source": false
               }
             },
-            "group": "bb29eb1eddb86cc9"
+            "group": "8d0fb969185f4366"
           }
         ]
       },
       {
-        "id": "e61ce41f1b7cba61",
+        "id": "5c6e277ff196996a",
         "type": "tabs",
-        "dimension": 31.769436997319033,
         "children": [
           {
-            "id": "bb67422a53f16609",
+            "id": "d729c0c689ca88dc",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-12-05-http协议.md"
+                "file": "2022-06-30-MyBatis.md"
               }
             },
-            "group": "bb29eb1eddb86cc9"
+            "group": "8d0fb969185f4366"
           }
         ]
       }
@@ -89,8 +87,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 295.5,
-    "collapsed": true
+    "width": 295.5
   },
   "right": {
     "id": "a088a0a4ba18ffbc",
@@ -106,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-12-05-http协议.md",
+                "file": "2022-06-30-MyBatis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-12-05-http协议.md",
+                "file": "2022-06-30-MyBatis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -156,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-12-05-http协议.md"
+                "file": "2022-06-30-MyBatis.md"
               }
             }
           }
@@ -177,15 +174,19 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "c64c8896ac3dab43",
+  "active": "1e66a1da86f6588f",
   "lastOpenFiles": [
+    "2023-03-13-Spring MVC.md",
+    "2023-11-28-SpringBoot&Thymeleaf.md",
+    "2023-03-03-Spring Boot.md",
+    "2023-03-12-Spring.md",
+    "2023-12-05-http协议.md",
     "2022-09-12-C.md",
     "2023-03-26-MySQL原理.md",
     "2023-09-13-MySQL设计规约.md",
     "2023-01-02-MySQL配置.md",
     "2023-12-06-分布式ID.md",
     "2023-12-03-思维的辅助工具.md",
-    "2023-12-05-http协议.md",
     "2023-12-05-GNUmake.md",
     "2023.09-17-C++.md",
     "2023-01-20-Docker.md",
@@ -197,14 +198,10 @@
     "2023-12-03-理论类的学习.md",
     "2023-05-24-Java实用工具库.md",
     "2023-11-29-Windows定制.md",
-    "2023-03-13-Spring MVC.md",
-    "2023-03-03-Spring Boot.md",
-    "2023-03-12-Spring.md",
     "2023-03-13-RESTful-API实践.md",
     "2023-03-27-Redis应用.md",
     "2023-04-13-Spring Security.md",
     "2023-04-02-Java内存管理.md",
-    "2023-04-25-Spring Boot项目最佳实践.md",
     "新建文本文档.txt"
   ]
 }

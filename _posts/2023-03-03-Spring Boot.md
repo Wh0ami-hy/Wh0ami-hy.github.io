@@ -310,41 +310,34 @@ pom.xml（父级）
 
 SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 
-不同名称的配置文件的优先级
+**不同名称的配置文件的优先级**
 
 ```
-bootstrap.properties > bootstrap.yml > application.properties > 
-application.yml
+application.properties > application.yml
 ```
 
-不同位置下配置文件的优先级
-
-```
-优先级1:项目路径下的config文件夹配置文件
-优先级2:项目路径下配置文件
-优先级3:资源路径下的config文件夹配置文件
-优先级4:资源路径下配置文件
-```
 ## 4.1. application.properties
 
 ```
 语法结构：key=value
-如
 server.port=8888
 ```
 
 ## 4.2. application.yml（推荐）
 
-
 ```
 语法结构：key:空格value
-如
 server:
 	port: 80
 ```
-## 4.3. 类对配置文件的映射
 
-在类中用 `@ConfigurationProperties(prefix = "类名")` 绑定配置文件
+## 4.3. 主动读取配置文件的内容
+
+**@configurationProperties**
+
+如果专门编写了一个JavaBean来和配置文件进行映射，就直接使用 `@configurationProperties`
+
+在类中用 `@ConfigurationProperties(prefix = "配置文件中的类名")` 绑定配置文件
 
 效果：在配置文件中即可实现对类属性的赋值
 
@@ -363,15 +356,17 @@ person:
  age: 3
 ```
 
-如果在某个业务中，只需要获取配置文件中的某个值，可以使用`@value`
+**@Value**
 
-如果专门编写了一个JavaBean来和配置文件进行映射，就直接使用 `@configurationProperties`
+如果在某个业务中，只需要获取配置文件中的某个值，可以使用`@Value`
 
-加载指定的配置文件：`@PropertySource`
+**@PropertySource**
+
+加载指定的配置文件：`@PropertySource(value="classpath:/application.properties",encoding = "utf-8")`
 
 ## 4.4. 多种环境的配置
 
-多环境配置：application.yml 、application-dev.yml 开发环境、application-pro.yml 生产环境
+application-dev.yml 开发环境、application-prod.yml 生产环境
 
 在application.yml 中选择激活哪个环境
 
@@ -380,7 +375,7 @@ server:
 	port: 8081
 spring:
 	profiles :
-		active: dev  # dev表示激活开发环境  pro表示激活生产环境
+		active: dev  # dev表示激活开发环境  prod表示激活生产环境
 ```
 
 # 5. 参数校验
@@ -1174,7 +1169,7 @@ server:
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 
-- @RestController：这个注解用于标记一个Controller类，表示该类的所有方法都是以RESTful方式提供服务的。
+- @RestController：这个注解用于标记一个Controller类，它包含了@Controller和@ResponseBody注解的功能，用于处理HTTP请求并返回JSON、XML等格式的响应数据
 
 - @RequestMapping：这个注解用于标记一个请求处理方法，指定处理的URL路径和HTTP请求方法。
 
@@ -1186,7 +1181,7 @@ server:
   
 - @RequestBody：这个注解用于将HTTP请求体中的数据映射到方法参数上。
 
-- @ResponseBody：这个注解用于将方法返回值转换为HTTP响应体。
+- @ResponseBody：表示方法的返回值将直接作为响应的内容返回给客户端，不会经过视图解析器进行视图渲染。可以将@ResponseBody注解应用在控制器类的方法上，也可以将其应用在方法的参数上
 
 - @Autowired：这个注解用于自动装配一个Bean，可以用在构造方法、属性、方法上。
 
