@@ -4,25 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "cde6056038380222",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "1e66a1da86f6588f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2022-06-30-MyBatis.md",
-                "mode": "source",
-                "source": false
-              }
-            },
-            "group": "8d0fb969185f4366"
-          }
-        ]
-      },
-      {
         "id": "5c6e277ff196996a",
         "type": "tabs",
         "children": [
@@ -32,10 +13,40 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2022-06-30-MyBatis.md"
+                "file": "2023-03-03-Spring Boot.md"
+              }
+            }
+          },
+          {
+            "id": "09d93c29ff0037ea",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-03-03-Spring Boot.md",
+                "mode": "source",
+                "source": false
               }
             },
-            "group": "8d0fb969185f4366"
+            "group": "c096ae49aeb9c1dd"
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "bce2fd11d10b6cc3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a522cf3dd804d1a3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-03-03-Spring Boot.md"
+              }
+            },
+            "group": "c096ae49aeb9c1dd"
           }
         ]
       }
@@ -66,7 +77,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "JavaBean",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,7 +94,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -103,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2022-06-30-MyBatis.md",
+                "file": "2023-03-03-Spring Boot.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +132,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2022-06-30-MyBatis.md",
+                "file": "2023-03-03-Spring Boot.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -153,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2022-06-30-MyBatis.md"
+                "file": "2023-03-03-Spring Boot.md"
               }
             }
           }
@@ -174,9 +186,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "1e66a1da86f6588f",
+  "active": "09d93c29ff0037ea",
   "lastOpenFiles": [
+    "2023-03-11-Spring核心.md",
+    "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-03-13-Spring MVC.md",
+    "2022-06-30-MyBatis.md",
     "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-03-03-Spring Boot.md",
     "2023-03-12-Spring.md",
@@ -199,9 +214,6 @@
     "2023-05-24-Java实用工具库.md",
     "2023-11-29-Windows定制.md",
     "2023-03-13-RESTful-API实践.md",
-    "2023-03-27-Redis应用.md",
-    "2023-04-13-Spring Security.md",
-    "2023-04-02-Java内存管理.md",
     "新建文本文档.txt"
   ]
 }

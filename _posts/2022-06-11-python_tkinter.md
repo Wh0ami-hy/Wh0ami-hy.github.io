@@ -938,5 +938,5 @@ root.mainloop()
 
 # 4. 界面美化
 
-* ttkbootstrap库（推荐）
+Dear PyGui
 
