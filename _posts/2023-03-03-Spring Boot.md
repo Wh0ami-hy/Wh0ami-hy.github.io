@@ -710,7 +710,7 @@ mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
 ```
 
-# 12. Spring Boot全局异常处理
+# 12. Spring Boot全局异常处理（重点）
 
 通常情况下我们用`try.....catch....`对异常进行捕捉处理，但是在实际项目中对业务模块进行异常捕捉，会造成代码重复和繁杂， 我们希望代码中只有业务相关的操作，所有的异常我们单独设立一个类来处理它
 

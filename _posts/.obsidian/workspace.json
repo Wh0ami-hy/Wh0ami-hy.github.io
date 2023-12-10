@@ -4,49 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "5c6e277ff196996a",
+        "id": "4333f407657cb313",
         "type": "tabs",
         "children": [
           {
-            "id": "d729c0c689ca88dc",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-03-03-Spring Boot.md"
-              }
-            }
-          },
-          {
-            "id": "09d93c29ff0037ea",
+            "id": "08e62c0816397ac0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-03-03-Spring Boot.md",
+                "file": "2023-03-13-Spring MVC.md",
                 "mode": "source",
                 "source": false
               }
             },
-            "group": "c096ae49aeb9c1dd"
+            "group": "0fc36effbae9e850"
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
-        "id": "bce2fd11d10b6cc3",
+        "id": "628287dbe5418ae0",
         "type": "tabs",
         "children": [
           {
-            "id": "a522cf3dd804d1a3",
+            "id": "4a1c622643046abd",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-03-03-Spring Boot.md"
+                "file": "2023-03-13-Spring MVC.md"
               }
             },
-            "group": "c096ae49aeb9c1dd"
+            "group": "0fc36effbae9e850"
           }
         ]
       }
@@ -77,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "JavaBean",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,8 +83,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -115,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-03-03-Spring Boot.md",
+                "file": "2023-03-13-Spring MVC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-03-03-Spring Boot.md",
+                "file": "2023-03-13-Spring MVC.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -165,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-03-03-Spring Boot.md"
+                "file": "2023-03-13-Spring MVC.md"
               }
             }
           }
@@ -178,22 +166,28 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "09d93c29ff0037ea",
+  "active": "08e62c0816397ac0",
   "lastOpenFiles": [
-    "2023-03-11-Spring核心.md",
+    "2023-03-03-Spring Boot.md",
+    "2023-09-07-SpringBoot日志框架.md",
+    "2023-11-18-Swagger接口文档工具.md",
+    "2023-09-12-SpringBoot后端接口规范.md",
+    "2023-02-13-Java Bean.md",
     "2023-04-25-Spring Boot项目最佳实践.md",
+    "2023-11-29-Windows定制.md",
+    "2023-10-14-Spring之Validation校验参数.md",
+    "2023-03-11-Spring核心.md",
     "2023-03-13-Spring MVC.md",
     "2022-06-30-MyBatis.md",
     "2023-11-28-SpringBoot&Thymeleaf.md",
-    "2023-03-03-Spring Boot.md",
     "2023-03-12-Spring.md",
     "2023-12-05-http协议.md",
     "2022-09-12-C.md",
@@ -208,12 +202,6 @@
     "2023-11-27-Nginx配置.md",
     "2023-11-27-Nginx应用.md",
     "2023-09-30-HTTP协议.md",
-    "2023-11-29-DOS批处理脚本.md",
-    "2023-12-03-技术类的学习.md",
-    "2023-12-03-理论类的学习.md",
-    "2023-05-24-Java实用工具库.md",
-    "2023-11-29-Windows定制.md",
-    "2023-03-13-RESTful-API实践.md",
     "新建文本文档.txt"
   ]
 }

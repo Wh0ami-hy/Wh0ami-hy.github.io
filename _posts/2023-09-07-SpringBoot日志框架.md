@@ -7,7 +7,7 @@ tags:
 
 # 1. 为什么要使用日志框架
 
-使用 `System.out.println()`来打印信息耗费系统资源
+使用 `System.out.println()`来打印信息耗费系统资源，不方便排查问题
 
 # 2. 有哪些日志框架
 
@@ -30,7 +30,6 @@ tags:
 # 3. SLF4J
 
 **[SLF4J](http://www.slf4j.org/)  ，即简单日志门面（Simple Logging Facade for Java），不是具体的日志解决方案，它只服务于各种各样的日志系统。按照官方的说法，SLF4J是一个用于日志系统的日志抽象层，允许开发人员在部署时选择所需的日志框架，与Log4j、Logback等多个日志实现框架无缝集成。实现将系统和具体的日志实现框架解耦合**
-
 
 # 4. SLF4J搭配日志框架使用
 
@@ -102,7 +101,7 @@ public class className {
 }
 ```
 
-# 6. SLF4J + logback
+# 6. SLF4J + logback（推荐）
 
 引入依赖，因为logback是springboot自带的，所以只要引入了springboot就不需要单独引入logback
 
@@ -113,6 +112,9 @@ public class className {
         <artifactId>slf4j-api</artifactId>
     </dependency>
 ```
+
+**使用时，在声明`@Slf4j`注解后，即可使用`log.info()`打印日志**
+
 在项目的`src/main/resources`目录下创建一个名为`logback.xml`的文件
 
 ```xml
