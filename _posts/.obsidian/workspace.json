@@ -4,20 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "43cb38895a78d7d8",
+        "id": "c949169ad30139ae",
         "type": "tabs",
         "children": [
           {
-            "id": "f16af2f60c593064",
+            "id": "384a803425b922df",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2022-08-17-Web认证机制的发展.md",
+                "file": "2023-03-03-Spring Boot.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "126157cd87a788dd"
+          }
+        ]
+      },
+      {
+        "id": "60ac9bd4770854b0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3454e39401ba97ba",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-03-03-Spring Boot.md"
+              }
+            },
+            "group": "126157cd87a788dd"
           }
         ]
       }
@@ -48,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "line:(跨域)",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +83,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2022-08-17-Web认证机制的发展.md",
+                "file": "2023-03-03-Spring Boot.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2022-08-17-Web认证机制的发展.md",
+                "file": "2023-03-03-Spring Boot.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2022-08-17-Web认证机制的发展.md"
+                "file": "2023-03-03-Spring Boot.md"
               }
             }
           }
@@ -157,8 +174,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "21fee24f316c1e3e",
+  "active": "384a803425b922df",
   "lastOpenFiles": [
+    "2022-06-30-MyBatis.md",
+    "2023-03-03-Spring Boot.md",
+    "2023-12-10-批量插入大量数据.md",
+    "2022-08-17-Web认证机制的发展.md",
+    "2023-12-11-前后端分离登录实现.md",
     "2023-02-03-Vue2开发总结.md",
     "2023-11-15-vue-admin-登录权限.md",
     "2023-11-15-vue-admin-项目基础.md",
@@ -166,12 +188,9 @@
     "2023-12-03-技术类的学习.md",
     "2023-12-03-理论类的学习.md",
     "2023-12-03-思维的辅助工具.md",
-    "2022-06-30-MyBatis.md",
-    "2023-12-10-批量插入大量数据.md",
     "2023-01-12-IDEA使用.md",
     "2023-03-13-Spring MVC.md",
     "一次性批量插入大量数据.md",
-    "2023-03-03-Spring Boot.md",
     "2023-09-07-SpringBoot日志框架.md",
     "2023-11-18-Swagger接口文档工具.md",
     "2023-09-12-SpringBoot后端接口规范.md",
@@ -183,8 +202,6 @@
     "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-03-12-Spring.md",
     "2023-12-05-http协议.md",
-    "2022-09-12-C.md",
-    "2023-03-26-MySQL原理.md",
     "新建文本文档.txt"
   ]
 }

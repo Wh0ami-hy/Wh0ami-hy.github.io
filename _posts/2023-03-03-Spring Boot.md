@@ -378,6 +378,10 @@ spring:
 		active: dev  # dev表示激活开发环境  prod表示激活生产环境
 ```
 
+## 4.5. 代替xml配置文件
+
+所有第三方组件的xml配置文件都可以被yml中的配置代替，如 `mybatis-config.xml`、`logback.xml`等，但是xml中配置项过多时，建议使用xml配置文件，之后在yml中引入
+
 # 5. 参数校验
 
 通常使用自带的Validation校验参数
@@ -685,10 +689,12 @@ yml 文件中添加以下配置项
 ```yml
 # 整合mybatis
 mybatis:
-	# 别名
-  type-aliases-package: com.hy.entity
-   # 导入SQL语句配置文件的位置
+  # 搜索指定包别名
+  type-aliases-package: com.exam.**.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapper-locations: classpath:mapper/*.xml
+  # 加载全局的配置文件  
+  configLocation: classpath:mybatis/mybatis-config.xml
 ```
 
 编写 Mapper 接口和对应的 XML 映射文件
