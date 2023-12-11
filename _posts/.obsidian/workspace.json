@@ -4,38 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "96fcce7c046f136e",
+        "id": "43cb38895a78d7d8",
         "type": "tabs",
         "children": [
           {
-            "id": "56263db05433a98b",
+            "id": "f16af2f60c593064",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2022-06-30-MyBatis.md",
+                "file": "2022-08-17-Web认证机制的发展.md",
                 "mode": "source",
                 "source": false
               }
-            },
-            "group": "d8b172900ad47b13"
-          }
-        ]
-      },
-      {
-        "id": "13d8a8db4f466d28",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "f03baa562411ef69",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2022-06-30-MyBatis.md"
-              }
-            },
-            "group": "d8b172900ad47b13"
+            }
           }
         ]
       }
@@ -66,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "line:(跨域)",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,12 +65,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 295.5,
-    "collapsed": true
+    "width": 295.5
   },
   "right": {
     "id": "a088a0a4ba18ffbc",
@@ -104,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2022-06-30-MyBatis.md",
+                "file": "2022-08-17-Web认证机制的发展.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2022-06-30-MyBatis.md",
+                "file": "2022-08-17-Web认证机制的发展.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2022-06-30-MyBatis.md"
+                "file": "2022-08-17-Web认证机制的发展.md"
               }
             }
           }
@@ -175,10 +157,17 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f03baa562411ef69",
+  "active": "21fee24f316c1e3e",
   "lastOpenFiles": [
-    "2023-12-10-批量插入大量数据.md",
+    "2023-02-03-Vue2开发总结.md",
+    "2023-11-15-vue-admin-登录权限.md",
+    "2023-11-15-vue-admin-项目基础.md",
+    "2023-01-11-Vue2.md",
+    "2023-12-03-技术类的学习.md",
+    "2023-12-03-理论类的学习.md",
+    "2023-12-03-思维的辅助工具.md",
     "2022-06-30-MyBatis.md",
+    "2023-12-10-批量插入大量数据.md",
     "2023-01-12-IDEA使用.md",
     "2023-03-13-Spring MVC.md",
     "一次性批量插入大量数据.md",
@@ -196,13 +185,6 @@
     "2023-12-05-http协议.md",
     "2022-09-12-C.md",
     "2023-03-26-MySQL原理.md",
-    "2023-09-13-MySQL设计规约.md",
-    "2023-01-02-MySQL配置.md",
-    "2023-12-06-分布式ID.md",
-    "2023-12-03-思维的辅助工具.md",
-    "2023-12-05-GNUmake.md",
-    "2023.09-17-C++.md",
-    "2023-01-20-Docker.md",
     "新建文本文档.txt"
   ]
 }
