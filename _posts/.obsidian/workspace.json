@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "798e66646d89d5fc",
+        "id": "2526d6994c30913e",
         "type": "tabs",
         "children": [
           {
-            "id": "d89c5de9053363b3",
+            "id": "01ee5d3012a98af6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-12-10-查询插入大量数据.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "outline",
+              "state": {}
             }
           }
         ]
@@ -48,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:ide",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,12 +61,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 295.5,
-    "collapsed": true
+    "width": 295.5
   },
   "right": {
     "id": "a088a0a4ba18ffbc",
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-12-10-查询插入大量数据.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-12-10-查询插入大量数据.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,9 +129,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2023-12-10-查询插入大量数据.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -157,12 +149,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "d89c5de9053363b3",
+  "active": "01ee5d3012a98af6",
   "lastOpenFiles": [
-    "2023-12-11-前后端分离登录实现.md",
+    "2023-01-12-IDEA使用.md",
+    "2023-03-03-Spring Boot.md",
     "2023-03-12-Spring.md",
     "2023-12-10-查询插入大量数据.md",
-    "2023-03-03-Spring Boot.md",
+    "2023-12-11-前后端分离登录实现.md",
     "2022-06-30-MyBatis.md",
     "2022-08-17-Web认证机制的发展.md",
     "2023-02-03-Vue2开发总结.md",
@@ -172,7 +165,6 @@
     "2023-12-03-技术类的学习.md",
     "2023-12-03-理论类的学习.md",
     "2023-12-03-思维的辅助工具.md",
-    "2023-01-12-IDEA使用.md",
     "2023-03-13-Spring MVC.md",
     "一次性批量插入大量数据.md",
     "2023-09-07-SpringBoot日志框架.md",

@@ -1171,7 +1171,31 @@ server:
 
 创建banner.txt 放在 resources目录下
 
-# 16. SpringBoot常用注解（重点）
+# 16. 统计代码执行时间
+
+Spring 或 Spring Boot 项目，可以在项目中直接使用 `StopWatch` 对象来统计代码执行时间
+
+```java
+StopWatch stopWatch = new StopWatch();
+// 开始时间
+stopWatch.start();
+
+/*
+代码块
+
+*/
+
+// 结束时间
+stopWatch.stop();
+// 统计执行时间（秒）
+System.out.printf("执行时长：%d 秒.%n", stopWatch.getTotalTimeSeconds()); // %n 为换行
+// 统计执行时间（毫秒）
+System.out.printf("执行时长：%d 毫秒.%n", stopWatch.getTotalTimeMillis()); 
+// 统计执行时间（纳秒）
+System.out.printf("执行时长：%d 纳秒.%n", stopWatch.getTotalTimeNanos());
+```
+
+# 17. SpringBoot常用注解（重点）
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 
