@@ -97,20 +97,22 @@ public interface UserMapper {
 <mapper namespace="com.hy.mapper.UserMapper">
     <!--id表示接口当中定义的方法. resultType,表示数据库查询的结果.-->
     <select id="queryUsers" resultType="com.hy.entity.User" parameterType="com.hy.entity.User">
-        select * from login;
+        select * from login
     </select>
 </mapper>
 ```
 
 ## 1.5. 控制器（controller）
 
-controller接收业务请求，并将请求转发至业务处理对象
+controller 接收请求，并将请求转发至业务处理对象
 
 接收业务请求处理结果，并将结果分发到响应页面
 
 不执行实际的业务逻辑，调用service 接口中的方法去完成
 
 控制器应该围绕用例、业务能力来设计
+
+**controller层一般返回封装的结果类`Result`**
 
 **默认情况下，控制器是单例**
 
@@ -136,6 +138,8 @@ service，用于执行业务逻辑，如计算、验证、授权等
 一般由两部分组成 **一个Java接口和一个实现类**
 
 serviceImpl是实现具体业务逻辑的，通常是把mapper和业务进行整合
+
+**service层一般返回操作的执行结果（成功、失败），处理后的业务数据（如经过计算、过滤或转换的数据）、异常或错误信息**
 
 最好围绕业务功能、领域、用例来构建服务，合理的使用单一职责原则
 
@@ -231,7 +235,7 @@ mapper层的接口在对应的xml配置文件中进行配置、实现以及关�
 
 ## 1.11. 编写顺序
 
-通常先建好数据库表，然后定义好model，之后再实现其他部分
+先设计数据库表，然后定义好model，之后再实现其他部分
 
 # 2. Spring Boot的最佳实践
 
@@ -334,7 +338,7 @@ Logger logger = LoggerFactory.getLogger(MyClass.class);
 
 测试切片，你可以根据需要仅连接部分应用程序
 
-## 2.9. 合理使用Knife4j等接口工具
+## 2.9. 使用Swagger接口文档工具
 
 在大多数情况下，其他应用程序将通过REST API 调用你的应用程序。因此我们需要维护一份API文档。文档应该由代码生成。
 
