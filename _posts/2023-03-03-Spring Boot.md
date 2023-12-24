@@ -775,18 +775,19 @@ public class SysIndexController
 
 
 ```java
-@ControllerAdvice
-@ResponseBody
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(BaseException.class)
-    public ResponseEntity<?> handleAppException(BaseException ex, HttpServletRequest request) {
+    public Result handleAppException(BaseException ex, HttpServletRequest request) {
       //......
+      return Result.error(e.getMessage());
     }
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
-    public ResponseEntity<ErrorReponse> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
+    public Result handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
       //......
+      return Result.error(e.getMessage());
     }
 }
 ```
@@ -947,6 +948,7 @@ public class MailService {
 比如我们需要对定时任务进行增删改查，`@Schedule` 就实现不了，你不可能每次新增一个定时任务都去手动改代码来添加吧。而 Quartz 就能够实现对任务的增删改查。
 
 三个重要概念：`任务Job`、`触发器Trigger`、`调度器Scheduler`
+
 ## 12.2. Quartz 的特性
 
 Quartz 适用于各种类型的应用程序。无论是简单的定时任务还是复杂的分布式调度，Quartz都是一个强大而可靠的选择 

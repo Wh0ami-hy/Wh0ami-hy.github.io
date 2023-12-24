@@ -13,7 +13,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2022-06-30-Spring Data.md"
+                "file": "2023-09-07-Redis配置.md"
               }
             }
           },
@@ -23,7 +23,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2022-06-30-Spring Data.md",
+                "file": "2023-09-07-Redis配置.md",
                 "mode": "source",
                 "source": false
               }
@@ -76,11 +76,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 295.5
+    "width": 295.5,
+    "collapsed": true
   },
   "right": {
     "id": "a088a0a4ba18ffbc",
@@ -96,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2022-06-30-Spring Data.md",
+                "file": "2023-09-07-Redis配置.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2022-06-30-Spring Data.md",
+                "file": "2023-09-07-Redis配置.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2022-06-30-Spring Data.md"
+                "file": "2023-09-07-Redis配置.md"
               }
             }
           }
@@ -167,7 +169,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "5f12d6a00d1de43a",
+  "active": "21fee24f316c1e3e",
   "lastOpenFiles": [
     "2023-03-03-Spring Boot.md",
     "2022-06-30-Spring Data.md",
