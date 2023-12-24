@@ -4,33 +4,40 @@
     "type": "split",
     "children": [
       {
-        "id": "6fa46b4a75bf0560",
+        "id": "af0449eccd967cd3",
         "type": "tabs",
         "children": [
           {
-            "id": "0d8e74d3c149d7b0",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-09-07-Redis配置.md"
-              }
-            }
-          },
-          {
-            "id": "5f12d6a00d1de43a",
+            "id": "7afef44ff7e8c3bc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-09-07-Redis配置.md",
+                "file": "2023-01-20-Docker.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "4b9d31a518305db9"
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "265f192bf7f19485",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a1764c79405b0fad",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-01-20-Docker.md"
+              }
+            },
+            "group": "4b9d31a518305db9"
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:docker",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-09-07-Redis配置.md",
+                "file": "2023-01-20-Docker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-09-07-Redis配置.md",
+                "file": "2023-01-20-Docker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +155,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-07-Redis配置.md"
+                "file": "2023-01-20-Docker.md"
               }
             }
           }
@@ -169,8 +176,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "21fee24f316c1e3e",
+  "active": "a1764c79405b0fad",
   "lastOpenFiles": [
+    "2023-09-07-Redis配置.md",
     "2023-03-03-Spring Boot.md",
     "2022-06-30-Spring Data.md",
     "2022-06-30-MyBatis.md",
@@ -196,7 +204,6 @@
     "2023-04-30-网站架构发展史.md",
     "2023-03-13-RESTful-API实践.md",
     "2023-05-24-Java实用工具库.md",
-    "2023-12-03-理论类的学习.md",
-    "2023-09-07-Redis配置.md"
+    "2023-12-03-理论类的学习.md"
   ]
 }
