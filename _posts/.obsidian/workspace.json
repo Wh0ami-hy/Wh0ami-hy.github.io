@@ -4,25 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "af0449eccd967cd3",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "7afef44ff7e8c3bc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-01-20-Docker.md",
-                "mode": "source",
-                "source": false
-              }
-            },
-            "group": "4b9d31a518305db9"
-          }
-        ]
-      },
-      {
         "id": "265f192bf7f19485",
         "type": "tabs",
         "children": [
@@ -34,10 +15,22 @@
               "state": {
                 "file": "2023-01-20-Docker.md"
               }
-            },
-            "group": "4b9d31a518305db9"
+            }
+          },
+          {
+            "id": "1a5f3b76510c50cc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-01-20-Docker.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -66,7 +59,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:docker",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,8 +76,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -176,21 +168,24 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a1764c79405b0fad",
+  "active": "1a5f3b76510c50cc",
   "lastOpenFiles": [
+    "2023-12-27-用户密码的处理.md",
+    "2023-12-27-系统的权限设计.md",
+    "2022-08-03-软件设计规范.md",
+    "2023-12-27-权限设计.md",
+    "新建文本文档.txt",
+    "2023-01-20-Docker.md",
     "2023-09-07-Redis配置.md",
     "2023-03-03-Spring Boot.md",
     "2022-06-30-Spring Data.md",
     "2022-06-30-MyBatis.md",
     "2021-06-26-JDBC.md",
     "2023-02-13-Java多线程.md",
-    "2023-01-20-Docker.md",
     "2023-03-26-MySQL原理.md",
     "2023-02-12-Java初级.md",
     "2023-12-21-Java8的日期时间类.md",
-    "新建文本文档.txt",
     "2023-11-18-Swagger接口文档工具.md",
-    "2022-08-03-软件设计规范.md",
     "2023-01-04-引用和地址的区别.md",
     "2021-07-05-Java网络编程.md",
     "2023-01-04-论堆&栈.md",
@@ -201,9 +196,6 @@
     "2023.09-17-C++.md",
     "2023-12-05-GNUmake.md",
     "2023-11-29-DOS批处理脚本.md",
-    "2023-04-30-网站架构发展史.md",
-    "2023-03-13-RESTful-API实践.md",
-    "2023-05-24-Java实用工具库.md",
-    "2023-12-03-理论类的学习.md"
+    "2023-04-30-网站架构发展史.md"
   ]
 }
