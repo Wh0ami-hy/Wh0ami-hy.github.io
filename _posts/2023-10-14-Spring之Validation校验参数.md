@@ -45,11 +45,11 @@ tags:
 | @Size            | 校验容器的元素个数                 |
 
 
-# 4. 三种常见的校验方式
+# 4. 常见的校验方式
 
 **业务层校验**
 
-手动进行数据校验判断
+手动在Java的Service层进行数据校验判断
 
 ```java
 public String add(UserVO userVO) {
@@ -59,29 +59,27 @@ public String add(UserVO userVO) {
     if(userVO.getAge() > 120){
         return "年龄不能超过120";
     }
-    if(userVO.getName().isEmpty()){
-        return "用户名不能为空";
-    }
     // 省略一堆参数校验...
     return "OK";
 }
 ```
 
 **Validator + BindingResult**
-
-
+....
+....
 **Validator + 自动抛出异常（推荐）**
 
 使用全局异常处理代替BindingResult捕获异常
+
 # 5. 在Controller层用validator做参数校验
 
 **Bean字段校验**
 
-Bean字段校验是对Java Bean对象中的字段进行验证。例如，验证一个用户对象的姓名是否非空、年龄是否在有效范围内，或者电子邮件地址是否符合规定的格式。
+Bean字段校验是对Java Bean对象中的字段进行验证。如，验证一个用户对象的姓名是否非空、年龄是否在有效范围内，或者电子邮件地址是否符合规定的格式。
 
 首先在待校验字段上增加校验规则注解
 ```java
-	public class UserVO {
+public class UserVO {
     @NotNull(message = "age 不能为空")
     private Integer age;
 }
@@ -97,9 +95,8 @@ public String add(@Validated UserVO userVO, BindingResult result) {
     return "OK";
 }
 ```
-**单个参数校验**
 
-单个参数校验需要在参数上增加校验注解，并在类上标注`@Validated`
+**单个参数校验**
 
 先在`controller`类上添加注解`@Validated`
 
@@ -122,9 +119,10 @@ public class UserController{
 ```
 # 6. 在Controller层之外用validator做参数校验
 
-controller层参数的注解用`@Valid`和`@Validated`都可生效，个人觉得最好还是统一用`@Valid`，避免后续记忆混淆出一些尴尬的问题
+在controller层参数的注解用`@Valid`和`@Validated`都可生效，个人觉得最好还是统一用`@Validated`
 
-service或其他spring管理的bean里使用。在controller之外用的话想让切面生效目前只有一种选择，直接在类上加`@Validated`注解（虽然这个注解可以加在方法上但是只在方法上加不会走切面逻辑，在方法上加主要是定义组校验逻辑）。加在类上会导致所有public方法在外部被调用时都走一次校验前置处理逻辑，一定程度上来说会造成一些不必要的性能影响，所以如果不是所有方法都需要校验并且对细微的性能影响有要求的话最好还是慎重考虑
+在service层或其他spring管理的bean里使用。在controller之外用的话想让切面生效目前只有一种选择，直接在类上加`@Validated`注解（虽然这个注解可以加在方法上但是只在方法上加不会走切面逻辑，在方法上加主要是定义组校验逻辑）。加在类上会导致所有public方法在外部被调用时都走一次校验前置处理逻辑，一定程度上来说会造成一些不必要的性能影响，所以如果不是所有方法都需要校验并且对细微的性能影响有要求的话最好还是慎重考虑
+
 # 7. 全局异常处理
 
 如果每个`Controller`方法中都写一遍对`BindingResult`信息的处理，使用起来还是很繁琐。可以通过全局异常处理的方式统一处理校验异常。
