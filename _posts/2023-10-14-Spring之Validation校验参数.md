@@ -44,6 +44,9 @@ tags:
 | @PositiveOrZero  | 正数或0                            |
 | @Size            | 校验容器的元素个数                 |
 
+对于String类型，建议使用`@NotBlank`
+
+对于Integer类型，建议使用`@NotNull`，因为它的值要么为 `null`，要么为非 `null`，无需再进一步限制
 
 # 4. 常见的校验方式
 

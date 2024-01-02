@@ -388,7 +388,7 @@ spring:
 
 # 6. 引入Lombok库
 
-创建标准的实体类时，可以引入Lombok，使用注解开发
+可以实现使用注解代替实体Bean的getter and setter等，新手不建议使用
 
 在pom.xml中导入依赖
 
