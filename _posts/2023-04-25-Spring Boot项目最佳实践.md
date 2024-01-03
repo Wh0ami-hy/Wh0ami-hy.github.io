@@ -242,8 +242,9 @@ mapper层的接口在对应的xml配置文件中进行配置、实现以及关�
 ```
 api
 common
-admin
+resource
 system
+功能名称（如在线课程学习，这里就是course）
 ```
 
 

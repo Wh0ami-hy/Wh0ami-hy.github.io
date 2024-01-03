@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "661234feb01c3d09",
+        "id": "e918f3aaf30b2ad9",
         "type": "tabs",
         "children": [
           {
-            "id": "97739ae5421a3c40",
+            "id": "e480c94cc64ac925",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-02-12-Java初级.md",
+                "file": "2023-10-14-Spring之Validation校验参数.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 295.5,
-    "collapsed": true
+    "width": 295.5
   },
   "right": {
     "id": "a088a0a4ba18ffbc",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-02-12-Java初级.md",
+                "file": "2023-10-14-Spring之Validation校验参数.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-02-12-Java初级.md",
+                "file": "2023-10-14-Spring之Validation校验参数.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-02-12-Java初级.md"
+                "file": "2023-10-14-Spring之Validation校验参数.md"
               }
             }
           }
@@ -157,17 +156,17 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "97739ae5421a3c40",
+  "active": "e480c94cc64ac925",
   "lastOpenFiles": [
     "2022-06-30-MyBatis.md",
     "2023-10-14-Spring之Validation校验参数.md",
-    "2023-02-12-Java初级.md",
+    "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-03-03-Spring Boot.md",
+    "2023-02-12-Java初级.md",
     "2023-12-27-系统的权限设计.md",
     "2023-12-29-React-JS.md",
     "2023-01-12-JavaScript-ES6.md",
     "2023-01-11-Vue2.md",
-    "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-12-30-node.md",
     "新建文本文档.txt",
     "2023-12-30-认识JSON.md",

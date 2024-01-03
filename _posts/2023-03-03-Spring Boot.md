@@ -386,7 +386,7 @@ spring:
 
 通常使用自带的Validation校验参数
 
-# 6. 引入Lombok库
+# 6. 使用Lombok库
 
 可以实现使用注解代替实体Bean的getter and setter等，新手不建议使用
 

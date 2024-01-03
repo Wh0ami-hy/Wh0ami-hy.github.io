@@ -48,6 +48,8 @@ tags:
 
 对于Integer类型，建议使用`@NotNull`，因为它的值要么为 `null`，要么为非 `null`，无需再进一步限制
 
+对于Map、List类型 可以使用`@NotEmpty`，确保不为空
+
 # 4. 常见的校验方式
 
 **业务层校验**
@@ -173,38 +175,64 @@ public class GlobalControllerAdvice {
     }
 }
 ```
+
 # 8. 其他校验类型
+
 ## 8.1. 分组校验
 
-如果同一个参数，需要在不同场景下应用不同的校验规则，就需要用到分组校验了
+同一个参数在新增的时候为必填，在更新的时候又非必填。面对这种场景就需要用到分组校验了
 
-分组校验有三个步骤：
+**先定义一个分组接口**
 
-先定义一个分组类（或接口）
 ```java
-public interface Update extends Default{
+public interface ValidGroup extends Default {
+  
+    interface Crud extends ValidGroup{
+        interface Create extends Crud{
+
+        }
+
+        interface Update extends Crud{
+
+        }
+
+        interface Query extends Crud{
+
+        }
+
+        interface Delete extends Crud{
+
+        }
+    }
 }
 ```
 
-在校验注解上添加`groups`属性指定分组
+我们定义一个分组接口ValidGroup让其继承`javax.validation.groups.Default`，再在分组接口中定义出多个不同的操作类型，Create，Update，Query，Delete
+
+**在校验注解上添加`groups`属性指定分组**
+
 ```java
 public class UserVO {
-    @NotBlank(message = "name 不能为空",groups = Update.class)
+    @NotBlank(message = "name 不能为空",groups = ValidGroup.Crud.Update.class)
+    @NotNull(message = "name 不能为空",groups = ValidGroup.Crud.Create.class)
     private String name;
     // 省略其他代码...
 }
 ```
 
-`Controller`方法的`@Validated`注解添加分组类
+给参数指定分组，对于未指定分组的则使用的是默认分组
+
+**`Controller`方法的`@Validated`注解添加分组类**
 
 ```java
 @PostMapping("update")
-public ResultInfo update(@Validated({Update.class}) UserVO userVO) {
+public ResultInfo update(@Validated(value = ValidGroup.Crud.Update.class) UserVO userVO) {
     return new ResultInfo().success(userVO);
 }
 ```
 
-注：`@validated`和Validator 内置的参数校验注解 默认都属于`Default.class`分组
+注：`@validated`和Validator 内置的参数校验注解默认都属于`Default.class`分组
+
 ## 8.2. 递归校验
 
 如果 UserVO 类中增加一个 OrderVO 类的属性，而 OrderVO 中的属性也需要校验，就用到递归校验了，只要在相应属性上增加`@Valid`注解即可实现（对于集合同样适用）
