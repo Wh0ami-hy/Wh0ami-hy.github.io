@@ -13,24 +13,42 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-03-03-Spring Boot.md"
+                "file": "2023-09-07-SpringBoot日志框架.md"
               }
             }
           },
           {
-            "id": "25ac69b493da3053",
+            "id": "f335fe5299d7c660",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-03-03-Spring Boot.md",
+                "file": "2023-09-07-SpringBoot日志框架.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "6ea988a3266cedb4"
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "ce9ad2ec5876ff18",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4c90330ac9c05af5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-09-07-SpringBoot日志框架.md"
+              }
+            },
+            "group": "6ea988a3266cedb4"
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +77,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:spring",
+                "query": "file:日志",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-03-03-Spring Boot.md",
+                "file": "2023-09-07-SpringBoot日志框架.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-03-03-Spring Boot.md",
+                "file": "2023-09-07-SpringBoot日志框架.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-03-03-Spring Boot.md"
+                "file": "2023-09-07-SpringBoot日志框架.md"
               }
             }
           }
@@ -169,13 +187,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "25ac69b493da3053",
+  "active": "f335fe5299d7c660",
   "lastOpenFiles": [
+    "2022-06-30-MyBatis.md",
+    "2023-09-07-SpringBoot日志框架.md",
+    "2023-03-03-Spring Boot.md",
     "2023-03-12-Spring.md",
     "2023-10-14-Spring之Validation校验参数.md",
-    "2022-06-30-MyBatis.md",
     "2023-04-25-Spring Boot项目最佳实践.md",
-    "2023-03-03-Spring Boot.md",
     "2023-02-12-Java初级.md",
     "2023-12-27-系统的权限设计.md",
     "2023-12-29-React-JS.md",
@@ -196,7 +215,6 @@
     "2021-06-26-JDBC.md",
     "2023-02-13-Java多线程.md",
     "2023-03-26-MySQL原理.md",
-    "2023-12-21-Java8的日期时间类.md",
-    "2023-11-18-Swagger接口文档工具.md"
+    "2023-12-21-Java8的日期时间类.md"
   ]
 }

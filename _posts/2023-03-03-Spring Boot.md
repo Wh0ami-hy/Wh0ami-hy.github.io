@@ -333,36 +333,74 @@ server:
 
 ## 4.3. 读取配置文件的内容
 
+假如application.yml配置文件中有如下内容
+```yml
+user:
+	name: admin
+	password: admin123
+```
+
 **方法一：@ConfigurationProperties**
 
-如果专门编写了一个JavaBean来和配置文件进行映射，就直接使用 `@ConfigurationProperties`
+如果专门编写了一个JavaBean来和配置文件进行映射，则推荐使用 `@ConfigurationProperties`
 
-在类中用 `@ConfigurationProperties(prefix = "配置文件中的类名")` 绑定配置文件
+使用前需要先在pom.xml中引入一个依赖（否则会报`Spring Boot Configuration Annotation Processor not configured`）
 
-效果：在配置文件中即可实现对类属性的赋值
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-configuration-processor</artifactId>
+</dependency>
+```
+
+先用 `@ConfigurationProperties(prefix = "配置文件中的类名")` 绑定配置文件
 
 ```java
 // java 类
-@ConfigurationProperties(prefix = "person")
-public class Person{
+@Component
+@ConfigurationProperties(prefix = "user")
+public class User{
     private String name;
-    private Integer age;
+    private String password;
 
 	public Person(){}
+	/**
+	get()
+	set()
+	*/
 }
-// yml配置文件
-person:
- name: asdasd
- age: 3
+```
+
+使用时注入该Java Bean后，即可使用
+
+```java
+@Autowired 
+private User user;
 ```
 
 **方法二：@Value**
 
-如果在某个业务中，只需要获取配置文件中的某个值，可以使用`@Value`
+如果获取的参数较少，则推荐直接使用`@Value("${...}")`获取即可
 
-**方法三：@PropertySource**
+```java
+@Value("${user.name}")
+private String name;
+```
 
-加载指定的配置文件：`@PropertySource(value="classpath:/application.properties",encoding = "utf-8")`
+**方法三：Environment Object**
+
+使用时先注入Environment Object 
+
+```java
+@Autowired
+private Environment env;
+```
+
+需要使用配置文件中的内容时
+```java
+String name = env.getProperty("user.name");
+```
+
 
 ## 4.4. 多种环境的配置
 
@@ -384,7 +422,7 @@ spring:
 
 # 5. 参数校验
 
-通常使用自带的Validation校验参数
+通常使用Spring自带的Validation校验参数
 
 # 6. 使用Lombok库
 

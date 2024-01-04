@@ -260,3 +260,13 @@ public class className {
     </Loggers>
 </Configuration>
 ```
+
+# 8. 打开Mybatis的SQL日志
+
+```yml
+logging:  
+  level:  
+    org.springframework: WARN  
+    # 为该包目录下的所有mapper开启sql日志  
+    com.yatong.exam.mapper.*: DEBUG
+```
