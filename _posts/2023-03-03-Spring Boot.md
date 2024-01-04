@@ -331,11 +331,11 @@ server:
 	port: 80
 ```
 
-## 4.3. 主动读取配置文件的内容
+## 4.3. 读取配置文件的内容
 
-**@configurationProperties**
+**方法一：@ConfigurationProperties**
 
-如果专门编写了一个JavaBean来和配置文件进行映射，就直接使用 `@configurationProperties`
+如果专门编写了一个JavaBean来和配置文件进行映射，就直接使用 `@ConfigurationProperties`
 
 在类中用 `@ConfigurationProperties(prefix = "配置文件中的类名")` 绑定配置文件
 
@@ -356,11 +356,11 @@ person:
  age: 3
 ```
 
-**@Value**
+**方法二：@Value**
 
 如果在某个业务中，只需要获取配置文件中的某个值，可以使用`@Value`
 
-**@PropertySource**
+**方法三：@PropertySource**
 
 加载指定的配置文件：`@PropertySource(value="classpath:/application.properties",encoding = "utf-8")`
 

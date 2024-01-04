@@ -4,22 +4,33 @@
     "type": "split",
     "children": [
       {
-        "id": "e918f3aaf30b2ad9",
+        "id": "831e7010eb8d38b5",
         "type": "tabs",
         "children": [
           {
-            "id": "e480c94cc64ac925",
+            "id": "ea9f87ff3f73cac0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-03-03-Spring Boot.md"
+              }
+            }
+          },
+          {
+            "id": "25ac69b493da3053",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-10-14-Spring之Validation校验参数.md",
+                "file": "2023-03-03-Spring Boot.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +59,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:java",
+                "query": "file:spring",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,11 +76,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 295.5
+    "width": 295.5,
+    "collapsed": true
   },
   "right": {
     "id": "a088a0a4ba18ffbc",
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-10-14-Spring之Validation校验参数.md",
+                "file": "2023-03-03-Spring Boot.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-10-14-Spring之Validation校验参数.md",
+                "file": "2023-03-03-Spring Boot.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-10-14-Spring之Validation校验参数.md"
+                "file": "2023-03-03-Spring Boot.md"
               }
             }
           }
@@ -156,10 +169,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "e480c94cc64ac925",
+  "active": "25ac69b493da3053",
   "lastOpenFiles": [
-    "2022-06-30-MyBatis.md",
+    "2023-03-12-Spring.md",
     "2023-10-14-Spring之Validation校验参数.md",
+    "2022-06-30-MyBatis.md",
     "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-03-03-Spring Boot.md",
     "2023-02-12-Java初级.md",
@@ -183,7 +197,6 @@
     "2023-02-13-Java多线程.md",
     "2023-03-26-MySQL原理.md",
     "2023-12-21-Java8的日期时间类.md",
-    "2023-11-18-Swagger接口文档工具.md",
-    "2023-01-04-引用和地址的区别.md"
+    "2023-11-18-Swagger接口文档工具.md"
   ]
 }
