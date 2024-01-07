@@ -93,7 +93,7 @@ SpringBoot默认的Logback，因为Logback是SpringBoot自带的，所以只要�
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout
-                pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
+                pattern="%style{%d{ISO8601}}{black}-%highlight{%-5level}[%style{%t}{bright,blue}]-%style{%C{1.}}{bright,yellow}:%msg%n%throwable" />
         </Console>
 
         <RollingFile name="RollingFile"
