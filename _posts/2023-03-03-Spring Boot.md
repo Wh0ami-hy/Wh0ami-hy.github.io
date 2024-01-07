@@ -742,37 +742,6 @@ spring:
             multi-statement-allow: true
 ```
 
-**配置 Druid 监控**
-
-在 Spring Boot 应用程序中，可以通过配置 `ServletRegistrationBean` 和 `FilterRegistrationBean` 来启用 Druid 监控。在配置类中添加以下代码：
-
-在这个例子中，`druidStatViewServlet` 方法返回一个 `ServletRegistrationBean` 实例，用于注册 `StatViewServlet`，`druidWebStatFilter` 方法返回一个 `FilterRegistrationBean` 实例，用于注册 `WebStatFilter`。
-
-可以通过访问 `http://localhost:8080/druid` 来查看 Druid 监控信息
-
-```java
-@Configuration
-public class DruidConfig {
-    @Bean
-    public ServletRegistrationBean<StatViewServlet> druidStatViewServlet() {
-        ServletRegistrationBean<StatViewServlet> registrationBean = new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
-        registrationBean.addInitParameter("loginUsername", "admin");
-        registrationBean.addInitParameter("loginPassword", "admin");
-        registrationBean.addInitParameter("resetEnable", "true");
-        return registrationBean;
-    }
-
-    @Bean
-    public FilterRegistrationBean<WebStatFilter> druidWebStatFilter() {
-        FilterRegistrationBean<WebStatFilter> registrationBean = new FilterRegistrationBean<>(new WebStatFilter());
-        registrationBean.addUrlPatterns("/*");
-        registrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-        return registrationBean;
-    }
-}
-```
-
-
 # 10. Spring Boot全局异常处理（重点）
 
 通常情况下我们用`try.....catch....`对异常进行捕捉处理，但是在实际项目中对业务模块进行异常捕捉，会造成代码重复和繁杂， 我们希望代码中只有业务相关的操作，所有的异常我们单独设立一个类来处理它
@@ -1230,7 +1199,7 @@ server:
 
 创建banner.txt 放在 resources目录下
 
-# 14. 统计代码执行时间
+# 14. 计算代码执行时间
 
 Spring 或 Spring Boot 项目，可以在项目中直接使用 `StopWatch` 对象来统计代码执行时间
 
