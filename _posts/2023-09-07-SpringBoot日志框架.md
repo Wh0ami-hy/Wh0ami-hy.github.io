@@ -29,7 +29,7 @@ SpringBoot默认的Logback，因为Logback是SpringBoot自带的，所以只要�
     <!-- 控制台日志，控制台输出 -->  
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">  
         <encoder>  
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{50}) - %msg%n</pattern>  
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}-[%thread]-%highlight(%-5level) %cyan(%logger{50})-%msg%n</pattern>  
         </encoder>  
     </appender>  
   
@@ -41,7 +41,7 @@ SpringBoot默认的Logback，因为Logback是SpringBoot自带的，所以只要�
             <maxHistory>30</maxHistory>  
         </rollingPolicy>  
         <encoder>  
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %logger{50} - %msg%n</pattern>  
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}-[%thread]-%highlight(%-5level) %logger{50}-%msg%n</pattern>  
         </encoder>  
     </appender>  
   
@@ -100,7 +100,7 @@ SpringBoot默认的Logback，因为Logback是SpringBoot自带的，所以只要�
             fileName="./logs/spring-boot-logger-log4j2.log"
             filePattern="./logs/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
             <PatternLayout>
-                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+                <pattern>%d-%p-%C{1.}-[%t]-%m%n</pattern>
             </PatternLayout>
             <Policies>
                 <!-- rollover on startup, daily and when the file reaches 
