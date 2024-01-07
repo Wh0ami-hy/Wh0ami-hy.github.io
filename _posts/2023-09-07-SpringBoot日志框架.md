@@ -87,46 +87,6 @@ SpringBoot默认的Logback，因为Logback是SpringBoot自带的，所以只要�
 
 简单的配置可以在application.yml中直接配置。复杂的配置将Log4j2配置文件`log4j2.xml`或`log4j2-spring.xml`放在resource目录下，SpringBoot会自动加载并覆盖默认的配置。Log4j2还允许我们使用YAML或JSON配置。推荐优先使用带有`-spring`的文件名作为你的日志配置
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<Configuration>
-    <Appenders>
-        <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout
-                pattern="%style{%d{ISO8601}}{black}-%highlight{%-5level}[%style{%t}{bright,blue}]-%style{%C{1.}}{bright,yellow}:%msg%n%throwable" />
-        </Console>
-
-        <RollingFile name="RollingFile"
-            fileName="./logs/spring-boot-logger-log4j2.log"
-            filePattern="./logs/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
-            <PatternLayout>
-                <pattern>%d-%p-%C{1.}-[%t]-%m%n</pattern>
-            </PatternLayout>
-            <Policies>
-                <!-- rollover on startup, daily and when the file reaches 
-                    10 MegaBytes -->
-                <OnStartupTriggeringPolicy />
-                <SizeBasedTriggeringPolicy
-                    size="10 MB" />
-                <TimeBasedTriggeringPolicy />
-            </Policies>
-        </RollingFile>
-    </Appenders>
-
-    <Loggers>
-        <!-- LOG everything at INFO level -->
-        <Root level="info">
-            <AppenderRef ref="Console" />
-            <AppenderRef ref="RollingFile" />
-        </Root>
-
-        <!-- LOG "com.baeldung*" at TRACE level -->
-        <Logger name="com.baeldung" level="trace"></Logger>
-    </Loggers>
-
-</Configuration>
-```
-
 # 4. SLF4J
 
 **[SLF4J](http://www.slf4j.org/)  ，即简单日志门面（Simple Logging Facade for Java），不是具体的日志解决方案，它只服务于各种各样的日志系统。SLF4J是一个用于日志系统的日志抽象层，允许开发人员灵活的切换所需的日志框架，实现Log4j、Logback等多种日志框架的切换。将应用系统和具体的日志框架解耦合**
