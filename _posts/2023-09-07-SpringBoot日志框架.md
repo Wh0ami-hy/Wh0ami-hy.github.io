@@ -11,62 +11,98 @@ tags:
 
 使用 `System.out.println()`来打印信息耗费系统资源，不方便排查问题
 
-# 2. Logback
+# 2. 常见的日志框架
 
-SpringBoot默认的Logback，因为Logback是SpringBoot自带的，所以只要引入了SpringBoot就不需要单独引入Logback。
+| 日志门面（日志的抽象层）      | 日志实现                    |
+| ----------------------------- | --------------------------- |
+| JCL（Jakarta Commons Logging）、SLF4j、jboss-logging | Log4j、JUL（java.util.logging）、Log4j2、Logback |
 
-简单的配置可以在application.yml中直接配置。复杂的配置将Logback配置文件`logback.xml`或`logback-spring.xml`放在resource目录下，SpringBoot会自动加载并覆盖默认的配置。推荐优先使用带有`-spring`的文件名作为你的日志配置
+常用搭配：SLF4j + Logback
 
-也可以自定义配置文件名，在application.yml中指定`logging.config=classpath:logging-config.xml`
+Spring框架默认是用JCL
 
+SpringBoot默认是SLF4j搭配Logback
+
+# 3. [SLF4J](http://www.slf4j.org/)
+
+## 3.1. SLF4J的定义
+
+SLF4J ，即简单日志门面（Simple Logging Facade for Java），不是具体的日志解决方案，它只服务于各种各样的日志系统。SLF4J是一个用于日志系统的日志抽象层，允许开发人员灵活的切换所需的日志框架，实现Log4j、Logback等多种日志框架的切换。将应用系统和具体的日志框架解耦合
+
+## 3.2. SLF4J的使用
+
+日志记录方法的调用，不应该来直接调用日志的实现类，而是调用日志抽象层里面的方法
+
+每一个日志的实现框架都有自己的配置文件。使用SLF4J以后，日志配置文件还是日志实现框架的配置文件
+
+SLF4J的唯一强制依赖项是slf4j-api
 
 ```xml
-<configuration debug="false">  
-  
-    <!-- 定义日志文件的存储地址，不要在 LogBack 的配置中使用相对路径 -->  
-    <property name="LOG_HOME" value="./log" />  
-  
-    <!-- 控制台日志，控制台输出 -->  
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">  
-        <encoder>  
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}-[%thread]-%highlight(%-5level) %cyan(%logger{50})-%msg%n</pattern>  
-        </encoder>  
-    </appender>  
-  
-    <!-- 文件日志，按照每天生成日志文件 -->  
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">  
-        <file>${LOG_HOME}/TestWeb.log</file>  
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
-            <fileNamePattern>${LOG_HOME}/TestWeb.%d{yyyy-MM-dd}.log</fileNamePattern>  
-            <maxHistory>30</maxHistory>  
-        </rollingPolicy>  
-        <encoder>  
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}-[%thread]-%highlight(%-5level) %logger{50}-%msg%n</pattern>  
-        </encoder>  
-    </appender>  
-  
-    <!-- mybatis log configure -->  
-    <logger name="com.apache.ibatis" level="TRACE" />  
-  
-    <!-- JDBC日志 -->  
-    <logger name="java.sql.Connection" level="DEBUG" />  
-    <logger name="java.sql.Statement" level="DEBUG" />  
-    <logger name="java.sql.PreparedStatement" level="DEBUG" />  
-  
-    <!-- 日志输出级别 -->  
-    <root level="DEBUG">  
-        <appender-ref ref="STDOUT" />  
-        <appender-ref ref="FILE" />  
-    </root>  
-  
-</configuration>
+<dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>slf4j-api</artifactId>
+</dependency>
 ```
 
-# 3. Log4j2
+![QQ截图20240109210014](F:\笔记\博客\文章图片\QQ截图20240109210014.png)
+
+
+# 4. SpringBoot中的日志实现
+
+```mermaid
+graph LR 
+A[spring-boot-starter-web] --> B[spring-boot-starter] 
+B --> C[spring-boot-starter-logging] 
+C --> C.1[logback-classic]
+C --> C.2[logback-over-slf4j]
+C --> C.3[jul-to-slf4j]
+C --> C.4[jcl-over-slf4j]
+C.1 --> E[logback-core]
+C.1 --> D[slf4j-api]
+C.2 --> D[slf4j-api]
+C.3 --> D[slf4j-api]
+C.4 --> D[slf4j-api]
+```
+
+## 4.1. SpringBoot中的日志关系
+
+历史遗留问题：在项目中虽然使用了SLF4j + Logback来实现日志，但是Spring项目中引入的其他框架如Mybatis等却使用的是别的日志框架，怎么把系统中不同的日志实现框架统一
+
+SpringBoot能自动适配所有的日志框架，而且底层使用SLF4j+logback的方式记录日志，引入其他框架的时候，只需要把这个框架依赖的日志框架排除掉即可
+
+**实现原理：如何将系统中的所有日志都统一到SLF4j**
+
+- 将系统中其他日志框架先排除出去
+- 用中间包来替换原有的日志框架
+- 导入SLF4j其他的实现
+
+## 4.2. SpringBoot中日志的默认配置
+
+**日志级别**
+
+SpringBoot默认的日志级别是info
+
+可以使用`logging.level` 调整某个包、类输出的日志级别
+
+## 4.3. SpringBoot中指定日志框架
+
+**Logback**
+
+将Logback配置文件`logback.xml`或`logback-spring.xml`放在resource目录下，`logback.xml` 会直接被日志框架解析，而`logback-spring.xml`是由SpringBoot解析
+
+推荐使用`logback-spring.xml`配置，这样可以使用SpringBoot中的特性`springProfile`标签（指定某段配置只在某个环境下生效）
+
+```xml
+<springProfile name="staging" >
+<!-- configuration to be enabled when the "staging" profile is active -->
+</springProfile>
+```
+
+**Log4j2**
 
 如果对日志框架的性能有要求，则使用Log4j2，否则使用默认的Logback即可
 
-注意：如果要使用Log4j2，需要在引入springboot时排除Logback
+如果要使用Log4j2，要在引入SpringBoot时排除Logback
 
 ```xml
 <dependency>
@@ -85,41 +121,72 @@ SpringBoot默认的Logback，因为Logback是SpringBoot自带的，所以只要�
 </dependency>
 ```
 
-简单的配置可以在application.yml中直接配置。复杂的配置将Log4j2配置文件`log4j2.xml`或`log4j2-spring.xml`放在resource目录下，SpringBoot会自动加载并覆盖默认的配置。Log4j2还允许我们使用YAML或JSON配置。推荐优先使用带有`-spring`的文件名作为你的日志配置
+将Log4j2配置文件`log4j2.xml`或`log4j2-spring.xml`放在resource目录下
 
-# 4. SLF4J
+# 5. 配置文件模板
 
-**[SLF4J](http://www.slf4j.org/)  ，即简单日志门面（Simple Logging Facade for Java），不是具体的日志解决方案，它只服务于各种各样的日志系统。SLF4J是一个用于日志系统的日志抽象层，允许开发人员灵活的切换所需的日志框架，实现Log4j、Logback等多种日志框架的切换。将应用系统和具体的日志框架解耦合**
-
-# 5. SLF4J搭配日志框架
-
-- **slf4j + logback**： slf4j-api.jar + logback-classic.jar + logback-core.jar
-- **slf4j + log4j**： slf4j-api.jar + slf4j-log4j2.jar + log4j.jar
-
-SLF4J的唯一强制依赖项是slf4j-api
+## 5.1. Logback
 
 ```xml
-<dependency>
-	<groupId>org.slf4j</groupId>
-	<artifactId>slf4j-api</artifactId>
-</dependency>
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOGS" value="./logs" />
+
+    <appender name="Console"
+        class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="RollingFile"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/spring-boot-logger.log</file>
+        <encoder
+            class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </encoder>
+
+        <rollingPolicy
+            class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily and when the file reaches 10 MegaBytes -->
+            <fileNamePattern>${LOGS}/archived/spring-boot-logger-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+    
+    <!-- LOG everything at INFO level -->
+    <root level="info">
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="Console" />
+    </root>
+
+    <!-- LOG "com.baeldung*" at TRACE level -->
+    <logger name="com.baeldung" level="trace" additivity="false">
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="Console" />
+    </logger>
+
+</configuration>
 ```
 
-![slf4j-with-logging-frameworks](F:\笔记\博客\文章图片\slf4j-with-logging-frameworks.png)
+## 5.2. Log4j2
 
-## 5.1. SLF4J + Logback
 
-在Spring Boot 的程序中使用SLF4J，不需要单独引入SLF4J，我们引入的`spring-boot-starter-web`中就已经包含了有关`slf4j`的jar包。因为Logback是SpringBoot自带的，所以只要引入了SpringBoot就不需要单独引入Logback
 
-配合Lombok使用`@Slf4j`，使用时，在声明`@Slf4j`注解后，即可使用`log.info()`打印日志
 
-在项目的`src/main/resources`目录下创建一个名为`logback.xml`的文件
 
-## 5.2. SLF4J + Log4j2
 
-在Spring Boot项目中使用SLF4J作为日志门面，并使用Log4j2作为日志实现。可以根据需要调整Log4j2的配置文件和日志级别配置来满足需求
 
-在项目的`src/main/resources`目录下创建一个名为`log4j2.xml`的文件
+
+
 
 # 6. 打印哪些日志
 
