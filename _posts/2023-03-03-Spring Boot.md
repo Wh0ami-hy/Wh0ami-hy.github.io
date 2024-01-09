@@ -742,7 +742,11 @@ spring:
             multi-statement-allow: true
 ```
 
-# 10. Spring Boot全局异常处理（重点）
+# 10. Spring Boot日志框架
+
+在Spring Boot 中导入`spring-boot-starter-web`后，不需要单独引入SLF4J 和 Logback，可直接使用
+
+# 11. Spring Boot全局异常处理（重点）
 
 通常情况下我们用`try.....catch....`对异常进行捕捉处理，但是在实际项目中对业务模块进行异常捕捉，会造成代码重复和繁杂， 我们希望代码中只有业务相关的操作，所有的异常我们单独设立一个类来处理它
 
@@ -772,7 +776,7 @@ public class SysIndexController
 }
 ```
 
-## 10.1. 配置全局异常处理类
+## 11.1. 配置全局异常处理类
 
 首先，我们需要新建一个类，在这个类上加上`@ControllerAdvice`或`@RestControllerAdvice`注解，这个类就配置成全局处理类了。（这个根据Controller层用的是`@Controller`还是`@RestController`来决定）
 
@@ -803,7 +807,7 @@ public class GlobalExceptionHandler {
 
 `ExceptionHandlerMethodResolver` 中 `getMappedMethod` 方法决定了异常具体被哪个被 `@ExceptionHandler` 注解修饰的方法处理异常
 
-## 10.2. 自定义异常
+## 11.2. 自定义异常
 
 - 项目开发中经常是很多人负责不同的模块，使用自定义异常可以统一对外异常展示的方式。
 - 自定义异常语义更加清晰明了，一看就知道是项目中手动抛出的异常
@@ -854,9 +858,9 @@ public class APIException extends RuntimeException {
 - 打印了日志或抛出了其它异常 
 - 异常是否非Controller抛出，即在拦截器或过滤器中出现的异常
 
-# 11. 任务（必会）
+# 12. 任务（必会）
 
-## 11.1. 异步任务
+## 12.1. 异步任务
 
 在启动类上使用 `@EnableAsync` 开启异步功能
 
@@ -877,7 +881,7 @@ public class AsynService {
 }
 ```
 
-## 11.2. 定时任务
+## 12.2. 定时任务
 
 在启动类上使用`@EnableScheduling`（spring提供） 开启定时功能 
 
@@ -895,7 +899,7 @@ public class MyScheduledTask {
 }
 ```
 
-## 11.3. 邮件任务
+## 12.3. 邮件任务
 
 导入依赖 pom.xml
 
@@ -944,9 +948,9 @@ public class MailService {
 
 。。。
 
-# 12. SpringBoot整合Quartz
+# 13. SpringBoot整合Quartz
 
-## 12.1. 什么是 Quartz
+## 13.1. 什么是 Quartz
 
 任务调度框架。官网：http://www.quartz-scheduler.org/documentation/
 
@@ -956,7 +960,7 @@ public class MailService {
 
 三个重要概念：`任务Job`、`触发器Trigger`、`调度器Scheduler`
 
-## 12.2. Quartz 的特性
+## 13.2. Quartz 的特性
 
 Quartz 适用于各种类型的应用程序。无论是简单的定时任务还是复杂的分布式调度，Quartz都是一个强大而可靠的选择 
 
@@ -1008,7 +1012,7 @@ Quartz 的 Terracotta 扩展提供了集群功能，而无需备份数据库。
 
 插件机制，我们可向 Quartz 添加功能，例如保存 Job 执行的历史记录，或从文件加载 Job 和 Trigger 的定义。
 
-## 12.3. 使用Quartz
+## 13.3. 使用Quartz
 
 引入依赖
 ```xml
@@ -1028,9 +1032,9 @@ Quartz API 的关键接口如下：
 - `TriggerBuilder` ： 用来构建 `Trigger` 实例。
 
 
-# 13. SpringBoot项目部署
+# 14. SpringBoot项目部署
 
-## 13.1. SpringBoot项目打包
+## 14.1. SpringBoot项目打包
 
 对于使用 Maven 打包产生的项目产物，在不同的情况下会有不同需求，如：
 
@@ -1038,7 +1042,7 @@ Quartz API 的关键接口如下：
 2.  文件和依赖分开，分为 jar 包和 /lib 下的依赖包信息，避免 jar 过大传输速度太慢
 3.  配置文件剥离，可以动态修改配置，分为 jar、/lib、.proerties 三个文件
 
-### 13.1.1. 默认完整打包版
+### 14.1.1. 默认完整打包版
 
 项目完整Jar包，包括相关依赖信息，可以直接执行
 
@@ -1046,7 +1050,7 @@ SpringBoot 项目使用 Maven 打包后的 Jar 包产物命名方式是由项目
 
 要自定义生成的文件名，可以在 pom.xml 的 build 标签中使用 finalName 标签自定义生成 jar 包名称
 
-### 13.1.2. 依赖文件外置版
+### 14.1.2. 依赖文件外置版
 
 若项目的依赖 jar 包比较多但是改动较少，在打包项目时就需要将三方依赖和当前项目分离开来，代码改变时只需要重新打包项目内容即可
 
@@ -1099,7 +1103,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 </build>
 ```
 
-### 13.1.3. 配置文件外置版
+### 14.1.3. 配置文件外置版
 
 若只是需要改动配置文件，而不需要修改源代码，配置文件放在 jar 文件外，会更方便。
 
@@ -1163,7 +1167,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 
 `maven-jar-plugin` 插件中可以设置打包时 jar 包中排除指定的配置文件类型
 
-## 13.2. SpringBoot项目部署到服务器
+## 14.2. SpringBoot项目部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1171,7 +1175,7 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 13.3. SpringBoot项目部署配置项
+## 14.3. SpringBoot项目部署配置项
 
 在yml 配置文件中
 
@@ -1195,11 +1199,11 @@ server:
       min-spare: 100
 ```
 
-## 13.4. SpringBoot项目定制banner
+## 14.4. SpringBoot项目定制banner
 
 创建banner.txt 放在 resources目录下
 
-# 14. 计算代码执行时间
+# 15. 计算代码执行时间
 
 Spring 或 Spring Boot 项目，可以在项目中直接使用 `StopWatch` 对象来统计代码执行时间
 
@@ -1223,7 +1227,7 @@ System.out.printf("执行时长：%d 毫秒.%n", stopWatch.getTotalTimeMillis())
 System.out.printf("执行时长：%d 纳秒.%n", stopWatch.getTotalTimeNanos());
 ```
 
-# 15. SpringBoot常用注解（重点）
+# 16. SpringBoot常用注解（重点）
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 
