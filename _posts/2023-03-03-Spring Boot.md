@@ -7,15 +7,15 @@ tags:
 
 
 
-# 1. 什么是 SpringBoot 自动装配
+# 1. SpringBoot 的自动装配
 
-SpringBoot的核心：自动装配
+SpringBoot的核心是自动装配
 
-使用Spring时，在开启某些 Spring 特性或者引入第三方依赖的时候，还是需要用 XML 或 Java 进行显式配置
+使用Spring时，在开启某些 Spring 特性或者引入第三方依赖的时候，需要用 XML 或 Java 进行显式配置
 
 使用Spring Boot，通过 Spring Boot 的全局配置文件 application.properties 或 application.yml 即可对项目进行设置，比如更换端口号，配置 Mybatis 属性等
 
-SpringBoot 定义了一套接口规范，规定：SpringBoot 在启动时会扫描外部引用 jar 包中的`META-INF/spring.factories`文件，将文件中配置的类型信息加载到 Spring 容器（此处涉及到 JVM 类加载机制与 Spring 的容器知识），并执行类中定义的各种操作。对于外部 jar 来说，只需要按照 SpringBoot 定义的标准，就能将自己的功能装置进 SpringBoot
+SpringBoot 在启动时会扫描`META-INF/spring.factories`文件，将文件中配置的类型信息加载到 Spring 容器（此处涉及到 JVM 类加载机制与 Spring 的容器知识），并执行类中定义的各种操作。对于外部 jar 来说，只需要按照 SpringBoot 定义的标准，就能将自己的功能装置进 SpringBoot
 
 Spring Boot中要引入第三方依赖，直接引入一个 starter 即可。引入 starter 之后，我们通过少量注解和一些简单的配置就能使用第三方组件提供的功能了
 
@@ -105,109 +105,19 @@ protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigur
 }
 ```
 
-## 1.2. 实现一个 Starter
+## 1.2. Spring Boot Starter
 
-如：实现自定义线程池
+**Spring Boot Starter是什么**
 
-手动实现一个 Spring Boot 启动器（Starter），需要完成以下步骤：
+a Spring Boot Starter is a set of pre-configured dependencies, packaged together to jumpstart the development of specific types of applications or components. These starters contain everything you need to get up and running quickly, reducing the complexity of configuring your application manually.
 
-**创建一个 Maven 项目**
+**Spring Boot Starter的工作方式**
 
-用于存储定制的 Starter
-
-**添加依赖**
-
-在项目的 pom.xml 文件中添加以下依赖：
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-autoconfigure</artifactId>
-    <version>2.6.3</version>
-</dependency>
-```
-
-这个依赖包含了 Spring Boot 的自动配置模块，它允许你通过 Java 代码来自定义 Spring Boot 的自动配置
-
-**创建自动配置类**
-
-创建一个自动配置类，用于自定义 Spring Boot 的自动配置。这个类应该包含一个 `@Configuration` 注解和一个 `@ConditionalOnClass` 注解，用于指定自动配置类的条件，例如：
-
-```java
-@Configuration
-@ConditionalOnClass(MyService.class)
-public class MyAutoConfiguration {
-    @Bean
-    @ConditionalOnMissingBean
-    public MyService myService() {
-        return new MyService();
-    }
-}
-```
-
-这个自动配置类会在项目中存在 `MyService` 类时自动生效，它会创建一个名为 `myService` 的 Bean 并将它添加到 Spring 应用程序上下文中
-
-**创建 Starter 类**
-
-创建一个 Starter 类，用于提供自动配置类和其他必要的依赖。这个类应该包含一个 `@Configuration` 注解和一个 `@EnableConfigurationProperties` 注解，用于启用自动配置和配置属性的支持，例如：
-
-```java
-@Configuration
-@EnableConfigurationProperties(MyProperties.class)
-@AutoConfigureAfter(MyAutoConfiguration.class)
-public class MyStarterAutoConfiguration {
-    @Autowired
-    private MyProperties properties;
-
-    @Bean
-    public MyService myService() {
-        return new MyService(properties.getGreeting());
-    }
-}
-```
-
-这个 Starter 类会自动启用 `MyAutoConfiguration` 自动配置类，并创建一个名为 `myService` 的 Bean，它使用 `MyProperties` 配置类中的属性来初始化 `MyService` 类的实例
-
-**创建配置属性类**
-
-创建一个配置属性类，用于定义 Starter 的配置属性。这个类应该包含一个 `@ConfigurationProperties` 注解，用于指定配置属性的前缀和默认值，例如：
-
-```java
-@ConfigurationProperties("my.starter")
-public class MyProperties {
-    private String greeting = "Hello";
-
-    public String getGreeting() {
-        return greeting;
-    }
-
-    public void setGreeting(String greeting) {
-        this.greeting = greeting;
-    }
-}
-```
-
-这个配置属性类定义了一个名为 `greeting` 的属性，它的默认值是 "Hello"。这个属性可以在 Starter 类中使用，用于初始化 `MyService` 类的实例。
-
-**打包和安装 Starter**
-
-在项目的根目录中运行以下命令，将 Starter 打包并安装到本地 Maven 仓库中：
-
-```
-mvn clean install
-```
-
-现在你已经手动实现了一个 Spring Boot Starter。要在其他项目中使用它，只需在项目的 pom.xml 文件中添加以下依赖：
-
-```xml
-<dependency>
-    <groupId>com.example</groupId>
-    <artifactId>my-starter</artifactId>
-    <version>1.0.0</version>
-</dependency>
-```
-
-这个依赖会自动引入 Starter 类和其他必要的依赖，使你可以在项目中使用 `MyService` 类和其他相关的组件
+1.  Pre-Packaged Dependencies: Each Starter includes a carefully curated collection of dependencies, such as libraries, frameworks, and configurations. These dependencies are chosen to cater to a specific use case or technology stack.
+2.  Auto-Configuration: Spring Boot automatically configures these dependencies based on sensible defaults and conventions. This eliminates the need for extensive configuration files and boilerplate code, saving you time and effort.
+3.  Ready-to-Use Templates: Starters often include template code or sample applications that serve as a foundation for your project. You can then build upon this foundation to create custom functionality.
+4.  Technology-Centric: Spring Boot offers a wide range of Starters tailored for various technologies, such as web development (Spring Boot Starter Web), data access (Spring Boot Starter Data JPA), and more. This allows you to pick the Starter that aligns with your project’s requirements.
+5.  Easy Customization: While Starters provide a quick start, Spring Boot allows for extensive customization. You can override default configurations and add additional dependencies as needed to tailor the application to your specific needs
 
 ## 1.3. 总结
 
@@ -310,20 +220,22 @@ pom.xml（父级）
 
 SpringBoot使用一个全局的配置文件，配置文件名称是固定的
 
+## 4.1. 两种配置文件
+
 **不同名称的配置文件的优先级**
 
 ```
 application.properties > application.yml
 ```
 
-## 4.1. application.properties
+**application.properties**
 
 ```
 语法结构：key=value
 server.port=8888
 ```
 
-## 4.2. application.yml（推荐）
+**application.yml（推荐）**
 
 ```
 语法结构：key:空格value
@@ -331,7 +243,7 @@ server:
 	port: 80
 ```
 
-## 4.3. 读取配置文件的内容
+## 4.2. 读取配置文件的内容
 
 假如application.yml配置文件中有如下内容
 ```yml
@@ -402,7 +314,7 @@ String name = env.getProperty("user.name");
 ```
 
 
-## 4.4. 多种环境的配置
+## 4.3. 多种环境的配置
 
 application-dev.yml 开发环境、application-prod.yml 生产环境
 
@@ -416,7 +328,7 @@ spring:
 		active: dev  # dev表示激活开发环境  prod表示激活生产环境
 ```
 
-## 4.5. 代替xml配置文件
+## 4.4. 代替xml配置文件
 
 所有第三方组件的xml配置文件都可以被yml中的配置代替，如 `mybatis-config.xml`、`logback.xml`等，但是xml中配置项过多时，建议使用xml配置文件，之后在yml中引入
 

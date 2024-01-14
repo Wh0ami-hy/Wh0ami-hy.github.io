@@ -65,12 +65,74 @@ tags:
 |_application-prod.yml  生产环境配置文件
 ```
 
+## 1.3. 控制器（controller）
 
-## 1.3. 拦截器（interceptor）
+controller 接收请求，并将请求转发至业务处理对象
 
-interceptor
+接收业务请求处理结果，并将结果分发到响应页面
 
-## 1.4. DAO层（mapper）
+不执行实际的业务逻辑，调用service 接口中的方法去完成
+
+控制器应该围绕用例、业务能力来设计
+
+**controller层一般返回封装的结果类`Result`**
+
+**默认情况下，控制器是单例**
+
+```java
+@RestController
+@RequestMapping("/user")
+public class UserController {
+    // 注入service接口
+    @Autowired
+    private UserService userService;
+    // 查询所有用户信息
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List<User> test(){
+        return userService.queryUsers();
+    }
+}
+```
+
+## 1.4. 业务层（service）
+
+service，用于执行业务逻辑，如计算、验证、授权等
+
+一般由两部分组成 **一个Java接口和一个实现类**
+
+serviceImpl是实现具体业务逻辑的，通常是把mapper和业务进行整合
+
+**service层返回什么主要看controller层需要什么，一般返回操作的执行结果（成功、失败）、处理后的业务数据（如经过计算、过滤或转换的数据）、异常或错误信息**
+
+最好围绕业务功能、领域、用例来构建服务，合理的使用单一职责原则
+
+如 `AccountService`, `UserService` 这样的服务，比起 `DatabaseService`、`ValidationService` 这样的会更合适一些
+
+定义接口 UserService
+
+```java
+public interface UserService {
+    // 对应于mapper层接口中定义的方法
+    List <User> queryUsers();
+}
+```
+
+定义接口实现类 UserServiceImpl
+
+```java
+@Component
+public class UserServiceImpl implements UserService {
+	// 注入mapper接口
+    @Autowired
+    private UserMapper userMapper;
+    @Override
+    public List<User> queryUsers() {
+        return userMapper.queryUsers();
+    }
+}
+```
+
+## 1.5. DAO层（mapper）
 
 实现数据层的操作
 
@@ -101,80 +163,19 @@ public interface UserMapper {
 </mapper>
 ```
 
-## 1.5. 控制器（controller）
+**mapper层返回什么主要看service层需要什么**
 
-controller 接收请求，并将请求转发至业务处理对象
-
-接收业务请求处理结果，并将结果分发到响应页面
-
-不执行实际的业务逻辑，调用service 接口中的方法去完成
-
-控制器应该围绕用例、业务能力来设计
-
-**controller层一般返回封装的结果类`Result`**
-
-**默认情况下，控制器是单例**
-
-```java
-@RestController
-@RequestMapping("/user")
-public class UserController {
-    // 注入service接口
-    @Autowired
-    private UserService userService;
-    // 查询所有用户信息
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<User> test(){
-        return userService.queryUsers();
-    }
-}
-```
-
-## 1.6. 业务层（service）
-
-service，用于执行业务逻辑，如计算、验证、授权等
-
-一般由两部分组成 **一个Java接口和一个实现类**
-
-serviceImpl是实现具体业务逻辑的，通常是把mapper和业务进行整合
-
-**service层一般返回操作的执行结果（成功、失败），处理后的业务数据（如经过计算、过滤或转换的数据）、异常或错误信息**
-
-最好围绕业务功能、领域、用例来构建服务，合理的使用单一职责原则
-
-如 `AccountService`, `UserService` 这样的服务，比起 `DatabaseService`、`ValidationService` 这样的会更合适一些
-
-定义接口 UserService
-
-```java
-public interface UserService {
-    // 对应于mapper层接口中定义的方法
-    List <User> queryUsers();
-}
-```
-
-定义接口实现类 UserServiceImpl
-
-```java
-@Component
-public class UserServiceImpl implements UserService {
-	// 注入mapper接口
-    @Autowired
-    private UserMapper userMapper;
-    @Override
-    public List<User> queryUsers() {
-        return userMapper.queryUsers();
-    }
-}
-```
-
-## 1.7. 工具类（utils）
+## 1.6. 工具类（utils）
 
 utils，用于提供常用的实用程序方法，如日期格式化、字符串处理、加密解密等
 
-## 1.8. 配置类（config）
+## 1.7. 配置类（config）
 
 config，拓展功能、修改默认功能
+
+## 1.8. 拦截器（interceptor）
+
+interceptor
 
 ## 1.9. 数据模型定义（model）
 
