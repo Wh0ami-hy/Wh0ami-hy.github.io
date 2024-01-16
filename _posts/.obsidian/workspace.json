@@ -1,43 +1,23 @@
 {
   "main": {
-    "id": "2be1d59afd5973e9",
+    "id": "d4d3da14ebac9c0a",
     "type": "split",
     "children": [
       {
-        "id": "599b2e77c0525af2",
+        "id": "53e052afbd0dafc1",
         "type": "tabs",
-        "dimension": 75.20107238605898,
         "children": [
           {
-            "id": "6f5baf42afcc1c50",
+            "id": "6aa1d60465a145a0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-01-12-MySQL时区问题.md",
+                "file": "2023-01-12-IDEA使用.md",
                 "mode": "source",
                 "source": false
               }
-            },
-            "group": "bcde40babc13061b"
-          }
-        ]
-      },
-      {
-        "id": "ba2684b18a319b5d",
-        "type": "tabs",
-        "dimension": 24.798927613941018,
-        "children": [
-          {
-            "id": "a71462752221629c",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2024-01-12-MySQL时区问题.md"
-              }
-            },
-            "group": "bcde40babc13061b"
+            }
           }
         ]
       }
@@ -45,67 +25,60 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "6e55eda5c51ebf63",
+    "id": "fb99035f02c89174",
     "type": "split",
     "children": [
       {
-        "id": "f35facb1681b9162",
+        "id": "5af37970af9214f3",
         "type": "tabs",
         "children": [
           {
-            "id": "c05572a0be32a4d0",
+            "id": "24bda8e39e828b91",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byModifiedTime"
+                "sortOrder": "alphabetical"
               }
             }
           },
           {
-            "id": "21fee24f316c1e3e",
+            "id": "6da4ca800dfb1b98",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "file:Java",
+                "query": "file:idea",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
-                "sortOrder": "alphabeticalReverse"
+                "sortOrder": "alphabetical"
               }
             }
-          },
-          {
-            "id": "08b95e287a904148",
-            "type": "leaf",
-            "state": {
-              "type": "bookmarks",
-              "state": {}
-            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 295.5
+    "width": 300
   },
   "right": {
-    "id": "a088a0a4ba18ffbc",
+    "id": "4319db03d970eb46",
     "type": "split",
     "children": [
       {
-        "id": "2179a81d638c9c54",
+        "id": "76f9c5447d91daac",
         "type": "tabs",
         "children": [
           {
-            "id": "f41b274328b2d620",
+            "id": "9f38b96fa1857c9c",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-01-12-MySQL时区问题.md",
+                "file": "2023-01-12-IDEA使用.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,19 +90,19 @@
             }
           },
           {
-            "id": "04820dc14ba58813",
+            "id": "f0e8bd52612c0de2",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-01-12-MySQL时区问题.md",
+                "file": "2023-01-12-IDEA使用.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "42275fbc3947fdb0",
+            "id": "9cf385b09a1cfe0d",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -140,22 +113,12 @@
             }
           },
           {
-            "id": "4f8bc1efcdac0ad2",
-            "type": "leaf",
-            "state": {
-              "type": "all-properties",
-              "state": {
-                "sortOrder": "frequency"
-              }
-            }
-          },
-          {
-            "id": "239a5f900e6d0850",
+            "id": "6c72825a790d2682",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-01-12-MySQL时区问题.md"
+                "file": "2023-01-12-IDEA使用.md"
               }
             }
           }
@@ -176,34 +139,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6f5baf42afcc1c50",
+  "active": "6aa1d60465a145a0",
   "lastOpenFiles": [
-    "2023-12-21-Java日期时间处理类.md",
-    "2023-02-12-Java初级.md",
-    "2024-01-14-Java字符串处理类.md",
-    "2024-01-12-MySQL时区问题.md",
     "2024-01-12-时间的处理.md",
-    "新建文本文档.txt",
-    "2023-09-08-Java设计模式.md",
-    "2024-01-09-设计模式.md",
-    "2024-01-09-SOLID五大设计原则.md",
-    "2023-12-27-系统的权限设计.md",
-    "2023-04-25-Spring Boot项目最佳实践.md",
-    "2024-01-10-Spring Boot生态.md",
-    "2023-09-07-SpringBoot日志框架.md",
-    "2023-03-03-Spring Boot.md",
-    "2024-01-10-Spring Boot Starter自定义实现.md",
-    "2024-01-10-Spring Boot Starter.md",
-    "2023-01-12-IDEA使用.md",
-    "2023-11-27-Nginx应用.md",
-    "2023-01-11-Vue2.md",
-    "2023-11-15-vue-admin-项目基础.md",
-    "2023-11-15-vue-admin-登录权限.md",
-    "2024-01-09-常用设计模式.md",
-    "2023-09-12-SpringBoot后端接口规范.md",
-    "2024-01-08-UML设计.md",
-    "firstDiagram.svg.md",
-    "2024-01-08-如何画好图.md",
-    "2023-03-12-Spring.md"
+    "2024-01-12-MySQL时区问题.md"
   ]
 }
