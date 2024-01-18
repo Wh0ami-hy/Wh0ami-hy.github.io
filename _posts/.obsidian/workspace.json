@@ -6,6 +6,7 @@
       {
         "id": "53e052afbd0dafc1",
         "type": "tabs",
+        "dimension": 73.72654155495978,
         "children": [
           {
             "id": "6aa1d60465a145a0",
@@ -13,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-01-14-Java字符串处理类.md",
+                "file": "2023-01-12-IDEA使用.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,6 +26,7 @@
       {
         "id": "6cc7d0dcb903aad3",
         "type": "tabs",
+        "dimension": 26.273458445040216,
         "children": [
           {
             "id": "9b0baaca1f3a7288",
@@ -32,7 +34,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-01-14-Java字符串处理类.md"
+                "file": "2023-01-12-IDEA使用.md"
               }
             },
             "group": "66743f51c9411a25"
@@ -66,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:idea",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -97,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-01-14-Java字符串处理类.md",
+                "file": "2023-01-12-IDEA使用.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-01-14-Java字符串处理类.md",
+                "file": "2023-01-12-IDEA使用.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-01-14-Java字符串处理类.md"
+                "file": "2023-01-12-IDEA使用.md"
               }
             }
           }
@@ -158,11 +160,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "9b0baaca1f3a7288",
+  "active": "6aa1d60465a145a0",
   "lastOpenFiles": [
+    "2024-01-14-Java字符串处理类.md",
     "2023-02-12-Java初级.md",
     "2023-01-12-IDEA使用.md",
-    "2024-01-14-Java字符串处理类.md",
     "2024-01-12-时间的处理.md",
     "2024-01-12-MySQL时区问题.md"
   ]
