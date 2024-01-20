@@ -418,35 +418,6 @@ spring:
 	    database: dormitory  
 	    auto-index-creation: true
 ```
-
-**操作Redis**
-
-在pom.xml中导入依赖
-
-```xml
-<dependency>  
-    <groupId>org.springframework.boot</groupId>  
-    <artifactId>spring-boot-starter-data-redis</artifactId>  
-</dependency>
-```
-
-yml 文件中添加以下配置项
-
-```yml
-spring: 
-	redis:  
-	  host: 192.168.163.5  
-	  port: 6379  
-	  password: "root"  
-	  database: 4  
-	  pool:  
-	      max-active: 10  
-	      max-wait: -1  
-	      max-idle: 8  
-	      min-idle: 0  
-	      timeout: 5000
-```
-
 ## 8.1. JDBC操作数据
 
 在pom.xml中导入依赖
@@ -533,10 +504,9 @@ mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
 ```
 
-
 ## 8.4. 在SpringBoot中使用多个数据源
 
-**方法一：使用 Spring Boot 自带的多数据源配置**
+**使用 Spring Boot 自带的多数据源配置**
 
 yml 文件中添加以下配置项
 
@@ -573,15 +543,9 @@ public class UserService {
     // ...
 }
 ```
-
-**方法二：使用第三方工具**
-
-如 MyBatis-Plus
-
 # 9. SpringBoot数据库连接池
 
-springboot2.x默认数据库连接池是HikariCP 
-
+springboot2.x默认数据库连接池是Hikari
 ## 9.1. SpringBoot整合Druid
 
 Druid是高性能的关系型数据库连接池，它是阿里巴巴的一个开源项目。支持所有JDBC兼容的数据库，包括Oracle、MySQL、Derby、PostgreSQL、SQL Server、H2等。提供了丰富的监控和统计功能，可以帮助开发者更好地管理数据库连接
@@ -654,6 +618,9 @@ spring:
             multi-statement-allow: true
 ```
 
+访问http://localhost:8080/druid/datasource.html
+
+admin/admin登录
 # 10. Spring Boot日志框架
 
 在Spring Boot 中导入`spring-boot-starter-web`后，不需要单独引入SLF4J 和 Logback，可直接使用
