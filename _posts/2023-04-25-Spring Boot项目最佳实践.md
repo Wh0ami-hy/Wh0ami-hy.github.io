@@ -240,15 +240,30 @@ mapper层的接口在对应的xml配置文件中进行配置、实现以及关�
 
 # 2. Spring Boot多模块项目结构
 
-```
-api
-common
-resource
-system
-功能名称（如在线课程学习，这里就是course）
-```
+如一个考试系统 exam
 
+**exam-admin —— web服务（web服务入口）**
+- config（各组件的配置类）
+- controller（各模块的请求入口）
+- utils（工具类）
+- 项目启动类
 
+**exam-common —— 通用模块**
+- exception（全局异常处理）
+- utils（统一结果类、分页类）
+
+**exam-question —— 题库管理模块**
+- mapper
+- model
+- service
+
+**exam-system —— 系统模块**
+主要是涉及系统管理的一些功能，如管理员
+- mapper
+- model
+- service
+
+**exam-quartz —— 定时任务模块**
 
 # 3. Spring Boot的最佳实践
 

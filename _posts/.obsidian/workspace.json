@@ -4,38 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "6cc7d0dcb903aad3",
+        "id": "be7daec2ca47b791",
         "type": "tabs",
         "children": [
           {
-            "id": "c53e6581a86ac5ab",
+            "id": "ae882ff30d622617",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-10-12-Linux文本处理之正则表达式和Vim.md",
+                "file": "2023-10-12-Linux网络管理与配置.md",
                 "mode": "source",
                 "source": false
               }
-            },
-            "group": "dc7b8f9861f11197"
-          }
-        ]
-      },
-      {
-        "id": "c030989247eeec6a",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "71382d7e03b5d2ae",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-10-12-Linux文本处理之正则表达式和Vim.md"
-              }
-            },
-            "group": "dc7b8f9861f11197"
+            }
           }
         ]
       }
@@ -66,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:Linux",
+                "query": "file:linux",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -88,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -104,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-10-12-Linux文本处理之正则表达式和Vim.md",
+                "file": "2023-10-12-Linux网络管理与配置.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-10-12-Linux文本处理之正则表达式和Vim.md",
+                "file": "2023-10-12-Linux网络管理与配置.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-10-12-Linux文本处理之正则表达式和Vim.md"
+                "file": "2023-10-12-Linux网络管理与配置.md"
               }
             }
           },
@@ -177,14 +160,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c53e6581a86ac5ab",
+  "active": "ae882ff30d622617",
   "lastOpenFiles": [
+    "2023-11-29-Windows定制.md",
+    "2023-04-25-Spring Boot项目最佳实践.md",
+    "2023-10-12-Linux文本处理之正则表达式和Vim.md",
     "2023-10-12-Linux网络管理与配置.md",
     "2023-10-05-Linux用户和组管理.md",
     "2023-09-26-Linux文件管理命令.md",
     "2023-09-24-Linux基本命令.md",
     "2023-09-22-Linux入门.md",
-    "2023-10-12-Linux文本处理之正则表达式和Vim.md",
     "2023-03-12-Spring.md",
     "2023-03-03-Spring Boot.md",
     "2024-01-20-SpringBoot整合Redis.md",
