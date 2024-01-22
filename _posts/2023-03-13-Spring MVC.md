@@ -2,7 +2,7 @@
 layout: post   	
 catalog: true 	
 tags:
-    - Spring
+    - SpringMVC
 ---
 
 

@@ -2,7 +2,7 @@
 layout: post   	
 catalog: true 	
 tags:
-    - Spring
+    - SpringBoot
 ---
 
 # 1. 引入依赖

@@ -2,7 +2,7 @@
 layout: post   	
 catalog: true 	
 tags:
-    - Spring
+    - SpringBoot
 ---
 
 
@@ -165,7 +165,7 @@ SpringApplication类主要做了如下内容：
 
 # 3. 搭建SpringBoot环境
 
-初始化时，默认链接访问失败，就用国内的 https://start.springboot.io/
+初始化时，默认链接访问失败，就用国内的 https://start.springboot.io/ 或者 https://start.aliyun.com
 
 在 Spring Initializr 中创建一个新项目时，各个参数的含义
 
