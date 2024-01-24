@@ -8,29 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bef9f7f0a71de30b",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-11-18-Swagger接口文档工具.md"
-              }
-            }
-          },
-          {
             "id": "3845c7c1f407f4a1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-11-18-Swagger接口文档工具.md",
+                "file": "2024-01-24-批量插入优化.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:swagger",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -76,12 +65,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 278.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -97,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-11-18-Swagger接口文档工具.md",
+                "file": "2024-01-24-批量插入优化.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-11-18-Swagger接口文档工具.md",
+                "file": "2024-01-24-批量插入优化.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-18-Swagger接口文档工具.md"
+                "file": "2024-01-24-批量插入优化.md"
               }
             }
           },
@@ -172,6 +161,10 @@
   },
   "active": "3845c7c1f407f4a1",
   "lastOpenFiles": [
+    "2022-06-30-MyBatis.md",
+    "2024-01-24-批量插入优化.md",
+    "新建文本文档.txt",
+    "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-11-18-Swagger接口文档工具.md",
     "2021-12-31-MySQL语法.md",
     "2024-01-10-Spring Boot Starter自定义实现.md",
@@ -188,7 +181,6 @@
     "2023-09-22-Linux入门.md",
     "2023-03-12-Spring.md",
     "2024-01-20-SpringBoot整合Redis.md",
-    "2022-06-30-MyBatis.md",
     "2023-05-24-Java实用工具库.md",
     "2023-02-12-Java初级.md",
     "2023-01-12-IDEA使用.md",
