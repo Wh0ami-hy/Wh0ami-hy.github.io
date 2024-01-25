@@ -737,7 +737,7 @@ public class APIException extends RuntimeException {
 - 打印了日志或抛出了其它异常 
 - 异常是否非Controller抛出，即在拦截器或过滤器中出现的异常
 
-# 12. 任务（必会）
+# 12. SpringBoot任务
 
 ## 12.1. 异步任务
 
@@ -825,95 +825,9 @@ public class MailService {
 
 实现带附件和图片邮件发送 MimeMessage
 
-。。。
+# 13. SpringBoot项目部署
 
-# 13. SpringBoot整合Quartz
-
-## 13.1. 什么是 Quartz
-
-任务调度框架。官网：http://www.quartz-scheduler.org/documentation/
-
-某些场景，单靠 Spring 提供的 `@Schedule` 实现不了
-
-比如我们需要对定时任务进行增删改查，`@Schedule` 就实现不了，你不可能每次新增一个定时任务都去手动改代码来添加吧。而 Quartz 就能够实现对任务的增删改查。
-
-三个重要概念：`任务Job`、`触发器Trigger`、`调度器Scheduler`
-
-## 13.2. Quartz 的特性
-
-Quartz 适用于各种类型的应用程序。无论是简单的定时任务还是复杂的分布式调度，Quartz都是一个强大而可靠的选择 
-
-**任务的调度（Job Scheduling）**
-
-当一个**触发器**（Trigger）触发时，任务（Job） 就会被调度执行，触发器就是用来定义何时触发的。可以指定任务的执行时间，以及执行频率（例如，每天一次、每小时一次等）。
-
-任务只需在调度器中添加一次，就可以有多个触发器进行注册
-
-**任务的执行（Job Execution）**
-
-实现了 Job 接口的 Java 类就是 Job，习惯称为**任务类**（Job class）。
-
-当 Trigger 触发时，Scheduler 就会通知 0 个或多个实现了 JobListener 和 TriggerListener 接口的 Java 对象。当然，这些 Java 对象在 Job 执行后也会被通知到。
-
-当 Job 执行完毕时，会返回一个码`JobCompletionCode`，这个 JobCompletionCode 能够表示 Job 执行成功还是失败，我们就能通过这个 Code 来判断后续该做什么操作，比如重新执行这个 Job。
-
-**任务的持久化（Job Persistence）**
-
-Quartz允许您将作业和触发器存储在数据库中，以便在应用程序重新启动后仍然保持调度状态。这样可以确保作业不会丢失，并且可以轻松地管理和监控调度任务。
-
-Quartz 的设计包括了一个 JobStore 接口，该接口可以为存储 Job 提供各种机制。
-
-通过 JDBCJobStore，可以将 Job 和 Trigger 持久化到关系型数据库中。
-
-通过 RAMJobStore，可以将 Job 和 Trigger 存储到内存中（优点就是无须数据库，缺点就是这不是持久化的）。
-
-**事务**
-
-Quartz 可以通过使用 JobStoreCMT（JDBCJobStore的一个子类）参与 JTA 事务。
-
-Quartz 可以围绕任务的执行来管理 JTA（Java Transaction API） 事务（开始并且提交它们），以便任务执行的工作自动发生在 JTA 事务中。
-
-**错误恢复**
-
-Quartz具有错误恢复机制，以确保在作业执行期间发生故障时能够进行恢复。您可以配置Quartz以重新执行失败的作业，并指定最大重试次数。
-
-**集群和分布式**
-
-故障转移、负载均衡
-
-Quartz 的内置集群功能依赖于 JDBCJobStore 实现的数据库持久性。
-
-Quartz 的 Terracotta 扩展提供了集群功能，而无需备份数据库。
-
-**监听器和插件**
-
-应用程序可以通过实现一个或多个监听器接口来捕获调度事件以监听或控制 Job / Trigger 的行为。
-
-插件机制，我们可向 Quartz 添加功能，例如保存 Job 执行的历史记录，或从文件加载 Job 和 Trigger 的定义。
-
-## 13.3. 使用Quartz
-
-引入依赖
-```xml
-<dependency>
-    <groupId>org.quartz-scheduler</groupId>
-    <artifactId>quartz</artifactId>
-    <version>2.3.2</version>
-</dependency>
-```
-Quartz API 的关键接口如下：
-
-- `Scheduler` ：最主要的 API，可以使我们与调度器进行交互，简单说就是让调度器做事。
-- `Job` ：一个 Job 组件，你自定义的一个要执行的任务类就可以实现这个接口，实现这个接口的类的对象就可以被调度器进行调度执行。
-- `JobDetail` ： `Job` 的详情，或者说是定义了一个 Job。
-- `JobBuilder` ： 用来构建 `JobDetail` 实例的，然后这些实例又定义了 Job 实例。
-- `Trigger` ： 触发器，定义 `Job` 的执行计划的组件。
-- `TriggerBuilder` ： 用来构建 `Trigger` 实例。
-
-
-# 14. SpringBoot项目部署
-
-## 14.1. SpringBoot项目打包
+## 13.1. SpringBoot项目打包
 
 对于使用 Maven 打包产生的项目产物，在不同的情况下会有不同需求，如：
 
@@ -921,7 +835,7 @@ Quartz API 的关键接口如下：
 2.  文件和依赖分开，分为 jar 包和 /lib 下的依赖包信息，避免 jar 过大传输速度太慢
 3.  配置文件剥离，可以动态修改配置，分为 jar、/lib、.proerties 三个文件
 
-### 14.1.1. 默认完整打包版
+### 13.1.1. 默认完整打包版
 
 项目完整Jar包，包括相关依赖信息，可以直接执行
 
@@ -929,7 +843,7 @@ SpringBoot 项目使用 Maven 打包后的 Jar 包产物命名方式是由项目
 
 要自定义生成的文件名，可以在 pom.xml 的 build 标签中使用 finalName 标签自定义生成 jar 包名称
 
-### 14.1.2. 依赖文件外置版
+### 13.1.2. 依赖文件外置版
 
 若项目的依赖 jar 包比较多但是改动较少，在打包项目时就需要将三方依赖和当前项目分离开来，代码改变时只需要重新打包项目内容即可
 
@@ -982,7 +896,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 </build>
 ```
 
-### 14.1.3. 配置文件外置版
+### 13.1.3. 配置文件外置版
 
 若只是需要改动配置文件，而不需要修改源代码，配置文件放在 jar 文件外，会更方便。
 
@@ -1046,7 +960,7 @@ SpringBoot 默认的配置并不能实现依赖项外置，需要借助 Maven �
 
 `maven-jar-plugin` 插件中可以设置打包时 jar 包中排除指定的配置文件类型
 
-## 14.2. SpringBoot项目部署到服务器
+## 13.2. SpringBoot项目部署到服务器
 
 ```
 nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
@@ -1054,7 +968,7 @@ nohup java -jar shop-0.0.1-SNAPSHOT.jar > logName.log 2>&1 &
 
 注：nohup命令：不挂起，即关闭终端，程序继续运行
 
-## 14.3. SpringBoot项目部署配置项
+## 13.3. SpringBoot项目部署配置项
 
 在yml 配置文件中
 
@@ -1078,11 +992,11 @@ server:
       min-spare: 100
 ```
 
-## 14.4. SpringBoot项目定制banner
+## 13.4. SpringBoot项目定制banner
 
 创建banner.txt 放在 resources目录下
 
-# 15. 计算代码执行时间
+# 14. 计算代码执行时间
 
 Spring 或 Spring Boot 项目，可以在项目中直接使用 `StopWatch` 对象来统计代码执行时间
 
@@ -1106,7 +1020,7 @@ System.out.printf("执行时长：%d 毫秒.%n", stopWatch.getTotalTimeMillis())
 System.out.printf("执行时长：%d 纳秒.%n", stopWatch.getTotalTimeNanos());
 ```
 
-# 16. SpringBoot常用注解（重点）
+# 15. SpringBoot常用注解（重点）
 
 - @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
 
