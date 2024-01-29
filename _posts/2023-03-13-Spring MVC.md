@@ -945,45 +945,6 @@ public class DownController {
 }
 ```
 
-# 11. 跨域请求（重点）
-
-## 11.1. 使用 @CrossOrigin 注解
-
-```java
-@RestController
-public class MyController {
-
-  @CrossOrigin(origins = "http://example.com")
-  @GetMapping("/my-endpoint")
-  public String myEndpoint() {
-    return "Hello, world!";
-  }
-}
-```
-
-在以上示例中，@CrossOrigin 注解将允许来自 `http://example.com`的跨域请求访问 `/my-endpoint` 端点。还可以使用 @CrossOrigin 注解的其他属性来更精细地控制跨域请求的行为
-
-## 11.2. 使用配置类
-
-如果需要在整个应用程序中启用跨域请求支持，你可以在 Spring MVC 配置类中使用 WebMvcConfigurer接口的 addCorsMappings方法
-
-```java
-@Configuration
-public class MyConfig implements WebMvcConfigurer {
-
-  @Override
-  public void addCorsMappings(CorsRegistry registry) {
-    registry.addMapping("/**")
-      .allowedOrigins("http://example.com")
-      .allowedMethods("GET", "POST")
-      .allowedHeaders("header1", "header2", "header3")
-      .exposedHeaders("header1", "header2")
-      .allowCredentials(false)
-      .maxAge(3600);
-  }
-}
-```
-
 # 12. 视图解析器
 
 ## 12.1. Spring MVC提供的视图解析器
