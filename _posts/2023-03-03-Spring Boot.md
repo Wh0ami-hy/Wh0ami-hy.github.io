@@ -1020,50 +1020,5 @@ System.out.printf("执行时长：%d 毫秒.%n", stopWatch.getTotalTimeMillis())
 System.out.printf("执行时长：%d 纳秒.%n", stopWatch.getTotalTimeNanos());
 ```
 
-# 15. SpringBoot常用注解（重点）
-
-- @SpringBootApplication：这是Spring Boot应用的主注解，它包含了@ComponentScan、@EnableAutoConfiguration和@Configuration三个注解，用于开启组件扫描、自动配置和配置类扫描等功能。
-
-- @RestController：这个注解用于标记一个Controller类，它包含了@Controller和@ResponseBody注解的功能，用于处理HTTP请求并返回JSON、XML等格式的响应数据
-
-- @RequestMapping：这个注解用于标记一个请求处理方法，指定处理的URL路径和HTTP请求方法。
-
-- @GetMapping、@PostMapping、@PutMapping、@DeleteMapping：这些注解是对@RequestMapping注解的补充，分别表示处理GET、POST、PUT、DELETE请求的方法。
-
-- @PathVariable：这个注解用于将URL路径中的变量映射到方法参数上。
-
-- @RequestParam：这个注解用于将HTTP请求参数映射到方法参数上。
-  
-- @RequestBody：这个注解用于将HTTP请求体中的数据映射到方法参数上。
-
-- @ResponseBody：表示方法的返回值将直接作为响应的内容返回给客户端，不会经过视图解析器进行视图渲染。可以将@ResponseBody注解应用在控制器类的方法上，也可以将其应用在方法的参数上
-
-- @Autowired：这个注解用于自动装配一个Bean，可以用在构造方法、属性、方法上。
-
-- @Component：这个注解用于标记一个组件，表示该组件可以被Spring容器扫描并管理。
-
-- @Configuration：这个注解用于标记一个配置类，表示该类包含了一些配置信息，可以用@Bean注解定义一些Bean。
-
-- @EnableAutoConfiguration：这个注解用于自动配置Spring应用，从classpath下的META-INF/spring.factories中读取自动配置类，根据配置自动装配Bean。
-
-- @Value：这个注解用于注入配置文件中的属性值。
-
-- @ConditionalOnProperty：这个注解用于根据配置文件中的属性值来判断是否需要启用某个配置。
-
-- @Async：这个注解用于标记一个异步方法，表示该方法可以异步执行。
-
-- @Cacheable、@CachePut、@CacheEvict：这些注解用于标记一个方法的返回值需要被缓存、更新缓存和删除缓存。
-
-- @Transactional：这个注解用于标记一个方法需要被事务管理，可以用在方法上或类上。
-
-- @Scheduled：这个注解用于标记一个方法需要定时执行，可以设置执行的时间间隔、固定延迟和固定时间等。
-
-- @EnableScheduling：这个注解用于开启定时任务功能。
-
-- @EnableCaching：这个注解用于开启缓存功能。
-
-- @EnableAsync：这个注解用于开启异步执行功能。
-
-
 
 

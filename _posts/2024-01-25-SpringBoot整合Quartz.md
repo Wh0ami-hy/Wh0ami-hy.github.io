@@ -58,9 +58,45 @@ D -->E(Job)
 ```
 ## 3.3. Quartz主要流程
 
+编写Job实现类（实现Job接口），执行具体的任务逻辑
 
+编写一个类，实现Scheduler任务调度器和Trigger任务触发器
 
-## 3.4. Quartz 的特性
+最后
+
+```java
+// 将任务和触发器添加到调度器  
+scheduler.scheduleJob(job, trigger);  
+// 启动调度器  
+scheduler.start();
+```
+
+**传递参数**
+
+在创建Scheduler任务调度器时给Job实现类传递参数
+
+```java
+// 创建调度器  
+Scheduler scheduler = new StdSchedulerFactory().getScheduler();  
+// 创建一个JobDataMap，用于传递参数  
+JobDataMap jobDataMap = new JobDataMap();  
+jobDataMap.put("examId", (Integer) map.get("examId"));  
+// 创建任务  
+JobDetail job = JobBuilder.newJob(ExamEndTimeJob.class)  
+        .withIdentity("ExamEndTimeJob", "group1")  
+        // 将examId 参数传递给Job任务  
+        .usingJobData(jobDataMap)  
+        .build();
+```
+
+Job实现类中接收
+
+```java
+JobDataMap dataMap = context.getJobDetail().getJobDataMap();  
+Integer examId = dataMap.getInt("examId");
+```
+
+## 3.4. Quartz的特性
 
 Quartz 适用于各种类型的应用程序。无论是简单的定时任务还是复杂的分布式调度，Quartz都是一个强大而可靠的选择 
 
@@ -130,3 +166,47 @@ Quartz API 的关键接口如下：
 - `JobBuilder` ： 用来构建 `JobDetail` 实例的，然后这些实例又定义了 Job 实例。
 - `Trigger` ： 触发器，定义 `Job` 的执行计划的组件。
 - `TriggerBuilder` ： 用来构建 `Trigger` 实例。
+
+## 3.6. Quartz使用问题
+
+Scheduler调度器，应该由Spring注册，而不是new，这样Spring才会管理到Scheduler调度器
+
+```java
+@Component  
+public class ExamScheduler {  
+    @Autowired  
+    private Scheduler scheduler;  
+  
+    public void scheduleExam(Map<String, Object> map) throws SchedulerException {  
+  
+        // 不能通过new来创建调度器  
+//        Scheduler scheduler = new StdSchedulerFactory().getScheduler();  
+        // 创建一个JobDataMap，用于传递参数  
+        JobDataMap jobDataMap = new JobDataMap();  
+        jobDataMap.put("examId", (Integer) map.get("examId"));  
+        // 创建任务  
+        JobDetail job = JobBuilder.newJob(ExamEndTimeJob.class)  
+                .withIdentity("ExamEndTimeJob", "group1")  
+                // 将examId 参数传递给Job任务  
+                .usingJobData(jobDataMap)  
+                .build();  
+  
+        // 时间格式转化  
+        LocalDateTime endTime = (LocalDateTime) map.get("endTime");  
+        Date date = Date.from(endTime.atZone(ZoneId.systemDefault()).toInstant());  
+        // 创建触发器  
+        Trigger trigger = TriggerBuilder.newTrigger()  
+                .withIdentity("examTrigger", "group1")  
+                .startAt(date)  // 在指定时间执行任务  
+                .build();  
+  
+        // 将任务和触发器添加到调度器  
+        scheduler.scheduleJob(job, trigger);  
+  
+        // 启动调度器  
+        scheduler.start();  
+        log.info("任务调度器创建完成，将在:" + endTime.toString() + "执行");  
+  
+    }}
+```
+
