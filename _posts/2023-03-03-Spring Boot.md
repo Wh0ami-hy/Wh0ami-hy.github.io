@@ -328,7 +328,9 @@ spring:
 		active: dev  # dev表示激活开发环境  prod表示激活生产环境
 ```
 
-## 4.4. 代替xml配置文件
+## 4.4. 多种配置方式
+
+xml配置文件、JavaConfig配置类、yml配置文件
 
 所有第三方组件的xml配置文件都可以被yml中的配置代替，如 `mybatis-config.xml`、`logback.xml`等，但是xml中配置项过多时，建议使用xml配置文件，之后在yml中引入
 

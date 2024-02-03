@@ -7,13 +7,35 @@ tags:
 
 
 
-# 1. Spring Security 项目搭建
+# 1. [Spring Security](https://docs.spring.io/spring-security/reference/5.7/servlet/getting-started.html)
 
-[官网手册](https://docs.spring.io/spring-security/reference/5.7/servlet/getting-started.html)
+主要介绍前后端分离的SpringBoot项目中SpringSecurity的使用
 
-主要介绍前后端分离的spring boot项目中spring security的使用
+## 1.1. 版本问题
 
-**导入依赖**
+SpringBoot 2.7.0版本中SpringSecurity已经弃用`WebSecurityConfigurerAdapter`
+
+新用法非常简单，无需再继承`WebSecurityConfigurerAdapter`，只需直接声明配置类，再配置一个生成`SecurityFilterChainBean`的方法，把原来的`HttpSecurity`配置移动到该方法中即可
+
+```java
+/**
+ * SpringSecurity 5.4.x以上新用法配置
+ * 为避免循环依赖，仅用于配置HttpSecurity
+ */
+@Configuration
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+        //省略HttpSecurity的配置
+        return httpSecurity.build();
+    }
+}
+```
+
+升级 `Spring Boot 2.7.0`版本后，`Spring Security`对于配置方法有了大的更改，但是其他使用是没啥影响的
+
+## 1.2. 导入依赖
 
 ```xml
 <dependency>
@@ -29,8 +51,6 @@ tags:
 
 **修改默认的用户名密码**
 
-方法一：配置文件
-
 ```xml
 spring:  
   security:  
@@ -39,46 +59,12 @@ spring:
       password: admin123
 ```
 
-方法二：配置类，也就是后面的内存认证和数据库认证
 
 # 2. Spring Security 配置
 
-可以使用 Java 配置或 XML 配置
-
-在Spring Boot 2.7.0 之前的版本中，我们需要写个配置类继承`WebSecurityConfigurerAdapter`，然后重写Adapter中的三个方法进行配置
-
-```java
-@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)  //方法级的权限认证
-public class OldSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UmsAdminService adminService;
-
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        //省略HttpSecurity的配置
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService())
-                .passwordEncoder(passwordEncoder());
-    }
-    
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-}
-```
-
-
-新版本中，如果想要配置过滤器链，可以通过自定义`SecurityFilterChain` Bean来实现。如果想要配置WebSecurity，可以通过`WebSecurityCustomizer` Bean来实现
-
 在 Spring Security 中，认证与授权的相关校验都是在一系列的过滤器链中完成的
 
+如果想要配置过滤器链，可以通过自定义`SecurityFilterChain` 来实现。如果想要配置WebSecurity，可以通过`WebSecurityCustomizer` 来实现
 
 **Spring Security中重要的类**
 
