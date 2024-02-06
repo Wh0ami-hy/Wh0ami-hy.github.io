@@ -945,9 +945,9 @@ public class DownController {
 }
 ```
 
-# 12. 视图解析器
+# 11. 视图解析器
 
-## 12.1. Spring MVC提供的视图解析器
+## 11.1. Spring MVC提供的视图解析器
 
 InternalResourceViewResolver：用于解析JSP或HTML等资源文件
 
@@ -957,7 +957,7 @@ TilesViewResolver：用于解析 Tiles 布局
 
 ContentNegotiatingViewResolver：复合视图解析器，可以根据请求的 Accept 头信息来选择对应的视图解析器进行解析
 
-## 12.2. 自定义视图解析器
+## 11.2. 自定义视图解析器
 
 创建自定义的视图解析器类 ViewConfig ，并实现 ViewResolver 接口
 
