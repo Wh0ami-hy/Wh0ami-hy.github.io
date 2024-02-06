@@ -6,6 +6,7 @@
       {
         "id": "5a02d8f6da4114b6",
         "type": "tabs",
+        "dimension": 81.4498933901919,
         "children": [
           {
             "id": "7183543f0c69a78c",
@@ -13,17 +14,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-28-SpringBoot&Thymeleaf.md"
+                "file": "2023-01-11-Vue2.md"
               }
             }
           },
           {
-            "id": "43a05d5d22e9e030",
+            "id": "b6dc729228bf6e7e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-11-28-SpringBoot&Thymeleaf.md",
+                "file": "2023-01-11-Vue2.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,6 +32,23 @@
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "62725c2608874b60",
+        "type": "tabs",
+        "dimension": 18.550106609808104,
+        "children": [
+          {
+            "id": "ed25cfc7857e55c2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-01-11-Vue2.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +77,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:spring",
+                "query": "file:vue",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -76,11 +94,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 278.5
+    "width": 278.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -96,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-11-28-SpringBoot&Thymeleaf.md",
+                "file": "2023-01-11-Vue2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-11-28-SpringBoot&Thymeleaf.md",
+                "file": "2023-01-11-Vue2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-28-SpringBoot&Thymeleaf.md"
+                "file": "2023-01-11-Vue2.md"
               }
             }
           },
@@ -169,8 +189,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "43a05d5d22e9e030",
+  "active": "b6dc729228bf6e7e",
   "lastOpenFiles": [
+    "2023-02-03-Vue2开发总结.md",
+    "2023-01-11-Vue2.md",
+    "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-04-13-Spring Security.md",
     "2023-03-13-RESTful-API实践.md",
@@ -189,14 +212,11 @@
     "2024-01-22-SpringBoot之Tomcat.md",
     "2023-09-15-SpringCloud.md",
     "2023-10-14-Spring之Validation校验参数.md",
-    "2023-11-28-SpringBoot&Thymeleaf.md",
     "2024-01-10-SpringBoot-Starter自定义实现.md",
     "2024-01-20-SpringBoot整合Redis.md",
     "2024-01-25-SpringBoot整合Quartz.md",
     "2023-01-12-IDEA使用.md",
     "2023-05-24-Java实用工具库.md",
-    "2023-12-10-Excel导入导出.md",
-    "2023-01-11-Vue2.md",
     "新建文本文档.txt"
   ]
 }
