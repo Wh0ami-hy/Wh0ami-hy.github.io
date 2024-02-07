@@ -4,27 +4,27 @@
     "type": "split",
     "children": [
       {
-        "id": "5a02d8f6da4114b6",
+        "id": "62725c2608874b60",
         "type": "tabs",
-        "dimension": 81.4498933901919,
+        "dimension": 69.46182728410513,
         "children": [
           {
-            "id": "7183543f0c69a78c",
+            "id": "ed25cfc7857e55c2",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-01-11-Vue2.md"
+                "file": "2023-01-11-Vue核心.md"
               }
             }
           },
           {
-            "id": "b6dc729228bf6e7e",
+            "id": "db45cc236ea3099d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-01-11-Vue2.md",
+                "file": "2023-01-11-Vue核心.md",
                 "mode": "source",
                 "source": false
               }
@@ -34,17 +34,17 @@
         "currentTab": 1
       },
       {
-        "id": "62725c2608874b60",
+        "id": "157b19dc75a3564c",
         "type": "tabs",
-        "dimension": 18.550106609808104,
+        "dimension": 30.538172715894866,
         "children": [
           {
-            "id": "ed25cfc7857e55c2",
+            "id": "c91aaa763f431520",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-01-11-Vue2.md"
+                "file": "2023-01-11-Vue核心.md"
               }
             }
           }
@@ -99,8 +99,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.5,
-    "collapsed": true
+    "width": 278.5
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -116,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-01-11-Vue2.md",
+                "file": "2023-01-11-Vue核心.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +132,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-01-11-Vue2.md",
+                "file": "2023-01-11-Vue核心.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -156,7 +155,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-01-11-Vue2.md"
+                "file": "2023-01-11-Vue核心.md"
               }
             }
           },
@@ -189,10 +188,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b6dc729228bf6e7e",
+  "active": "db45cc236ea3099d",
   "lastOpenFiles": [
-    "2023-02-03-Vue2开发总结.md",
+    "2024-02-07-Vue项目.md",
+    "2023-01-11-Vue核心.md",
+    "2023-02-03-Vue开发总结.md",
     "2023-01-11-Vue2.md",
+    "2024-02-07.md",
+    "新建文本文档.txt",
     "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-04-13-Spring Security.md",
@@ -213,10 +216,6 @@
     "2023-09-15-SpringCloud.md",
     "2023-10-14-Spring之Validation校验参数.md",
     "2024-01-10-SpringBoot-Starter自定义实现.md",
-    "2024-01-20-SpringBoot整合Redis.md",
-    "2024-01-25-SpringBoot整合Quartz.md",
-    "2023-01-12-IDEA使用.md",
-    "2023-05-24-Java实用工具库.md",
-    "新建文本文档.txt"
+    "2024-01-20-SpringBoot整合Redis.md"
   ]
 }
