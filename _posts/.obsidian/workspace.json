@@ -14,17 +14,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-02-23-LLM使用.md"
+                "file": "2022-04-25-python之旅 上.md"
               }
             }
           },
           {
-            "id": "5bb4454dcdd0179e",
+            "id": "22909d003809ab39",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-02-23-LLM使用.md",
+                "file": "2022-04-25-python之旅 上.md",
                 "mode": "source",
                 "source": false
               }
@@ -44,7 +44,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-02-23-LLM使用.md"
+                "file": "2022-04-25-python之旅 上.md"
               }
             }
           }
@@ -77,7 +77,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:java",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,11 +94,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 278.5
+    "width": 278.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -114,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-02-23-LLM使用.md",
+                "file": "2022-04-25-python之旅 上.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-02-23-LLM使用.md",
+                "file": "2022-04-25-python之旅 上.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-02-23-LLM使用.md"
+                "file": "2022-04-25-python之旅 上.md"
               }
             }
           },
@@ -179,16 +181,24 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
     }
   },
-  "active": "5bb4454dcdd0179e",
+  "active": "22909d003809ab39",
   "lastOpenFiles": [
+    "2023-01-26-python基础.md",
+    "2022-04-25-python之旅 下.md",
+    "新建文本文档.txt",
+    "2022-04-25-python之旅 中.md",
+    "2022-04-25-python之旅 上.md",
+    "20python之旅 上.md",
+    "2024-02-24-企业信息化发展软件层面.md",
+    "v2-7ac393e226c20f1487c9347b2e5f2993_r.png",
     "2024-02-23-LLM使用.md",
     "2023-05-24-Java实用工具库.md",
     "2023-01-11-Vue核心.md",
@@ -196,7 +206,6 @@
     "2023-02-03-Vue开发总结.md",
     "2023-01-11-Vue2.md",
     "2024-02-07.md",
-    "新建文本文档.txt",
     "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-04-25-Spring Boot项目最佳实践.md",
     "2023-04-13-Spring Security.md",
@@ -209,12 +218,6 @@
     "2023-03-12-Spring.md",
     "2024-02-05-Java Web.md",
     "2024-01-28-SQL优化.md",
-    "2024-01-30-Spring Cache.md",
-    "2024-01-30-Jackson.md",
-    "2024-02-01-Spring Boot项目中的注解.md",
-    "2022-06-30-Spring Data.md",
-    "2024-01-22-SpringBoot之Tomcat.md",
-    "2023-09-15-SpringCloud.md",
-    "2023-10-14-Spring之Validation校验参数.md"
+    "2024-01-30-Spring Cache.md"
   ]
 }
