@@ -29,51 +29,31 @@ tags:
 
 统一数据响应是我们自己自定义一个响应体类，无论后台是运行正常还是发生异常，响应给前端的数据格式是不变的，一般都是按照`code，msg，data`的格式返回的
 
-首先可以设置一个枚举规范响应体中的响应码和响应信息
-
-```java
-@Getter
-public enum ResultCode {
-    SUCCESS(1000, "操作成功"),
-    FAILED(1001, "响应失败"),
-    VALIDATE_FAILED(1002, "参数校验失败"),
-    ERROR(5000, "未知错误");
-    private int code;
-    private String msg;
-    ResultCode(int code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
-}
-```
 自定义响应体
 
 ```java
-import lombok.Getter;
-@Getter
-public class ResultVO<T> {
-    /**
-     * 状态码，比如1000代表响应成功
-     */
-    private int code;
-    /**
-     * 响应信息，用来说明响应情况
-     */
-    private String msg;
-    /**
-     * 响应的具体数据
-     */
-    private T data;        
-    
-    public ResultVO(T data) {
-        this(ResultCode.SUCCESS, data);
-    }    
-    
-    public ResultVO(ResultCode resultCode, T data) {
-        this.code = resultCode.getCode();
-        this.msg = resultCode.getMsg();
-        this.data = data;
-    }
+public class Result<T> {
+    private int code;
+    private String message;
+    private T data;
+
+    public Result(int code, String message, T data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public T getData() {
+        return data;
+    }
 }
 ```
 
