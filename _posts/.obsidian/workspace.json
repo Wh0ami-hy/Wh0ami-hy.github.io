@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-01-30-Jackson.md",
+                "file": "2023-12-30-Node.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:jackson",
+                "query": "file:node",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 222.5
+    "width": 222.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -86,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-01-30-Jackson.md",
+                "file": "2023-12-30-Node.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-01-30-Jackson.md",
+                "file": "2023-12-30-Node.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-01-30-Jackson.md"
+                "file": "2023-12-30-Node.md"
               }
             }
           },
@@ -151,16 +152,17 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
     }
   },
   "active": "037e8d34563fd1cf",
   "lastOpenFiles": [
+    "2024-01-30-Jackson.md",
     "2023-05-24-Java实用工具库.md",
     "2024-02-27-接口防重处理.md",
     "2023-09-12-SpringBoot后端接口规范.md",
@@ -188,7 +190,6 @@
     "2023-01-11-Vue2.md",
     "2024-02-07.md",
     "2023-11-28-SpringBoot&Thymeleaf.md",
-    "2023-04-25-Spring Boot项目最佳实践.md",
-    "2023-04-13-Spring Security.md"
+    "2023-04-25-Spring Boot项目最佳实践.md"
   ]
 }
