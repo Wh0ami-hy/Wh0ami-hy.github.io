@@ -4,28 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "9917235cda427e6a",
-        "type": "tabs",
-        "dimension": 65.48257372654156,
-        "children": [
-          {
-            "id": "f197a53567708031",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2024-03-15-Mybatis之pagehelper插件.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "d59a798efaa7aed6",
         "type": "tabs",
-        "dimension": 34.51742627345845,
         "children": [
           {
             "id": "16184f2e0205f68e",
@@ -33,11 +13,24 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-03-15-Mybatis之pagehelper插件.md"
+                "file": "2023-12-11-前后端分离登录实现.md"
+              }
+            }
+          },
+          {
+            "id": "17b08bfc7b25c43c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-12-11-前后端分离登录实现.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -66,7 +59,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:mybatis",
+                "query": "file:前",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,11 +76,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 222.5
+    "width": 222.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -103,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-03-15-Mybatis之pagehelper插件.md",
+                "file": "2023-12-11-前后端分离登录实现.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-03-15-Mybatis之pagehelper插件.md",
+                "file": "2023-12-11-前后端分离登录实现.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-03-15-Mybatis之pagehelper插件.md"
+                "file": "2023-12-11-前后端分离登录实现.md"
               }
             }
           },
@@ -176,10 +171,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "24bda8e39e828b91",
+  "active": "17b08bfc7b25c43c",
   "lastOpenFiles": [
-    "2022-06-30-MyBatis.md",
+    "2024-03-02-JRebel热部署.md",
+    "2023-05-24-Java实用工具库.md",
+    "2024-01-10-SpringBoot-Starter自定义实现.md",
+    "2023-11-18-Swagger接口文档工具.md",
+    "2023-03-03-Spring Boot.md",
     "2024-03-15-Mybatis之pagehelper插件.md",
+    "2022-06-30-MyBatis.md",
     "2024-03-15-pagehelper插件.md",
     "新建文本文档.txt",
     "2023-02-09-阿里Java开发手册.md",
@@ -187,13 +187,11 @@
     "2024-03-12-Java判等操作.md",
     "2023-02-12-Java初级.md",
     "2023-01-12-IDEA使用.md",
-    "2024-03-02-项目热部署.md",
     "2024-02-27-接口防重处理.md",
     "2024-03-08-JUC.md",
     "2023-02-13-Java多线程.md",
     "2024-01-22-SpringBoot之Tomcat.md",
     "2023-09-12-SpringBoot后端接口规范.md",
-    "2023-05-24-Java实用工具库.md",
     "2023-02-03-Vue开发总结.md",
     "2024-02-07-Vue项目开发.md",
     "2023-01-11-Vue核心语法.md",
@@ -202,10 +200,7 @@
     "2022-04-25-python之旅 上.md",
     "2022-04-25-python之旅 下.md",
     "2022-05-11-pyinstaller使用.md",
-    "2022-04-25-python线程&进程&协程.md",
     "Pasted image 20240227085612.png",
-    "2023-12-11-前后端分离登录实现.md",
-    "2024-02-26-常用表结构.md",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
   ]
 }
