@@ -32,41 +32,53 @@ tags:
 自定义响应体
 
 ```java
-public class Result<T> {
-    private int code;
-    private String message;
-    private T data;
+public class Result<T> {  
+    /**      * 状态码      */  
+    private int code;  
+    /**      * 响应信息，用来说明响应情况      */  
+    private String msg;  
+    /**      * 响应的具体数据      */  
+    private T data;  
+  
+    // 只传data，默认是成功  
+    public Result(T data) {  
+        this(ResultCode.SUCCESS, "操作成功", data);  
+    }  
+  
+    public Result(ResultCode resultCode, String message, T data) {  
+        this.code = resultCode.getCode();  
+        this.msg = message;  
+        this.data = data;  
+    }  
+}
+```
 
-    public Result(int code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
+自定义响应代码
 
-    public int getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public T getData() {
-        return data;
-    }
+```java
+public enum ResultCode {  
+    SUCCESS(2000),  
+    FAILED(2001),  
+    VALIDATE_FAILED(2002),  
+    ERROR(5000);  
+    ResultCode(int code) {  
+        this.code = code;  
+    }  
+    private int code;  
+  
+    public int getCode() {  
+        return code;  
+    }  
 }
 ```
 
 效果
+
 ```java
-{  
-    "code": 0,  
-    "message": "success",  
-    "data": {  
-        "name": "Tom",  
-        "age": 20,  
-        "gender": "男"  
-    }  
+{
+ "code": "999",
+ "message": "操作成功",
+ "data": null
 }
 ```
 
