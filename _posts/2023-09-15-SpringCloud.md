@@ -33,7 +33,17 @@ SpringCloud 是一种生态，不是框架
 - 熔断、限流、服务降级
 
 
-# 2. SpringCloud Alibaba
+# 2. SpringCloud Alibaba最佳实践
+
+```
+1. Spring Cloud Gateway：网关
+2. Nacos：服务注册和配置中心
+3. Sentinel：熔断限流
+4. Seata：分布式事务
+5. RocketMQ：消息队列，削峰填谷
+6. Docker：使用Docker进行容器化部署
+7. Kubernetes：使用k8s进行容器化部署
+```
 
 **异步非阻塞通信**
 - 消息队列

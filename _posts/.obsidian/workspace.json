@@ -13,11 +13,29 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-11-29-Windows定制.md",
+                "file": "2023-09-15-SpringCloud.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "9446540c2ad171e1"
+          }
+        ]
+      },
+      {
+        "id": "ae783638931297aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d8160084b9c2cb1b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-09-15-SpringCloud.md"
+              }
+            },
+            "group": "9446540c2ad171e1"
           }
         ]
       }
@@ -48,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:windows",
+                "query": "file:cloud",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-11-29-Windows定制.md",
+                "file": "2023-09-15-SpringCloud.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-11-29-Windows定制.md",
+                "file": "2023-09-15-SpringCloud.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-29-Windows定制.md"
+                "file": "2023-09-15-SpringCloud.md"
               }
             }
           },
@@ -160,14 +178,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "442262f280eacd15",
+  "active": "d8160084b9c2cb1b",
   "lastOpenFiles": [
-    "2024-03-24-Quasar开发总结.md",
+    "2023-11-29-DOS批处理脚本.md",
+    "2023-01-11-Vue核心语法.md",
     "2023-02-03-Vue开发总结.md",
+    "2024-02-07-Vue项目开发.md",
+    "2023-11-29-Windows定制.md",
+    "2024-03-24-Quasar开发总结.md",
     "2024-03-24-quasar开发总结.md",
     "新建文本文档.txt",
-    "2023-01-11-Vue核心语法.md",
-    "2024-02-07-Vue项目开发.md",
     "2023-12-11-前后端分离登录实现.md",
     "2023-09-12-SpringBoot后端接口规范.md",
     "2023-05-24-Java实用工具库.md",
@@ -187,8 +207,6 @@
     "2024-03-08-JUC.md",
     "2023-02-13-Java多线程.md",
     "2024-01-22-SpringBoot之Tomcat.md",
-    "2023-12-30-Node.md",
-    "2024-01-30-Jackson.md",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
   ]
