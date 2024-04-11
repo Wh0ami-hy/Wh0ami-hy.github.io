@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-04-11-MySQL数据安全性.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:mysql",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,8 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237.5,
-    "collapsed": true
+    "width": 237.5
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-04-11-MySQL数据安全性.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-04-11-MySQL数据安全性.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md"
+                "file": "2024-04-11-MySQL数据安全性.md"
               }
             }
           },
@@ -160,10 +159,17 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6da4ca800dfb1b98",
+  "active": "d826b86cbf79a8eb",
   "lastOpenFiles": [
-    "2023-02-03-Element开发总结.md",
+    "2024-01-12-MySQL时区问题.md",
+    "2024-04-11-MySQL数据安全性.md",
+    "新建文本文档.txt",
+    "2023-09-13-MySQL设计规约.md",
+    "2023-03-26-MySQL原理.md",
+    "2023-01-02-MySQL压缩包式安装.md",
+    "2021-12-31-MySQL语法.md",
     "2024-03-24-Quasar开发总结.md",
+    "2023-02-03-Element开发总结.md",
     "2024-02-07-Vue项目组成.md",
     "2023-01-11-Vue核心语法.md",
     "2024-04-09-项目管理.md",
@@ -182,13 +188,6 @@
     "2023-09-15-SpringCloud.md",
     "2023-11-29-DOS批处理脚本.md",
     "2024-03-24-quasar开发总结.md",
-    "新建文本文档.txt",
-    "2023-12-11-前后端分离登录实现.md",
-    "2023-09-12-SpringBoot后端接口规范.md",
-    "2023-05-24-Java实用工具库.md",
-    "2024-03-02-JRebel热部署.md",
-    "2024-01-10-SpringBoot-Starter自定义实现.md",
-    "2023-11-18-Swagger接口文档工具.md",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
   ]
