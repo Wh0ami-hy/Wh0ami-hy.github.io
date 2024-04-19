@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f682f89a21d87aa1",
+        "id": "89914e20848dafe8",
         "type": "tabs",
         "children": [
           {
-            "id": "ae4996a80cfbe4cf",
+            "id": "2ed231c4a20f3faf",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -44,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:接口",
+                "query": "file:信息",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,8 +66,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237.5,
-    "collapsed": true
+    "width": 237.5
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -152,8 +151,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ae4996a80cfbe4cf",
+  "active": "6da4ca800dfb1b98",
   "lastOpenFiles": [
+    "2024-04-09-项目管理.md",
     "2024-02-27-接口防重处理.md",
     "2023-05-24-Java实用工具库.md",
     "2023-02-12-Java高级.md",
@@ -172,7 +172,6 @@
     "2023-02-03-Element开发总结.md",
     "2024-02-07-Vue项目组成.md",
     "2023-01-11-Vue核心语法.md",
-    "2024-04-09-项目管理.md",
     "2023-09-22-Linux入门.md",
     "2023-01-20-Docker.md",
     "2021-12-26-Windows下安装双系统.md",
