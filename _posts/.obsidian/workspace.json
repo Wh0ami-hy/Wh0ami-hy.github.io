@@ -4,16 +4,40 @@
     "type": "split",
     "children": [
       {
-        "id": "89914e20848dafe8",
+        "id": "98cb319ad0e91ddd",
         "type": "tabs",
+        "dimension": 80.42895442359249,
         "children": [
           {
-            "id": "2ed231c4a20f3faf",
+            "id": "7e2a6bf7dca55c85",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
-            }
+              "type": "markdown",
+              "state": {
+                "file": "2023-01-12-IDEA使用.md",
+                "mode": "source",
+                "source": false
+              }
+            },
+            "group": "24337f029244162f"
+          }
+        ]
+      },
+      {
+        "id": "98a1e27403385144",
+        "type": "tabs",
+        "dimension": 19.571045576407506,
+        "children": [
+          {
+            "id": "d3e98c25d54c3a3d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-01-12-IDEA使用.md"
+              }
+            },
+            "group": "24337f029244162f"
           }
         ]
       }
@@ -44,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:信息",
+                "query": "file:idea",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +90,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237.5
+    "width": 237.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -82,6 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "2023-01-12-IDEA使用.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "2023-01-12-IDEA使用.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +146,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "2023-01-12-IDEA使用.md"
+              }
             }
           },
           {
@@ -151,11 +180,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6da4ca800dfb1b98",
+  "active": "d3e98c25d54c3a3d",
   "lastOpenFiles": [
+    "2023-05-24-Java实用工具库.md",
     "2024-04-09-项目管理.md",
     "2024-02-27-接口防重处理.md",
-    "2023-05-24-Java实用工具库.md",
     "2023-02-12-Java高级.md",
     "2023-01-12-IDEA使用.md",
     "2024-03-02-JRebel热部署.md",
