@@ -1,9 +1,8 @@
 ---
 layout: post   	
-catalog: true 	
-toc: true
+catalog: true
 tags:
-    - PGSQL
+    - Postgresql
 ---
 
 
