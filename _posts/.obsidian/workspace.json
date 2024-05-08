@@ -13,7 +13,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md"
+                "file": "2024-05-08-Maven注意事项.md"
               }
             }
           },
@@ -23,7 +23,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-05-08-Maven注意事项.md",
                 "mode": "source",
                 "source": false
               }
@@ -59,7 +59,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:qua",
+                "query": "file:maven",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-05-08-Maven注意事项.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-05-08-Maven注意事项.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md"
+                "file": "2024-05-08-Maven注意事项.md"
               }
             }
           },
@@ -173,11 +173,11 @@
   },
   "active": "9d8df4918c5e075a",
   "lastOpenFiles": [
-    "2024-04-05-网页元素设计规范.md",
+    "2023-01-07-Maven.md",
     "2024-03-24-Quasar开发总结.md",
+    "2024-04-05-网页元素设计规范.md",
     "2023-06-26-How To Ask Questions The Smart Way.md",
     "2023-01-11-Vue核心语法.md",
-    "2023-01-07-Maven.md",
     "2023-01-20-Docker理论.md",
     "2023-07-26-Docker实践.md",
     "2023-05-24-Java实用工具库.md",
