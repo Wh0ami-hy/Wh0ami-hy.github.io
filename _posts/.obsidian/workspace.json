@@ -4,33 +4,42 @@
     "type": "split",
     "children": [
       {
-        "id": "98a1e27403385144",
+        "id": "4a54a18adccc9079",
         "type": "tabs",
+        "dimension": 75.87131367292224,
         "children": [
           {
-            "id": "d3e98c25d54c3a3d",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-05-24-Java实用工具库.md"
-              }
-            }
-          },
-          {
-            "id": "9d8df4918c5e075a",
+            "id": "976bd3d6caefe548",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-05-24-Java实用工具库.md",
+                "file": "2023-09-07-SpringBoot日志最佳实践.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "a980cd213e9bd759"
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "022a8427e94a6c8a",
+        "type": "tabs",
+        "dimension": 24.128686327077748,
+        "children": [
+          {
+            "id": "97b10c551ac231d7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-09-07-SpringBoot日志最佳实践.md"
+              }
+            },
+            "group": "a980cd213e9bd759"
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:Java",
+                "query": "file:日志",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-05-24-Java实用工具库.md",
+                "file": "2023-09-07-SpringBoot日志最佳实践.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-05-24-Java实用工具库.md",
+                "file": "2023-09-07-SpringBoot日志最佳实践.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-05-24-Java实用工具库.md"
+                "file": "2023-09-07-SpringBoot日志最佳实践.md"
               }
             }
           },
@@ -171,8 +180,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "9d8df4918c5e075a",
+  "active": "976bd3d6caefe548",
   "lastOpenFiles": [
+    "2023-05-24-Java实用工具库.md",
     "2024-05-08-Maven注意事项.md",
     "2023-01-07-Maven.md",
     "2024-03-24-Quasar开发总结.md",
@@ -181,7 +191,6 @@
     "2023-01-11-Vue核心语法.md",
     "2023-01-20-Docker理论.md",
     "2023-07-26-Docker实践.md",
-    "2023-05-24-Java实用工具库.md",
     "2023-01-12-IDEA使用.md",
     "2024-01-09-设计模式.md",
     "2023-10-16-PostgreSQL配置.md",
