@@ -6,7 +6,7 @@
       {
         "id": "4a54a18adccc9079",
         "type": "tabs",
-        "dimension": 75.87131367292224,
+        "dimension": 75.87131367292226,
         "children": [
           {
             "id": "976bd3d6caefe548",
@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md",
+                "file": "2024-03-15-Mybatis之pagehelper插件.md",
                 "mode": "source",
                 "source": false
               }
@@ -26,7 +26,7 @@
       {
         "id": "022a8427e94a6c8a",
         "type": "tabs",
-        "dimension": 24.128686327077748,
+        "dimension": 24.12868632707775,
         "children": [
           {
             "id": "97b10c551ac231d7",
@@ -34,7 +34,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md"
+                "file": "2024-03-15-Mybatis之pagehelper插件.md"
               }
             },
             "group": "a980cd213e9bd759"
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:日志",
+                "query": "file:pa",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md",
+                "file": "2024-03-15-Mybatis之pagehelper插件.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md",
+                "file": "2024-03-15-Mybatis之pagehelper插件.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md"
+                "file": "2024-03-15-Mybatis之pagehelper插件.md"
               }
             }
           },
@@ -182,6 +182,11 @@
   },
   "active": "976bd3d6caefe548",
   "lastOpenFiles": [
+    "2023-09-07-SpringBoot日志最佳实践.md",
+    "2024-03-15-Mybatis之pagehelper插件.md",
+    "2022-06-30-MyBatis.md",
+    "2021-12-31-MySQL语法.md",
+    "2023-11-29-Windows定制.md",
     "2023-05-24-Java实用工具库.md",
     "2024-05-08-Maven注意事项.md",
     "2023-01-07-Maven.md",
@@ -203,11 +208,6 @@
     "2023-11-28-SpringBoot&Thymeleaf.md",
     "2023-12-05-http协议.md",
     "2024-01-08-UML设计.md",
-    "2024-01-10-Spring Boot生态.md",
-    "2024-01-25-SpringBoot整合Quartz.md",
-    "2023-04-25-Spring Boot项目最佳实践.md",
-    "2024-04-09-项目管理.md",
-    "2024-02-27-接口防重处理.md",
     "新建文本文档.txt",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"

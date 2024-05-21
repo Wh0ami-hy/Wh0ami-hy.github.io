@@ -131,7 +131,7 @@ C.3 --> D[slf4j-api]
 C.4 --> D[slf4j-api]
 ```
 
-Spring Boot通过spring-boot-starter-logging包直接依赖了Logback（然后再间接依赖了 Slf4j），它通过`org.springframework.boot.logging.LoggingSystem[10]`查找日志接口并自动适配，所以我们使用Spring Boot时一般并不需要关心日志依赖，只管使用即可。但因为Slf4j 2.0.x与Slf4j 1.7.x实现不一致，导致Spring Boot也会挑版本：
+Spring Boot通过spring-boot-starter-logging包直接依赖了Logback（然后再间接依赖了 Slf4j），它通过`org.springframework.boot.logging.LoggingSystem[10]`查找日志接口并自动适配，**所以我们使用Spring Boot时一般并不需要关心日志依赖，只管使用即可**。但因为Slf4j 2.0.x与Slf4j 1.7.x实现不一致，导致Spring Boot也会挑版本：
 
 | Spring Boot 版本 | Slf4j 版本  | Logback 版本  | JDK 版本  |
 | ---------------- | ----------- | ------------- | --------- |
@@ -210,9 +210,9 @@ Spring Boot通过spring-boot-starter-logging包直接依赖了Logback（然后�
 	- `ch.qos.logback:logback-classic:1.4.14`
 
 -   桥接包
-	-   `org.slf4j:jcl-over-slf4j` 参考【七、注意事项】
-	-   `org.slf4j:log4j-over-slf4j` 参考【七、注意事项】
-	-   `org.slf4j:jul-to-slf4j` 参考【七、注意事项】
+	-   `org.slf4j:jcl-over-slf4j` 
+	-   `org.slf4j:log4j-over-slf4j` 
+	-   `org.slf4j:jul-to-slf4j` 
 	-   `org.apache.logging.log4j:log4j-to-slf4j:2.23.1`
     
 -   排包
