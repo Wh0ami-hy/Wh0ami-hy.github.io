@@ -52,7 +52,7 @@ pagehelper:
 
 **下面几个参数都是针对默认 dialect 情况下的参数。使用自定义 dialect 实现时，下面的参数没有任何作用。**
 
-- `helper-dialect`：配置`helper-dialect`属性来指定分页插件使用哪种方言（不配置的话pageHelper也会自动检测）。配置时，可以使用下面的缩写值：`oracle`,`mysql`,`mariadb`,`sqlite`,`hsqldb`,`postgresql`,`db2`,`sqlserver`,`informix`,`h2`,`sqlserver2012`,`derby`  **使用 SqlServer2012 数据库时，需要手动指定为 `sqlserver2012`，否则会使用 SqlServer2005 的方式进行分页  
+- `helper-dialect`：配置`helper-dialect`属性来指定分页插件使用哪种方言（不配置的话pageHelper也会自动检测）。配置时，可以使用下面的缩写值：`oracle`,`mysql`,`mariadb`,`sqlite`,`hsqldb`,`postgresql`,`db2`,`sqlserver`,`informix`,`h2`,`sqlserver2012`,`derby`，使用 SqlServer2012 数据库时，需要手动指定为 `sqlserver2012`，否则会使用 SqlServer2005 的方式进行分页
 - `offset-as-page-num`：默认值为 `false`，该参数对使用 `RowBounds` 作为分页参数时有效。 当该参数设置为 `true` 时，会将 `RowBounds` 中的 `offset` 参数当成 `pageNum` 使用，可以用页码和页面大小两个参数进行分页
 - `row-bounds-with-count`：默认值为`false`，该参数对使用 `RowBounds` 作为分页参数时有效。 当该参数设置为`true`时，使用 `RowBounds` 分页会进行 count 查询
 - `page-size-zero`：默认值为 `false`，当该参数设置为 `true` 时，如果 `pageSize=0` 或者 `RowBounds.limit = 0` 就会查询出全部的结果（相当于没有执行分页查询，但是返回结果仍然是 `Page` 类型）
@@ -90,7 +90,7 @@ public Result page (@PathVariab1e(value =”pageSize" ) Integer pageSize,@PathVa
 
 在mapper.xml中编写sql语句的时候不要在末尾加分号，因为sql语句后面要拼接limit分页语句
 
-PageHelper 里面的 PageHelper.startPage(1,10) 只对在 PageHelper 方法调用后紧跟的 MyBatis 查询方法得到的数据进行分页
+PageHelper.startPage(pageNum,pageSize) 只对在该方法调用后紧跟的 MyBatis 查询方法得到的数据进行分页
 
 ```java
 PageHelper.startPage(pageNum,pageSize);
