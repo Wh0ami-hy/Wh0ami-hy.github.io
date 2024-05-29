@@ -70,6 +70,11 @@ slf4j-api"] --Slf4j迁移到JCL--> 4rfu0p7qvvcs4gesajj86h44bv["slf4j-jcl"]
 	55aml9qs4o7k1176pnbh8i0c2u --JUL迁移到Slf4j--> 59nosjp9f0ream3541ih843995
 	59nosjp9f0ream3541ih843995["jul-to-slf4j"] --JUL迁移到Slf4j--> 4k6jcmr4jtgn2k05mm9ka22q3h
 ```
+
+**@Slf4j注解**
+
+Lombok也提供了针对各种日志系统的支持，比如你只需要`@lombok.extern.slf4j.Slf4j`注解就可以得到一个静态的log字段，不用再手动调用工厂函数。默认的LoggerName 即是被注解的Class；同时也支持字符串格式的topic字段指定LoggerName
+
 # 4. Logback
 
 Logback主要由三部分组成：
@@ -229,13 +234,62 @@ Spring Boot通过spring-boot-starter-logging包直接依赖了Logback（然后�
 
 # 6. SpringBoot中日志的具体配置
 
-## 6.1. SpringBoot中日志的默认配置
-
-**日志级别**
+## 6.1. 日志级别
 
 SpringBoot默认的日志级别是info
 
 可以使用`logging.level` 调整某个包、类输出的日志级别
+
+一共有五个等级，按优先级从低到高依次为：
+
+-   TRACE：一般用于记录调用链路，比如方法进入时打印xxx start；
+    
+-   DEBUG：个人觉得它和 trace 等级可以合并，如果一定要区分，可以用来打印方法的出入参；
+    
+-   INFO：默认级别，一般用于记录代码执行时的关键信息；
+    
+-   WARN：当代码执行遇到预期外场景，但它不影响后续执行时，可以使用；
+    
+-   ERROR：出现异常，以及代码无法兜底时使用；
+
+```java
+@Slf4j
+public class ExampleService {
+    @Resource
+    private RpcService rpcService;
+
+    public String querySomething(String request) {
+        // 使用 trace 标识这个方法调用情况
+        log.trace("querySomething start");
+        // 使用 debug 记录出入参
+        log.debug("querySomething request={}", request);
+
+        String response = null;
+        try {
+            RpcResult rpcResult = rpcService.call(a);
+            if (rpcResult.isSuccess()) {
+                response = rpcResult.getData();
+
+                // 使用 info 标识重要节点
+                log.info("querySomething rpcService.call succeed, request={}, rpcResult={}", request, rpcResult);
+            } else {
+                // 使用 warn 标识程序调用有预期外错误，但这个错误在可控范围内
+                log.warn("querySomething rpcService.call failed, request={}, rpcResult={}", request, rpcResult);
+            }
+        } catch (Exception e) {
+            // 使用 error 记录程序的异常信息
+            log.error("querySomething rpcService.call abnormal, request={}, exception={}", request, e.getMessage(), e);
+        }
+
+        // 使用 debug 记录出入参
+        log.debug("querySomething response={}", response);
+        // 使用 trace 标识这个方法调用情况
+        log.trace("querySomething end");
+
+        return response;
+    }
+}
+```
 
 ## 6.2. Logback配置文件
 
@@ -330,6 +384,4 @@ SpringBoot默认的日志级别是info
 <logger name="java.sql.Statement" level="DEBUG" />  
 <logger name="java.sql.PreparedStatement" level="DEBUG" />
 ```
-
-
 
