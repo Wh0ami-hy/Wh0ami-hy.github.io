@@ -302,3 +302,6 @@ public class HaveNoBlankValidator implements ConstraintValidator<HaveNoBlank, St
 
 自定义校验注解使用起来和内置注解无异，在需要的字段上添加相应注解即可
 
+# 9. 继承问题
+
+父类中的参数校验，能否被子类继承？

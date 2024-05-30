@@ -70,6 +70,12 @@ slf4j-api"] --Slf4j迁移到JCL--> 4rfu0p7qvvcs4gesajj86h44bv["slf4j-jcl"]
 	55aml9qs4o7k1176pnbh8i0c2u --JUL迁移到Slf4j--> 59nosjp9f0ream3541ih843995
 	59nosjp9f0ream3541ih843995["jul-to-slf4j"] --JUL迁移到Slf4j--> 4k6jcmr4jtgn2k05mm9ka22q3h
 ```
+**工厂函数**
+
+```java
+// 传 Class，一般都是传当前的 Class
+private static final Logger log = LoggerFactory.getLogger(ExampleService.class);
+```
 
 **@Slf4j注解**
 
