@@ -8,29 +8,34 @@
         "type": "tabs",
         "children": [
           {
-            "id": "db36793fc225f16a",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2024-06-09-GoogleSearch.md"
-              }
-            }
-          },
-          {
             "id": "a20ec0dfb1c8ff6a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-06-09-GoogleSearch.md",
+                "file": "2024-06-12-Java web 技术与架构演进.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "c2df2086c39e5260",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2d0667e8df7c486f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2024-06-12-Java web 技术与架构演进.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -80,7 +85,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 238.5
+    "width": 238.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -96,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-06-09-GoogleSearch.md",
+                "file": "2024-06-12-Java web 技术与架构演进.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-06-09-GoogleSearch.md",
+                "file": "2024-06-12-Java web 技术与架构演进.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-06-09-GoogleSearch.md"
+                "file": "2024-06-12-Java web 技术与架构演进.md"
               }
             }
           },
@@ -171,14 +177,18 @@
   },
   "active": "a20ec0dfb1c8ff6a",
   "lastOpenFiles": [
+    "2023-03-26-MySQL原理.md",
+    "2021-12-31-MySQL语法.md",
+    "2021-06-26-JDBC.md",
+    "2022-06-30-MyBatis.md",
+    "2023-01-02-MySQL压缩包式安装.md",
+    "2024-06-09-GoogleSearch.md",
     "2024-03-24-Quasar开发总结.md",
     "2024-01-28-SQL优化.md",
     "2023-09-13-MySQL设计规约.md",
-    "2023-03-26-MySQL原理.md",
     "2023-02-09-阿里Java开发手册.md",
     "2022-04-25-python之旅 上.md",
     "2022-04-25-python线程&进程&协程.md",
-    "2021-12-31-MySQL语法.md",
     "2023-01-11-Vue3核心语法.md",
     "2024-02-07-Vue项目结构.md",
     "2024-05-29-Quasar打包APP.md",
@@ -193,10 +203,6 @@
     "2024-05-08-Maven注意事项.md",
     "2023-09-07-SpringBoot日志最佳实践.md",
     "2024-01-30-Jackson.md",
-    "2023-10-14-Spring之Validation校验参数.md",
-    "2023-11-28-SpringBoot&Thymeleaf.md",
-    "2023-03-03-Spring Boot.md",
-    "2023-04-25-Spring Boot项目最佳实践.md",
     "新建文本文档.txt",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
