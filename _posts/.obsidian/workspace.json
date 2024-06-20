@@ -6,31 +6,40 @@
       {
         "id": "c2df2086c39e5260",
         "type": "tabs",
+        "dimension": 68.96782841823057,
         "children": [
           {
-            "id": "2d0667e8df7c486f",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2024-06-09-GoogleSearch.md"
-              }
-            }
-          },
-          {
-            "id": "44a47bbb0ffb25c4",
+            "id": "54acbeb6518742d7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-06-09-GoogleSearch.md",
+                "file": "2023-09-21-计算机网络.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "37019680fc7e5b7b"
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "885490df32a77aac",
+        "type": "tabs",
+        "dimension": 31.03217158176944,
+        "children": [
+          {
+            "id": "6bee039cae9f3de8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-09-21-计算机网络.md"
+              }
+            },
+            "group": "37019680fc7e5b7b"
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "google",
+                "query": "408",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -97,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-06-09-GoogleSearch.md",
+                "file": "2023-09-21-计算机网络.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-06-09-GoogleSearch.md",
+                "file": "2023-09-21-计算机网络.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-06-09-GoogleSearch.md"
+                "file": "2023-09-21-计算机网络.md"
               }
             }
           },
@@ -170,10 +179,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "44a47bbb0ffb25c4",
+  "active": "54acbeb6518742d7",
   "lastOpenFiles": [
-    "2021-12-31-MySQL语法.md",
+    "2023-09-30-操作系统.md",
+    "2023-09-30-计算机组成原理.md",
+    "2024-03-26-Python实用工具库.md",
+    "2021-11-14-Windows用户及用户组.md",
+    "2023-11-29-Windows定制.md",
     "2024-06-09-GoogleSearch.md",
+    "2021-12-31-MySQL语法.md",
     "2024-01-28-SQL优化.md",
     "2024-06-12-Java web 技术与架构演进.md",
     "2023-03-26-MySQL原理.md",
@@ -193,11 +207,6 @@
     "2023-12-21-Java日期时间处理类.md",
     "2024-02-05-Java Web.md",
     "2024-03-13-Java处理NPE.md",
-    "2023-11-29-Windows定制.md",
-    "2023-01-12-IDEA使用.md",
-    "2023-01-07-Maven.md",
-    "2024-05-08-Maven注意事项.md",
-    "2023-09-07-SpringBoot日志最佳实践.md",
     "新建文本文档.txt",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
