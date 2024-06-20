@@ -6,7 +6,7 @@
       {
         "id": "c2df2086c39e5260",
         "type": "tabs",
-        "dimension": 68.96782841823057,
+        "dimension": 68.9792663476874,
         "children": [
           {
             "id": "54acbeb6518742d7",
@@ -26,7 +26,7 @@
       {
         "id": "885490df32a77aac",
         "type": "tabs",
-        "dimension": 31.03217158176944,
+        "dimension": 31.0207336523126,
         "children": [
           {
             "id": "6bee039cae9f3de8",
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "408",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,8 +85,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -181,6 +180,8 @@
   },
   "active": "54acbeb6518742d7",
   "lastOpenFiles": [
+    "2024-06-20-计算机科学.md",
+    "2023-09-21-计算机网络.md",
     "2023-09-30-操作系统.md",
     "2023-09-30-计算机组成原理.md",
     "2024-03-26-Python实用工具库.md",
@@ -205,8 +206,6 @@
     "2023-01-12-JavaScript-ES6.md",
     "2023-02-13-Java多线程.md",
     "2023-12-21-Java日期时间处理类.md",
-    "2024-02-05-Java Web.md",
-    "2024-03-13-Java处理NPE.md",
     "新建文本文档.txt",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
