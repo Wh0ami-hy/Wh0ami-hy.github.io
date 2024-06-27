@@ -4,38 +4,51 @@
     "type": "split",
     "children": [
       {
-        "id": "52bb15f788fbbbe2",
+        "id": "9f2efef9ea18b667",
         "type": "tabs",
+        "dimension": 69.43699731903486,
         "children": [
           {
-            "id": "26df5a8508b1fdf3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2024-06-27-SpringBoot线程池.md",
-                "mode": "source",
-                "source": false
-              }
-            },
-            "group": "dc1bf23723dc3a92"
-          }
-        ]
-      },
-      {
-        "id": "dbdad84c48488a2d",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "e30182065b87085a",
+            "id": "6dd7f962d2b66ea3",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-06-27-SpringBoot线程池.md"
+                "file": "2024-06-27-Lombok注解.md"
+              }
+            }
+          },
+          {
+            "id": "57df50bee0faa954",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2024-06-27-Lombok注解.md",
+                "mode": "source",
+                "source": false
               }
             },
-            "group": "dc1bf23723dc3a92"
+            "group": "a26f0a7fa2bccaad"
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "9f8d5d63dd6b8cc6",
+        "type": "tabs",
+        "dimension": 30.563002680965145,
+        "children": [
+          {
+            "id": "f70337baad7259a5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2024-06-27-Lombok注解.md"
+              }
+            },
+            "group": "a26f0a7fa2bccaad"
           }
         ]
       }
@@ -83,7 +96,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -104,7 +118,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-06-27-SpringBoot线程池.md",
+                "file": "2024-06-27-Lombok注解.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +135,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-06-27-SpringBoot线程池.md",
+                "file": "2024-06-27-Lombok注解.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-06-27-SpringBoot线程池.md"
+                "file": "2024-06-27-Lombok注解.md"
               }
             }
           },
@@ -177,35 +191,35 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "e30182065b87085a",
+  "active": "57df50bee0faa954",
   "lastOpenFiles": [
-    "2023-03-03-SpringBoot.md",
-    "2024-06-27-SpringBoot线程池.md",
-    "2023-09-12-SpringBoot后端接口规范.md",
-    "2022-06-30-SpringData.md",
-    "2023-03-11-Spring核心.md",
-    "2023-03-13-SpringMVC.md",
-    "2023-04-13-SpringSecurity.md",
-    "2023-04-25-SpringBoot项目最佳实践.md",
-    "2023-09-07-SpringBoot日志最佳实践.md",
-    "2023-09-15-SpringCloud.md",
-    "2023-10-14-Spring之Validation校验参数.md",
-    "2024-01-20-SpringBoot整合Redis.md",
-    "2024-01-25-SpringBoot整合Quartz.md",
-    "2024-01-10-SpringBootStarter自定义实现.md",
-    "2024-01-10-SpringBoot生态.md",
-    "2024-01-22-SpringBoot之Tomcat.md",
-    "2024-01-30-SpringCache.md",
-    "2024-02-01-SpringBoot项目中的注解.md",
-    "2023-03-12-Spring.md",
-    "2022-04-25-Python异步.md",
-    "2024-03-26-Python实用工具库.md",
-    "2023-01-26-Python基础.md",
-    "2022-05-23-PythonSocket.md",
-    "2021-07-01-Python正则.md",
-    "2022-05-18-Python虚拟环境.md",
-    "2022-04-25-Python之旅上.md",
+    "2024-03-13-Java处理NPE.md",
+    "2024-06-27-Lombok注解.md",
+    "2024-06-12-Java web 技术与架构演进.md",
+    "2024-03-12-Java判等操作.md",
+    "2024-03-08-JUC.md",
+    "2023-12-30-认识JSON.md",
+    "2024-02-05-Java Web.md",
+    "2024-01-14-Java字符串处理类.md",
+    "2023-12-21-Java日期时间处理类.md",
+    "2023-05-24-Java实用工具库.md",
+    "2023-04-02-Java内存管理.md",
+    "2023-02-13-Java多线程.md",
+    "2023-02-13-Java Bean.md",
+    "2023-02-12-Java中级.md",
+    "2023-02-12-Java高级.md",
+    "2023-02-12-Java初级.md",
+    "2023-02-09-阿里Java开发手册.md",
+    "2023-01-12-IDEA使用.md",
+    "2021-07-05-Java网络编程.md",
+    "2021-06-26-JDBC.md",
+    "2023-01-20-Docker理论.md",
+    "2023-07-26-Docker实践.md",
+    "2024-06-27-Docker最佳实践.md",
     "新建文本文档.txt",
+    "2024-06-27-SpringBoot线程池.md",
+    "2023-03-03-SpringBoot.md",
+    "2023-09-12-SpringBoot后端接口规范.md",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
   ]
