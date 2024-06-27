@@ -11,9 +11,31 @@
             "id": "26df5a8508b1fdf3",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
-            }
+              "type": "markdown",
+              "state": {
+                "file": "2024-06-27-SpringBoot线程池.md",
+                "mode": "source",
+                "source": false
+              }
+            },
+            "group": "dc1bf23723dc3a92"
+          }
+        ]
+      },
+      {
+        "id": "dbdad84c48488a2d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e30182065b87085a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2024-06-27-SpringBoot线程池.md"
+              }
+            },
+            "group": "dc1bf23723dc3a92"
           }
         ]
       }
@@ -44,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#计算机基础  ",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,12 +83,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 238.5
+    "width": 238.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -82,6 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "2024-06-27-SpringBoot线程池.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "2024-06-27-SpringBoot线程池.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +143,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "2024-06-27-SpringBoot线程池.md"
+              }
             }
           },
           {
@@ -151,34 +177,34 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "26df5a8508b1fdf3",
+  "active": "e30182065b87085a",
   "lastOpenFiles": [
-    "2023-09-21-计算机网络.md",
-    "2023-09-30-操作系统.md",
-    "2023-09-30-计算机组成原理.md",
-    "2024-05-11-PySide6.md",
-    "2024-05-11-FastApi.md",
-    "2023-01-26-Python基础.md",
-    "2022-05-23-Python Socket.md",
-    "2022-05-18-Python虚拟环境.md",
-    "2022-05-11-pyinstaller使用.md",
-    "2022-04-25-Python之旅 下.md",
-    "2022-04-25-Python之旅 上.md",
-    "2021-07-01-Python 正则.md",
-    "2022-04-25-Python线程&进程&协程.md",
+    "2023-03-03-SpringBoot.md",
+    "2024-06-27-SpringBoot线程池.md",
+    "2023-09-12-SpringBoot后端接口规范.md",
+    "2022-06-30-SpringData.md",
+    "2023-03-11-Spring核心.md",
+    "2023-03-13-SpringMVC.md",
+    "2023-04-13-SpringSecurity.md",
+    "2023-04-25-SpringBoot项目最佳实践.md",
+    "2023-09-07-SpringBoot日志最佳实践.md",
+    "2023-09-15-SpringCloud.md",
+    "2023-10-14-Spring之Validation校验参数.md",
+    "2024-01-20-SpringBoot整合Redis.md",
+    "2024-01-25-SpringBoot整合Quartz.md",
+    "2024-01-10-SpringBootStarter自定义实现.md",
+    "2024-01-10-SpringBoot生态.md",
+    "2024-01-22-SpringBoot之Tomcat.md",
+    "2024-01-30-SpringCache.md",
+    "2024-02-01-SpringBoot项目中的注解.md",
+    "2023-03-12-Spring.md",
+    "2022-04-25-Python异步.md",
     "2024-03-26-Python实用工具库.md",
-    "2024-06-24-GitLab部署.md",
-    "2023-01-20-Docker理论.md",
-    "2024-06-25-数据库原理.md",
-    "2023-02-13-Java Bean.md",
-    "2023-04-02-Java内存管理.md",
-    "2023-10-12-JWT详解.md",
-    "2023-09-14-消息推送.md",
-    "2023-01-12-IDEA使用.md",
-    "2024-06-20-计算机科学.md",
-    "2021-11-14-Windows用户及用户组.md",
-    "2023-11-29-Windows定制.md",
-    "2024-06-09-GoogleSearch.md",
+    "2023-01-26-Python基础.md",
+    "2022-05-23-PythonSocket.md",
+    "2021-07-01-Python正则.md",
+    "2022-05-18-Python虚拟环境.md",
+    "2022-04-25-Python之旅上.md",
     "新建文本文档.txt",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
