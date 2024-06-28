@@ -327,36 +327,30 @@ Spring Boot提供了两种主要方法：
 
 ## 2.7. 使用 slf4j 日志
 
-应该使用日志框架进行日志记录，而不是使用`System.out.println()`手动执行。建议将 Slf4j 与 Spring Boot 中默认的日志框架 logback 一起使用。可以使用 Lombok @Slf4j 注释非常轻松地创建日志记录器
+应该使用日志框架进行日志记录，而不是使用`System.out.println()`手动执行。建议将 Slf4j 与 Spring Boot 中默认的日志框架 logback 一起使用。可以使用 Lombok的 `@Slf4j` 注释非常轻松地创建日志记录器
 
 在Spring Boot中完成，几乎没有配置。只需获取该类的记录器实例：
 
 ```java
 Logger logger = LoggerFactory.getLogger(MyClass.class);
 ```
-
 ## 2.8. 代码测试
 
 测试切片，你可以根据需要仅连接部分应用程序
-
 ## 2.9. 使用Swagger接口文档工具
 
 在大多数情况下，其他应用程序将通过REST API 调用你的应用程序。因此我们需要维护一份API文档。文档应该由代码生成。
-
 ## 2.10. 使数据库独立于核心业务逻辑之外
 
 理想情况下，你不希望服务知道它正在与哪个数据库通信，这需要一些抽象来封装对象的持久性
 
 **一些优秀的持久层框架可以帮助我们做到这些**
-
 ## 2.11. 使用Spring Initializr来开始一个新的Spring Boot项目
 
 使用Initializr创建应用程序可确保你获得经过测试和验证的依赖项，这些依赖项适用于Spring自动配置。
-
 ## 2.12. 使用 Lombok
 
 Lombok 是一个 Java 库，可用于减少代码并允许我们使用其注释编写干净的代码
-
 ## 2.13. 避免空指针异常
 
 - 为了避免 NullPointerException，我们可以使用 java.util 包中的 Optional。
@@ -364,23 +358,15 @@ Lombok 是一个 Java 库，可用于减少代码并允许我们使用其注释�
 - 对已知对象调用 equals() 和 equalsIgnoreCase() 方法。
 - 使用 valueOf() 而不是 toString()
 - 使用基于 IDE 的 @NotNull 和 @Nullable 注释
-
 ## 2.14. 使用集合框架的最佳实践
 
 - 对我们的数据集使用适当的集合。
-  
 - 将 forEach 与 Java 8 功能结合使用，并避免使用旧版 for 循环。
-  
 - 使用接口类型而不是实现。
-  
 - 使用 isEmpty() 而不是 size() 以获得更好的可读性。
-  
 - 不返回空值，可以返回空集合。
-  
-- 如果我们使用对象作为要存储在基于哈希的集合中的数据，则应重写 equals() 和 hashCode() 方法。请查看这篇文章“HashMap 内部是如何工作的”。
-
+- 如果我们使用对象作为要存储在基于哈希的集合中的数据，则应重写 equals() 和 hashCode() 方法。
 ## 2.15. 使用分页
 
 使用物理分页
-
 ## 2.16. 使用自定义响应对象

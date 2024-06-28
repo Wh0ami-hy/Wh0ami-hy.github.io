@@ -337,12 +337,9 @@ xml配置文件、JavaConfig配置类、yml配置文件
 # 5. 参数校验
 
 通常使用Spring自带的Validation校验参数
+# 6. 使用Lombok
 
-# 6. 使用Lombok库
-
-可以实现使用注解代替实体Bean的getter and setter等，新手不建议使用
-
-在pom.xml中导入依赖
+新手不建议使用，在pom.xml中导入依赖
 
 ```xml
 <dependency>  
@@ -350,34 +347,11 @@ xml配置文件、JavaConfig配置类、yml配置文件
     <artifactId>lombok</artifactId>  
 </dependency>
 ```
-
-相关注解
-
-```java
-@Data
-使用这个注解，就不用再去手写Getter,Setter,equals,canEqual,hasCode,toString等方法了，注解后在编译时会自动加进去
-@AllArgsConstructor
-使用后添加一个构造函数，该构造函数含有所有已声明字段属性参数
-@NoArgsConstructor
-使用后创建一个无参构造函数
-```
-
-eg：使用 @Data 注解来自动生成 User 类的 getter、setter、equals、hashCode 和 toString 方法。可以直接通过对象的属性来访问和修改属性值，不需要手动编写 getter 和 setter 方法
-
-```java
-@Data
-public class User {
-    private Long id;
-    private String name;
-}
-```
-
 # 7. 国际化
 
 i18n 全称 Internationalization，也就是国际化的意思，因为单词太长，所以中间的 18 个字母被缩写为 18，再加上开头和结尾的字母，就组成了 i18n。
 
 通常要实现的效果是，前端有个按钮可以切换语言，对于前后端分离的项目建议把国际化做在前端。
-
 # 8. [Spring Data](https://spring.io/projects/spring-data)
 
 对于数据访问，无论是SQL（关系型数据库）还是NoSQL（非关系型数据库），Spring Boot底层都是采用Spring Data的方式进行统一处理
