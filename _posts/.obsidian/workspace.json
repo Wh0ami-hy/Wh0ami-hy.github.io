@@ -6,37 +6,26 @@
       {
         "id": "9f2efef9ea18b667",
         "type": "tabs",
-        "dimension": 69.43699731903486,
+        "dimension": 76.07238605898124,
         "children": [
-          {
-            "id": "6dd7f962d2b66ea3",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md"
-              }
-            }
-          },
           {
             "id": "45accfe7bee4d070",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md",
+                "file": "2021-12-31-MySQL语法.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9f8d5d63dd6b8cc6",
         "type": "tabs",
-        "dimension": 30.563002680965145,
+        "dimension": 23.927613941018766,
         "children": [
           {
             "id": "f70337baad7259a5",
@@ -44,7 +33,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md"
+                "file": "2021-12-31-MySQL语法.md"
               }
             }
           }
@@ -77,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Lombok",
+                "query": "file:IDEA",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,12 +83,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 238.5
+    "width": 238.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -115,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md",
+                "file": "2021-12-31-MySQL语法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md",
+                "file": "2021-12-31-MySQL语法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -155,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-07-SpringBoot日志最佳实践.md"
+                "file": "2021-12-31-MySQL语法.md"
               }
             }
           },
@@ -188,10 +177,23 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6da4ca800dfb1b98",
+  "active": "45accfe7bee4d070",
   "lastOpenFiles": [
-    "2023-03-03-SpringBoot.md",
+    "2024-06-30-Pycharm.md",
+    "2024-03-26-Python实用工具库.md",
+    "2023-01-12-IDEA使用.md",
+    "新建文本文档.txt",
+    "2021-12-31-MySQL语法.md",
+    "2022-06-30-MyBatis.md",
+    "2023-01-02-MySQL压缩包式安装.md",
+    "2023-01-07-Maven.md",
+    "2023-03-13-SpringMVC.md",
+    "2023-03-26-MySQL原理.md",
+    "2023-09-13-MySQL设计规约.md",
+    "2024-06-28-Linux管理面板.md",
+    "2023-01-20-Docker理论.md",
     "2023-09-07-SpringBoot日志最佳实践.md",
+    "2023-03-03-SpringBoot.md",
     "2023-04-25-SpringBoot项目最佳实践.md",
     "2024-06-27-Lombok注解.md",
     "2024-03-13-Java处理NPE.md",
@@ -204,19 +206,6 @@
     "2023-12-21-Java日期时间处理类.md",
     "2023-05-24-Java实用工具库.md",
     "2023-04-02-Java内存管理.md",
-    "2023-02-13-Java多线程.md",
-    "2023-02-13-Java Bean.md",
-    "2023-02-12-Java中级.md",
-    "2023-02-12-Java高级.md",
-    "2023-02-12-Java初级.md",
-    "2023-02-09-阿里Java开发手册.md",
-    "2023-01-12-IDEA使用.md",
-    "2021-07-05-Java网络编程.md",
-    "2021-06-26-JDBC.md",
-    "2023-01-20-Docker理论.md",
-    "2023-07-26-Docker实践.md",
-    "2024-06-27-Docker最佳实践.md",
-    "新建文本文档.txt",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
   ]
