@@ -11,8 +11,12 @@
             "id": "773042e74f3c3b23",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "2024-03-24-Quasar开发总结.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -44,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:使用",
+                "query": "file:Qua",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 238.5
+    "width": 238.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -82,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2022-05-11-pyinstaller使用.md",
+                "file": "2024-03-24-Quasar开发总结.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2022-05-11-pyinstaller使用.md",
+                "file": "2024-03-24-Quasar开发总结.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2022-05-11-pyinstaller使用.md"
+                "file": "2024-03-24-Quasar开发总结.md"
               }
             }
           },
@@ -147,22 +152,23 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "6da4ca800dfb1b98",
+  "active": "773042e74f3c3b23",
   "lastOpenFiles": [
+    "2024-05-29-Quasar打包APP.md",
+    "2023-01-12-IDEA使用.md",
     "2024-05-11-FastApi.md",
     "2024-05-11-PySide6.md",
     "2021-12-31-MySQL语法.md",
     "2024-06-30-Pycharm.md",
     "2024-03-26-Python实用工具库.md",
-    "2023-01-12-IDEA使用.md",
     "新建文本文档.txt",
     "2022-06-30-MyBatis.md",
     "2023-01-02-MySQL压缩包式安装.md",
@@ -183,7 +189,6 @@
     "2023-12-30-认识JSON.md",
     "2024-02-05-Java Web.md",
     "2024-01-14-Java字符串处理类.md",
-    "2023-12-21-Java日期时间处理类.md",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
   ]
