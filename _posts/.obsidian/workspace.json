@@ -6,6 +6,7 @@
       {
         "id": "b6c779220ccc81ff",
         "type": "tabs",
+        "dimension": 71.3265306122449,
         "children": [
           {
             "id": "773042e74f3c3b23",
@@ -13,11 +14,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-06-25-数据库系统概论.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "4fbfb442770821e4"
+          }
+        ]
+      },
+      {
+        "id": "b6f4326edda9e873",
+        "type": "tabs",
+        "dimension": 28.6734693877551,
+        "children": [
+          {
+            "id": "c48bd04806a4e5b6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2024-06-25-数据库系统概论.md"
+              }
+            },
+            "group": "4fbfb442770821e4"
           }
         ]
       }
@@ -48,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:Qua",
+                "query": "file:数据",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +90,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 238.5
+    "width": 238.5,
+    "collapsed": true
   },
   "right": {
     "id": "4319db03d970eb46",
@@ -86,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-06-25-数据库系统概论.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2024-06-25-数据库系统概论.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md"
+                "file": "2024-06-25-数据库系统概论.md"
               }
             }
           },
@@ -161,6 +182,7 @@
   },
   "active": "773042e74f3c3b23",
   "lastOpenFiles": [
+    "2024-03-24-Quasar开发总结.md",
     "2024-05-29-Quasar打包APP.md",
     "2023-01-12-IDEA使用.md",
     "2024-05-11-FastApi.md",
@@ -187,7 +209,6 @@
     "2024-03-08-JUC.md",
     "2023-12-30-认识JSON.md",
     "2024-02-05-Java Web.md",
-    "2024-01-14-Java字符串处理类.md",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
   ]
