@@ -4,20 +4,40 @@
     "type": "split",
     "children": [
       {
-        "id": "b6c779220ccc81ff",
+        "id": "47bc0eb4b61ca10b",
         "type": "tabs",
+        "dimension": 75.39975399753997,
         "children": [
           {
-            "id": "773042e74f3c3b23",
+            "id": "7aa9d3aea6e41a15",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2023-03-27-Redis应用.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "5345318842268eba"
+          }
+        ]
+      },
+      {
+        "id": "e4d69488bc859b7e",
+        "type": "tabs",
+        "dimension": 24.600246002460025,
+        "children": [
+          {
+            "id": "6da3b1250d185560",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-03-27-Redis应用.md"
+              }
+            },
+            "group": "5345318842268eba"
           }
         ]
       }
@@ -48,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:Qua",
+                "query": "file:Re",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2023-03-27-Redis应用.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md",
+                "file": "2023-03-27-Redis应用.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-03-24-Quasar开发总结.md"
+                "file": "2023-03-27-Redis应用.md"
               }
             }
           },
@@ -152,43 +172,43 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
     }
   },
-  "active": "773042e74f3c3b23",
+  "active": "7aa9d3aea6e41a15",
   "lastOpenFiles": [
-    "2024-05-29-Quasar打包APP.md",
+    "2023-09-07-Redis配置.md",
+    "2023-03-27-Redis应用.md",
+    "2024-07-09-数据库.md",
+    "2023-09-21-计算机网络.md",
+    "2024-07-09-软件工程.md",
+    "新建文本文档.txt",
+    "2024-07-09-操作系统.md",
+    "2024-07-09-计算机网络.md",
+    "2024-07-09-计算机基础.md",
+    "2021-12-26-修改hosts.md",
+    "2023-11-27-Nginx配置.md",
+    "2023-09-07-Git命令.md",
+    "2023-03-11-Spring核心.md",
+    "2023-06-26-How To Ask Questions The Smart Way.md",
+    "2023-07-26-Docker实践.md",
+    "2023-04-30-网站架构发展史.md",
+    "2023-03-13-RESTful-API实践.md",
+    "2024-07-09-CI&DI方案.md",
+    "2024-06-24-GitLab部署.md",
     "2023-01-12-IDEA使用.md",
+    "2024-03-24-Quasar开发总结.md",
+    "2024-05-29-Quasar打包APP.md",
     "2024-05-11-FastApi.md",
     "2024-05-11-PySide6.md",
     "2021-12-31-MySQL语法.md",
     "2024-06-30-Pycharm.md",
     "2024-03-26-Python实用工具库.md",
-    "新建文本文档.txt",
-    "2022-06-30-MyBatis.md",
-    "2023-01-02-MySQL压缩包式安装.md",
-    "2023-01-07-Maven.md",
-    "2023-03-13-SpringMVC.md",
-    "2023-03-26-MySQL原理.md",
-    "2023-09-13-MySQL设计规约.md",
-    "2024-06-28-Linux管理面板.md",
-    "2023-01-20-Docker理论.md",
-    "2023-09-07-SpringBoot日志最佳实践.md",
-    "2023-03-03-SpringBoot.md",
-    "2023-04-25-SpringBoot项目最佳实践.md",
-    "2024-06-27-Lombok注解.md",
-    "2024-03-13-Java处理NPE.md",
-    "2024-06-12-Java web 技术与架构演进.md",
-    "2024-03-12-Java判等操作.md",
-    "2024-03-08-JUC.md",
-    "2023-12-30-认识JSON.md",
-    "2024-02-05-Java Web.md",
-    "2024-01-14-Java字符串处理类.md",
     "Pasted image 20240227085612.png",
     "v2-7ac393e226c20f1487c9347b2e5f2993_r.png"
   ]
