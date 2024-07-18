@@ -6,6 +6,7 @@
       {
         "id": "bf8c29389f2947b3",
         "type": "tabs",
+        "dimension": 82.57372654155496,
         "children": [
           {
             "id": "cc44937ce674557a",
@@ -13,7 +14,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-21-计算机网络.md"
+                "file": "2023-09-13-MySQL设计规约.md"
               }
             }
           },
@@ -23,14 +24,33 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-09-21-计算机网络.md",
+                "file": "2023-09-13-MySQL设计规约.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "6aead50bad5335f4"
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "7b4a2d7ae15475ff",
+        "type": "tabs",
+        "dimension": 17.426273458445042,
+        "children": [
+          {
+            "id": "6ca5c675e7e8b31d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-09-13-MySQL设计规约.md"
+              }
+            },
+            "group": "6aead50bad5335f4"
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,12 +79,12 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:网络",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
-                "sortOrder": "alphabetical"
+                "sortOrder": "byModifiedTime"
               }
             }
           },
@@ -81,7 +101,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "c2ed0bcd55eeb68f",
@@ -97,7 +118,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-09-21-计算机网络.md",
+                "file": "2023-09-13-MySQL设计规约.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +135,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-09-21-计算机网络.md",
+                "file": "2023-09-13-MySQL设计规约.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +170,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-21-计算机网络.md"
+                "file": "2023-09-13-MySQL设计规约.md"
               }
             }
           }
@@ -170,11 +191,17 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "9a6e6ea6baf64f88",
+  "active": "bab56b64e4bf7ffd",
   "lastOpenFiles": [
+    "2023-02-09-阿里Java开发手册.md",
+    "2023-09-13-MySQL设计规约.md",
+    "2024-01-12-MySQL时区问题.md",
+    "2023-03-26-MySQL原理.md",
+    "2023-01-02-MySQL压缩包式安装.md",
+    "2024-04-11-MySQL数据安全性.md",
+    "2023-09-21-计算机网络.md",
     "2024-07-09-计算机网络.md",
     "2021-11-14-Windows用户及用户组.md",
-    "2023-09-21-计算机网络.md",
     "未命名绘图.png",
     "2024-03-24-Quasar开发总结.md",
     "2023-12-06-分布式数据库.md"
