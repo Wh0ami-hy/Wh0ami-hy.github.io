@@ -4,40 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "0e7a0ff5e1f4ac82",
-        "type": "tabs",
-        "dimension": 73.74161073825503,
-        "children": [
-          {
-            "id": "56e5645b354835fb",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2023-09-21-计算机网络.md"
-              }
-            }
-          },
-          {
-            "id": "9b61d2449c4816f4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-09-21-计算机网络.md",
-                "mode": "source",
-                "source": false
-              }
-            },
-            "group": "3b1ff8c3e698e533"
-          }
-        ],
-        "currentTab": 1
-      },
-      {
         "id": "bf8c29389f2947b3",
         "type": "tabs",
-        "dimension": 26.25838926174497,
         "children": [
           {
             "id": "cc44937ce674557a",
@@ -47,10 +15,22 @@
               "state": {
                 "file": "2023-09-21-计算机网络.md"
               }
-            },
-            "group": "3b1ff8c3e698e533"
+            }
+          },
+          {
+            "id": "9a6e6ea6baf64f88",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-09-21-计算机网络.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -79,7 +59,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:网络",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -101,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "c2ed0bcd55eeb68f",
@@ -191,12 +170,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "9b61d2449c4816f4",
+  "active": "9a6e6ea6baf64f88",
   "lastOpenFiles": [
-    "未命名绘图.png",
     "2024-07-09-计算机网络.md",
-    "2024-03-24-Quasar开发总结.md",
+    "2021-11-14-Windows用户及用户组.md",
     "2023-09-21-计算机网络.md",
+    "未命名绘图.png",
+    "2024-03-24-Quasar开发总结.md",
     "2023-12-06-分布式数据库.md"
   ]
 }
