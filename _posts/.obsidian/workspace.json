@@ -14,22 +14,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-13-MySQL设计规约.md"
+                "file": "2021-11-14-Windows权限.md"
               }
             }
           },
           {
-            "id": "9a6e6ea6baf64f88",
+            "id": "f368ca27ff43f4a3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-09-13-MySQL设计规约.md",
+                "file": "2021-11-14-Windows权限.md",
                 "mode": "source",
                 "source": false
               }
-            },
-            "group": "6aead50bad5335f4"
+            }
           }
         ],
         "currentTab": 1
@@ -37,7 +36,7 @@
       {
         "id": "7b4a2d7ae15475ff",
         "type": "tabs",
-        "dimension": 17.426273458445042,
+        "dimension": 17.426273458445035,
         "children": [
           {
             "id": "6ca5c675e7e8b31d",
@@ -45,10 +44,9 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-13-MySQL设计规约.md"
+                "file": "2021-11-14-Windows权限.md"
               }
-            },
-            "group": "6aead50bad5335f4"
+            }
           }
         ]
       }
@@ -79,7 +77,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:win",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -118,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-09-13-MySQL设计规约.md",
+                "file": "2021-11-14-Windows权限.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-09-13-MySQL设计规约.md",
+                "file": "2021-11-14-Windows权限.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-09-13-MySQL设计规约.md"
+                "file": "2021-11-14-Windows权限.md"
               }
             }
           }
@@ -191,8 +189,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "bab56b64e4bf7ffd",
+  "active": "f368ca27ff43f4a3",
   "lastOpenFiles": [
+    "2023-11-29-Windows定制.md",
+    "2021-11-14-Windows权限.md",
+    "2021-12-26-Windows下安装双系统.md",
     "2023-02-09-阿里Java开发手册.md",
     "2023-09-13-MySQL设计规约.md",
     "2024-01-12-MySQL时区问题.md",
@@ -201,7 +202,6 @@
     "2024-04-11-MySQL数据安全性.md",
     "2023-09-21-计算机网络.md",
     "2024-07-09-计算机网络.md",
-    "2021-11-14-Windows用户及用户组.md",
     "未命名绘图.png",
     "2024-03-24-Quasar开发总结.md",
     "2023-12-06-分布式数据库.md"
