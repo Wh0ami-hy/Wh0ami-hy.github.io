@@ -14,22 +14,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-07-20-数据库优化.md"
+                "file": "2023-12-06-分布式数据库.md"
               }
             }
           },
           {
-            "id": "545977a7832223ed",
+            "id": "8678d987eae9e53c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-07-20-数据库优化.md",
+                "file": "2023-12-06-分布式数据库.md",
                 "mode": "source",
                 "source": false
               }
-            },
-            "group": "fd5038dc2fc0088c"
+            }
           }
         ],
         "currentTab": 1
@@ -45,10 +44,9 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-07-20-数据库优化.md"
+                "file": "2023-12-06-分布式数据库.md"
               }
-            },
-            "group": "fd5038dc2fc0088c"
+            }
           }
         ]
       }
@@ -79,7 +77,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:优化",
+                "query": "file:分",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -118,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-07-20-数据库优化.md",
+                "file": "2023-12-06-分布式数据库.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-07-20-数据库优化.md",
+                "file": "2023-12-06-分布式数据库.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-07-20-数据库优化.md"
+                "file": "2023-12-06-分布式数据库.md"
               }
             }
           }
@@ -191,8 +189,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "545977a7832223ed",
+  "active": "8678d987eae9e53c",
   "lastOpenFiles": [
+    "2024-07-22-MySQL主键设计.md",
+    "2023-12-06-分布式数据库.md",
+    "2024-07-20-数据库优化.md",
     "2023-02-09-阿里Java开发手册.md",
     "2023-11-29-Windows定制.md",
     "2021-11-14-Windows权限.md",
@@ -201,8 +202,6 @@
     "2023-01-02-MySQL压缩包式安装.md",
     "2024-06-27-Docker最佳实践.md",
     "2023-12-27-用户密码的处理.md",
-    "2024-07-22-MySQL主键设计.md",
-    "2024-07-20-数据库优化.md",
     "2024-07-20-MySQL之delete.md",
     "2024-04-11-MySQL日志.md",
     "2024-01-12-MySQL时区问题.md",
@@ -212,7 +211,6 @@
     "2023-09-21-计算机网络.md",
     "2024-07-09-计算机网络.md",
     "未命名绘图.png",
-    "2024-03-24-Quasar开发总结.md",
-    "2023-12-06-分布式数据库.md"
+    "2024-03-24-Quasar开发总结.md"
   ]
 }
