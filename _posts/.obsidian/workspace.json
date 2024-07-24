@@ -14,7 +14,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-12-06-分布式数据库.md"
+                "file": "2024-03-24-Quasar开发总结.md"
               }
             }
           },
@@ -24,7 +24,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-12-06-分布式数据库.md",
+                "file": "2024-03-24-Quasar开发总结.md",
                 "mode": "source",
                 "source": false
               }
@@ -44,7 +44,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-12-06-分布式数据库.md"
+                "file": "2024-03-24-Quasar开发总结.md"
               }
             }
           }
@@ -77,7 +77,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:分",
+                "query": "file:qua",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -116,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-12-06-分布式数据库.md",
+                "file": "2024-03-24-Quasar开发总结.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-12-06-分布式数据库.md",
+                "file": "2024-03-24-Quasar开发总结.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +168,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-12-06-分布式数据库.md"
+                "file": "2024-03-24-Quasar开发总结.md"
               }
             }
           }
@@ -191,8 +191,12 @@
   },
   "active": "8678d987eae9e53c",
   "lastOpenFiles": [
-    "2024-07-22-MySQL主键设计.md",
+    "2024-05-29-Quasar打包APP.md",
+    "2024-01-25-SpringBoot整合Quartz.md",
+    "2024-03-24-Quasar开发总结.md",
+    "2023-01-11-Vue3核心语法.md",
     "2023-12-06-分布式数据库.md",
+    "2024-07-22-MySQL主键设计.md",
     "2024-07-20-数据库优化.md",
     "2023-02-09-阿里Java开发手册.md",
     "2023-11-29-Windows定制.md",
@@ -210,7 +214,6 @@
     "2021-12-26-Windows下安装双系统.md",
     "2023-09-21-计算机网络.md",
     "2024-07-09-计算机网络.md",
-    "未命名绘图.png",
-    "2024-03-24-Quasar开发总结.md"
+    "未命名绘图.png"
   ]
 }
