@@ -6,31 +6,38 @@
       {
         "id": "cacb98fbd6859804",
         "type": "tabs",
+        "dimension": 73.98720682302772,
         "children": [
-          {
-            "id": "666ae3d4a153af3e",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2024-08-04-SpringBoot单元测试.md"
-              }
-            }
-          },
           {
             "id": "72d147e70c9495ef",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-08-04-SpringBoot单元测试.md",
+                "file": "2024-08-12-Linux硬盘分区指南.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "26094960a5743987",
+        "type": "tabs",
+        "dimension": 26.01279317697228,
+        "children": [
+          {
+            "id": "b24871b772d0e2e3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2024-08-12-Linux硬盘分区指南.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:ide",
+                "query": "file:Li",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -80,8 +87,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "c2ed0bcd55eeb68f",
@@ -97,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-08-04-SpringBoot单元测试.md",
+                "file": "2024-08-12-Linux硬盘分区指南.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-08-04-SpringBoot单元测试.md",
+                "file": "2024-08-12-Linux硬盘分区指南.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +155,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-04-SpringBoot单元测试.md"
+                "file": "2024-08-12-Linux硬盘分区指南.md"
               }
             }
           }
@@ -172,8 +178,12 @@
   },
   "active": "72d147e70c9495ef",
   "lastOpenFiles": [
-    "2023-01-12-IDEA使用.md",
+    "2023-09-22-Linux入门.md",
+    "2024-08-12-Linux硬盘分区指南.md",
+    "2023-07-26-CentOS初始化.md",
+    "2024-08-12-Linux 硬盘分区指南.md",
     "2024-08-04-SpringBoot单元测试.md",
+    "2023-01-12-IDEA使用.md",
     "2024-07-20-MySQL之delete.md",
     "2023-09-21-计算机网络.md",
     "2024-07-29-网络访问历程.md",
@@ -195,10 +205,6 @@
     "2024-06-27-Docker最佳实践.md",
     "2023-12-27-用户密码的处理.md",
     "2024-04-11-MySQL日志.md",
-    "2024-01-12-MySQL时区问题.md",
-    "2023-09-13-MySQL规范.md",
-    "2023-10-16-PostgreSQL配置.md",
-    "2021-12-26-Windows下安装双系统.md",
     "未命名绘图.png"
   ]
 }
