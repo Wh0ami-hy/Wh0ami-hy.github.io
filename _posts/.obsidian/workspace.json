@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-11-29-Windows定制.md",
+                "file": "2024-08-15-Python最佳实践.md",
                 "mode": "source",
                 "source": false
               }
@@ -33,7 +33,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-29-Windows定制.md"
+                "file": "2024-08-15-Python最佳实践.md"
               }
             }
           }
@@ -66,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:win",
+                "query": "file:python",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-11-29-Windows定制.md",
+                "file": "2024-08-15-Python最佳实践.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-11-29-Windows定制.md",
+                "file": "2024-08-15-Python最佳实践.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -156,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-11-29-Windows定制.md"
+                "file": "2024-08-15-Python最佳实践.md"
               }
             }
           }
@@ -179,8 +179,20 @@
   },
   "active": "72d147e70c9495ef",
   "lastOpenFiles": [
-    "2021-11-14-Windows权限.md",
+    "2021-07-01-Python正则.md",
+    "2022-04-25-Python之旅上.md",
+    "2022-04-25-Python之旅下.md",
+    "2022-04-25-Python异步.md",
+    "2022-05-23-PythonSocket.md",
+    "2024-03-26-Python实用工具库.md",
+    "2023-01-26-python基础.md",
+    "2024-08-15-Python最佳实践.md",
+    "2022-05-18-python虚拟环境.md",
+    "2023-01-12-JavaScript-ES6.md",
+    "2024-08-15-python最佳实践.md",
+    "新建文本文档.txt",
     "2023-11-29-Windows定制.md",
+    "2021-11-14-Windows权限.md",
     "2021-12-26-Windows下安装双系统.md",
     "2024-08-12-Linux硬盘分区指南.md",
     "2023-09-22-Linux入门.md",
@@ -195,17 +207,6 @@
     "2024-07-26-MySQL索引.md",
     "2021-12-31-MySQL语法.md",
     "2023-03-26-MySQL原理.md",
-    "2024-07-20-数据库优化.md",
-    "2023-01-02-MySQL压缩包式安装.md",
-    "2023-02-09-阿里Java开发手册.md",
-    "2024-07-22-MySQL主键设计.md",
-    "2024-03-24-Quasar开发总结.md",
-    "2024-05-29-Quasar打包APP.md",
-    "2024-01-25-SpringBoot整合Quartz.md",
-    "2023-01-11-Vue3核心语法.md",
-    "2023-12-06-分布式数据库.md",
-    "2024-06-27-Docker最佳实践.md",
-    "2023-12-27-用户密码的处理.md",
     "未命名绘图.png"
   ]
 }
