@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-08-12-Linux硬盘分区指南.md",
+                "file": "2023-11-29-Windows定制.md",
                 "mode": "source",
                 "source": false
               }
@@ -33,7 +33,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-12-Linux硬盘分区指南.md"
+                "file": "2023-11-29-Windows定制.md"
               }
             }
           }
@@ -66,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:Li",
+                "query": "file:win",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,7 +83,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -103,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-08-12-Linux硬盘分区指南.md",
+                "file": "2023-11-29-Windows定制.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-08-12-Linux硬盘分区指南.md",
+                "file": "2023-11-29-Windows定制.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -155,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-12-Linux硬盘分区指南.md"
+                "file": "2023-11-29-Windows定制.md"
               }
             }
           }
@@ -178,8 +179,11 @@
   },
   "active": "72d147e70c9495ef",
   "lastOpenFiles": [
-    "2023-09-22-Linux入门.md",
+    "2021-11-14-Windows权限.md",
+    "2023-11-29-Windows定制.md",
+    "2021-12-26-Windows下安装双系统.md",
     "2024-08-12-Linux硬盘分区指南.md",
+    "2023-09-22-Linux入门.md",
     "2023-07-26-CentOS初始化.md",
     "2024-08-12-Linux 硬盘分区指南.md",
     "2024-08-04-SpringBoot单元测试.md",
@@ -200,11 +204,8 @@
     "2024-01-25-SpringBoot整合Quartz.md",
     "2023-01-11-Vue3核心语法.md",
     "2023-12-06-分布式数据库.md",
-    "2023-11-29-Windows定制.md",
-    "2021-11-14-Windows权限.md",
     "2024-06-27-Docker最佳实践.md",
     "2023-12-27-用户密码的处理.md",
-    "2024-04-11-MySQL日志.md",
     "未命名绘图.png"
   ]
 }
