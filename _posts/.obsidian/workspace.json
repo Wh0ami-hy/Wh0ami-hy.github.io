@@ -4,17 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "cacb98fbd6859804",
+        "id": "26094960a5743987",
         "type": "tabs",
-        "dimension": 73.98720682302772,
         "children": [
           {
-            "id": "72d147e70c9495ef",
+            "id": "d0033ba7f895aa2c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-08-15-Python最佳实践.md",
+                "file": "2023-01-12-JavaScript-ES6.md",
                 "mode": "source",
                 "source": false
               }
@@ -23,17 +22,16 @@
         ]
       },
       {
-        "id": "26094960a5743987",
+        "id": "0f712b5022f7c335",
         "type": "tabs",
-        "dimension": 26.01279317697228,
         "children": [
           {
-            "id": "b24871b772d0e2e3",
+            "id": "e64d1dd1e42857d2",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-15-Python最佳实践.md"
+                "file": "2023-01-12-JavaScript-ES6.md"
               }
             }
           }
@@ -66,7 +64,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:python",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,12 +81,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "c2ed0bcd55eeb68f",
@@ -104,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-08-15-Python最佳实践.md",
+                "file": "2023-01-12-JavaScript-ES6.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-08-15-Python最佳实践.md",
+                "file": "2023-01-12-JavaScript-ES6.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -156,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-15-Python最佳实践.md"
+                "file": "2023-01-12-JavaScript-ES6.md"
               }
             }
           }
@@ -177,16 +175,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "72d147e70c9495ef",
+  "active": "d0033ba7f895aa2c",
   "lastOpenFiles": [
-    "2021-07-01-Python正则.md",
+    "2023-01-26-python基础.md",
+    "2024-03-26-Python实用工具库.md",
+    "2024-08-15-Python最佳实践.md",
+    "2022-05-23-PythonSocket.md",
     "2022-04-25-Python之旅上.md",
+    "2021-07-01-Python正则.md",
     "2022-04-25-Python之旅下.md",
     "2022-04-25-Python异步.md",
-    "2022-05-23-PythonSocket.md",
-    "2024-03-26-Python实用工具库.md",
-    "2023-01-26-python基础.md",
-    "2024-08-15-Python最佳实践.md",
     "2022-05-18-python虚拟环境.md",
     "2023-01-12-JavaScript-ES6.md",
     "2024-08-15-python最佳实践.md",

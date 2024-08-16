@@ -34,17 +34,128 @@ ECMAScript 6.0（以下简称 ES6）。ECMAScript 和 JavaScript 的关系是，
 ```html
 <script src="name.js"></script>
 ```
+# 4. ES6 特性
 
-# 4. 语言特性
+## 4.1. let 和 const 声明
 
-* 不区分整型和浮点型
-* 语句结尾加  ;
-* 注释符和c语言一样
-* 浏览器的console调试JS：输出信息console.log()
-* 查看变量类型：typeof(变量)
-* 字符串可用 + 连接
-* JavaScript语句区分大小写
+使用 let 声明变量
 
+使用 const 声明常量
+## 4.2. 箭头函数
+
+箭头函数省去了`function`关键字，采用箭头`=>`来定义函数。函数的参数放在`=>`前面的括号中，函数体跟在`=>`后的花括号中，箭头函数在参数和箭头之间不能换行
+
+```javascript
+// 箭头函数
+let func = (name) => {
+    // 函数体
+    return `Hello ${name}`;
+};
+
+// 等同于
+let func = function (name) {
+    // 函数体
+    return `Hello ${name}`;
+};
+```
+## 4.3. 模板字符串
+
+一种新增的字符串语法，可以方便地在字符串中插入变量和表达式，并支持多行字符串
+
+```javascript
+const name = 'Alice';
+const message = `Hello, ${
+     name}!
+This is a multiline string.`;
+console.log(message)
+```
+## 4.4. 解构赋值
+
+```javascript
+// 数组解构赋值
+const [x, y] = [1, 2];
+// 对象解构赋值
+const {
+    name, age } = {
+    name: 'Alice', age: 30 };
+console.log(name)
+```
+## 4.5. 默认参数
+
+在函数定义时为参数指定默认值，简化函数调用时的参数传递
+
+```javascript
+function greet(name = 'World') {
+    console.log(`Hello, ${
+       name}!`);
+  }
+  greet(); // 输出：Hello, World!
+  greet('Alice'); // 输出：Hello, Alice!
+```
+## 4.6. 扩展运算符
+
+扩展运算符`...`允许将数组或对象展开，方便地将多个值合并或拷贝到另一个数组或对象中
+
+```javascript
+let a = ['周一','周二']
+// 将之前的内容全部展开，再生成一个新的对象
+let b = [...a, '周三', '周四']
+console.log(b)
+```
+## 4.7. 类
+
+ES6 引入了类（Class）语法糖，提供了更加面向对象的编程方式，并且支持了构造函数、继承和静态方法等特性
+
+```javascript
+class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    greet() {
+      console.log(`Hello, my name is ${
+       this.name}, I'm ${
+       this.age} years old.`);
+    }
+  }
+  const person = new Person('Alice', 30);
+  person.greet(); // 输出：Hello, my name is Alice, I'm 30 years old.
+```
+## 4.8. 模块化
+
+使用 `export` 关键字导出模块，使用 `import` 关键字导入模块
+
+```javascript
+// module.js
+export const PI = 3.14;
+// main.js
+import { PI } from './module';
+console.log(PI); // 输出：3.14
+```
+## 4.9. Promise
+
+一种用来处理异步操作的对象，它可以让异步操作更加简洁、可读和可维护
+
+```javascript
+function fetchData() {
+    return new Promise((resolve, reject) => {
+
+      // 异步操作
+      setTimeout(() => {
+        resolve('Data fetched successfully.');
+      }, 1000);
+      //
+      console.log('first');
+    });
+  }
+
+  fetchData()
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+```
+## 4.10. Generators
+
+Generator 是一种特殊的函数，可以通过 `yield` 关键字实现暂停和恢复执行的功能，用来处理复杂的异步流程
 # 5. 作用域
 
 ```
@@ -72,7 +183,7 @@ ECMAScript 6.0（以下简称 ES6）。ECMAScript 和 JavaScript 的关系是，
 
 在现代JavaScript开发中，建议尽可能使用`let`和`const`，因为它们的块级作用域规则更易于理解和管理。使用`const`可以明确表示变量的值不应该改变，这可以帮助防止在代码中意外地修改这个值。当你需要一个可以改变的变量时，使用`let`。尽量避免使用`var`，除非你有特定的理由需要函数级作用域或变量提升。
 
-## 6.1. 数据类型
+# 7. 数据类型
 
 **基础数据类型**
 
@@ -91,20 +202,8 @@ Undefined未定义型
 **引用数据类型**
 
 Object对象
+# 8. 运算符
 
-**数据类型的转换**
-
-```
-parseInt()：转为整型
-
-parseFloat()：转为浮点型
-
-String()：转为字符串型
-
-Boolean()：转换为布尔型，转为false（0、空），其余都会转为true
-```
-
-## 6.2. 运算符
 算术运算符：加、减、乘、`/` 除、`%` 取余
 
 关系运算符：`==`、`===`恒等、`!=`、`>`、`<`、`>=`、`<=`
@@ -114,15 +213,98 @@ Boolean()：转换为布尔型，转为false（0、空），其余都会转为tr
 一元运算符：a++、++a
 
 逻辑运算符：逻辑与 `&&`、逻辑或 `||`、逻辑非 `！`（`&&`优先于`||`）
+# 9. 类型
 
-# 7. 数组遍历与属性
+## 9.1. 相等与比较
+
+### 9.1.1. 等于操作符
+
+等于操作符由两个等号组成：`==`
+
+JavaScript 是弱类型语言，这就意味着，等于操作符会为了比较两个值而进行强制类型转换。
+
+```javascript
+""           ==   "0"           // false
+0            ==   ""            // true
+0            ==   "0"           // true
+false        ==   "false"       // false
+false        ==   "0"           // true
+false        ==   undefined     // false
+false        ==   null          // false
+null         ==   undefined     // true
+" ..."    ==   0             // true
+```
+
+上面的表格展示了强制类型转换，这也是使用 `==` 被广泛认为是不好编程习惯的主要原因， 由于它的复杂转换规则，会导致难以跟踪的问题。
+
+此外，强制类型转换也会带来性能消耗，比如一个字符串为了和一个数字进行比较，必须事先被强制转换为数字。
+### 9.1.2. 严格等于操作符
+
+不像普通的等于操作符，严格等于操作符不会进行强制类型转换。
+
+```javascript
+""           ===   "0"           // false
+0            ===   ""            // false
+0            ===   "0"           // false
+false        ===   "false"       // false
+false        ===   "0"           // false
+false        ===   undefined     // false
+false        ===   null          // false
+null         ===   undefined     // false
+" ..."    ===   0             // false
+```
+上面的结果更加清晰并有利于代码的分析。如果两个操作数类型不同就肯定不相等也有助于性能的提升。
+### 9.1.3. 比较对象
+
+这里等于操作符比较的**不是**值是否相等，而是是否属于同一个**身份**；也就是说，只有对象的同一个实例才被认为是相等的。 这有点像 Python 中的 `is` 和 C 中的指针比较。
+## 9.2. `typeof` 操作符
+
+`typeof` 只有一个实际的应用（这个实际应用是用来检测一个对象是否已经定义或者是否已经赋值）， 而这个应用却**不是**用来检查对象的类型
+### 9.2.1. 对象的类定义
+
+JavaScript 标准文档只给出了一种获取 `[[Class]]` 值的方法，那就是使用 `Object.prototype.toString`
+
+```javascript
+let a = '123'
+// 通过 `slice` 截取指定位置的字符串
+console.log(Object.prototype.toString.call(a).slice(8, -1))
+```
+### 9.2.2. 测试未定义变量
+
+```javascript
+typeof foo !== 'undefined'
+```
+
+上面代码会检测 `foo` 是否已经定义；如果没有定义而直接使用会导致 `ReferenceError` 的异常。 这是 `typeof` 唯一有用的地方。
+## 9.3. `instanceof` 操作符
+
+`instanceof` 操作符用来比较两个操作数的构造函数。只有在比较自定义的对象时才有意义
+## 9.4. 类型转换
+
+JavaScript 是弱类型语言，所以会在**任何**可能的情况下应用强制类型转换
+
+```javascript
+parseInt()：转为整型
+
+parseFloat()：转为浮点型
+
+Number()：转为数值型
+
+String()：转为字符串型
+
+Boolean()：转换为布尔型，转为false（0、空），其余都会转为true
+```
+
+# 10. 数组
 
 由于 `for in` 循环会枚举原型链上的所有属性，唯一过滤这些属性的方式是使用 hasOwnProperty 函数， 因此会比普通的 `for` 循环慢上好多倍。
-## 7.1. 遍历
+## 10.1. 数组遍历与属性
+
+### 10.1.1. 遍历
 
 为了达到遍历数组的最佳性能，推荐使用经典的 for 循环。
 
-```JavaScript
+```javascript
 var list = [1, 2, 3, 4, 5, ...... 100000000];
 for(var i = 0, l = list.length; i < l; i++) {
     console.log(list[i]);
@@ -132,43 +314,43 @@ for(var i = 0, l = list.length; i < l; i++) {
 
 虽然 length 是数组的一个属性，但是在每次循环中访问它还是有性能开销。
 
-## 7.2. `length` 属性
+### 10.1.2. `length` 属性
 
 `length` 属性的 _getter_ 方式会简单的返回数组的长度，而 _setter_ 方式会**截断**数组。
 
-```JavaScript
+```javascript
 var foo = [1, 2, 3, 4, 5, 6]; 
 foo.length = 3; 
 foo; // [1, 2, 3]
 ```
-## 7.3. `Array` 构造函数
+## 10.2. `Array` 构造函数
 
 由于 `Array` 的构造函数在如何处理参数时有点模棱两可，因此总是推荐使用数组的字面语法 `[]`  来创建数组
-# 8. 函数
+# 11. 函数
+
+## 11.1. 函数声明与表达式
 
 函数是 JavaScript 中的一种对象，这意味着可以把函数像值一样传递。 一个常见的用法是把匿名函数作为回调函数传递到异步函数中。
+### 11.1.1. 函数声明
 
-## 8.1. 函数声明
-
-```JavaScript
+```javascript
 function foo() {}
 ```
 上面的方法会在执行前被 解析 (hoisted)，因此它存在于当前上下文的任意一个地方， 即使在函数定义体的上面被调用也是对的。
 
-```JavaScript
+```javascript
 foo(); // 正常运行，因为foo在代码运行前已经被创建
 function foo() {}
 ```
-
-## 8.2. 匿名函数赋值表达式
+### 11.1.2. 匿名函数赋值表达式
 
 把一个匿名的函数赋值给变量 `foo`
 
-```JavaScript
+```javascript
 var foo = function() {};
 ```
 错误方式
-```JavaScript
+```javascript
 foo; // 'undefined'
 foo(); // 出错：TypeError
 var foo = function() {};
@@ -176,7 +358,7 @@ var foo = function() {};
 由于 var 定义了一个声明语句，对变量 foo 的解析是在代码运行之前，因此 foo 变量在代码运行时已经被定义过了。
 
 但是由于赋值语句只在运行时执行，因此在相应代码执行之前， foo 的值缺省为 undefined。
-## 8.3. `this` 的工作原理
+## 11.2. `this` 的工作原理
 
 JavaScript 有一套完全不同于其它语言的对 `this` 的处理机制。 在**五**种不同的情况下 ，`this` 指向的各不相同
 
@@ -186,7 +368,7 @@ JavaScript 有一套完全不同于其它语言的对 `this` 的处理机制�
 
 **函数调用**
 
-```JavaScript
+```javascript
 foo();
 ```
 
@@ -196,7 +378,7 @@ foo();
 
 **方法调用**
 
-```JavaScript
+```javascript
 test.foo(); 
 ```
 
@@ -204,7 +386,7 @@ test.foo();
 
 **调用构造函数**
 
-```JavaScript
+```javascript
 new foo(); 
 ```
 
@@ -212,7 +394,7 @@ new foo();
 
 **显式的设置 `this`**
 
-```JavaScript
+```javascript
 function foo(a, b, c) {}
 
 var bar = {};
@@ -224,11 +406,11 @@ foo.call(bar, 1, 2, 3); // 传递到foo的参数是：a = 1, b = 2, c = 3
 
 因此函数调用的规则在上例中已经不适用了，在 foo 函数内 this 被设置成了 bar。
 
-## 8.4. 闭包和引用
+## 11.3. 闭包和引用
 
 闭包是 JavaScript 一个非常重要的特性，这意味着当前作用域**总是**能够访问外部作用域中的变量。 因为 函数 是 JavaScript 中唯一拥有自身作用域的结构，因此闭包的创建依赖于函数。
 
-## 8.5. `arguments` 对象
+## 11.4. `arguments` 对象
 
 JavaScript 中每个函数内都能访问一个特别变量 `arguments`。这个变量维护着所有传递到这个函数中的参数列表
 
@@ -238,7 +420,7 @@ arguments 变量不是一个数组（Array），实际上它是一个对象（O
 
 **转化为数组**
 
-```JavaScript
+```javascript
 Array.prototype.slice.call(arguments);
 ```
 **自动更新**
@@ -249,11 +431,11 @@ Array.prototype.slice.call(arguments);
 
 **ES5 提示:** 这些 _getters_ 和 _setters_ 在严格模式下（strict mode）不会被创建。
 
-## 8.6. 作用域与命名空间
+## 11.5. 作用域与命名空间
 
 尽管 JavaScript 支持一对花括号创建的代码段，但是并不支持块级作用域； 而仅仅支持 _函数作用域_
 
-```JavaScript
+```javascript
 function test() { // 一个作用域
     for(var i = 0; i < 10; i++) { // 不是一个作用域
         // count
@@ -264,7 +446,7 @@ function test() { // 一个作用域
 
 **隐式的全局变量**
 
-```JavaScript
+```javascript
 // 脚本 A
 foo = '42';
 
@@ -275,7 +457,7 @@ var foo = '42'
 
 再次强调，上面的效果**完全不同**，不使用 `var` 声明变量将会导致隐式的全局变量产生
 
-```JavaScript
+```javascript
 // 全局作用域
 
 var foo = 42;
@@ -299,7 +481,7 @@ console.log(foo); // 21
 
 JavaScript 中局部变量只可能通过两种方式声明，一个是作为函数参数，另一个是通过 `var` 关键字声明
 
-```JavaScript
+```javascript
 // 全局变量
 var foo = 1;
 var bar = 2;
@@ -330,47 +512,49 @@ test(10);
 
 推荐使用匿名包装器（也就是自执行的匿名函数）来创建命名空间。这样不仅可以防止命名冲突， 而且有利于程序的模块化。
 
-```JavaScript
+```javascript
 ( // 小括号内的函数首先被执行
 function() {}
 ) // 并且返回函数对象
 () // 调用上面的执行结果，也就是函数对象
 ```
 有一些其他的调用函数表达式的方法，比如下面的两种方式语法不同，但是效果一模一样。
-```JavaScript
+```javascript
 // 另外两种方式
 +function(){}();
 (function(){}());
 ```
-# 9. 对象和属性
+# 12. 对象
+
+## 12.1. 对象和属性
 
 JavaScript 中所有变量都可以当作对象使用，除了两个例外 null 和 undefined
 
 一个常见的误解是数字的字面值（literal）不能当作对象使用。这是因为 JavaScript 解析器的一个错误， 它试图将点操作符解析为浮点数字面值的一部分。有很多变通方法可以让数字的字面值看起来像对象
 
-```JavaScript
+```javascript
 2..toString(); // 第二个点号可以正常解析
 2 .toString(); // 注意点号前面的空格
 (2).toString(); // 2先被计算
 ```
 
-## 9.1. 对象作为数据类型
+### 12.1.1. 对象作为数据类型
 
 JavaScript 的对象可以作为哈希表使用，主要用来保存命名的键与值的对应关系
 
 使用对象的字面语法  `{}`  可以创建一个简单对象，没有任何自定义属性
 
-```JavaScript
+```javascript
 var foo = {}; // 一个空对象
 
 // 一个新对象，拥有一个值为12的自定义属性'test'
 var bar = {test: 12}; 
 ```
-## 9.2. 访问属性
+### 12.1.2. 访问属性
 
 有两种方式来访问对象的属性，点操作符或者中括号操作符
 
-```JavaScript
+```javascript
 var foo = {name: 'kitten'}
 foo.name; // kitten
 foo['name']; // kitten
@@ -387,11 +571,11 @@ foo['1234']; // works
 - 动态设置属性
 - 属性名不是一个有效的变量名（比如属性名中包含空格，或者属性名是 JS 的关键词）
 
-## 9.3. 删除属性
+### 12.1.3. 删除属性
 
 删除属性的唯一方法是使用 `delete` 操作符；设置属性为 `undefined` 或者 `null` 并不能真正的删除属性， 而**仅仅**是移除了属性和值的关联
 
-```JavaScript
+```javascript
 var obj = {
     bar: 1,
     foo: 2,
@@ -408,11 +592,11 @@ for(var i in obj) {
 }
 ```
 
-## 9.4. 属性名的语法
+### 12.1.4. 属性名的语法
 
 对象的属性名可以使用字符串或者普通字符声明
 
-```JavaScript
+```javascript
 var test = {
     'case': 'I am a keyword so I must be notated as a string',
     delete: 'I am a keyword too so me' // 出错：SyntaxError
@@ -421,17 +605,17 @@ var test = {
 上面的第二种声明方式在 ECMAScript 5 之前会抛出 SyntaxError 的错误。
 
 这个错误的原因是 delete 是 JavaScript 语言的一个关键词；因此为了在更低版本的 JavaScript 引擎下也能正常运行， 必须使用字符串字面值声明方式。
-## 9.5. 原型
+## 12.2. 原型
 
 在写复杂的 JavaScript 应用之前，充分理解原型链继承的工作方式是每个 JavaScript 程序员必修的功课。 要提防原型链过长带来的性能问题，并知道如何通过缩短原型链来提高性能。 更进一步，绝对不要扩展内置类型的原型，除非是为了和新的 JavaScript 引擎兼容。
-## 9.6. `for in` 循环
+## 12.3. `for in` 循环
 
 **对象的遍历**
 
 ```javascript
 for(键 in 对象){console.log(对象名[键]);}
 ```
-## 9.7. 常用封装对象
+## 12.4. 常用封装对象
 
 **数学对象Math**
 
@@ -475,14 +659,40 @@ var  n = 'JavaScript'
 
 将字符串全转为大写 `.toUpperCase()`
 
-# 10. 事件响应
-事件为异步事件
+# 13. 核心
 
-## 10.1. 何为事件
+## 13.1. 不要使用 `eval`
+
+`eval` 函数会在当前作用域中执行一段 JavaScript 代码字符串。在**任何情况下**我们都应该避免使用 `eval` 函数。99.9% 使用 `eval` 的场景都有**不使用** `eval` 的解决方案
+## 13.2. `undefined` 和 `null`
+
+JavaScript 有两个表示`空`的值，其中比较有用的是 `undefined`
+
+下面的情况会返回 undefined 值：
+
+- 访问未修改的全局变量 undefined。
+- 由于没有定义 return 表达式的函数隐式返回。
+- return 表达式没有显式的返回任何内容。
+- 访问不存在的属性。
+- 函数参数没有被显式的传递值。
+- 任何被设置为 undefined 值的变量。
+
+## 13.3. 自动分号插入
+
+尽管 JavaScript 有 C 的代码风格，但是它不强制要求在代码中使用分号，实际上可以省略它们。
+
+JavaScript 不是一个没有分号的语言，恰恰相反上它需要分号来就解析源代码。 因此 JavaScript 解析器在遇到由于缺少分号导致的解析错误时，会自动在源代码中插入分号。
+
+建议绝对不要省略分号，同时也提倡将花括号和相应的表达式放在一行， 对于只有一行代码的 if 或者 else 表达式，也不应该省略花括号。 这些良好的编程习惯不仅可以提到代码的一致性，而且可以防止解析器改变代码行为的错误处理。
+# 14. 事件响应
+
+事件为异步事件
+## 14.1. 何为事件
 
 用户鼠标的点击，键盘某个按键的点击
 
-## 10.2. 基本交互方法
+## 14.2. 基本交互方法
+
 输出
 
 ```javascript
@@ -495,15 +705,3 @@ document.write(内容)
 
 显示提示的对话框：prompt(提示文本内容，文本输入框为默认文本)，接收两个参数，第二个参数可不填，只返回一个值，用户点击取消时，返回null
 
-# 11. ES6 新特性
-
-**扩展运算符`...`**
-
-可在函数调用/数组构造时，将数组表达式或者string在语法层面展开。还以在构造对象时，将对象表达式按key-value的方式展开
-
-将之前的内容全部展开，再生成一个新的对象
-
-```JavaScript
-list: ['周一','周二']
-[...list]
-```
