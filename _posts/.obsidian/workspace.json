@@ -13,7 +13,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-06-09-Google Search.md"
+                "file": "2021-07-01-Python正则.md"
               }
             }
           },
@@ -35,7 +35,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-06-09-Google Search.md",
+                "file": "2021-07-01-Python正则.md",
                 "mode": "source",
                 "source": false
               }
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:py",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -88,7 +88,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -108,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-06-09-Google Search.md",
+                "file": "2021-07-01-Python正则.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-06-09-Google Search.md",
+                "file": "2021-07-01-Python正则.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-06-09-Google Search.md"
+                "file": "2021-07-01-Python正则.md"
               }
             }
           }
@@ -183,21 +184,25 @@
   },
   "active": "3e876f99bd6d2946",
   "lastOpenFiles": [
-    "2024-08-22-Google Chrome.md",
-    "2024-06-09-Google Search.md",
-    "2023-11-29-Windows定制.md",
+    "2022-04-25-Python之旅上.md",
+    "2022-04-25-Python之旅下.md",
+    "2022-05-23-PythonSocket.md",
+    "2023-01-26-Python基础.md",
+    "2022-04-25-Python异步.md",
+    "2024-03-26-Python实用工具库.md",
+    "2024-06-30-Pycharm.md",
+    "2022-05-11-pyinstaller使用.md",
+    "2024-05-11-PySide6.md",
     "2024-08-15-Python最佳实践.md",
+    "2023-01-12-IDEA使用.md",
+    "2024-06-09-Google Search.md",
+    "2024-08-22-Google Chrome.md",
+    "2023-11-29-Windows定制.md",
     "2024-08-04-SpringBoot单元测试.md",
     "2021-11-14-Windows权限.md",
-    "2023-01-12-IDEA使用.md",
     "2023-01-12-JavaScript-ES6.md",
     "2023-01-26-python基础.md",
-    "2024-03-26-Python实用工具库.md",
-    "2022-05-23-PythonSocket.md",
-    "2022-04-25-Python之旅上.md",
     "2021-07-01-Python正则.md",
-    "2022-04-25-Python之旅下.md",
-    "2022-04-25-Python异步.md",
     "2022-05-18-python虚拟环境.md",
     "2024-08-15-python最佳实践.md",
     "新建文本文档.txt",
@@ -206,11 +211,7 @@
     "2023-09-22-Linux入门.md",
     "2023-07-26-CentOS初始化.md",
     "2024-08-12-Linux 硬盘分区指南.md",
-    "2024-07-20-MySQL之delete.md",
-    "2023-09-21-计算机网络.md",
-    "2024-07-29-网络访问历程.md",
     "Pasted image 20240729113232.png",
-    "2024-07-26-MySQL索引.md",
     "未命名绘图.png"
   ]
 }
