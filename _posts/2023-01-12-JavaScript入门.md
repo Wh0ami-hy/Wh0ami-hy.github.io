@@ -6,164 +6,41 @@ tags:
 ---
 
 
-
-
 # 1. 前言
 
-ECMAScript 6.0（以下简称 ES6）。ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。
-# 2. 组成
+JavaScript 是一种轻量级的脚本语言。所谓“脚本语言”（script language），指的是它不具备开发操作系统的能力，而是只用来编写控制其他大型应用程序（比如浏览器）的“脚本”。
 
- Javascript 由三部分构成，ECMAScript，DOM和BOM。根据浏览器的不同，具体的表现形式也不尽相同
+JavaScript 本身不提供任何与 I/O（输入/输出）相关的 API，都要靠宿主环境（host）提供。
 
-- ECMAScript：描述了JS的语法和基本对象
-- DOM 是文档对象模型，DOM是为方便js操作html的，看起来就是html标签，js中通过document.get(...)获取dom节点的对象，再继续操作
-- BOM 是浏览器对象模型，是用于操作浏览器而出现的API
+JavaScript 的核心语法部分相当精简，只包括两个部分：基本的语法构造（比如操作符、控制结构、语句）和标准库（就是一系列具有各种功能的对象比如`Array`、`Date`、`Math`等）。除此之外，各种宿主环境提供额外的 API（即只能在该环境使用的接口），以便 JavaScript 调用。
 
-# 3. 添加方式
-
-**在HTML中添加JavaScript代码的方式**
-
-内部的
-
-```html
-<script>内容</script>
+```mermaid
+flowchart LR
+	6grakaltl9jqgu5q1820p7ut6h["JavaScript"] --> 2dok06kmcti4t73ggilg6292qm["ECMAScript（描述了JS的语法和基本对象）"]
+	2dok06kmcti4t73ggilg6292qm --> 0d0cagmk0dqfb1m6urujak5gnf["语法（如操作符、控制结构、语句）"]
+	2dok06kmcti4t73ggilg6292qm --> 50dp4b935o9ovkf5qm7tfpnuc0["标准库（一系列具有各种功能的对象比如Array、Date、Math等）"]
+	6grakaltl9jqgu5q1820p7ut6h --> 0r92lojgefbeumnadaoojsndbb["各种宿主环境提供额外的 API"]
+	0r92lojgefbeumnadaoojsndbb --> 390qch630a7p93m86rr91g0rsi["浏览器"]
+	390qch630a7p93m86rr91g0rsi --> 1jp4p38kq31jrecdi8m3hfm3vn["DOM类（DOM 是文档对象模型，DOM是为方便js操作html的，看起来就是html标签，js中通过document.get(...)获取dom节点的对象，再继续操作）"]
+	390qch630a7p93m86rr91g0rsi --> 2br19pl5qsiks1cu6s5sfkih8s["BOM类（BOM 是浏览器对象模型，是用于操作浏览器而出现的API）"]
+	390qch630a7p93m86rr91g0rsi --> 64oiq7o1akd77l89j6voh2m8nf["Web类（实现互联网的各种功能）"]
+	0r92lojgefbeumnadaoojsndbb --> 6397lnesa4ndt98f7ui9ii1bho["服务器"]
+	6397lnesa4ndt98f7ui9ii1bho --> 1lorm9132cuh1rkug4lbtd8lvj["node（各种操作系统的 API，比如文件操作 API、网络通信 API等等）"]
 ```
+# 2. 特性
 
-外部的
+- JavaScript 的所有值都是对象
+- 是一种解释型语言，但是在现代浏览器中，JavaScript 都是编译后运行
+- JavaScript 程序可以采用事件驱动（event-driven）和非阻塞式（non-blocking）设计
 
-```html
-<script src="name.js"></script>
-```
-# 4. ES6 特性
-
-## 4.1. let 和 const 声明
-
-使用 let 声明变量
-
-使用 const 声明常量
-## 4.2. 箭头函数
-
-箭头函数省去了`function`关键字，采用箭头`=>`来定义函数。函数的参数放在`=>`前面的括号中，函数体跟在`=>`后的花括号中，箭头函数在参数和箭头之间不能换行
-
-```javascript
-// 箭头函数
-let func = (name) => {
-    // 函数体
-    return `Hello ${name}`;
-};
-
-// 等同于
-let func = function (name) {
-    // 函数体
-    return `Hello ${name}`;
-};
-```
-## 4.3. 模板字符串
-
-一种新增的字符串语法，可以方便地在字符串中插入变量和表达式，并支持多行字符串
-
-```javascript
-const name = 'Alice';
-const message = `Hello, ${
-     name}!
-This is a multiline string.`;
-console.log(message)
-```
-## 4.4. 解构赋值
-
-```javascript
-// 数组解构赋值
-const [x, y] = [1, 2];
-// 对象解构赋值
-const {
-    name, age } = {
-    name: 'Alice', age: 30 };
-console.log(name)
-```
-## 4.5. 默认参数
-
-在函数定义时为参数指定默认值，简化函数调用时的参数传递
-
-```javascript
-function greet(name = 'World') {
-    console.log(`Hello, ${
-       name}!`);
-  }
-  greet(); // 输出：Hello, World!
-  greet('Alice'); // 输出：Hello, Alice!
-```
-## 4.6. 扩展运算符
-
-扩展运算符`...`允许将数组或对象展开，方便地将多个值合并或拷贝到另一个数组或对象中
-
-```javascript
-let a = ['周一','周二']
-// 将之前的内容全部展开，再生成一个新的对象
-let b = [...a, '周三', '周四']
-console.log(b)
-```
-## 4.7. 类
-
-ES6 引入了类（Class）语法糖，提供了更加面向对象的编程方式，并且支持了构造函数、继承和静态方法等特性
-
-```javascript
-class Person {
-    constructor(name, age) {
-      this.name = name;
-      this.age = age;
-    }
-    greet() {
-      console.log(`Hello, my name is ${
-       this.name}, I'm ${
-       this.age} years old.`);
-    }
-  }
-  const person = new Person('Alice', 30);
-  person.greet(); // 输出：Hello, my name is Alice, I'm 30 years old.
-```
-## 4.8. 模块化
-
-使用 `export` 关键字导出模块，使用 `import` 关键字导入模块
-
-```javascript
-// module.js
-export const PI = 3.14;
-// main.js
-import { PI } from './module';
-console.log(PI); // 输出：3.14
-```
-## 4.9. Promise
-
-一种用来处理异步操作的对象，它可以让异步操作更加简洁、可读和可维护
-
-```javascript
-function fetchData() {
-    return new Promise((resolve, reject) => {
-
-      // 异步操作
-      setTimeout(() => {
-        resolve('Data fetched successfully.');
-      }, 1000);
-      //
-      console.log('first');
-    });
-  }
-
-  fetchData()
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
-```
-## 4.10. Generators
-
-Generator 是一种特殊的函数，可以通过 `yield` 关键字实现暂停和恢复执行的功能，用来处理复杂的异步流程
-# 5. 作用域
+# 3. 作用域
 
 ```
 * 全局作用域：函数外
 * 局部作用域：内
 * 变量提升：在代码执行前变量已经在编译阶段被声明了
 ```
-# 6. 变量
+# 4. 变量
 
 命名规则：不能数字开头、不能以保留字命名、驼峰式命名法（第一个字母应小写，此后每一个单词中的第一个字母当为大写）
 
@@ -183,7 +60,7 @@ Generator 是一种特殊的函数，可以通过 `yield` 关键字实现暂�
 
 在现代JavaScript开发中，建议尽可能使用`let`和`const`，因为它们的块级作用域规则更易于理解和管理。使用`const`可以明确表示变量的值不应该改变，这可以帮助防止在代码中意外地修改这个值。当你需要一个可以改变的变量时，使用`let`。尽量避免使用`var`，除非你有特定的理由需要函数级作用域或变量提升。
 
-# 7. 数据类型
+# 5. 数据类型
 
 **基础数据类型**
 
@@ -202,7 +79,7 @@ Undefined未定义型
 **引用数据类型**
 
 Object对象
-# 8. 运算符
+# 6. 运算符
 
 算术运算符：加、减、乘、`/` 除、`%` 取余
 
@@ -213,11 +90,11 @@ Object对象
 一元运算符：a++、++a
 
 逻辑运算符：逻辑与 `&&`、逻辑或 `||`、逻辑非 `！`（`&&`优先于`||`）
-# 9. 类型
+# 7. 类型
 
-## 9.1. 相等与比较
+## 7.1. 相等与比较
 
-### 9.1.1. 等于操作符
+### 7.1.1. 等于操作符
 
 等于操作符由两个等号组成：`==`
 
@@ -238,7 +115,7 @@ null         ==   undefined     // true
 上面的表格展示了强制类型转换，这也是使用 `==` 被广泛认为是不好编程习惯的主要原因， 由于它的复杂转换规则，会导致难以跟踪的问题。
 
 此外，强制类型转换也会带来性能消耗，比如一个字符串为了和一个数字进行比较，必须事先被强制转换为数字。
-### 9.1.2. 严格等于操作符
+### 7.1.2. 严格等于操作符
 
 不像普通的等于操作符，严格等于操作符不会进行强制类型转换。
 
@@ -254,13 +131,13 @@ null         ===   undefined     // false
 " ..."    ===   0             // false
 ```
 上面的结果更加清晰并有利于代码的分析。如果两个操作数类型不同就肯定不相等也有助于性能的提升。
-### 9.1.3. 比较对象
+### 7.1.3. 比较对象
 
 这里等于操作符比较的**不是**值是否相等，而是是否属于同一个**身份**；也就是说，只有对象的同一个实例才被认为是相等的。 这有点像 Python 中的 `is` 和 C 中的指针比较。
-## 9.2. `typeof` 操作符
+## 7.2. `typeof` 操作符
 
 `typeof` 只有一个实际的应用（这个实际应用是用来检测一个对象是否已经定义或者是否已经赋值）， 而这个应用却**不是**用来检查对象的类型
-### 9.2.1. 对象的类定义
+### 7.2.1. 对象的类定义
 
 JavaScript 标准文档只给出了一种获取 `[[Class]]` 值的方法，那就是使用 `Object.prototype.toString`
 
@@ -269,19 +146,19 @@ let a = '123'
 // 通过 `slice` 截取指定位置的字符串
 console.log(Object.prototype.toString.call(a).slice(8, -1))
 ```
-### 9.2.2. 测试未定义变量
+### 7.2.2. 测试未定义变量
 
 ```javascript
 typeof foo !== 'undefined'
 ```
 
 上面代码会检测 `foo` 是否已经定义；如果没有定义而直接使用会导致 `ReferenceError` 的异常。 这是 `typeof` 唯一有用的地方。
-## 9.3. `instanceof` 操作符
+## 7.3. `instanceof` 操作符
 
 `instanceof` 操作符用来比较两个操作数的构造函数。只有在比较自定义的对象时才有意义
-## 9.4. 类型转换
+## 7.4. 类型转换
 
-JavaScript 是弱类型语言，所以会在**任何**可能的情况下应用强制类型转换
+JavaScript 是弱类型语言，如果对数据类型有要求应该使用**强制类型转换**
 
 ```javascript
 parseInt()：转为整型
@@ -295,12 +172,12 @@ String()：转为字符串型
 Boolean()：转换为布尔型，转为false（0、空），其余都会转为true
 ```
 
-# 10. 数组
+# 8. 数组
 
 由于 `for in` 循环会枚举原型链上的所有属性，唯一过滤这些属性的方式是使用 hasOwnProperty 函数， 因此会比普通的 `for` 循环慢上好多倍。
-## 10.1. 数组遍历与属性
+## 8.1. 数组遍历与属性
 
-### 10.1.1. 遍历
+### 8.1.1. 遍历
 
 为了达到遍历数组的最佳性能，推荐使用经典的 for 循环。
 
@@ -314,7 +191,7 @@ for(var i = 0, l = list.length; i < l; i++) {
 
 虽然 length 是数组的一个属性，但是在每次循环中访问它还是有性能开销。
 
-### 10.1.2. `length` 属性
+### 8.1.2. `length` 属性
 
 `length` 属性的 _getter_ 方式会简单的返回数组的长度，而 _setter_ 方式会**截断**数组。
 
@@ -323,15 +200,15 @@ var foo = [1, 2, 3, 4, 5, 6];
 foo.length = 3; 
 foo; // [1, 2, 3]
 ```
-## 10.2. `Array` 构造函数
+## 8.2. `Array` 构造函数
 
 由于 `Array` 的构造函数在如何处理参数时有点模棱两可，因此总是推荐使用数组的字面语法 `[]`  来创建数组
-# 11. 函数
+# 9. 函数
 
-## 11.1. 函数声明与表达式
+## 9.1. 函数声明与表达式
 
 函数是 JavaScript 中的一种对象，这意味着可以把函数像值一样传递。 一个常见的用法是把匿名函数作为回调函数传递到异步函数中。
-### 11.1.1. 函数声明
+### 9.1.1. 函数声明
 
 ```javascript
 function foo() {}
@@ -342,7 +219,7 @@ function foo() {}
 foo(); // 正常运行，因为foo在代码运行前已经被创建
 function foo() {}
 ```
-### 11.1.2. 匿名函数赋值表达式
+### 9.1.2. 匿名函数赋值表达式
 
 把一个匿名的函数赋值给变量 `foo`
 
@@ -358,7 +235,7 @@ var foo = function() {};
 由于 var 定义了一个声明语句，对变量 foo 的解析是在代码运行之前，因此 foo 变量在代码运行时已经被定义过了。
 
 但是由于赋值语句只在运行时执行，因此在相应代码执行之前， foo 的值缺省为 undefined。
-## 11.2. `this` 的工作原理
+## 9.2. `this` 的工作原理
 
 JavaScript 有一套完全不同于其它语言的对 `this` 的处理机制。 在**五**种不同的情况下 ，`this` 指向的各不相同
 
@@ -406,11 +283,11 @@ foo.call(bar, 1, 2, 3); // 传递到foo的参数是：a = 1, b = 2, c = 3
 
 因此函数调用的规则在上例中已经不适用了，在 foo 函数内 this 被设置成了 bar。
 
-## 11.3. 闭包和引用
+## 9.3. 闭包和引用
 
 闭包是 JavaScript 一个非常重要的特性，这意味着当前作用域**总是**能够访问外部作用域中的变量。 因为 函数 是 JavaScript 中唯一拥有自身作用域的结构，因此闭包的创建依赖于函数。
 
-## 11.4. `arguments` 对象
+## 9.4. `arguments` 对象
 
 JavaScript 中每个函数内都能访问一个特别变量 `arguments`。这个变量维护着所有传递到这个函数中的参数列表
 
@@ -431,7 +308,7 @@ Array.prototype.slice.call(arguments);
 
 **ES5 提示:** 这些 _getters_ 和 _setters_ 在严格模式下（strict mode）不会被创建。
 
-## 11.5. 作用域与命名空间
+## 9.5. 作用域与命名空间
 
 尽管 JavaScript 支持一对花括号创建的代码段，但是并不支持块级作用域； 而仅仅支持 _函数作用域_
 
@@ -524,9 +401,9 @@ function() {}
 +function(){}();
 (function(){}());
 ```
-# 12. 对象
+# 10. 对象
 
-## 12.1. 对象和属性
+## 10.1. 对象和属性
 
 JavaScript 中所有变量都可以当作对象使用，除了两个例外 null 和 undefined
 
@@ -538,7 +415,7 @@ JavaScript 中所有变量都可以当作对象使用，除了两个例外 null
 (2).toString(); // 2先被计算
 ```
 
-### 12.1.1. 对象作为数据类型
+### 10.1.1. 对象作为数据类型
 
 JavaScript 的对象可以作为哈希表使用，主要用来保存命名的键与值的对应关系
 
@@ -550,7 +427,7 @@ var foo = {}; // 一个空对象
 // 一个新对象，拥有一个值为12的自定义属性'test'
 var bar = {test: 12}; 
 ```
-### 12.1.2. 访问属性
+### 10.1.2. 访问属性
 
 有两种方式来访问对象的属性，点操作符或者中括号操作符
 
@@ -571,7 +448,7 @@ foo['1234']; // works
 - 动态设置属性
 - 属性名不是一个有效的变量名（比如属性名中包含空格，或者属性名是 JS 的关键词）
 
-### 12.1.3. 删除属性
+### 10.1.3. 删除属性
 
 删除属性的唯一方法是使用 `delete` 操作符；设置属性为 `undefined` 或者 `null` 并不能真正的删除属性， 而**仅仅**是移除了属性和值的关联
 
@@ -592,7 +469,7 @@ for(var i in obj) {
 }
 ```
 
-### 12.1.4. 属性名的语法
+### 10.1.4. 属性名的语法
 
 对象的属性名可以使用字符串或者普通字符声明
 
@@ -605,17 +482,17 @@ var test = {
 上面的第二种声明方式在 ECMAScript 5 之前会抛出 SyntaxError 的错误。
 
 这个错误的原因是 delete 是 JavaScript 语言的一个关键词；因此为了在更低版本的 JavaScript 引擎下也能正常运行， 必须使用字符串字面值声明方式。
-## 12.2. 原型
+## 10.2. 原型
 
 在写复杂的 JavaScript 应用之前，充分理解原型链继承的工作方式是每个 JavaScript 程序员必修的功课。 要提防原型链过长带来的性能问题，并知道如何通过缩短原型链来提高性能。 更进一步，绝对不要扩展内置类型的原型，除非是为了和新的 JavaScript 引擎兼容。
-## 12.3. `for in` 循环
+## 10.3. `for in` 循环
 
 **对象的遍历**
 
 ```javascript
 for(键 in 对象){console.log(对象名[键]);}
 ```
-## 12.4. 常用封装对象
+## 10.4. 常用封装对象
 
 **数学对象Math**
 
@@ -659,12 +536,12 @@ var  n = 'JavaScript'
 
 将字符串全转为大写 `.toUpperCase()`
 
-# 13. 核心
+# 11. 核心
 
-## 13.1. 不要使用 `eval`
+## 11.1. 不要使用 `eval`
 
 `eval` 函数会在当前作用域中执行一段 JavaScript 代码字符串。在**任何情况下**我们都应该避免使用 `eval` 函数。99.9% 使用 `eval` 的场景都有**不使用** `eval` 的解决方案
-## 13.2. `undefined` 和 `null`
+## 11.2. `undefined` 和 `null`
 
 JavaScript 有两个表示`空`的值，其中比较有用的是 `undefined`
 
@@ -677,21 +554,20 @@ JavaScript 有两个表示`空`的值，其中比较有用的是 `undefined`
 - 函数参数没有被显式的传递值。
 - 任何被设置为 undefined 值的变量。
 
-## 13.3. 自动分号插入
+## 11.3. 自动分号插入
 
 尽管 JavaScript 有 C 的代码风格，但是它不强制要求在代码中使用分号，实际上可以省略它们。
 
 JavaScript 不是一个没有分号的语言，恰恰相反上它需要分号来就解析源代码。 因此 JavaScript 解析器在遇到由于缺少分号导致的解析错误时，会自动在源代码中插入分号。
 
 建议绝对不要省略分号，同时也提倡将花括号和相应的表达式放在一行， 对于只有一行代码的 if 或者 else 表达式，也不应该省略花括号。 这些良好的编程习惯不仅可以提到代码的一致性，而且可以防止解析器改变代码行为的错误处理。
-# 14. 事件响应
+# 12. 事件
 
-事件为异步事件
-## 14.1. 何为事件
+## 12.1. 何为事件
 
 用户鼠标的点击，键盘某个按键的点击
 
-## 14.2. 基本交互方法
+## 12.2. 基本交互方法
 
 输出
 
@@ -705,3 +581,126 @@ document.write(内容)
 
 显示提示的对话框：prompt(提示文本内容，文本输入框为默认文本)，接收两个参数，第二个参数可不填，只返回一个值，用户点击取消时，返回null
 
+# 13. ES6
+
+ECMAScript 6.0（以下简称 ES6）。ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。在日常场合，这两个词是可以互换的
+## 13.1. let 和 const 声明
+
+使用 let 声明变量
+
+使用 const 声明常量
+## 13.2. 箭头函数
+
+箭头函数省去了`function`关键字，采用箭头`=>`来定义函数。函数的参数放在`=>`前面的括号中，函数体跟在`=>`后的花括号中，箭头函数在参数和箭头之间不能换行
+
+```javascript
+// 箭头函数
+let func = (name) => {
+    // 函数体
+    return `Hello ${name}`;
+};
+
+// 等同于
+let func = function (name) {
+    // 函数体
+    return `Hello ${name}`;
+};
+```
+## 13.3. 模板字符串
+
+一种新增的字符串语法，可以方便地在字符串中插入变量和表达式，并支持多行字符串
+
+```javascript
+const name = 'Alice';
+const message = `Hello, ${
+     name}!
+This is a multiline string.`;
+console.log(message)
+```
+## 13.4. 解构赋值
+
+```javascript
+// 数组解构赋值
+const [x, y] = [1, 2];
+// 对象解构赋值
+const {
+    name, age } = {
+    name: 'Alice', age: 30 };
+console.log(name)
+```
+## 13.5. 默认参数
+
+在函数定义时为参数指定默认值，简化函数调用时的参数传递
+
+```javascript
+function greet(name = 'World') {
+    console.log(`Hello, ${
+       name}!`);
+  }
+  greet(); // 输出：Hello, World!
+  greet('Alice'); // 输出：Hello, Alice!
+```
+## 13.6. 扩展运算符
+
+扩展运算符`...`允许将数组或对象展开，方便地将多个值合并或拷贝到另一个数组或对象中
+
+```javascript
+let a = ['周一','周二']
+// 将之前的内容全部展开，再生成一个新的对象
+let b = [...a, '周三', '周四']
+console.log(b)
+```
+## 13.7. 类
+
+ES6 引入了类（Class）语法糖，提供了更加面向对象的编程方式，并且支持了构造函数、继承和静态方法等特性
+
+```javascript
+class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    greet() {
+      console.log(`Hello, my name is ${
+       this.name}, I'm ${
+       this.age} years old.`);
+    }
+  }
+  const person = new Person('Alice', 30);
+  person.greet(); // 输出：Hello, my name is Alice, I'm 30 years old.
+```
+## 13.8. 模块化
+
+使用 `export` 关键字导出模块，使用 `import` 关键字导入模块
+
+```javascript
+// module.js
+export const PI = 3.14;
+// main.js
+import { PI } from './module';
+console.log(PI); // 输出：3.14
+```
+## 13.9. Promise
+
+一种用来处理异步操作的对象，它可以让异步操作更加简洁、可读和可维护
+
+```javascript
+function fetchData() {
+    return new Promise((resolve, reject) => {
+
+      // 异步操作
+      setTimeout(() => {
+        resolve('Data fetched successfully.');
+      }, 1000);
+      //
+      console.log('first');
+    });
+  }
+
+  fetchData()
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+```
+## 13.10. Generators
+
+Generator 是一种特殊的函数，可以通过 `yield` 关键字实现暂停和恢复执行的功能，用来处理复杂的异步流程
