@@ -35,11 +35,7 @@ flowchart LR
 
 # 3. 作用域
 
-```
-* 全局作用域：函数外
-* 局部作用域：内
-* 变量提升：在代码执行前变量已经在编译阶段被声明了
-```
+ES5只有全局作用域和函数作用域，没有块级作用域
 # 4. 变量
 
 命名规则：不能数字开头、不能以保留字命名、驼峰式命名法（第一个字母应小写，此后每一个单词中的第一个字母当为大写）
@@ -584,31 +580,138 @@ document.write(内容)
 # 13. ES6
 
 ECMAScript 6.0（以下简称 ES6）。ECMAScript 和 JavaScript 的关系是，前者是后者的规格，后者是前者的一种实现。在日常场合，这两个词是可以互换的
-## 13.1. let 和 const 声明
 
-使用 let 声明变量
+**最常用的ES6特性**
 
-使用 const 声明常量
-## 13.2. 箭头函数
+`let, const, class, extends, super, arrow functions, template string, destructuring, default, rest arguments`  这些是ES6最常用的几个语法
+## 13.1. let 和 const
 
-箭头函数省去了`function`关键字，采用箭头`=>`来定义函数。函数的参数放在`=>`前面的括号中，函数体跟在`=>`后的花括号中，箭头函数在参数和箭头之间不能换行
+**使用 let 声明变量**
 
-```javascript
-// 箭头函数
-let func = (name) => {
-    // 函数体
-    return `Hello ${name}`;
-};
+`let`实际上为JavaScript新增了块级作用域。用它所声明的变量，只在`let`命令所在的代码块内有效
 
-// 等同于
-let func = function (name) {
-    // 函数体
-    return `Hello ${name}`;
-};
 ```
-## 13.3. 模板字符串
+let name = 'zach'
 
-一种新增的字符串语法，可以方便地在字符串中插入变量和表达式，并支持多行字符串
+while (true) {
+    let name = 'obama'
+    console.log(name)  //obama
+    break
+}
+
+console.log(name)  //zach
+```
+
+**使用 const 声明常量**
+
+```
+const PI = Math.PI
+```
+
+const有一个很好的应用场景，就是当我们引用第三方库的时候，用const来声明可以避免未来不小心重命名而导致出现bug：
+
+```
+const monent = require('moment')
+```
+## 13.2. class, extends, super
+
+这三个特性涉及了ES5中最令人头疼的的几个部分：原型、构造函数，继承...，ES6提供了更接近传统语言的写法，引入了Class（类）这个概念。新的class写法让对象原型的写法更加清晰、更像面向对象编程的语法
+
+```
+class Animal {
+    constructor(){
+        this.type = 'animal'
+    }
+    says(say){
+        console.log(this.type + ' says ' + say)
+    }
+}
+
+let animal = new Animal()
+animal.says('hello') //animal says hello
+
+class Cat extends Animal {
+    constructor(){
+        super()
+        this.type = 'cat'
+    }
+}
+
+let cat = new Cat()
+cat.says('hello') //cat says hello
+```
+
+上面代码首先用`class`定义了一个“类”，可以看到里面有一个`constructor`方法，这就是构造方法，而`this`关键字则代表实例对象。简单地说，`constructor`内定义的方法和属性是实例对象自己的，而`constructor`外定义的方法和属性则是所有实例对象可以共享的。
+
+Class之间可以通过`extends`关键字实现继承，这比ES5的通过修改原型链实现继承，要清晰和方便很多。上面定义了一个Cat类，该类通过`extends`关键字，继承了Animal类的所有属性和方法。
+
+`super`关键字，它指代父类的实例（即父类的this对象）。子类必须在`constructor`方法中调用`super`方法，否则新建实例时会报错。这是因为子类没有自己的`this`对象，而是继承父类的`this`对象，然后对其进行加工。如果不调用`super`方法，子类就得不到`this`对象。
+
+ES6的继承机制，实质是先创造父类的实例对象this（所以必须先调用super方法），然后再用子类的构造函数修改this。
+
+P.S 如果你写react的话，就会发现以上三个东西在最新版React中出现得很多。创建的每个component都是一个继承`React.Component`的类
+## 13.3. arrow function（箭头函数）
+
+```
+function(i){ return i + 1; } //ES5
+(i) => i + 1 //ES6
+```
+
+如果方程比较复杂，则需要用`{}`把代码包起来
+
+```
+function(x, y) { //ES5
+    x++;
+    y--;
+    return x + y;
+}
+(x, y) => {x++; y--; return x+y} //ES6
+```
+
+**arrow function还有一项超级无敌的功能**
+
+当我们使用箭头函数时，函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+
+并不是因为箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，它的this是继承外面的，因此内部的this就是外层代码块的this
+
+```
+class Animal {
+    constructor(){
+        this.type = 'animal'
+    }
+    says(say){
+        setTimeout(function(){
+            console.log(this.type + ' says ' + say)
+        }, 1000)
+    }
+}
+
+ var animal = new Animal()
+ animal.says('hi')  //undefined says hi
+```
+
+运行上面的代码会报错，这是因为`setTimeout`中的`this`指向的是全局对象
+
+```
+class Animal {
+    constructor(){
+        this.type = 'animal'
+    }
+    says(say){
+        setTimeout( () => {
+            console.log(this.type + ' says ' + say)
+        }, 1000)
+    }
+}
+ var animal = new Animal()
+ animal.says('hi')  //animal says hi
+```
+
+## 13.4. template string（模板字符串）
+
+这个东西也是非常有用，当我们要插入大段的html内容到文档中时，传统的写法非常麻烦
+
+用反引号 \` 来包裹，用`${}`来引用变量，而且所有的空格和缩进都会被保留在输出之中
 
 ```javascript
 const name = 'Alice';
@@ -617,18 +720,38 @@ const message = `Hello, ${
 This is a multiline string.`;
 console.log(message)
 ```
-## 13.4. 解构赋值
+## 13.5. destructuring（解构）
 
-```javascript
-// 数组解构赋值
-const [x, y] = [1, 2];
-// 对象解构赋值
-const {
-    name, age } = {
-    name: 'Alice', age: 30 };
-console.log(name)
+ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构
+
+看下面的例子：
+
 ```
-## 13.5. 默认参数
+let cat = 'ken'
+let dog = 'lili'
+let zoo = {cat: cat, dog: dog}
+console.log(zoo)  //Object {cat: "ken", dog: "lili"}
+```
+
+用ES6完全可以像下面这么写：
+
+```
+let cat = 'ken'
+let dog = 'lili'
+let zoo = {cat, dog}
+console.log(zoo)  //Object {cat: "ken", dog: "lili"}
+```
+
+反过来可以这么写：
+
+```
+let dog = {type: 'animal', many: 2}
+let { type, many} = dog
+console.log(type, many)   //animal 2
+```
+## 13.6. default, rest
+
+**default**
 
 在函数定义时为参数指定默认值，简化函数调用时的参数传递
 
@@ -640,7 +763,123 @@ function greet(name = 'World') {
   greet(); // 输出：Hello, World!
   greet('Alice'); // 输出：Hello, Alice!
 ```
-## 13.6. 扩展运算符
+
+**rest**
+
+直接看例子：
+
+```
+function animals(...types){
+    console.log(types)
+}
+animals('cat', 'dog', 'fish') //["cat", "dog", "fish"]
+```
+## 13.7. import和export
+
+这两个对应的就是es6自己的`module`功能。ES6模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量
+
+### 13.7.1. 传统的写法
+
+首先我们回顾下require.js的写法。假设我们有两个js文件: `index.js`和`content.js`,现在我们想要在`index.js`中使用`content.js`返回的结果，我们要怎么做呢？
+
+首先定义：
+
+```
+//content.js
+define('content.js', function(){
+    return 'A cat';
+})
+```
+然后require：
+
+```
+//index.js
+require(['./content.js'], function(animal){
+    console.log(animal);   //A cat
+})
+```
+那CommonJS是怎么写的呢？
+
+```
+//index.js
+var animal = require('./content.js')
+
+//content.js
+module.exports = 'A cat'
+```
+### 13.7.2. ES6的写法
+
+```
+//index.js
+import animal from './content'
+
+//content.js
+export default 'A cat'
+```
+
+## 13.8. ES6 module的其他高级用法
+
+### 13.8.1. 输出输入多个变量
+
+```
+//content.js
+
+export default 'A cat'    
+export function say(){
+    return 'Hello!'
+}    
+export const type = 'dog' 
+```
+
+上面可以看出，export命令除了输出变量，还可以输出函数，甚至是类（react的模块基本都是输出类）
+
+```
+//index.js
+
+import { say, type } from './content'  
+let says = say()
+console.log(`The ${type} says ${says}`)  //The dog says Hello
+```
+
+这里输入的时候要注意：大括号里面的变量名，必须与被导入模块（content.js）对外接口的名称相同。
+
+如果还希望输入content.js中输出的默认值(default), 可以写在大括号外面。
+
+```
+//index.js
+
+import animal, { say, type } from './content'  
+let says = say()
+console.log(`The ${type} says ${says} to ${animal}`)  
+//The dog says Hello to A cat
+```
+### 13.8.2. 修改变量名
+
+此时我们不喜欢type这个变量名，因为它有可能重名，所以我们需要修改一下它的变量名。在es6中可以用`as`实现一键换名。
+
+```
+//index.js
+
+import animal, { say, type as animalType } from './content'  
+let says = say()
+console.log(`The ${animalType} says ${says} to ${animal}`)  
+//The dog says Hello to A cat
+```
+### 13.8.3. 模块的整体加载
+
+除了指定加载某个输出值，还可以使用整体加载，即用星号（`*`）指定一个对象，所有输出值都加载在这个对象上面。
+
+```
+//index.js
+
+import animal, * as content from './content'  
+let says = content.say()
+console.log(`The ${content.type} says ${says} to ${animal}`)  
+//The dog says Hello to A cat
+```
+
+通常星号`*`结合`as`一起使用比较合适。
+## 13.9. 扩展运算符
 
 扩展运算符`...`允许将数组或对象展开，方便地将多个值合并或拷贝到另一个数组或对象中
 
@@ -650,37 +889,7 @@ let a = ['周一','周二']
 let b = [...a, '周三', '周四']
 console.log(b)
 ```
-## 13.7. 类
-
-ES6 引入了类（Class）语法糖，提供了更加面向对象的编程方式，并且支持了构造函数、继承和静态方法等特性
-
-```javascript
-class Person {
-    constructor(name, age) {
-      this.name = name;
-      this.age = age;
-    }
-    greet() {
-      console.log(`Hello, my name is ${
-       this.name}, I'm ${
-       this.age} years old.`);
-    }
-  }
-  const person = new Person('Alice', 30);
-  person.greet(); // 输出：Hello, my name is Alice, I'm 30 years old.
-```
-## 13.8. 模块化
-
-使用 `export` 关键字导出模块，使用 `import` 关键字导入模块
-
-```javascript
-// module.js
-export const PI = 3.14;
-// main.js
-import { PI } from './module';
-console.log(PI); // 输出：3.14
-```
-## 13.9. Promise
+## 13.10. Promise
 
 一种用来处理异步操作的对象，它可以让异步操作更加简洁、可读和可维护
 
@@ -701,6 +910,3 @@ function fetchData() {
     .then(data => console.log(data))
     .catch(error => console.error(error));
 ```
-## 13.10. Generators
-
-Generator 是一种特殊的函数，可以通过 `yield` 关键字实现暂停和恢复执行的功能，用来处理复杂的异步流程
