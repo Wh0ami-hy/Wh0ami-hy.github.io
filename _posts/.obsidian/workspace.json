@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "f3f8b420a48faa2d",
+        "id": "f959ab2f3a8908a1",
         "type": "tabs",
         "children": [
           {
-            "id": "d23b4e80d7044dab",
+            "id": "80169791a3c3f056",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-01-12-JavaScript入门.md",
+                "file": "2021-12-26-修改hosts.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "c2ed0bcd55eeb68f",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-01-12-JavaScript入门.md",
+                "file": "2021-12-26-修改hosts.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-01-12-JavaScript入门.md",
+                "file": "2021-12-26-修改hosts.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-01-12-JavaScript入门.md"
+                "file": "2021-12-26-修改hosts.md"
               }
             }
           }
@@ -159,14 +158,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d23b4e80d7044dab",
+  "active": "80169791a3c3f056",
   "lastOpenFiles": [
-    "2024-08-26-React入门.md",
+    "2023-06-03-cmd设置代理.md",
+    "2021-12-26-虚拟机ping的问题.md",
+    "2021-12-26-修改hosts.md",
+    "2021-10-24-汇编笔记.md",
+    "2023-10-11-GitPage博客搭建.md",
+    "2023-06-26-How To Ask Questions The Smart Way.md",
+    "2023-10-13-JJWT详解.md",
+    "2023-10-12-JWT详解.md",
+    "2024-08-22-Google Chrome.md",
+    "2024-06-09-Google Search.md",
     "2023-01-12-IDEA使用.md",
+    "2024-06-30-Pycharm使用.md",
+    "2024-08-29-VSCode使用.md",
+    "2024-08-26-React入门.md",
     "2023-01-12-JavaScript入门.md",
+    "2024-08-28-HTML入门.md",
+    "2024-08-28-CSS入门.md",
+    "新建文本文档.txt",
     "2023-12-30-node.md",
     "2024-08-22-设计模式.md",
-    "新建文本文档.txt",
     "Untitled",
     "2023-01-26-python基础.md",
     "2024-08-24-Python爬虫.md",
@@ -175,20 +188,6 @@
     "2022-05-23-PythonSocket.md",
     "2021-07-01-Python正则.md",
     "2022-04-25-Python之旅下.md",
-    "2022-04-25-Python异步.md",
-    "2024-03-26-Python实用工具库.md",
-    "2023-02-12-Java初级.md",
-    "2024-06-09-Google Search.md",
-    "2023-01-26-Python基础.md",
-    "2024-06-30-Pycharm.md",
-    "2022-05-11-pyinstaller使用.md",
-    "2024-05-11-PySide6.md",
-    "2024-08-22-Google Chrome.md",
-    "2023-11-29-Windows定制.md",
-    "2024-08-04-SpringBoot单元测试.md",
-    "2021-11-14-Windows权限.md",
-    "2022-05-18-python虚拟环境.md",
-    "2024-08-15-python最佳实践.md",
     "Pasted image 20240729113232.png",
     "未命名绘图.png"
   ]

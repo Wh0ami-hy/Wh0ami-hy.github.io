@@ -1,10 +1,9 @@
 ---
-layout: post   	
-catalog: true 	
+layout: post
+catalog: true
 tags:
-    - JavaScript
+  - 前端三大件
 ---
-
 
 # 1. 前言
 
@@ -749,9 +748,7 @@ let dog = {type: 'animal', many: 2}
 let { type, many} = dog
 console.log(type, many)   //animal 2
 ```
-## 13.6. default, rest
-
-**default**
+## 13.6. default（默认值）
 
 在函数定义时为参数指定默认值，简化函数调用时的参数传递
 
@@ -763,22 +760,38 @@ function greet(name = 'World') {
   greet(); // 输出：Hello, World!
   greet('Alice'); // 输出：Hello, Alice!
 ```
+## 13.7. `...`运算符
 
-**rest**
-
-直接看例子：
+**函数 `rest` 参数的使用**
 
 ```
-function animals(...types){
-    console.log(types)
+function f(a, ...b) {
+    console.log(a, b)
 }
-animals('cat', 'dog', 'fish') //["cat", "dog", "fish"]
+f(1,2,3,4,5) // 1 [2,3,4,5]
 ```
-## 13.7. import和export
+
+**数组拆解**
+
+```
+const a = [1,2,3]
+const b = [4,5,6]
+const c = [...a, ...b]
+c // [1,2,3,4,5,6]
+```
+
+**对象拆解**
+
+```
+const obj = { a: 111, b:222 }
+const copyObj = { ...obj, c: 333 }
+copyObj // { a: 111, b:222, c: 333 }
+```
+## 13.8. import和export
 
 这两个对应的就是es6自己的`module`功能。ES6模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量
 
-### 13.7.1. 传统的写法
+### 13.8.1. 传统的写法
 
 首先我们回顾下require.js的写法。假设我们有两个js文件: `index.js`和`content.js`,现在我们想要在`index.js`中使用`content.js`返回的结果，我们要怎么做呢？
 
@@ -807,7 +820,7 @@ var animal = require('./content.js')
 //content.js
 module.exports = 'A cat'
 ```
-### 13.7.2. ES6的写法
+### 13.8.2. ES6的写法
 
 ```
 //index.js
@@ -817,9 +830,9 @@ import animal from './content'
 export default 'A cat'
 ```
 
-## 13.8. ES6 module的其他高级用法
+## 13.9. ES6 module的其他高级用法
 
-### 13.8.1. 输出输入多个变量
+### 13.9.1. 输出输入多个变量
 
 ```
 //content.js
@@ -853,7 +866,7 @@ let says = say()
 console.log(`The ${type} says ${says} to ${animal}`)  
 //The dog says Hello to A cat
 ```
-### 13.8.2. 修改变量名
+### 13.9.2. 修改变量名
 
 此时我们不喜欢type这个变量名，因为它有可能重名，所以我们需要修改一下它的变量名。在es6中可以用`as`实现一键换名。
 
@@ -865,7 +878,7 @@ let says = say()
 console.log(`The ${animalType} says ${says} to ${animal}`)  
 //The dog says Hello to A cat
 ```
-### 13.8.3. 模块的整体加载
+### 13.9.3. 模块的整体加载
 
 除了指定加载某个输出值，还可以使用整体加载，即用星号（`*`）指定一个对象，所有输出值都加载在这个对象上面。
 
@@ -879,16 +892,7 @@ console.log(`The ${content.type} says ${says} to ${animal}`)
 ```
 
 通常星号`*`结合`as`一起使用比较合适。
-## 13.9. 扩展运算符
 
-扩展运算符`...`允许将数组或对象展开，方便地将多个值合并或拷贝到另一个数组或对象中
-
-```javascript
-let a = ['周一','周二']
-// 将之前的内容全部展开，再生成一个新的对象
-let b = [...a, '周三', '周四']
-console.log(b)
-```
 ## 13.10. Promise
 
 一种用来处理异步操作的对象，它可以让异步操作更加简洁、可读和可维护
