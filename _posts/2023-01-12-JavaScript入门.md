@@ -230,58 +230,55 @@ var foo = function() {};
 由于 var 定义了一个声明语句，对变量 foo 的解析是在代码运行之前，因此 foo 变量在代码运行时已经被定义过了。
 
 但是由于赋值语句只在运行时执行，因此在相应代码执行之前， foo 的值缺省为 undefined。
-## 9.2. `this` 的工作原理
+## 9.2. `this` 的工作原理（重点）
 
-JavaScript 有一套完全不同于其它语言的对 `this` 的处理机制。 在**五**种不同的情况下 ，`this` 指向的各不相同
+**谁调用了函数，this就指向谁**
+
+JavaScript 有一套完全不同于其它语言的对 `this` 的处理机制。 在不同的情况下 ，`this` 指向的各不相同
 
 **全局范围内**
 
-当在全部范围内使用 `this`，它将会指向全局对象。浏览器中运行的 JavaScript 脚本，这个全局对象是 `window`。
+当在全局范围内使用 `this`，它将会指向全局对象。在浏览器中运行的 JavaScript 脚本，这个全局对象是 `window`
 
-**函数调用**
+**通过`函数名()` 直接调用**
 
+这里 `this` 也会指向全局对象
 ```javascript
-foo();
+function func(){  
+console.log(this);  
+}  
+func();//this指向window
 ```
-
-这里 `this` 也会指向_全局_对象。
-
 > **ES5 注意:** 在严格模式下（strict mode），不存在全局变量。 这种情况下 `this` 将会是 `undefined`。
 
-**方法调用**
+**方法调用：`对象.函数名()` 调用**
 
+this指向这个对象
 ```javascript
-test.foo(); 
+test.func(); 
 ```
-
-这个例子中，`this` 指向 `test` 对象
 
 **调用构造函数**
 
-```javascript
-new foo(); 
-```
-
-如果函数倾向于和 `new` 关键词一块使用，则我们称这个函数是 构造函数。 在函数内部，`this` 指向新创建的对象。
-
-**显式的设置 `this`**
+函数作为构造函数，用new关键字调用，this指向新new出的对象
 
 ```javascript
-function foo(a, b, c) {}
-
-var bar = {};
-foo.apply(bar, [1, 2, 3]); // 数组将会被扩展，如下所示
-foo.call(bar, 1, 2, 3); // 传递到foo的参数是：a = 1, b = 2, c = 3
+var obg = new func();//this指向new出的新obg
 ```
 
-当使用 Function.prototype 上的 call 或者 apply 方法时，函数内的 this 将会被 显式设置为函数调用的第一个参数。
+**函数作为数组的一个元素，通过数组下标调用 ---> this指向数组**  
+```javascript
+var arr = [func,1,2,3];  
+arr[0]();//this指向arr
+```
 
-因此函数调用的规则在上例中已经不适用了，在 foo 函数内 this 被设置成了 bar。
-
+**函数作为window内置函数的回调函数调用 ---> this指向window**  
+```javascript
+setTimeout(func,1000);//this指向window
+```
 ## 9.3. 闭包和引用
 
 闭包是 JavaScript 一个非常重要的特性，这意味着当前作用域**总是**能够访问外部作用域中的变量。 因为 函数 是 JavaScript 中唯一拥有自身作用域的结构，因此闭包的创建依赖于函数。
-
 ## 9.4. `arguments` 对象
 
 JavaScript 中每个函数内都能访问一个特别变量 `arguments`。这个变量维护着所有传递到这个函数中的参数列表
@@ -748,6 +745,8 @@ let dog = {type: 'animal', many: 2}
 let { type, many} = dog
 console.log(type, many)   //animal 2
 ```
+
+`const { printName } = logger` 等于`const printName = logger.printName`
 ## 13.6. default（默认值）
 
 在函数定义时为参数指定默认值，简化函数调用时的参数传递

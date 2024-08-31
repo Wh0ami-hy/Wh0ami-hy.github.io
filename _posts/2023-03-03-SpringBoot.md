@@ -105,7 +105,7 @@ protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigur
 }
 ```
 
-## 1.2. Spring Boot Starter
+## 1.2. SpringBoot Starter
 
 **Spring Boot Starter是什么**
 
@@ -352,7 +352,7 @@ xml配置文件、JavaConfig配置类、yml配置文件
 i18n 全称 Internationalization，也就是国际化的意思，因为单词太长，所以中间的 18 个字母被缩写为 18，再加上开头和结尾的字母，就组成了 i18n。
 
 通常要实现的效果是，前端有个按钮可以切换语言，对于前后端分离的项目建议把国际化做在前端。
-# 8. [Spring Data](https://spring.io/projects/spring-data)
+# 8. [SpringData](https://spring.io/projects/spring-data)
 
 对于数据访问，无论是SQL（关系型数据库）还是NoSQL（非关系型数据库），Spring Boot底层都是采用Spring Data的方式进行统一处理
 
@@ -522,85 +522,10 @@ public class UserService {
 # 9. SpringBoot数据库连接池
 
 springboot2.x默认数据库连接池是Hikari
-## 9.1. SpringBoot整合Druid
-
-Druid是高性能的关系型数据库连接池，它是阿里巴巴的一个开源项目。支持所有JDBC兼容的数据库，包括Oracle、MySQL、Derby、PostgreSQL、SQL Server、H2等。提供了丰富的监控和统计功能，可以帮助开发者更好地管理数据库连接
-
-在pom.xml中导入依赖
-
-```xml
-<dependency>
-	<groupId>com.alibaba</groupId>  
-	<artifactId>druid-spring-boot-starter</artifactId>
-    <version>1.1.5</version>
-</dependency>
-```
-
-yml 文件中添加以下配置项
-
-```yml
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    # 指定使用 Druid 数据源
-    type: com.alibaba.druid.pool.DruidDataSource
-    # 配置 Druid 数据源相关属性
-    druid:
-      # 初始连接数
-      initialSize: 5
-      # 最小连接池数量
-      minIdle: 10
-      # 最大连接池数量
-      maxActive: 20
-      # 配置获取连接等待超时的时间
-      maxWait: 60000
-      # 配置连接超时时间
-      connectTimeout: 30000
-      # 配置网络超时时间
-      socketTimeout: 60000
-      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-      timeBetweenEvictionRunsMillis: 60000
-      # 配置一个连接在池中最小生存的时间，单位是毫秒
-      minEvictableIdleTimeMillis: 300000
-      # 配置一个连接在池中最大生存的时间，单位是毫秒
-      maxEvictableIdleTimeMillis: 900000
-      # 配置检测连接是否有效
-      validationQuery: SELECT 1 FROM DUAL
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      webStatFilter:
-        enabled: true
-      statViewServlet:
-        enabled: true
-        # 设置白名单，不填则允许所有访问
-        allow:
-        url-pattern: /druid/*
-        # 控制台管理用户名和密码
-        login-username: yatoil
-        login-password: xxb-88809
-      filter:
-        stat:
-          enabled: true
-          # 慢SQL记录
-          log-slow-sql: true
-          slow-sql-millis: 1000
-          merge-sql: true
-        wall:
-          config:
-            multi-statement-allow: true
-```
-
-访问http://localhost:8080/druid/datasource.html
-
-admin/admin登录
-# 10. Spring Boot日志框架
+# 10. SpringBoot日志框架
 
 在Spring Boot 中导入`spring-boot-starter-web`后，不需要单独引入SLF4J 和 Logback，可直接使用
-# 11. Spring Boot全局异常处理（重点）
+# 11. SpringBoot全局异常处理（重点）
 
 通常情况下我们用`try.....catch....`对异常进行捕捉处理，但是在实际项目中对业务模块进行异常捕捉，会造成代码重复和繁杂， 我们希望代码中只有业务相关的操作，所有的异常我们单独设立一个类来处理它
 
@@ -970,7 +895,6 @@ server:
 ## 13.4. SpringBoot项目定制banner
 
 创建banner.txt 放在 resources目录下
-
 # 14. 计算代码执行时间
 
 Spring 或 Spring Boot 项目，可以在项目中直接使用 `StopWatch` 对象来统计代码执行时间
