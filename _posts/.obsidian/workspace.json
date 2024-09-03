@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "67194bb2ddf23647",
+        "id": "dcc3451a0d26ac98",
         "type": "tabs",
         "children": [
           {
-            "id": "69f37a90d819e86c",
+            "id": "5b16cb78d2fdca61",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2024-09-02-ReactRouter入门.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2024-09-02-ReactRouter入门.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2024-09-02-ReactRouter入门.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-26-React入门.md"
+                "file": "2024-09-02-ReactRouter入门.md"
               }
             }
           }
@@ -158,11 +158,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "69f37a90d819e86c",
+  "active": "5b16cb78d2fdca61",
   "lastOpenFiles": [
-    "2024-08-30-Vue最佳实践.md",
     "2024-08-30-React最佳实践.md",
+    "2024-09-02-ReactRouter入门.md",
+    "2024-09-02-React开发总结.md",
     "2024-08-26-React入门.md",
+    "2024-08-30-Vue最佳实践.md",
     "2024-08-29-VSCode使用.md",
     "2024-02-07-Vue项目结构.md",
     "2023-01-11-Vue3核心语法.md",
@@ -185,8 +187,6 @@
     "2021-10-24-汇编笔记.md",
     "2023-10-11-GitPage博客搭建.md",
     "2023-06-26-How To Ask Questions The Smart Way.md",
-    "2023-10-13-JJWT详解.md",
-    "2023-10-12-JWT详解.md",
     "Untitled",
     "Pasted image 20240729113232.png",
     "未命名绘图.png"
