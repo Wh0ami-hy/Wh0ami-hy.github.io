@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2023-09-26-Linux文件管理命令.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2023-09-26-Linux文件管理命令.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2023-09-26-Linux文件管理命令.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-26-React入门.md"
+                "file": "2023-09-26-Linux文件管理命令.md"
               }
             }
           }
@@ -150,21 +150,22 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
     }
   },
   "active": "69f37a90d819e86c",
   "lastOpenFiles": [
+    "2024-02-07-Vue项目结构.md",
+    "2024-08-24-Python爬虫.md",
+    "2024-08-26-React入门.md",
     "2024-08-30-Vue最佳实践.md",
     "2024-08-30-React最佳实践.md",
-    "2024-08-26-React入门.md",
     "2024-08-29-VSCode使用.md",
-    "2024-02-07-Vue项目结构.md",
     "2023-01-11-Vue3核心语法.md",
     "2023-01-12-JavaScript入门.md",
     "2023-02-12-Java初级.md",
@@ -186,7 +187,6 @@
     "2023-10-11-GitPage博客搭建.md",
     "2023-06-26-How To Ask Questions The Smart Way.md",
     "2023-10-13-JJWT详解.md",
-    "2023-10-12-JWT详解.md",
     "Untitled",
     "Pasted image 20240729113232.png",
     "未命名绘图.png"
