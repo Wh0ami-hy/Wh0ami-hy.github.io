@@ -1,23 +1,19 @@
 {
   "main": {
-    "id": "20bad47229ed9ac8",
+    "id": "f9d5bdd23f3bec4d",
     "type": "split",
     "children": [
       {
-        "id": "dcc3451a0d26ac98",
+        "id": "f32b1b7cdd4e35ae",
         "type": "tabs",
         "children": [
           {
-            "id": "5b16cb78d2fdca61",
+            "id": "16fd9a922a86e258",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
                 "file": "2024-09-02-ReactRouter入门.md",
-=======
-                "file": "2023-09-26-Linux文件管理命令.md",
->>>>>>> 2a649dedf373c50c81c956ddb862d9c716f96773
                 "mode": "source",
                 "source": false
               }
@@ -29,25 +25,25 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "17463501ac588933",
+    "id": "b0efe4ad11934902",
     "type": "split",
     "children": [
       {
-        "id": "c50c74a6804874a6",
+        "id": "ce663b0a159e7d49",
         "type": "tabs",
         "children": [
           {
-            "id": "b03172e9bc415e33",
+            "id": "93c5f74970e896fd",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byModifiedTime"
+                "sortOrder": "alphabetical"
               }
             }
           },
           {
-            "id": "bab56b64e4bf7ffd",
+            "id": "484e8eca18f08b6b",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -57,12 +53,12 @@
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
-                "sortOrder": "byModifiedTime"
+                "sortOrder": "alphabetical"
               }
             }
           },
           {
-            "id": "4a426ff463b55c41",
+            "id": "97cc3404528afa23",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -73,27 +69,24 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 300,
+    "collapsed": true
   },
   "right": {
-    "id": "c2ed0bcd55eeb68f",
+    "id": "d508948902057409",
     "type": "split",
     "children": [
       {
-        "id": "5669e0b918be3b27",
+        "id": "a19674f6af411ed1",
         "type": "tabs",
         "children": [
           {
-            "id": "9cc0f97114feea24",
+            "id": "c6a49711c0cc9678",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-<<<<<<< HEAD
                 "file": "2024-09-02-ReactRouter入门.md",
-=======
-                "file": "2023-09-26-Linux文件管理命令.md",
->>>>>>> 2a649dedf373c50c81c956ddb862d9c716f96773
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,23 +98,19 @@
             }
           },
           {
-            "id": "70d458578c400f1f",
+            "id": "07acd034a90b425d",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-<<<<<<< HEAD
                 "file": "2024-09-02-ReactRouter入门.md",
-=======
-                "file": "2023-09-26-Linux文件管理命令.md",
->>>>>>> 2a649dedf373c50c81c956ddb862d9c716f96773
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "da56010672e0fe1f",
+            "id": "e348b57f56603737",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -132,7 +121,7 @@
             }
           },
           {
-            "id": "89e848214bea1ee2",
+            "id": "5fb51f0364c3705a",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -144,78 +133,32 @@
             }
           },
           {
-            "id": "e64b84029b050e1c",
+            "id": "d5be6640e12679bf",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-<<<<<<< HEAD
                 "file": "2024-09-02-ReactRouter入门.md"
-=======
-                "file": "2023-09-26-Linux文件管理命令.md"
->>>>>>> 2a649dedf373c50c81c956ddb862d9c716f96773
               }
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "5b16cb78d2fdca61",
-  "lastOpenFiles": [
-<<<<<<< HEAD
-    "2024-08-30-React最佳实践.md",
-    "2024-09-02-ReactRouter入门.md",
-    "2024-09-02-React开发总结.md",
-    "2024-08-26-React入门.md",
-    "2024-08-30-Vue最佳实践.md",
-=======
-    "2024-02-07-Vue项目结构.md",
-    "2024-08-24-Python爬虫.md",
-    "2024-08-26-React入门.md",
-    "2024-08-30-Vue最佳实践.md",
-    "2024-08-30-React最佳实践.md",
->>>>>>> 2a649dedf373c50c81c956ddb862d9c716f96773
-    "2024-08-29-VSCode使用.md",
-    "2023-01-11-Vue3核心语法.md",
-    "2023-01-12-JavaScript入门.md",
-    "2023-02-12-Java初级.md",
-    "2024-08-31-SpringBoot整合Druid.md",
-    "2023-03-03-SpringBoot.md",
-    "2022-06-30-SpringData.md",
-    "2023-04-25-SpringBoot项目最佳实践.md",
-    "2024-01-10-SpringBootStarter自定义实现.md",
-    "2024-01-10-SpringBoot生态.md",
-    "2024-08-04-SpringBoot单元测试.md",
-    "2024-02-01-SpringBoot项目中的注解.md",
-    "2024-06-27-SpringBoot线程池.md",
-    "2024-03-24-Quasar开发总结.md",
-    "2023-06-03-cmd设置代理.md",
-    "新建文本文档.txt",
-    "2021-12-26-修改hosts.md",
-    "2021-12-26-虚拟机ping的问题.md",
-    "2021-10-24-汇编笔记.md",
-    "2023-10-11-GitPage博客搭建.md",
-    "2023-06-26-How To Ask Questions The Smart Way.md",
-<<<<<<< HEAD
-=======
-    "2023-10-13-JJWT详解.md",
->>>>>>> 2a649dedf373c50c81c956ddb862d9c716f96773
-    "Untitled",
-    "Pasted image 20240729113232.png",
-    "未命名绘图.png"
-  ]
+  "active": "16fd9a922a86e258",
+  "lastOpenFiles": []
 }

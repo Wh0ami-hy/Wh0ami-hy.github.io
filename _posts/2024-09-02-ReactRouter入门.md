@@ -42,7 +42,7 @@ ReactDOM.render(
 
 # 3. 创建全局布局
 
-```javascript
+```
 // src/layouts/MainLayout.js
 const MainLayout = ()=> {
     return (
@@ -105,7 +105,7 @@ export default router;
 # 4. 异常页
 
 定义异常页
-```javascript
+```
 // src/pages/ErrorPage.js
 import { useRouteError } from "react-router-dom";
 
@@ -194,7 +194,7 @@ import { Outlet } from "react-router-dom";
 
 使用`<Link to>`实现路由的跳转
 
-```javascript
+```
 // src/layouts/MainLayout.js
 {/* other code */}
 <nav>
@@ -210,6 +210,8 @@ import { Outlet } from "react-router-dom";
 {/* other code */}
 ```
 # 7. 路由参数
+
+形如`query:id`，怎么把路径中的id参数传递到组件中
 
 # 8. 导航状态
 
