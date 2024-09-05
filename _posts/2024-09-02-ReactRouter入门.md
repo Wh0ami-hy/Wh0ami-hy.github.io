@@ -211,10 +211,13 @@ import { Outlet } from "react-router-dom";
 ```
 # 7. 路由参数
 
-形如`query:id`，怎么把路径中的id参数传递到组件中
+形如 `/users/:userId`。`/users/123`，怎么把路径中的id参数传递到组件中
 
 # 8. 导航状态
 
 使用`useNavigation` hook，获取导航的状态，包括 `"idle" | "submitting" | "loading"`
 
 可以根据该状态，加载进度条等内容，可以配合React Content Loader 骨架屏使用
+
+# 9. 默认子路由
+

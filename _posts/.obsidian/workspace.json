@@ -6,6 +6,7 @@
       {
         "id": "f32b1b7cdd4e35ae",
         "type": "tabs",
+        "dimension": 76.65245202558636,
         "children": [
           {
             "id": "16fd9a922a86e258",
@@ -17,7 +18,26 @@
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "1b22c265a383bca9"
+          }
+        ]
+      },
+      {
+        "id": "2b423ad776d9f1bd",
+        "type": "tabs",
+        "dimension": 23.34754797441365,
+        "children": [
+          {
+            "id": "e5ab8c0252c6b88c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2024-09-02-ReactRouter入门.md"
+              }
+            },
+            "group": "1b22c265a383bca9"
           }
         ]
       }
@@ -38,7 +58,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "byModifiedTime"
               }
             }
           },
@@ -160,5 +180,17 @@
     }
   },
   "active": "16fd9a922a86e258",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "2024-08-30-React最佳实践.md",
+    "2024-09-02-ReactRouter入门.md",
+    "2024-09-04-组件的设计与封装.md",
+    "2024-08-26-React入门.md",
+    "2024-09-02-React开发总结.md",
+    "[React.md",
+    "2024-08-30-Vue最佳实践.md",
+    "2024-09-04-组件设计与封装.md",
+    "2021-07-01-Python正则.md",
+    "2024-03-26-Python实用工具库.md",
+    "Untitled"
+  ]
 }
