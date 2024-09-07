@@ -89,8 +89,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d508948902057409",
@@ -182,6 +181,8 @@
   "active": "16fd9a922a86e258",
   "lastOpenFiles": [
     "2024-08-26-React入门.md",
+    "2024-09-06-Mobx入门.md",
+    "2024-09-02-React Router入门.md",
     "2024-08-30-React最佳实践.md",
     "2023-11-29-Windows定制.md",
     "2024-09-02-ReactRouter入门.md",
