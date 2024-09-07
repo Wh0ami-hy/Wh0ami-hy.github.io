@@ -7,7 +7,7 @@ tags:
 [官方文档](https://reactrouter.com/en/main/start/tutorial)
 # 1. 创建路由
 
-创建一个路由，将路径和组件做匹配
+使用对象，创建一个路由，将路径和组件做匹配
 
 ```javascript
 // src/Router.js
@@ -102,7 +102,7 @@ const router = createBrowserRouter([
 
 export default router;
 ```
-# 4. 异常页
+# 4. 处理路由不存在异常
 
 定义异常页
 ```
@@ -212,12 +212,40 @@ import { Outlet } from "react-router-dom";
 # 7. 路由参数
 
 形如 `/users/:userId`。`/users/123`，怎么把路径中的id参数传递到组件中
-
 # 8. 导航状态
 
 使用`useNavigation` hook，获取导航的状态，包括 `"idle" | "submitting" | "loading"`
 
 可以根据该状态，加载进度条等内容，可以配合React Content Loader 骨架屏使用
-
 # 9. 默认子路由
+
+在配置完路由后，直接访问应用，只会展示全局布局组件，不会展示具体的业务组件
+
+`<Outlet>` 不会返回任何组件，因为没有任何子路由匹配，也就是说`<Outlet>`是根据子路由去返回组件的
+
+```
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <MainLayout />,
+        errorElement: <ErrorPage />,
+        children: [
+            { index: true, element: <Query /> },
+            {
+                path: "query",
+                element: <Query />,
+            },
+            {
+                path: "hello",
+                element: <Hello />,
+            },
+        ],
+    },
+]);
+```
+在children中配置`{ index: true, element: <Index /> }`，当访问其父路由时，`<Outlet>` 就会返回`{ index: true, element: <Index /> }`中配置的组件
+
+# 10. JSX Routes
+
+使用JSX的方式创建路由和使用对象的方式创建路由效果是一样的，使用习惯不同而已
 
