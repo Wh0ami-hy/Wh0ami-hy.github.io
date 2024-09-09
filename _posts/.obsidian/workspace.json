@@ -4,40 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "f32b1b7cdd4e35ae",
+        "id": "2b423ad776d9f1bd",
         "type": "tabs",
-        "dimension": 76.65245202558636,
         "children": [
           {
-            "id": "16fd9a922a86e258",
+            "id": "14da16911b35c692",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-09-06-Mobx入门.md",
+                "file": "2024-08-30-React最佳实践.md",
                 "mode": "source",
                 "source": false
               }
-            },
-            "group": "1b22c265a383bca9"
-          }
-        ]
-      },
-      {
-        "id": "2b423ad776d9f1bd",
-        "type": "tabs",
-        "dimension": 23.34754797441365,
-        "children": [
-          {
-            "id": "e5ab8c0252c6b88c",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2024-09-06-Mobx入门.md"
-              }
-            },
-            "group": "1b22c265a383bca9"
+            }
           }
         ]
       }
@@ -105,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-09-06-Mobx入门.md",
+                "file": "2024-08-30-React最佳实践.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-09-06-Mobx入门.md",
+                "file": "2024-08-30-React最佳实践.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -157,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-09-06-Mobx入门.md"
+                "file": "2024-08-30-React最佳实践.md"
               }
             }
           }
@@ -178,18 +158,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "16fd9a922a86e258",
+  "active": "14da16911b35c692",
   "lastOpenFiles": [
-    "2024-09-04-组件的设计与封装.md",
+    "2024-09-09-前端框架中的状态管理.md",
+    "2024-08-30-React最佳实践.md",
     "2024-08-26-React入门.md",
+    "2024-09-09-什么是状态.tx",
+    "新建文本文档.txt",
     "2024-09-02-React Router入门.md",
     "2024-09-06-Mobx入门.md",
-    "2024-08-30-React最佳实践.md",
+    "2024-08-30-Vue最佳实践.md",
+    "2024-09-04-组件的设计与封装.md",
     "2023-11-29-Windows定制.md",
     "2024-09-02-ReactRouter入门.md",
     "2024-09-02-React开发总结.md",
     "[React.md",
-    "2024-08-30-Vue最佳实践.md",
     "2024-09-04-组件设计与封装.md",
     "2021-07-01-Python正则.md",
     "2024-03-26-Python实用工具库.md",

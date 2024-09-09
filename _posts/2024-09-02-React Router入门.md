@@ -142,7 +142,6 @@ const router = createBrowserRouter([
     },
 ]);
 ```
-
 # 5. 嵌套路由
 
 在全局布局中，加载其他组件
