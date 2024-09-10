@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-12-30-node.md",
+                "file": "2023-12-30-Node.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:node",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,8 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d508948902057409",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-12-30-node.md",
+                "file": "2023-12-30-Node.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-12-30-node.md",
+                "file": "2023-12-30-Node.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-12-30-node.md"
+                "file": "2023-12-30-Node.md"
               }
             }
           }
@@ -160,10 +159,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "484e8eca18f08b6b",
+  "active": "14da16911b35c692",
   "lastOpenFiles": [
-    "2024-09-09-前端框架中的状态管理.md",
+    "2024-09-10-Taro开发实践.md",
     "2024-08-30-React最佳实践.md",
+    "2023-12-30-node.md",
+    "2024-09-09-前端框架中的状态管理.md",
     "2024-02-07-Vue项目结构.md",
     "2024-03-24-Quasar开发总结.md",
     "2024-08-26-React入门.md",
