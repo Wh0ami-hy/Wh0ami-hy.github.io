@@ -6,6 +6,7 @@
       {
         "id": "2b423ad776d9f1bd",
         "type": "tabs",
+        "dimension": 81.02345415778251,
         "children": [
           {
             "id": "14da16911b35c692",
@@ -13,11 +14,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-12-30-Node.md",
+                "file": "2024-09-11-ping主机的历程.md",
                 "mode": "source",
                 "source": false
               }
-            }
+            },
+            "group": "15aa9e31578dfdcb"
+          }
+        ]
+      },
+      {
+        "id": "b5a004101f1501c5",
+        "type": "tabs",
+        "dimension": 18.976545842217483,
+        "children": [
+          {
+            "id": "1fd619de74a5b4f0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2024-09-11-ping主机的历程.md"
+              }
+            },
+            "group": "15aa9e31578dfdcb"
           }
         ]
       }
@@ -48,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:node",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +85,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-12-30-Node.md",
+                "file": "2024-09-11-ping主机的历程.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-12-30-Node.md",
+                "file": "2024-09-11-ping主机的历程.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +157,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-12-30-Node.md"
+                "file": "2024-09-11-ping主机的历程.md"
               }
             }
           }
@@ -161,15 +180,27 @@
   },
   "active": "14da16911b35c692",
   "lastOpenFiles": [
-    "2024-09-10-Taro开发实践.md",
+    "2023-09-21-计算机网络.md",
+    "2024-09-11-ping主机的历程.md",
+    "新建文本文档.txt",
+    "2024-07-29-网页访问的历程.md",
+    "2024-06-25-数据库系统概论.md",
+    "2023-09-30-操作系统.md",
     "2024-08-30-React最佳实践.md",
+    "2024-08-26-React入门.md",
+    "2023-09-30-计算机组成原理.md",
+    "2024-07-09-软件工程.md",
+    "2024-07-09-操作系统.md",
+    "2024-07-09-计算机基础.md",
+    "2024-07-09-计算机网络.md",
+    "2024-07-09-数据库.md",
+    "2023-12-30-Node.md",
+    "2024-09-10-Taro开发实践.md",
     "2023-12-30-node.md",
     "2024-09-09-前端框架中的状态管理.md",
     "2024-02-07-Vue项目结构.md",
     "2024-03-24-Quasar开发总结.md",
-    "2024-08-26-React入门.md",
     "2024-09-09-什么是状态.tx",
-    "新建文本文档.txt",
     "2024-09-02-React Router入门.md",
     "2024-09-06-Mobx入门.md",
     "2024-08-30-Vue最佳实践.md",
@@ -177,10 +208,6 @@
     "2023-11-29-Windows定制.md",
     "2024-09-02-ReactRouter入门.md",
     "2024-09-02-React开发总结.md",
-    "[React.md",
-    "2024-09-04-组件设计与封装.md",
-    "2021-07-01-Python正则.md",
-    "2024-03-26-Python实用工具库.md",
     "Untitled"
   ]
 }
