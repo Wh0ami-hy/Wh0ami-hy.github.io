@@ -4,40 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "0021dbe4f78ed154",
+        "id": "697d5a33b3301ddf",
         "type": "tabs",
-        "dimension": 76.74262734584451,
         "children": [
           {
-            "id": "875064bd116e39e1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2021-12-31-SQL语法.md",
-                "mode": "source",
-                "source": false
-              }
-            },
-            "group": "718d28f71c7c90c4"
-          }
-        ]
-      },
-      {
-        "id": "3d2b95d5e2230d98",
-        "type": "tabs",
-        "dimension": 23.257372654155496,
-        "children": [
-          {
-            "id": "d2e4d97243c9415d",
+            "id": "52ecd4b0ef0ff92d",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2021-12-31-SQL语法.md"
-              }
-            },
-            "group": "718d28f71c7c90c4"
+              "state": {}
+            }
           }
         ]
       }
@@ -85,13 +61,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d508948902057409",
@@ -107,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2021-12-31-SQL语法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2021-12-31-SQL语法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -158,9 +130,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2021-12-31-SQL语法.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -180,8 +150,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "875064bd116e39e1",
+  "active": "52ecd4b0ef0ff92d",
   "lastOpenFiles": [
+    "2024-09-13-信息安全.md",
+    "2021-12-31-SQL语法.md",
     "2023-01-02-MySQL压缩包式安装.md",
     "2023-09-26-Linux文件管理命令.md",
     "2023-10-12-Linux网络管理与配置.md",
@@ -207,9 +179,7 @@
     "2023-12-30-node.md",
     "2024-09-09-前端框架中的状态管理.md",
     "2024-02-07-Vue项目结构.md",
-    "2024-03-24-Quasar开发总结.md",
     "2024-09-09-什么是状态.tx",
-    "2024-09-02-React Router入门.md",
     "Untitled"
   ]
 }
