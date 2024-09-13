@@ -232,7 +232,7 @@ service层的实现类serviceImpl 再调用mapper层的接口，进行业务逻�
 
 mapper层的接口在对应的xml配置文件中进行配置、实现以及关联，mapper层的任务就是向数据库发送sql语句，完成数据的处理任务
 
-![springmvc各层调用](F:\笔记\博客\文章图片\springmvc各层调用.png)
+![springmvc各层调用](https://blog0912pic.oss-cn-beijing.aliyuncs.com/blog/202409131106489.png)
 
 ## 1.11. 编写顺序
 

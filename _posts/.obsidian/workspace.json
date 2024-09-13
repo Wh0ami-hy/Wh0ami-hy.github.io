@@ -4,16 +4,40 @@
     "type": "split",
     "children": [
       {
-        "id": "b5a004101f1501c5",
+        "id": "0021dbe4f78ed154",
         "type": "tabs",
+        "dimension": 76.74262734584451,
         "children": [
           {
-            "id": "1fd619de74a5b4f0",
+            "id": "875064bd116e39e1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2021-12-31-SQL语法.md",
+                "mode": "source",
+                "source": false
+              }
+            },
+            "group": "718d28f71c7c90c4"
+          }
+        ]
+      },
+      {
+        "id": "3d2b95d5e2230d98",
+        "type": "tabs",
+        "dimension": 23.257372654155496,
+        "children": [
+          {
+            "id": "d2e4d97243c9415d",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
-            }
+              "state": {
+                "file": "2021-12-31-SQL语法.md"
+              }
+            },
+            "group": "718d28f71c7c90c4"
           }
         ]
       }
@@ -61,11 +85,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d508948902057409",
@@ -81,6 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "2021-12-31-SQL语法.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "2021-12-31-SQL语法.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,7 +158,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "2021-12-31-SQL语法.md"
+              }
             }
           }
         ]
@@ -150,16 +180,23 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "1fd619de74a5b4f0",
+  "active": "875064bd116e39e1",
   "lastOpenFiles": [
+    "2023-01-02-MySQL压缩包式安装.md",
+    "2023-09-26-Linux文件管理命令.md",
+    "2023-10-12-Linux网络管理与配置.md",
+    "2023-09-24-Linux基本命令.md",
+    "2024-01-12-MySQL时区问题.md",
+    "2024-08-26-React入门.md",
+    "2024-09-10-Taro开发实践.md",
+    "2024-09-02-React开发总结.md",
+    "2024-07-29-网页访问的历程.md",
     "2023-09-21-计算机网络.md",
     "2024-09-11-ping主机的历程.md",
     "新建文本文档.txt",
-    "2024-07-29-网页访问的历程.md",
     "2024-06-25-数据库系统概论.md",
     "2023-09-30-操作系统.md",
     "2024-08-30-React最佳实践.md",
-    "2024-08-26-React入门.md",
     "2023-09-30-计算机组成原理.md",
     "2024-07-09-软件工程.md",
     "2024-07-09-操作系统.md",
@@ -167,19 +204,12 @@
     "2024-07-09-计算机网络.md",
     "2024-07-09-数据库.md",
     "2023-12-30-Node.md",
-    "2024-09-10-Taro开发实践.md",
     "2023-12-30-node.md",
     "2024-09-09-前端框架中的状态管理.md",
     "2024-02-07-Vue项目结构.md",
     "2024-03-24-Quasar开发总结.md",
     "2024-09-09-什么是状态.tx",
     "2024-09-02-React Router入门.md",
-    "2024-09-06-Mobx入门.md",
-    "2024-08-30-Vue最佳实践.md",
-    "2024-09-04-组件的设计与封装.md",
-    "2023-11-29-Windows定制.md",
-    "2024-09-02-ReactRouter入门.md",
-    "2024-09-02-React开发总结.md",
     "Untitled"
   ]
 }
