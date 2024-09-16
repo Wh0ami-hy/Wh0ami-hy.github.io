@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-09-14-以太网协议.md",
+                "file": "2024-09-16-VueToElectron.md",
                 "mode": "source",
                 "source": false
               }
@@ -34,7 +34,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-09-14-以太网协议.md"
+                "file": "2024-09-16-VueToElectron.md"
               }
             },
             "group": "dff09daf9d8f86b7"
@@ -89,7 +89,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d508948902057409",
@@ -105,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-09-14-以太网协议.md",
+                "file": "2024-09-16-VueToElectron.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-09-14-以太网协议.md",
+                "file": "2024-09-16-VueToElectron.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -157,7 +158,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-09-14-以太网协议.md"
+                "file": "2024-09-16-VueToElectron.md"
               }
             }
           }
@@ -170,18 +171,18 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
   "active": "ebc7a8a3c2841616",
   "lastOpenFiles": [
-    "2023-09-21-计算机网络总述.md",
     "2024-09-14-以太网协议.md",
+    "2023-09-21-计算机网络总述.md",
     "2024-09-11-ping探测的历程.md",
     "2023-09-21-计算机网络.md",
     "2024-09-13-信息安全.md",
