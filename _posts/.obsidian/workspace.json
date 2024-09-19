@@ -6,7 +6,7 @@
       {
         "id": "697d5a33b3301ddf",
         "type": "tabs",
-        "dimension": 75.06702412868633,
+        "dimension": 76.4745308310992,
         "children": [
           {
             "id": "ebc7a8a3c2841616",
@@ -14,30 +14,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-09-10-Taro开发实践.md",
+                "file": "2021-07-01-Python正则.md",
                 "mode": "source",
                 "source": false
               }
             },
-            "group": "dff09daf9d8f86b7"
+            "group": "729b424710a02fd8"
           }
         ]
       },
       {
-        "id": "3da84a9a4ae296a3",
+        "id": "fde025f9876b5fc1",
         "type": "tabs",
-        "dimension": 24.932975871313673,
+        "dimension": 23.525469168900806,
         "children": [
           {
-            "id": "807b850dfcc3af16",
+            "id": "07f0a2d10a742e18",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-09-10-Taro开发实践.md"
+                "file": "2021-07-01-Python正则.md"
               }
             },
-            "group": "dff09daf9d8f86b7"
+            "group": "729b424710a02fd8"
           }
         ]
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:taro",
+                "query": "file:正则",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,7 +90,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d508948902057409",
@@ -106,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-09-10-Taro开发实践.md",
+                "file": "2021-07-01-Python正则.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-09-10-Taro开发实践.md",
+                "file": "2021-07-01-Python正则.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -158,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-09-10-Taro开发实践.md"
+                "file": "2021-07-01-Python正则.md"
               }
             }
           }
@@ -181,6 +182,7 @@
   },
   "active": "ebc7a8a3c2841616",
   "lastOpenFiles": [
+    "2024-09-10-Taro开发实践.md",
     "2024-08-26-React入门.md",
     "2024-08-30-React最佳实践.md",
     "2023-05-24-Java实用工具库.md",
@@ -200,7 +202,6 @@
     "2023-10-12-Linux网络管理与配置.md",
     "2023-09-24-Linux基本命令.md",
     "2024-01-12-MySQL时区问题.md",
-    "2024-09-10-Taro开发实践.md",
     "2024-09-02-React开发总结.md",
     "2024-07-29-网页访问的历程.md",
     "新建文本文档.txt",
