@@ -829,6 +829,21 @@ import animal from './content'
 export default 'A cat'
 ```
 
+**注意**
+
+`export default` 用于导出一个默认的模块，而 `export {}` 用于导出多个模块。区别在导入时，`export default`导出的不要使用大括号引入，而 `export {}`导出的需要使用大括号并指定导出的模块名称
+
+```
+// 导出
+export default Index;
+// 导入
+import Index
+
+// 导出
+export {Index};
+// 导入
+import {Index}
+```
 ## 13.9. ES6 module的其他高级用法
 
 ### 13.9.1. 输出输入多个变量

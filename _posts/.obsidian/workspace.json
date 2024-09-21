@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2023-01-12-JavaScript入门.md",
                 "mode": "source",
                 "source": false
               }
@@ -34,7 +34,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-26-React入门.md"
+                "file": "2023-01-12-JavaScript入门.md"
               }
             },
             "group": "729b424710a02fd8"
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:react",
+                "query": "file:java",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2023-01-12-JavaScript入门.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2023-01-12-JavaScript入门.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-26-React入门.md"
+                "file": "2023-01-12-JavaScript入门.md"
               }
             }
           }
@@ -182,15 +182,16 @@
   },
   "active": "ebc7a8a3c2841616",
   "lastOpenFiles": [
-    "2021-07-01-Python正则.md",
     "2024-09-10-Taro开发实践.md",
+    "2024-08-29-VSCode使用.md",
+    "2023-11-29-Windows定制.md",
+    "2024-09-17-nvm使用.md",
     "2024-08-26-React入门.md",
+    "2021-07-01-Python正则.md",
     "2024-08-30-React最佳实践.md",
     "2023-05-24-Java实用工具库.md",
-    "2024-09-17-nvm使用.md",
     "2023-12-30-node.md",
     "2024-09-16-Vue转Electron.md",
-    "2024-08-29-VSCode使用.md",
     "2024-09-14-以太网协议.md",
     "2023-09-21-计算机网络总述.md",
     "2024-09-11-ping探测的历程.md",
@@ -208,7 +209,6 @@
     "2024-06-25-数据库系统概论.md",
     "2023-09-30-操作系统.md",
     "2023-09-30-计算机组成原理.md",
-    "2024-07-09-软件工程.md",
     "2024-09-09-什么是状态.tx",
     "Untitled"
   ]
