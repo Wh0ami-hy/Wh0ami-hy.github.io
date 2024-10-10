@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-01-12-IDEA使用.md",
+                "file": "2024-06-27-Lombok注解.md",
                 "mode": "source",
                 "source": false
               }
@@ -34,7 +34,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-01-12-IDEA使用.md"
+                "file": "2024-06-27-Lombok注解.md"
               }
             },
             "group": "729b424710a02fd8"
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:idea",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,13 +85,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d508948902057409",
@@ -107,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023-01-12-IDEA使用.md",
+                "file": "2024-06-27-Lombok注解.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023-01-12-IDEA使用.md",
+                "file": "2024-06-27-Lombok注解.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +157,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-01-12-IDEA使用.md"
+                "file": "2024-06-27-Lombok注解.md"
               }
             }
           }
@@ -180,14 +178,22 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ebc7a8a3c2841616",
+  "active": "93c5f74970e896fd",
   "lastOpenFiles": [
+    "2024-08-31-SpringBoot整合Druid.md",
+    "2024-08-22-设计模式.md",
+    "2023-09-07-SpringBoot日志最佳实践.md",
+    "2023-04-25-SpringBoot项目最佳实践.md",
+    "2022-06-30-MyBatis.md",
+    "2023-03-03-SpringBoot.md",
+    "2024-06-27-Lombok注解.md",
+    "2024-08-29-VSCode使用.md",
+    "2023-01-12-IDEA使用.md",
     "2024-09-10-Taro开发实践.md",
     "2024-09-25-Javadoc 最佳实践.md",
     "2024-08-26-React入门.md",
     "2024-08-30-React最佳实践.md",
     "2023-01-12-JavaScript入门.md",
-    "2024-08-29-VSCode使用.md",
     "2023-11-29-Windows定制.md",
     "2024-09-17-nvm使用.md",
     "2021-07-01-Python正则.md",
@@ -200,15 +206,7 @@
     "2023-09-21-计算机网络.md",
     "2024-09-13-信息安全.md",
     "2021-12-31-SQL语法.md",
-    "2023-01-02-MySQL压缩包式安装.md",
-    "2023-09-26-Linux文件管理命令.md",
-    "2023-10-12-Linux网络管理与配置.md",
-    "2023-09-24-Linux基本命令.md",
-    "2024-01-12-MySQL时区问题.md",
-    "2024-09-02-React开发总结.md",
-    "2024-07-29-网页访问的历程.md",
     "新建文本文档.txt",
-    "2024-06-25-数据库系统概论.md",
     "2024-09-09-什么是状态.tx",
     "Untitled"
   ]
