@@ -91,3 +91,20 @@ tags:
 |`Ctrl` `Right`|Move your cursor to the back of the next word in a text field|
 |`Ctrl` `Backspace`|Delete the previous word in a text field|
 |`Alt` `Home`|Open the Home page in the current tab|
+# 5. 允许在控制台粘贴内容
+
+默认是不允许在控制台进行粘贴内容的
+
+Warning: Don’t paste code into the DevTools Console that you don’t understand or haven’t reviewed yourself. This could allow attackers to steal your identity or take control of your computer. Please [type](https://so.csdn.net/so/search?q=type&spm=1001.2101.3001.7020) ‘allow pasting’ below to allow pasting.
+
+在控制台输入：allow pasting 回车即可
+
+# 6. 修改User-Agent的方法
+
+添加启动参数 `--user-agent="自定义的User-Agent值"`，可在命令行或快捷方式的“目标”框中使用
+
+# 7. 请求的重放
+
+通过鼠标在请求的列表中找到我们需要复制的请求，右键——Copy——Copy as fetch
+
+到这里我们的请求已经被复制下来了，那怎么实现重新请求呢？很简单，还是刚才的页面，我们切换到Console页面，直接粘贴回车即可，需要多次请求则粘贴多次。
