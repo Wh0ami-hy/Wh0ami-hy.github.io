@@ -13,17 +13,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-10-17-MySQL运维脚本.md"
+                "file": "2024-10-22-WEB认证机制.md"
               }
             }
           },
           {
-            "id": "e22048acd94efd8f",
+            "id": "a3724131c3bf88a3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2024-10-17-MySQL运维脚本.md",
+                "file": "2024-10-22-WEB认证机制.md",
                 "mode": "source",
                 "source": false
               }
@@ -59,7 +59,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:web",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -76,11 +76,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d508948902057409",
@@ -96,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024-10-17-MySQL运维脚本.md",
+                "file": "2024-10-22-WEB认证机制.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024-10-17-MySQL运维脚本.md",
+                "file": "2024-10-22-WEB认证机制.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-10-17-MySQL运维脚本.md"
+                "file": "2024-10-22-WEB认证机制.md"
               }
             }
           }
@@ -169,10 +171,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "e22048acd94efd8f",
+  "active": "a3724131c3bf88a3",
   "lastOpenFiles": [
-    "2024-08-22-设计模式.md",
+    "2022-08-17-Web认证机制的发展.md",
+    "2024-10-22-WEB认证机制.md",
     "2024-10-17-MySQL运维脚本.md",
+    "2024-08-22-设计模式.md",
     "2023-11-29-Windows定制.md",
     "2024-08-22-Google Chrome.md",
     "2024-08-31-SpringBoot整合Druid.md",
@@ -195,8 +199,6 @@
     "2024-09-16-Vue转Electron.md",
     "2024-09-14-以太网协议.md",
     "2023-09-21-计算机网络总述.md",
-    "2024-09-11-ping探测的历程.md",
-    "2023-09-21-计算机网络.md",
     "新建文本文档.txt",
     "2024-09-09-什么是状态.tx",
     "Untitled"
