@@ -113,9 +113,7 @@ ij_java_do_not_indent_top_level_class_members = true # 顶级类成员不缩进�
 # 3. VSCode中使用
 
 
-打开 **Settings**（Ctrl+, / Cmd+,）。
-
-搜索 editorconfig，确保 “EditorConfig: Enabled” 是开启状态。
+打开 Settings，搜索 editorconfig，确保 EditorConfig: Enabled 是开启状态。
 
 ```
 # 表示这是根配置文件
