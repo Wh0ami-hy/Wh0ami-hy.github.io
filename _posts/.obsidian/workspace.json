@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2023-07-26-CentOS初始化.md",
+                "file": "2021-12-31-SQL语法.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2023-07-26-CentOS初始化"
+              "title": "2021-12-31-SQL语法"
             }
           }
         ]
@@ -35,13 +35,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2023-07-26-CentOS初始化.md",
+                "file": "2021-12-31-SQL语法.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2023-07-26-CentOS初始化 的大纲"
+              "title": "2021-12-31-SQL语法 的大纲"
             }
           },
           {
@@ -96,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:语法",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -117,7 +117,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -228,8 +229,8 @@
   },
   "active": "7c1e148e0317f38c",
   "lastOpenFiles": [
-    "2023-01-20-Docker理论.md",
     "2023-07-26-CentOS初始化.md",
+    "2023-01-20-Docker理论.md",
     "2024-08-30-Vue3最佳实践.md",
     "2023-01-07-Maven.md",
     "2024-05-08-Maven注意事项.md",
