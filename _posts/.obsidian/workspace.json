@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2021-12-31-SQL语法.md",
+                "file": "2025-03-31-Nginx反向代理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2021-12-31-SQL语法"
+              "title": "2025-03-31-Nginx反向代理"
             }
           }
         ]
@@ -35,13 +35,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2021-12-31-SQL语法.md",
+                "file": "2025-03-31-Nginx反向代理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2021-12-31-SQL语法 的大纲"
+              "title": "2025-03-31-Nginx反向代理 的大纲"
             }
           },
           {
@@ -96,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:语法",
+                "query": "file:nginx",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -122,8 +122,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 261.5,
-    "collapsed": true
+    "width": 261.5
   },
   "right": {
     "id": "d508948902057409",
@@ -229,6 +228,11 @@
   },
   "active": "7c1e148e0317f38c",
   "lastOpenFiles": [
+    "2023-11-27-Nginx应用.md",
+    "2023-11-27-Nginx配置.md",
+    "2025-03-31-Nginx反向代理.md",
+    "2025-03-31-反向代理-基于域名分发.md",
+    "2021-12-31-SQL语法.md",
     "2023-07-26-CentOS初始化.md",
     "2023-01-20-Docker理论.md",
     "2024-08-30-Vue3最佳实践.md",
@@ -250,11 +254,6 @@
     "2023-02-12-Java高级.md",
     "2023-02-09-阿里Java开发手册.md",
     "2021-07-05-Java网络编程.md",
-    "2024-08-29-VSCode使用.md",
-    "2025-02-26-代码风格统一.md",
-    "2024-06-30-Pycharm使用.md",
-    "2024-02-07-Vue项目结构.md",
-    "2023-02-03-Element开发总结.md",
     "新建文本文档.txt",
     "2024-09-09-什么是状态.tx",
     "Untitled"
