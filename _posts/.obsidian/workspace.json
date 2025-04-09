@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025-03-31-Nginx反向代理.md",
+                "file": "2023-05-24-Java实用工具库.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-03-31-Nginx反向代理"
+              "title": "2023-05-24-Java实用工具库"
             }
           }
         ]
@@ -35,13 +35,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2025-03-31-Nginx反向代理.md",
+                "file": "2023-05-24-Java实用工具库.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2025-03-31-Nginx反向代理 的大纲"
+              "title": "2023-05-24-Java实用工具库 的大纲"
             }
           },
           {
@@ -96,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:nginx",
+                "query": "file:Java",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -228,9 +228,10 @@
   },
   "active": "7c1e148e0317f38c",
   "lastOpenFiles": [
+    "2023-04-02-Java内存管理.md",
+    "2025-03-31-Nginx反向代理.md",
     "2023-11-27-Nginx应用.md",
     "2023-11-27-Nginx配置.md",
-    "2025-03-31-Nginx反向代理.md",
     "2025-03-31-反向代理-基于域名分发.md",
     "2021-12-31-SQL语法.md",
     "2023-07-26-CentOS初始化.md",
@@ -248,7 +249,6 @@
     "2024-01-14-Java字符串处理类.md",
     "2023-12-21-Java日期时间处理类.md",
     "2023-05-24-Java实用工具库.md",
-    "2023-04-02-Java内存管理.md",
     "2023-02-13-Java多线程.md",
     "2023-02-12-Java中级.md",
     "2023-02-12-Java高级.md",
