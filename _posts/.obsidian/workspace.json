@@ -6,6 +6,7 @@
       {
         "id": "c358d3fcb4d70c42",
         "type": "tabs",
+        "dimension": 71.13821138211382,
         "children": [
           {
             "id": "db4b3ae3872407af",
@@ -19,6 +20,28 @@
               },
               "icon": "lucide-file",
               "title": "2023-07-26-CentOS初始化"
+            }
+          }
+        ]
+      },
+      {
+        "id": "f91b6fc29ea60828",
+        "type": "tabs",
+        "dimension": 28.86178861788618,
+        "children": [
+          {
+            "id": "a07f442e9b72e8c9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023-07-26-CentOS初始化.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "2023-07-26-CentOS初始化 的大纲"
             }
           }
         ]
@@ -79,8 +102,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 261.5,
-    "collapsed": true
+    "width": 261.5
   },
   "right": {
     "id": "d508948902057409",
@@ -186,6 +208,7 @@
   },
   "active": "db4b3ae3872407af",
   "lastOpenFiles": [
+    "2023-01-20-Docker理论.md",
     "2023-07-26-CentOS初始化.md",
     "2021-12-26-U盘装系统.md",
     "2023-05-24-Java实用工具库.md",
@@ -195,7 +218,6 @@
     "2023-11-27-Nginx配置.md",
     "2025-03-31-反向代理-基于域名分发.md",
     "2021-12-31-SQL语法.md",
-    "2023-01-20-Docker理论.md",
     "2024-08-30-Vue3最佳实践.md",
     "2023-01-07-Maven.md",
     "2024-05-08-Maven注意事项.md",
