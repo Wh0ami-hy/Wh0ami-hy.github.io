@@ -4,79 +4,40 @@
     "type": "split",
     "children": [
       {
-        "id": "f91b6fc29ea60828",
+        "id": "e265d43515293ef9",
         "type": "tabs",
-        "dimension": 73.25737265415549,
         "children": [
           {
-            "id": "a07f442e9b72e8c9",
+            "id": "6d5958c1997e1bda",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "2025-04-30-Dockerfile构建镜像.md",
+                "file": "2023-01-20-Docker基础.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2025-04-30-Dockerfile构建镜像 的大纲"
+              "title": "2023-01-20-Docker基础 的大纲"
             }
           },
           {
-            "id": "2d1629c13af82579",
+            "id": "85c09f3ce2a0a13f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2025-04-30-Dockerfile构建镜像.md",
+                "file": "2025-04-30-DockerCompose.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-04-30-Dockerfile构建镜像"
-            },
-            "group": "2086e9717bcd0ef5"
-          },
-          {
-            "id": "3e57ca15134b0a05",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023-01-20-Docker基础.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2023-01-20-Docker基础"
+              "title": "2025-04-30-DockerCompose"
             }
           }
         ],
         "currentTab": 1
-      },
-      {
-        "id": "673de1083129d2fe",
-        "type": "tabs",
-        "dimension": 26.742627345844504,
-        "children": [
-          {
-            "id": "a348abac1dcbf4bd",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "2025-04-30-Dockerfile构建镜像.md",
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "2025-04-30-Dockerfile构建镜像 的大纲"
-            },
-            "group": "2086e9717bcd0ef5"
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -108,8 +69,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:docker",
-                "matchingCase": false,
+                "query": "",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -129,8 +90,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -238,16 +198,23 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "2d1629c13af82579",
+  "active": "85c09f3ce2a0a13f",
   "lastOpenFiles": [
-    "2023-01-20-Docker基础.md",
     "2025-04-30-Dockerfile构建镜像.md",
     "2025-04-30-DockerCompose.md",
+    "2023-09-22-Linux入门.md",
     "2023-07-26-Docker实践.md",
+    "2023-01-20-Docker基础.md",
+    "2025-05-06-什么是挂载.md",
+    "2025-05-06-网络分层.md",
+    "2024-09-14-以太网协议.md",
+    "2024-07-29-网页访问的历程.md",
+    "2023-09-21-计算机网络总述.md",
+    "2024-08-12-Linux硬盘分区指南.md",
+    "2024-09-02-React Router入门.md",
     "2025-04-30-DockerFile - 副本.md",
     "新建文本文档.txt",
     "2024-06-27-Docker最佳实践.md",
-    "2023-09-22-Linux入门.md",
     "2023-07-26-CentOS初始化.md",
     "2021-12-26-U盘装系统.md",
     "2023-05-24-Java实用工具库.md",
@@ -260,13 +227,6 @@
     "2024-08-30-Vue3最佳实践.md",
     "2023-01-07-Maven.md",
     "2024-05-08-Maven注意事项.md",
-    "2023-01-12-IDEA使用.md",
-    "2025-03-20-切换Java版本.md",
-    "2024-09-25-Javadoc 最佳实践.md",
-    "2024-06-12-Java web 技术与架构演进.md",
-    "2024-03-13-Java处理NPE.md",
-    "2024-03-12-Java判等操作.md",
-    "2024-02-05-Java Web.md",
     "2024-09-09-什么是状态.tx",
     "Untitled"
   ]
