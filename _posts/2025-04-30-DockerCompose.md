@@ -15,12 +15,7 @@ Docker Compose 负责实现对 Docker 容器集群的快速编排，可以把项
 
 Docker Compose 恰好满足了这样的需求。它允许用户通过一个单独的 `docker-compose.yml` 模板文件（YAML 格式）来定义一组相关联的应用容器为一个项目（project）
 
-Docker Compose 中有两个重要的概念：
-
--   服务 (`service`)：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例。
--   项目 (`project`)：由一组关联的应用容器组成的一个完整业务单元，在 `docker-compose.yml` 文件中定义。
-
-Docker Compose 的默认管理对象是项目，通过子命令对项目中的一组容器进行便捷地生命周期管理
+**Docker Compose** 是一个用于定义和运行 **多容器 Docker 应用程序** 的工具。它允许你通过一个 YAML 文件（通常是 `docker-compose.yml`）来配置应用程序所需的所有服务、网络、卷、环境变量等，然后使用一条命令就可以启动整个应用环境。
 
 ## 1.2. 安装
 
@@ -58,75 +53,135 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 $ sudo rm /usr/local/bin/docker-compose
 ```
 
-## 1.3. Compose 模板文件
+## 1.3. Compose file 顶层字段
 
-默认的模板文件名称为 `docker-compose.yml`
+**version**
 
-参考文档：https://docs.docker.com/compose/
+用于指定 Docker Compose 文件的格式版本。从 **Docker Compose v2+** 开始，官方建议不再强制使用 `version` 字段
 
-```
-version: "3.7"
+| Version 字段  | 支持的 Compose 功能版本                      | 状态           |
+| ------------- | -------------------------------------------- | -------------- |
+| &#39;1&#39;   | 早期版本（无 services、networks 等顶级字段） | 已弃用         |
+| &#39;2.x&#39; | 更完善的多服务支持，卷、网络等高级功能       | 已弃用         |
+| &#39;3.x&#39; | 主要用于 Swarm 模式部署微服务架构            | 已弃用         |
+| &#39;3.8&#39; | 最后一个较稳定的版本之一                     | 推荐用于旧项目 |
 
+**name**
+
+为项目指定一个名称（可选，否则默认使用目录名），name值会作为`${COMPOSE_PROJECT_NAME}`公共变量的值
+
+- 必须以小写字母或数字开头
+- 后续可以是小写字母、数字、下划线 `_`或短横线 `-`
+- 不能包含大写字母、空格、特殊字符（如 `/, .` 等）
+
+**services（必须字段）**
+
+定义组成应用的所有服务（容器）。每个服务对应一个容器
+
+```yml
 services:
-  app:
-    build: ./
+  web:
+    image: nginx
     ports:
-      - 80:8080
-    volumes:
-      - ./:/app
-    environment:
-      - TZ=Asia/Shanghai
-  redis:
-    image: redis:5.0.13
-    volumes:
-      - redis:/data
-    environment:
-      - TZ=Asia/Shanghai
-
-volumes:
-  redis:
+      - "80:80"
 ```
 
-> 容器默认时间不是北京时间，增加 TZ=Asia/Shanghai 可以改为北京时间
+每个服务可以包含以下常用子字段：
 
+- `image`: 使用的镜像名
+- `container_name`：创建的容器名称
+- `build`: 构建镜像的方式（可以是一个路径或详细构建选项）
+	- context：指定 Docker 构建镜像时使用的上下文路径（也就是构建镜像所需的文件所在的目录）
+	- dockerfile：指定用于构建镜像的具体 Dockerfile 文件名（如果不在默认位置或不是默认名称）
+- `ports`: 映射端口
+- `environment`: 设置环境变量
+- `depends_on`: 定义启动顺序依赖
+- `volumes`: 挂载卷
+- `networks`: 加入哪些网络
+- `restart`: 容器重启策略
+
+**networks**
+
+定义自定义网络，服务可以通过这些网络进行通信。
+
+```yml
+networks:
+  app-network:
+    driver: bridge
+```
+
+然后在服务中引用：
+
+```yml
+services:
+  web:
+    networks:
+      - app-network
+  db:
+    networks:
+      - app-network
+```
+**volumes**
+
+定义命名卷，用于持久化数据或共享文件。
+
+```yml
+volumes:
+  mysql_data:
+  redis_data:
+```
+
+然后在服务中挂载：
+
+```yml
+services:
+  mysql:
+    volumes:
+      - mysql_data:/var/lib/mysql
+```
+
+**configs**
+
+为 Swarm 模式提供配置文件支持（如配置文件内容注入容器）。
+
+**secrets**
+
+为 Swarm 模式提供敏感信息管理（如密码、API Key 等）。
+
+**build**
+
+定义构建镜像的参数（通常在`services`内部使用，但也可以作为顶层字段用于多阶段构建）
+
+```yml
+build:
+  base-image:
+    context: .
+    dockerfile: base.Dockerfile
+```
+
+然后在服务中引用：
+
+```yml
+services:
+  web:
+    build:
+      target: base-image
+```
 ## 1.4. 常用命令
 
-docker compose命令的运行需要docker-compose.yml文件的支持，可以指定文件位置，也可以在文件同目录运行命令
+进入你的 `docker-compose.yml` 所在目录后，可以使用以下命令：
 
-```
-## 构建镜像并启动文件内配置的所有容器
-docker compose up
-
-## 构建镜像并启动所有容器，后台运行
-docker compose up -d
-
-## 停止并删除所有容器
-docker compose down
-
-## 重启单个服务
-docker-compose restart service-name
-
-## 重启所有服务
-docker compose restart
-
-## 启动服务
-docker compose start
-
-## 停止服务
-docker compose stop
-
-## 展示当前docker compose编排过并运行的所有容器（在docker-compose.yml文件同目录下运行）
-docker compose ps
-
-## 检查docker-compose.yml文件
-docker compose config
-
-## 检查docker-compose.yml文件，有问题就输出
-docker compose config -q
-
-## 进入容器命令行
-docker-compose exec service-name sh
-
-## 查看容器运行log
-docker-compose logs [service-name]
-```
+| 命令                                  | 说明                     |
+| ----------------------------------- | ---------------------- |
+| docker compose up                   | 启动并创建所有服务容器（前台模式）      |
+| docker compose up -d                | 后台启动容器                 |
+| docker compose down                 | 停止并删除容器、网络（不删卷）        |
+| docker compose ps                   | 查看运行中的服务状态             |
+| docker compose logs                 | 查看容器日志                 |
+| docker compose build                | 构建或重新构建服务              |
+| docker compose stop                 | 停止服务                   |
+| docker compose start                | 启动已停止的服务               |
+| docker compose restart service-name | 重启单个服务                 |
+| docker compose restart              | 重启所有服务                 |
+| docker compose config               | 检查docker-compose.yml文件 |
+| docker compose exec service-name sh | 进入容器命令行                |

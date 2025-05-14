@@ -76,6 +76,8 @@ FROM <image>:<digest>
 # 设置时区
 ENV TZ=Asia/Shanghai
 ```
+
+默认时间不是北京时间，增加 TZ=Asia/Shanghai 可以改为北京时间
 ## 1.4. 设置工作目录（WORKDIR）
 
 `WORKDIR <工作目录路径>`，设置后续指令（如 `RUN`, `CMD`, `COPY` 的**相对路径** ）的工作目录，WORKDIR 指令中需要使用绝对路径，如果指定的路径在镜像中不存在，WORKDIR 会自动创建该目录
