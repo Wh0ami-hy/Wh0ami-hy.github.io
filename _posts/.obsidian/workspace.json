@@ -4,31 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "e265d43515293ef9",
-        "type": "tabs",
-        "dimension": 64.343163538874,
-        "children": [
-          {
-            "id": "9ebf9737f5a392cb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2024-08-26-React入门.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2024-08-26-React入门"
-            },
-            "group": "8f8ed2e9aa86118a"
-          }
-        ]
-      },
-      {
         "id": "f8e418afc6409a96",
         "type": "tabs",
-        "dimension": 35.656836461126005,
         "children": [
           {
             "id": "8922ce8e0aed6c3c",
@@ -36,17 +13,31 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024-08-26-React入门.md",
+                "file": "2023-01-11-Vue3核心语法.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2024-08-26-React入门 的大纲"
-            },
-            "group": "8f8ed2e9aa86118a"
+              "title": "2023-01-11-Vue3核心语法 的大纲"
+            }
+          },
+          {
+            "id": "89ce6adfbf880b52",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023-01-11-Vue3核心语法.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2023-01-11-Vue3核心语法"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -78,7 +69,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:Re",
+                "query": "file:Vue",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -208,8 +199,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "9ebf9737f5a392cb",
+  "active": "89ce6adfbf880b52",
   "lastOpenFiles": [
+    "2024-09-16-Vue转Electron.md",
+    "2023-01-11-Vue3核心语法.md",
+    "2023-01-12-JavaScript入门.md",
+    "2024-08-26-React入门.md",
     "2024-06-27-Lombok注解.md",
     "2025-05-06-什么是挂载.md",
     "2023-07-26-Docker实践.md",
@@ -233,10 +228,6 @@
     "2023-04-02-Java内存管理.md",
     "2025-03-31-Nginx反向代理.md",
     "2023-11-27-Nginx应用.md",
-    "2023-11-27-Nginx配置.md",
-    "2025-03-31-反向代理-基于域名分发.md",
-    "2021-12-31-SQL语法.md",
-    "2024-08-30-Vue3最佳实践.md",
     "2024-09-09-什么是状态.tx",
     "Untitled"
   ]
