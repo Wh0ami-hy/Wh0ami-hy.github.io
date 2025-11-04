@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "991bbc5f4082dbbb",
+        "id": "177c9ca466349feb",
         "type": "tabs",
         "children": [
           {
-            "id": "57e6526abb41990c",
+            "id": "10246ba49ef0b30d",
             "type": "leaf",
             "state": {
-              "type": "outline",
+              "type": "markdown",
               "state": {
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
+                "file": "2023-02-12-Java初级.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-list",
-              "title": "大纲"
+              "icon": "lucide-file",
+              "title": "2023-02-12-Java初级"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file: M",
+                "query": "file: 初级",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,8 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 310.5,
-    "collapsed": true
+    "width": 310.5
   },
   "right": {
     "id": "d508948902057409",
@@ -184,8 +183,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "57e6526abb41990c",
+  "active": "10246ba49ef0b30d",
   "lastOpenFiles": [
+    "2023-11-27-Nginx配置.md",
+    "2023-11-27-Nginx应用.md",
+    "2025-03-31-Nginx反向代理.md",
+    "2024-03-13-Optional最佳指南.md",
     "2024-01-25-Mybatis踩坑总结.md",
     "2025-10-10-Java Stream 流详解.md",
     "2025-08-13-代码中异常的处理.md",
@@ -208,11 +211,7 @@
     "2025-05-06-网络分层.md",
     "2024-09-14-以太网协议.md",
     "2024-07-29-网页访问的历程.md",
-    "2023-09-21-计算机网络总述.md",
-    "2025-04-30-DockerFile - 副本.md",
     "新建文本文档.txt",
-    "2024-06-27-Docker最佳实践.md",
-    "2023-07-26-CentOS初始化.md",
     "2024-09-09-什么是状态.tx",
     "Untitled"
   ]
